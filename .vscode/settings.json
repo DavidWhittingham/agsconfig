@@ -1,0 +1,10 @@
+{
+    "python.formatting.provider": "yapf",
+    "python.pythonPath": ".\\venvs\\test\\Scripts\\python.exe",
+    "python.unitTest.pyTestArgs": [
+        "tests"
+    ],
+    "python.unitTest.unittestEnabled": false,
+    "python.unitTest.nosetestsEnabled": false,
+    "python.unitTest.pyTestEnabled": true
+}
