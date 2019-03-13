@@ -19,11 +19,7 @@ def setup():
 @task
 def test():
     with venv(r"venvs\test"):
-        cmd(r"python setup.py build")
-        cmd(r"pip uninstall -y agsconfig")
-        with open("agsconfig/_version.py") as fin: exec(fin.read(), globals())
-        cmd(r"pip install dist/agsconfig-{}-py2.py3-none-any.whl".format(__version__))
-        cmd(r"python -m pytest -s tests")
+        cmd(r"python -m pytest -s --cov=agsconfig .\\tests")
 
 
 @task
