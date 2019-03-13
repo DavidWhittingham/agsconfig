@@ -1,18 +1,22 @@
+# coding=utf-8
+"""This module contains shared tests for all models that implement the SDDraftBase class."""
+
 # Python 2/3 compatibility
+# pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 from __future__ import (absolute_import, division, print_function, unicode_literals)
 from future.builtins import *
 from future.builtins.disabled import *
 from future.standard_library import install_aliases
 install_aliases()
+# pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
 import os.path
 import shutil
 
-import agsconfig
-
 import pytest
-
 from contextlib2 import ExitStack
+
+import agsconfig
 
 SDDRAFT_FILE_PATH = os.path.abspath("{0}/samples/mapservice.sddraft".format(os.path.dirname(__file__)))
 SDDRAFT_FILE_PATH_COPY = os.path.abspath("{0}/samples/mapservice.copy.sddraft".format(os.path.dirname(__file__)))
@@ -71,6 +75,7 @@ from .cacheable import *
 from .image_dimensions import *
 from .max_record_count import *
 from .output_dir import *
+
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-position
 
 
