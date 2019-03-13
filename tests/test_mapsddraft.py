@@ -66,9 +66,10 @@ def service_config(request):
 
 # import tests that should be applied to MapServer
 # pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-position
-from .cacheable import *
 from .sddraftbase import *
+from .cacheable import *
 from .image_dimensions import *
+from .max_record_count import *
 from .output_dir import *
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-position
 

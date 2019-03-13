@@ -14,11 +14,12 @@ from enum import Enum
 
 from .cacheable_mixin import CacheableMixin
 from .image_dimensions_mixin import ImageDimensionsMixin
+from .max_record_count_mixin import MaxRecordCountMixin
 from .output_dir_mixin import OutputDirMixin
 from .service_base import ServiceBase
 
 
-class MapServer(OutputDirMixin, CacheableMixin, ImageDimensionsMixin, ServiceBase):
+class MapServer(MaxRecordCountMixin, OutputDirMixin, CacheableMixin, ImageDimensionsMixin, ServiceBase):
     class AntiAliasingMode(Enum):
         none = "None"
         fastest = "Fastest"
