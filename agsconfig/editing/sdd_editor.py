@@ -66,13 +66,25 @@ class SDDraftEditor(EditorBase):
         self._xml_file.truncate()
 
         # explictly write it out to file as binary UTF-8
-        self._xml_file.write(ET.tostring(self._xml_tree.getroot(), encoding="utf-8"))
+        self._xml_file.write(ET.tostring(self._xml_tree.getroot(), encoding="utf-8", pretty_print=True))
 
-    def _create_element(self, parent_path, tag, attrib=None):
+    def _create_element(self, path_info):
         # get parent element
-        parent_element = self._xml_tree.find(parent_path)
+        parent_element = self._xml_tree.find(path_info["parentPath"])
 
-        return ET.SubElement(parent_element, tag, attrib or {})
+        self._create_child_elements(parent_element, path_info)
+
+        return self._xml_tree.find(path_info["path"])
+    
+    def _create_child_elements(self, parent_element, path_info):
+        new_element = ET.SubElement(parent_element, path_info["tag"], path_info.get("attributes", {}))
+
+        if "value" in path_info:
+            self._set_element_value(new_element, path_info["value"])
+
+        if "children" in path_info:
+            for child in path_info["children"]:
+                self._create_child_elements(new_element, child)
 
     def _get_value(self, path_info):
         element = self._xml_tree.find(path_info["path"])
@@ -87,7 +99,7 @@ class SDDraftEditor(EditorBase):
         element = self._xml_tree.find(path_info["path"])
 
         if element is None:
-            element = self._create_element(path_info["parentPath"], path_info["tag"], path_info.get("attributes", {}))
+            element = self._create_element(path_info)
 
         self._set_element_value(element, value)
 
@@ -167,4 +179,6 @@ class SDDraftEditor(EditorBase):
         # seek to start of XML file for reading
         xml_file.seek(0)
 
-        return ET.parse(xml_file)
+        # remove blank text in order to pretty-print later
+        parser = ET.XMLParser(remove_blank_text=True)
+        return ET.parse(xml_file, parser)

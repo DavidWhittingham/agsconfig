@@ -69,6 +69,7 @@ def service_config(request):
 from .cacheable import *
 from .sddraftbase import *
 from .image_dimensions import *
+from .output_dir import *
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-position
 
 
