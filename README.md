@@ -12,7 +12,7 @@ agsconfig is made available on PyPi, simply install it with `pip`.
 
 ## Development
 
-To get started on developing agsconfig, simply fork the repository and get it with your favourite Git client.  In the root of the repository is a standalone task runner, `pie.py`, that can excute tasks contained in `pie_tasks.py`.
+To get started on developing agsconfig, simply fork the repository and get it with your favourite Git client.  In the root of the repository is a standalone task runner, [`pie.py`](https://github.com/adamkerz/pie), that can excute tasks contained in `pie_tasks.py`.
 
 You'll need a Python install with `pip` and `virtualenv`, but other than that, no pre-installed dependencies are necessary.
 
