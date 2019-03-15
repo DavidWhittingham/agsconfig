@@ -1,12 +1,11 @@
-﻿<?xml version="1.0" ?>
-<SVCManifest xsi:type='typens:SVCManifest' 
+﻿<SVCManifest xsi:type='typens:SVCManifest' 
     xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' 
     xmlns:xs='http://www.w3.org/2001/XMLSchema' 
     xmlns:typens='http://www.esri.com/schemas/ArcGIS/2.3.0'>
     <Databases xsi:type='typens:ArrayOfSVCDatabase' />
     <Resources xsi:type='typens:ArrayOfSVCResource'>
         <SVCResource xsi:type='typens:SVCResource'>
-            <ID>0968171F-78D0-41BF-B8C6-2F4A7BA5AD20</ID>
+            <ID>018E8DFC-C1E0-4E7D-BD2B-DA8CBF8726E7</ID>
             <Name>map.xml</Name>
             <ClientName>NRM03659</ClientName>
             <OnPremisePath>C:\git\SIRGIS-Admin\tests\test_proagspublish\testData\VectorTileTest\VectorTileTest.aprx</OnPremisePath>
@@ -14,8 +13,8 @@
             <RepositoryID>0</RepositoryID>
         </SVCResource>
     </Resources>
-    <ID>99FB0034-F987-4B56-B220-921AE70CF022</ID>
-    <Name>VectorTileTest</Name>
+    <ID>7DBD5310-E8ED-4177-88A2-2379E4A5A6EC</ID>
+    <Name>TestVectorTile</Name>
     <OnPremisePath>C:\Users\Blanchfieldc1\AppData\Local\Esri\ArcGISPro\Staging\My Hosted Services (Spatial Portal (test))</OnPremisePath>
     <ByReference>false</ByReference>
     <Type>esriServiceDefinitionType_New</Type>
@@ -81,7 +80,7 @@
             </PropertySetProperty>
             <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                 <Key>ServiceTitle</Key>
-                <Value xsi:type='xs:string'>Map</Value>
+                <Value xsi:type='xs:string'>TestVectorTile</Value>
             </PropertySetProperty>
             <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                 <Key>PackageTableList</Key>
@@ -121,7 +120,7 @@
             </PropertySetProperty>
             <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                 <Key>TileCacheSchemaFile</Key>
-                <Value xsi:type='xs:string'>C:\Users\Blanchfieldc1\Documents\ArcGIS\TilingSchemes\Downloaded\TilingSchemeOf_Map_suggested_tilingscheme.xml</Value>
+                <Value xsi:type='xs:string'>C:\Users\Blanchfieldc1\Documents\ArcGIS\TilingSchemes\Downloaded\TilingSchemeOf_TestVectorTile_suggested_tilingscheme (1).xml</Value>
             </PropertySetProperty>
             <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                 <Key>TileCachePath</Key>
@@ -170,11 +169,11 @@
     <ClientHostName>NRM03659</ClientHostName>
     <Configurations xsi:type='typens:ArrayOfSVCConfiguration'>
         <SVCConfiguration xsi:type='typens:SVCConfiguration'>
-            <ID>D218F6A6-3712-4D94-AD35-21FF1CC00D87</ID>
-            <Name>VectorTileTest</Name>
+            <ID>95EE59D7-877F-46F0-BD56-E0BAC959CC0F</ID>
+            <Name>TestVectorTile</Name>
             <TypeName>VectorTileServer</TypeName>
-            <ResourceID>0968171F-78D0-41BF-B8C6-2F4A7BA5AD20</ResourceID>
-            <ServiceFolder>test</ServiceFolder>
+            <ResourceID>018E8DFC-C1E0-4E7D-BD2B-DA8CBF8726E7</ResourceID>
+            <ServiceFolder>Test2</ServiceFolder>
             <Definition xsi:type='typens:SVCConfigurationDefinition'>
                 <ConfigurationProperties xsi:type='typens:PropertySet'>
                     <PropertyArray xsi:type='typens:ArrayOfPropertySetProperty'>
@@ -216,11 +215,11 @@
                         </PropertySetProperty>
                         <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                             <Key>minScale</Key>
-                            <Value xsi:type='xs:double'>295829355.45456523</Value>
+                            <Value xsi:type='xs:double'>9244667.3579551633</Value>
                         </PropertySetProperty>
                         <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                             <Key>maxScale</Key>
-                            <Value xsi:type='xs:double'>1128.4994333441362</Value>
+                            <Value xsi:type='xs:double'>18055.990933506178</Value>
                         </PropertySetProperty>
                         <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                             <Key>isCached</Key>
@@ -335,7 +334,7 @@
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>onlineResource</Key>
-                                    <Value xsi:type='xs:string'>https://uat-spatial.information.qld.gov.au/arcgis/services/Map/VectorTileServer/VectorTileServer</Value>
+                                    <Value xsi:type='xs:string'>https://uat-spatial.information.qld.gov.au/arcgis/services/TestVectorTile/VectorTileServer/VectorTileServer</Value>
                                 </PropertySetProperty>
                             </PropertyArray>
                         </Props>
@@ -483,13 +482,13 @@
         </CacheStorageInfo>
     </CacheSchema>
     <ItemInfo xsi:type='typens:ItemInfo'>
-        <Name>VectorTileTest</Name>
+        <Name>TestVectorTile</Name>
         <Type>Service Definition</Type>
-        <Title>VectorTileTest</Title>
+        <Title>TestVectorTile</Title>
         <Tags xsi:type='typens:ArrayOfString'>
-            <String>do not use</String>
+            <String>tag</String>
         </Tags>
-        <Snippet>Test</Snippet>
+        <Snippet>summary</Snippet>
         <Url>https://uat-spatial.information.qld.gov.au/arcgis/</Url>
         <DataLastModifiedTime xsi:nil='true' />
         <SpatialReference xsi:type='typens:GeographicCoordinateSystem'>
@@ -509,12 +508,12 @@
             <WKID>4283</WKID>
             <LatestWKID>4283</LatestWKID>
         </SpatialReference>
-        <MinScale>295829355.45456523</MinScale>
-        <MaxScale>1128.4994333441362</MaxScale>
+        <MinScale>9244667.3579551633</MinScale>
+        <MaxScale>18055.990933506178</MaxScale>
     </ItemInfo>
     <Metadata xsi:type='typens:XmlPropertySet'>
         <XmlDoc>&lt;?xml version="1.0"?&gt;
-&lt;metadata xml:lang="en"&gt;&lt;Esri&gt;&lt;CreaDate&gt;20190313&lt;/CreaDate&gt;&lt;CreaTime&gt;10484800&lt;/CreaTime&gt;&lt;ArcGISFormat&gt;1.0&lt;/ArcGISFormat&gt;&lt;SyncOnce&gt;TRUE&lt;/SyncOnce&gt;&lt;/Esri&gt;&lt;/metadata&gt;
+&lt;metadata xml:lang="en"&gt;&lt;Esri&gt;&lt;CreaDate&gt;20190314&lt;/CreaDate&gt;&lt;CreaTime&gt;08533900&lt;/CreaTime&gt;&lt;ArcGISFormat&gt;1.0&lt;/ArcGISFormat&gt;&lt;SyncOnce&gt;TRUE&lt;/SyncOnce&gt;&lt;/Esri&gt;&lt;/metadata&gt;
         </XmlDoc>
     </Metadata>
     <InitCacheLevels xsi:type='typens:SVCInitialCache'>
