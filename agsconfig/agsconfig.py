@@ -13,11 +13,13 @@ install_aliases()
 from .editing.sdd_editor import SDDraftEditor
 from .editing.ags_json_editor import AgsJsonEditor
 from .services.map_server import MapServer
-
+from .services.vectortile_server import VectorTileServer
 
 def load_map_sddraft(sddraft_file):
     return MapServer(SDDraftEditor(sddraft_file))
 
+def load_vectortile_sddraft(sddraft_file):
+    return VectorTileServer(SDDraftEditor(sddraft_file))
 
 def load_map_service(service_file, item_info_file):
     return MapServer(AgsJsonEditor(service_file, item_info_file))
