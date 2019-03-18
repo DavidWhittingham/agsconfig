@@ -118,7 +118,7 @@ def serialize_bool_to_string(value, conversion, obj):
         return [serialize_bool_to_string(v, conversion, obj) for v in value]
 
     true = conversion["true"] if "true" in conversion else "TRUE"
-    false = conversion["false"] if "false" in conversion else "false"
+    false = conversion["false"] if "false" in conversion else "FALSE"
 
     return true if value_to_boolean(value) == True else false
 
