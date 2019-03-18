@@ -50,10 +50,6 @@ class ServiceBase(ModelBase):
         """Must be overridden by sub-classes if any capabilities are supported."""
         pass
 
-    class Extension(Enum):
-        """Must be overridden by sub-classes if any extensions are supported."""
-        pass
-
     def __init__(self, editor):
         """Initilises the class.
         
