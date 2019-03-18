@@ -12,8 +12,9 @@ install_aliases()
 
 from enum import Enum
 from ..editing.edit_prop import EditorProperty
+from .extension_base import ExtensionBase
 
-class VectorTileServerExtension():
+class VectorTileServerExtension(ExtensionBase):
     class ExtensionCapabilities(Enum):
         query = "Query"
         create = "Create"
@@ -23,7 +24,7 @@ class VectorTileServerExtension():
         editing = "Editing"
 
     def __init__(self, editor):
-        self._editor = editor
+        super().__init__(editor)
 
     typeName = EditorProperty(
         {

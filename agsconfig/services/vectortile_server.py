@@ -13,7 +13,6 @@ install_aliases()
 from enum import Enum
 
 from .cacheable_mixin import CacheableMixin
-from .image_dimensions_mixin import ImageDimensionsMixin
 from .service_base import ServiceBase
 from ..editing.edit_prop import EditorProperty
 from .vectortile_server_extension import VectorTileServerExtension
