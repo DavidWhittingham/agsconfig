@@ -10,15 +10,10 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
-import datetime
-import re
-
 from abc import ABCMeta
-
 from enum import Enum
-
 from ..model_base import ModelBase
-from ..editing.edit_prop import EditorProperty
+
 
 class ExtensionBase(ModelBase):
     """Contains base settings/configuration that are common across ArcGIS Service types."""
