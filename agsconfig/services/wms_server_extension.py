@@ -18,8 +18,6 @@ from .custom_get_capabilities_extension_mixin import CustomGetCapabilitiesExtens
 class WMSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensionMixin, ExtensionBase):
     """ WMS server extension properties for arcGIS services """
 
-    extension_name = None
-
     class Capability(Enum):
         get_capabilities = "GetCapabilities"
         get_map = "GetMap"
@@ -30,7 +28,6 @@ class WMSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
 
     def __init__(self, editor):
         super().__init__(editor, "WMSServer")
-        extension_name = super().get_extension_name()
 
     enabled = EditorProperty(
         {

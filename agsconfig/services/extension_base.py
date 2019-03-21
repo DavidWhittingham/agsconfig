@@ -21,13 +21,13 @@ class ExtensionBase(ModelBase):
     __metaclass__ = ABCMeta
 
     _editor = None
-    extension_name = None
+    _extension_name = None
 
     class Capability(Enum):
         """Must be overridden by sub-classes if any capabilities are supported."""
         pass
 
-    def __init__(self, editor, extensionName):
+    def __init__(self, editor, extension_name):
         """Initilises the class.
 
         Args:
@@ -36,10 +36,11 @@ class ExtensionBase(ModelBase):
         """
 
         self._editor = editor
-        self.extension_name = extensionName
+        self._extension_name = extension_name
+    
+    @property
+    def extension_name(self):
+        return self._extension_name
 
     def save(self):
         self._editor.save()
-
-    def get_extension_name(self):
-        return self.extension_name
