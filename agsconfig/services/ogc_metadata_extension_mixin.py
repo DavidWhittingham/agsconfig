@@ -70,14 +70,14 @@ class OGCMetadataExtensionMixin(object):
             }
         })
 
-    keyword = EditorProperty(
+    keywords = EditorProperty(
         {
             "formats": {
                 "sddraft": {
                     "paths": [
                         {
                             "path":
-                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='keyword']/Value".format(extension_name)
+                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='keywords']/Value".format(extension_name)
                         }
                     ]
                 }
