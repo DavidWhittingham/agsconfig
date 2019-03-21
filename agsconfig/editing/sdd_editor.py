@@ -172,8 +172,7 @@ class SDDraftEditor(EditorBase):
             return
         raise ValueError("Element value cannot be set, unknown type.")
 
-    @staticmethod
-    def _load_xml(xml_file):
+    def _load_xml(self, xml_file):
         """Parses an XML file whilst preserving custom namespaces, which ElementTree doesn't do out of the box"""
 
         # seek to start of XML file for reading

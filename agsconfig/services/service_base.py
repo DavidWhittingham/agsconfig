@@ -80,39 +80,6 @@ class ServiceBase(ModelBase):
         }
     )
 
-    capabilities = EditorProperty(
-        {
-            "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.capabilities"
-                    }],
-                    "conversions": [{
-                        "id": "enumToString",
-                        "enum": "Capability"
-                    }, {
-                        "id": "stringToCsv"
-                    }]
-                },
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Info/PropertyArray/PropertySetProperty[Key = 'WebCapabilities']/Value"
-                        }
-                    ],
-                    "conversions": [{
-                        "id": "enumToString",
-                        "enum": "Capability"
-                    }, {
-                        "id": "stringToCsv"
-                    }]
-                }
-            }
-        }
-    )
-
     cluster = EditorProperty(
         {
             "formats": {

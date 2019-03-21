@@ -154,7 +154,7 @@ class CacheableMixin(object):
                     "paths": [
                         {
                             "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'exportTilesAllowed']/Value"
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'maxExportTilesCount']/Value"
                         }
                     ],
                     "conversions": [{

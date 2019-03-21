@@ -1,0 +1,49 @@
+{
+    "serviceName": "TestVectorTile",
+    "type": "VectorTileServer",
+    "description": "",
+    "capabilities": "TilesOnly",
+    "provider": "ArcObjects",
+    "clusterName": "default",
+    "minInstancesPerNode": 0,
+    "maxInstancesPerNode": 0,
+    "instancesPerContainer": 1,
+    "maxWaitTime": 60,
+    "maxStartupTime": 300,
+    "maxIdleTime": 1800,
+    "maxUsageTime": 600,
+    "loadBalancing": "ROUND_ROBIN",
+    "isolationLevel": "HIGH",
+    "configuredState": "STARTED",
+    "recycleInterval": 24,
+    "recycleStartTime": "00:00",
+    "keepAliveInterval": 1800,
+    "private": false,
+    "isDefault": false,
+    "maxUploadFileSize": 0,
+    "allowedUploadFileTypes": "",
+    "properties": {
+     "outputDir": "\\\\file-uat.scs.local\\fileshare\\arcgis\\directories\\arcgisoutput",
+     "cacheDir": "\\\\file-uat.scs.local\\fileshare\\arcgis\\directories\\arcgiscache",
+     "maxScale": "0",
+     "maxRecordCount": "1000",
+     "clientCachingAllowed": "true",
+     "antialiasingMode": "None",
+     "textAntialiasingMode": "Force",
+     "isCached": "true",
+     "virtualOutputDir": "/rest/directories/arcgisoutput",
+     "maxBufferCount": "100",
+     "virtualCacheDir": "/rest/directories/arcgiscache",
+     "minScale": "0"
+    },
+    "portalProperties": {
+     "isHosted": true,
+     "portalItems": [{
+      "itemID": "e55d741598fc41ffb841a8308e59b450",
+      "type": "VectorTileServer"
+     }]
+    },
+    "extensions": [],
+    "frameworkProperties": {},
+    "datasets": []
+   }

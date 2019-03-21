@@ -12,7 +12,7 @@ install_aliases()
 
 # imports
 from abc import ABCMeta, abstractmethod
-
+import inspect
 from . import serialization
 
 
@@ -54,7 +54,7 @@ class EditorBase(object):
         format_info = self._get_format_info_and_check_support(meta)
 
         # if the result is in multiple locations, return only the first
-        path_info = format_info["paths"][0]
+        path_info = self._resolve_lambda(format_info["paths"][0], obj)
 
         value = self._get_value(path_info)
 
@@ -64,6 +64,17 @@ class EditorBase(object):
     def save(self):
         pass
 
+    def _resolve_lambda(self, path_info, obj):
+        # if the path is a lambda, get the arg names and assume they're in obj
+        if callable(path_info["path"]):
+            args = inspect.getargspec(path_info["path"])
+            kwargs = {}
+            for arg in args.args:
+                kwargs[arg] = getattr(obj, arg)
+            path_info["path"] = path_info["path"](**kwargs)
+
+        return path_info
+
     def set_value(self, value, meta, obj):
         format_info = self._get_format_info_and_check_support(meta, True)
 
@@ -72,7 +83,7 @@ class EditorBase(object):
 
         # set the value in all locations listed
         for path_info in format_info["paths"]:
-            self._set_value(value, path_info)
+            self._set_value(value, self._resolve_lambda(path_info, obj))
 
     @abstractmethod
     def _get_value(self, path_info):
