@@ -14,7 +14,7 @@ import agsconfig
 from agsconfig.services.wfs_server_extension import WFSServerExtension as wfs
 import pytest
 
-SDDRAFT_FILE_PATH = os.path.abspath("{0}/samples/example.sddraft".format(os.path.dirname(__file__)))
+SDDRAFT_FILE_PATH = os.path.abspath("{0}/samples/mapservice.sddraft".format(os.path.dirname(__file__)))
 
 @pytest.fixture
 def mapserver():
