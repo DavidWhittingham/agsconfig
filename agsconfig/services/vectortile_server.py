@@ -37,7 +37,7 @@ class VectorTileServer(ServiceBase, CacheableMixin):
 
     def __init__(self, editor):
         super(VectorTileServer, self).__init__(editor)
-        self._vectortile_server_extension = VectorTileServerExtension(editor)
+        self._vectortile_server_extension = VectorTileServerExtension(editor, 'VectorTile')
 
     portal_url = EditorProperty(
         {

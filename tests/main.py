@@ -1,6 +1,4 @@
 """ Execute all of the tests. Mostly for pytest-cov"""
-import sys
-
 from types import ModuleType
 from os.path import abspath, dirname
 
@@ -14,7 +12,7 @@ def importable(module):
         return False
 
 def runtests():
-    cmd = ["-r fsxX"]
+    cmd = ["-r fE"]
     thisDir = dirname(abspath(__file__))
 
     if importable("pytest_cov"):

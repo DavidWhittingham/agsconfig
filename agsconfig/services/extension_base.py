@@ -16,24 +16,30 @@ from ..model_base import ModelBase
 
 
 class ExtensionBase(ModelBase):
-    """Contains base settings/configuration that are common across ArcGIS Service types."""
+    """Contains base settings/configuration that are common across ArcGIS Service extensions."""
 
     __metaclass__ = ABCMeta
 
     _editor = None
+    extension_name = None
 
     class Capability(Enum):
         """Must be overridden by sub-classes if any capabilities are supported."""
         pass
 
-    def __init__(self, editor):
+    def __init__(self, editor, extensionName):
         """Initilises the class.
-        
+
         Args:
             editor: An editor object that will receive metadata about each property
+            extensionType: Used to find xpaths in sddrafts where there is more than one extension
         """
 
         self._editor = editor
+        self.extension_name = extensionName
 
     def save(self):
         self._editor.save()
+
+    def get_extension_name(self):
+        return self.extension_name

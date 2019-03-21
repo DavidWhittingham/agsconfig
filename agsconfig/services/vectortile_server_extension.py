@@ -23,8 +23,8 @@ class VectorTileServerExtension(ExtensionBase):
         uploads = "Uploads"
         editing = "Editing"
 
-    def __init__(self, editor):
-        super().__init__(editor)
+    def __init__(self, editor, extension_type):
+        super().__init__(editor, extension_type)
 
     typeName = EditorProperty(
         {

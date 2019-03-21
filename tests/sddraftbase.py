@@ -14,7 +14,7 @@ import datetime
 
 import pytest
 
-from . helpers import TRUEISH_TEST_PARAMS
+from .helpers import TRUEISH_TEST_PARAMS
 
 SCALES = [
     (1.1, 1.1),
