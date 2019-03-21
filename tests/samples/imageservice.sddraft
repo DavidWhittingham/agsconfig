@@ -81,19 +81,19 @@
                     <PropertyArray xsi:type='typens:ArrayOfPropertySetProperty'>
                         <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                             <Key>copyright</Key>
-                            <Value xsi:type='xs:string'/>
+                            <Value xsi:type='xs:string'>copyright</Value>
                         </PropertySetProperty>
                         <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                             <Key>description</Key>
-                            <Value xsi:type='xs:string'/>
+                            <Value xsi:type='xs:string'>description</Value>
                         </PropertySetProperty>
                         <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                             <Key>supportedImageReturnTypes</Key>
-                            <Value xsi:type='xs:string'>URL</Value>
+                            <Value xsi:type='xs:string'>supportedImageReturnTypes</Value>
                         </PropertySetProperty>
                         <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                             <Key>cacheDir</Key>
-                            <Value xsi:type='xs:string'/>
+                            <Value xsi:type='xs:string'>cacheDir</Value>
                         </PropertySetProperty>
                         <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                             <Key>useLocalCacheDir</Key>
@@ -169,7 +169,7 @@
                         </PropertySetProperty>
                         <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                             <Key>RasterFunctions</Key>
-                            <Value xsi:type='xs:string'/>
+                            <Value xsi:type='xs:string'>rasterfunctions</Value>
                         </PropertySetProperty>
                         <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                             <Key>AllowFunction</Key>
@@ -237,19 +237,19 @@
                         </PropertySetProperty>
                         <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                             <Key>DownloadDir</Key>
-                            <Value xsi:type='xs:string'/>
+                            <Value xsi:type='xs:string'>DownloadDir</Value>
                         </PropertySetProperty>
                         <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                             <Key>VirtualDownloadDir</Key>
-                            <Value xsi:type='xs:string'/>
+                            <Value xsi:type='xs:string'>VirtualDownloadDir</Value>
                         </PropertySetProperty>
                         <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                             <Key>ServiceImageWorkspace</Key>
-                            <Value xsi:type='xs:string'/>
+                            <Value xsi:type='xs:string'>serviceImageWorkspace</Value>
                         </PropertySetProperty>
                         <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                             <Key>DynamicImageWorkspace</Key>
-                            <Value xsi:type='xs:string'/>
+                            <Value xsi:type='xs:string'>dynamicImageWorkspace</Value>
                         </PropertySetProperty>
                         <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                             <Key>AllowOthersToUpdate</Key>
@@ -374,15 +374,15 @@
                             <PropertyArray xsi:type='typens:ArrayOfPropertySetProperty'>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>onlineResource</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>onlineResource</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>customGetCapabilities</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>customgetCapabilities</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>pathToCustomGetCapabilitiesFiles</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>pathToCustomGetCapabilitiesFiles</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>name</Key>
@@ -390,87 +390,87 @@
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>title</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>title</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>abstract</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>abstract</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>keywords</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>keywords</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>fees</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>fees</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>accessConstraints</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>accessConstraints</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>maxImageWidth</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>maxImageWidth</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>maxImageHeight</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>maxImageHeight</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>providerName</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>providerName</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>providerWebsite</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>providerWebsite</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>responsiblePerson</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>responsiblePerson</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>responsiblePosition</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>responsiblePosition</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>phone</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>phone</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>fax</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>fax</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>email</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>email</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>address</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>address</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>city</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>city</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>province</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>province</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>zipcode</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>zipcode</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>country</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>country</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>serviceHour</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>serviceHour</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>contactInstructions</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>contactInstructions</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>role</Key>
@@ -506,11 +506,11 @@
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>pathToCustomGetCapabilitiesFiles</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>Thisisatest</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>pathToCustomSLDFile</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>pathToCustomSLDFile</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>inheritLayerNames</Key>
@@ -518,75 +518,75 @@
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>name</Key>
-                                    <Value xsi:type='xs:string'>WMS</Value>
+                                    <Value xsi:type='xs:string'>name</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>title</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>title</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>abstract</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>abstract</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>keyword</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>keyword</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>contactPerson</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>contactPerson</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>contactPosition</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>contactPosition</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>contactOrganization</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>contactOrganization</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>address</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>address</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>addressType</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>addressType</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>city</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>city</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>stateOrProvince</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>stateOrProvince</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>postCode</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>postCode</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>country</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>country</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>contactVoiceTelephone</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>contactVoiceTelephone</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>contactFacsimileTelephone</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>contactFacsimileTele</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>contactElectronicMailAddress</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>contactEmail</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>fees</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>fees</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>accessConstraints</Key>
-                                    <Value xsi:type='xs:string'/>
+                                    <Value xsi:type='xs:string'>accessConstraints</Value>
                                 </PropertySetProperty>
                             </PropertyArray>
                         </Props>

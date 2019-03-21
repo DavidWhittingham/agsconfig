@@ -23,7 +23,7 @@ def vectortile():
 def test_load_vectortilesddraft():
     """Load a vector tile into a map sddraft object."""
     sddraft = agsconfig.load_vectortile_sddraft(open(SDDRAFT_FILE_PATH, 'rb+'))
-    
+
     assert type(sddraft) == agsconfig.services.vectortile_server.VectorTileServer
 
 @pytest.mark.parametrize(
