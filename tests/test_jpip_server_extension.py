@@ -1,18 +1,20 @@
+# coding=utf-8
 """Tests for jpip server extension."""
+
 # Python 2/3 compatibility
+# pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 from __future__ import (absolute_import, division, print_function, unicode_literals)
 from future.builtins import *
 from future.builtins.disabled import *
 from future.standard_library import install_aliases
 install_aliases()
+# pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
 import os.path
-import shutil
-import datetime
-
-import agsconfig
 
 import pytest
+
+import agsconfig
 
 SDDRAFT_FILE_PATH = os.path.abspath("{0}/samples/imageservice.sddraft".format(os.path.dirname(__file__)))
 
