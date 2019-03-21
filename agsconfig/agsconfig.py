@@ -15,6 +15,7 @@ from .editing.ags_json_editor import AgsJsonEditor
 from .services.map_server import MapServer
 from .services.vectortile_server import VectorTileServer
 from .services.image_server import ImageServer
+from .services.geocode_server import GeocodeServer
 
 def load_map_sddraft(sddraft_file):
     return MapServer(SDDraftEditor(sddraft_file))
@@ -27,3 +28,6 @@ def load_image_sddraft(sddraft_file):
 
 def load_map_service(service_file, item_info_file):
     return MapServer(AgsJsonEditor(service_file, item_info_file))
+
+def load_geocode_sddraft(sddraft_file):
+    return GeocodeServer(SDDraftEditor(sddraft_file))
