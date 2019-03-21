@@ -18,55 +18,10 @@ from contextlib2 import ExitStack
 
 import agsconfig
 
-SDDRAFT_FILE_PATH = os.path.abspath("{0}/samples/mapservice.sddraft".format(os.path.dirname(__file__)))
-SDDRAFT_FILE_PATH_COPY = os.path.abspath("{0}/samples/mapservice.copy.sddraft".format(os.path.dirname(__file__)))
-SDDRAFT_SAVE_TEST_FILE_PATH = os.path.abspath(
-    "{0}/samples/mapservice.savetest.sddraft".format(os.path.dirname(__file__))
-)
-
-MAIN_JSON_FILE_PATH = os.path.abspath("{0}/samples/mapservice.main.json".format(os.path.dirname(__file__)))
-MAIN_JSON_FILE_PATH_COPY = os.path.abspath("{0}/samples/mapservice.main.copy.json".format(os.path.dirname(__file__)))
-MAIN_JSON_SAVE_TEST_FILE_PATH = os.path.abspath(
-    "{0}/samples/mapservice.main.savetest.json".format(os.path.dirname(__file__))
-)
-
-INFO_JSON_FILE_PATH = os.path.abspath("{0}/samples/mapservice.itemInfo.json".format(os.path.dirname(__file__)))
-INFO_JSON_FILE_PATH_COPY = os.path.abspath(
-    "{0}/samples/mapservice.itemInfo.copy.json".format(os.path.dirname(__file__))
-)
-INFO_JSON_SAVE_TEST_FILE_PATH = os.path.abspath(
-    "{0}/samples/mapservice.itemInfo.savetest.json".format(os.path.dirname(__file__))
-)
-
-
-def get_map_sddraft(fp):
-    return agsconfig.load_map_sddraft(fp)
-
-
-def get_map_service(main_json_fp, info_json_fp):
-    return agsconfig.load_map_service(main_json_fp, info_json_fp)
-
-
-@pytest.fixture(
-    params=[
-        {
-            "func": get_map_sddraft,
-            "paths": [(SDDRAFT_FILE_PATH, SDDRAFT_FILE_PATH_COPY)]
-        },
-        {
-            "func": get_map_service,
-            "paths": [(MAIN_JSON_FILE_PATH, MAIN_JSON_FILE_PATH_COPY), (INFO_JSON_FILE_PATH, INFO_JSON_FILE_PATH_COPY)]
-        }
-    ]
-)
-def service_config(request):
-    for p in request.param["paths"]:
-        shutil.copyfile(p[0], p[1])
-
-    with ExitStack() as stack:
-        files = [stack.enter_context(open(p[1], mode="rb+")) for p in request.param["paths"]]
-        yield request.param["func"](*files)
-
+# Import shared fixtures
+# pylint: disable=unused-import
+from .helpers import map_service_config as service_config
+# pylint: enable=unused-import
 
 # import tests that should be applied to MapServer
 # pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-position
@@ -75,7 +30,6 @@ from .cacheable import *
 from .image_dimensions import *
 from .max_record_count import *
 from .output_dir import *
-
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-position
 
 

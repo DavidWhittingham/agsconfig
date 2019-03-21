@@ -10,45 +10,50 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
-import os.path
-
 import pytest
 
-import agsconfig
-
-SDDRAFT_FILE_PATH = os.path.abspath("{0}/samples/mapservice.sddraft".format(os.path.dirname(__file__)))
+# Import shared fixtures
+# pylint: disable=unused-import
+from .helpers import map_service_config as service_config
+# pylint: enable=unused-import
 
 @pytest.fixture
-def mapserver():
-    return agsconfig.load_map_sddraft(open(SDDRAFT_FILE_PATH, 'rb+'))
+def service_extension():
+    return "wcs_server_extension"
+
+# import shared tests for this extension
+# pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-position
+from .ogc_metadata_extension_mixin import *
+# pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-position
+
 
 @pytest.mark.parametrize(
     ('attribute', 'expectedValue', 'exception'),
     [
-        ('britney_spears', 'should cause an', AttributeError), # because she isn't a member
+        ('britney_spears', 'should cause an', AttributeError),  # because she isn't a member
         ('enabled', False, None)
     ]
 )
-def test_getters(mapserver, attribute, expectedValue, exception):
+def test_getters(service_config, attribute, expectedValue, exception):
     if exception is not None:
         with pytest.raises(exception):
-            assert getattr(mapserver.wcs_server_extension, attribute) == expectedValue
+            assert getattr(service_config.wcs_server_extension, attribute) == expectedValue
     else:
-        assert getattr(mapserver.wcs_server_extension, attribute) == expectedValue
+        assert getattr(service_config.wcs_server_extension, attribute) == expectedValue
 
 
 @pytest.mark.parametrize(
     ('attribute', 'newValue', 'exception'),
     [
-        ('britney_spears', 'should cause a', TypeError), # because she isn't a member
+        ('britney_spears', 'should cause a', TypeError),  # because she isn't a member
         ('enabled', True, None)
     ]
 )
-def test_setters(mapserver, attribute, newValue, exception):
+def test_setters(service_config, attribute, newValue, exception):
     if exception is not None:
         with pytest.raises(exception):
-            setattr(mapserver.wcs_server_extension, attribute, newValue)
-            assert getattr(mapserver.wcs_server_extension, attribute) == newValue
+            setattr(service_config.wcs_server_extension, attribute, newValue)
+            assert getattr(service_config.wcs_server_extension, attribute) == newValue
     else:
-        setattr(mapserver.wcs_server_extension, attribute, newValue)
-        assert getattr(mapserver.wcs_server_extension, attribute) == newValue
+        setattr(service_config.wcs_server_extension, attribute, newValue)
+        assert getattr(service_config.wcs_server_extension, attribute) == newValue
