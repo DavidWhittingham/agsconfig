@@ -17,10 +17,14 @@ from ..editing.edit_prop import EditorProperty
 from .image_dimensions_mixin import ImageDimensionsMixin
 from .service_base import ServiceBase
 from .wms_server_extension import WMSServerExtension
+from .jpip_server_extension import JPIPServerExtension
+from .wcs_server_extension import WCSServerExtension
 
 class ImageServer(CacheableMixin, ImageDimensionsMixin, ServiceBase):
 
     wms_server_extension = None
+    wcs_server_extension = None
+    jpip_server_extension = None
 
     class Capability(Enum):
         catalog = "Catalog"
@@ -56,8 +60,8 @@ class ImageServer(CacheableMixin, ImageDimensionsMixin, ServiceBase):
 
     def __init__(self, editor):
         super().__init__(editor)
-        #self._jpip_server_extension = JpipServerExtension(editor)
-        #self._wcs_server_extension = WcsServerExtension(editor)
+        self.jpip_server_extension = JPIPServerExtension(editor)
+        self.wcs_server_extension = WCSServerExtension(editor)
         self.wms_server_extension = WMSServerExtension(editor)
 
     allowed_mosaic_methods = EditorProperty(
