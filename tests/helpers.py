@@ -49,6 +49,11 @@ IMAGE_INFO_JSON_FILE_PATH_COPY = os.path.abspath(
     "{0}/samples/imageservice.itemInfo.copy.json".format(os.path.dirname(__file__))
 )
 
+VECTOR_TILE_SDDRAFT_FILE_PATH = os.path.abspath("{0}/samples/TestVectorTile.sddraft".format(os.path.dirname(__file__)))
+VECTOR_TILE_SDDRAFT_FILE_PATH_COPY = os.path.abspath(
+    "{0}/samples/TestVectorTile.copy.sddraft".format(os.path.dirname(__file__))
+)
+
 
 def get_map_sddraft(fp):
     return agsconfig.load_map_sddraft(fp)
@@ -64,6 +69,10 @@ def get_image_sddraft(fp):
 
 def get_image_service(main_json_fp, info_json_fp):
     return agsconfig.load_image_service(main_json_fp, info_json_fp)
+
+
+def get_vector_tile_sddraft(fp):
+    return agsconfig.load_vectortile_sddraft(fp)
 
 
 @pytest.fixture(
@@ -109,6 +118,31 @@ def map_service_config(request):
     ]
 )
 def image_service_config(request):
+    for p in request.param["paths"]:
+        shutil.copyfile(p[0], p[1])
+
+    with ExitStack() as stack:
+        files = [stack.enter_context(open(p[1], mode="rb+")) for p in request.param["paths"]]
+        yield request.param["func"](*files)
+
+    for p in request.param["paths"]:
+        os.remove(p[1])
+
+
+@pytest.fixture(
+    scope="function",
+    params=[
+        {
+            "func": get_vector_tile_sddraft,
+            "paths": [(VECTOR_TILE_SDDRAFT_FILE_PATH, VECTOR_TILE_SDDRAFT_FILE_PATH_COPY)]
+        }  #,
+        #{
+        #    "func": get_vector_tile_service,
+        #    "paths": [(VECTOR_TILE_MAIN_JSON_FILE_PATH, VECTOR_TILE_MAIN_JSON_FILE_PATH_COPY), (VECTOR_TILE_INFO_JSON_FILE_PATH, VECTOR_TILE_INFO_JSON_FILE_PATH_COPY)]
+        #}
+    ]
+)
+def vector_tile_service_config(request):
     for p in request.param["paths"]:
         shutil.copyfile(p[0], p[1])
 

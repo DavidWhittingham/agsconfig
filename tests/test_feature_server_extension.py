@@ -15,13 +15,7 @@ import os.path
 import pytest
 
 import agsconfig
-
-SDDRAFT_FILE_PATH = os.path.abspath("{0}/samples/mapservice.sddraft".format(os.path.dirname(__file__)))
-
-
-@pytest.fixture
-def mapserver():
-    return agsconfig.load_map_sddraft(open(SDDRAFT_FILE_PATH, 'rb+'))
+from .helpers import map_service_config as mapserver
 
 
 @pytest.mark.parametrize(
@@ -44,9 +38,9 @@ def mapserver():
 def test_getters(mapserver, attribute, expectedValue, exception):
     if exception is not None:
         with pytest.raises(exception):
-            assert getattr(mapserver.feature_server_extension, attribute) == expectedValue
+            assert getattr(mapserver.feature_server, attribute) == expectedValue
     else:
-        assert getattr(mapserver.feature_server_extension, attribute) == expectedValue
+        assert getattr(mapserver.feature_server, attribute) == expectedValue
 
 
 @pytest.mark.parametrize(
@@ -69,8 +63,8 @@ def test_getters(mapserver, attribute, expectedValue, exception):
 def test_setters(mapserver, attribute, newValue, exception):
     if exception is not None:
         with pytest.raises(exception):
-            setattr(mapserver.feature_server_extension, attribute, newValue)
-            assert getattr(mapserver.feature_server_extension, attribute) == newValue
+            setattr(mapserver.feature_server, attribute, newValue)
+            assert getattr(mapserver.feature_server, attribute) == newValue
     else:
-        setattr(mapserver.feature_server_extension, attribute, newValue)
-        assert getattr(mapserver.feature_server_extension, attribute) == newValue
+        setattr(mapserver.feature_server, attribute, newValue)
+        assert getattr(mapserver.feature_server, attribute) == newValue

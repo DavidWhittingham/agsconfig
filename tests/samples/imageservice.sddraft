@@ -386,27 +386,27 @@
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>name</Key>
-                                    <Value xsi:type='xs:string'>ExampleImageService</Value>
+                                    <Value xsi:type="xs:string">Test_Service</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>title</Key>
-                                    <Value xsi:type='xs:string'>title</Value>
+                                    <Value xsi:type="xs:string">Test Service</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>abstract</Key>
-                                    <Value xsi:type='xs:string'>abstract</Value>
+                                    <Value xsi:type="xs:string">This is the abstract.</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>keywords</Key>
-                                    <Value xsi:type='xs:string'>keywords</Value>
+                                    <Value xsi:type="xs:string">These Are Keywords</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>fees</Key>
-                                    <Value xsi:type='xs:string'>fees</Value>
+                                    <Value xsi:type="xs:string">There are no fees.</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>accessConstraints</Key>
-                                    <Value xsi:type='xs:string'>accessConstraints</Value>
+                                    <Value xsi:type="xs:string">There are no access constraints.</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>maxImageWidth</Key>
@@ -450,7 +450,7 @@
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>city</Key>
-                                    <Value xsi:type='xs:string'>city</Value>
+                                    <Value xsi:type="xs:string">Brisbane</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>province</Key>
@@ -462,7 +462,7 @@
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>country</Key>
-                                    <Value xsi:type='xs:string'>country</Value>
+                                    <Value xsi:type="xs:string">Australia</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>serviceHour</Key>
@@ -510,7 +510,7 @@
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>pathToCustomSLDFile</Key>
-                                    <Value xsi:type='xs:string'>pathToCustomSLDFile</Value>
+                                    <Value xsi:type="xs:string">C:\MyCustomSldeFile.sld</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>inheritLayerNames</Key>
@@ -518,19 +518,19 @@
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>name</Key>
-                                    <Value xsi:type='xs:string'>name</Value>
+                                    <Value xsi:type="xs:string">Test_Service</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>title</Key>
-                                    <Value xsi:type='xs:string'>title</Value>
+                                    <Value xsi:type="xs:string">Test Service</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>abstract</Key>
-                                    <Value xsi:type='xs:string'>abstract</Value>
+                                    <Value xsi:type="xs:string">This is the abstract.</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>keyword</Key>
-                                    <Value xsi:type='xs:string'>keyword</Value>
+                                    <Value xsi:type="xs:string">These Are Keywords</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>contactPerson</Key>
@@ -554,7 +554,7 @@
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>city</Key>
-                                    <Value xsi:type='xs:string'>city</Value>
+                                    <Value xsi:type="xs:string">Brisbane</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>stateOrProvince</Key>
@@ -566,7 +566,7 @@
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>country</Key>
-                                    <Value xsi:type='xs:string'>country</Value>
+                                    <Value xsi:type="xs:string">Australia</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>contactVoiceTelephone</Key>
@@ -582,11 +582,11 @@
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>fees</Key>
-                                    <Value xsi:type='xs:string'>fees</Value>
+                                    <Value xsi:type="xs:string">There are no fees.</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>accessConstraints</Key>
-                                    <Value xsi:type='xs:string'>accessConstraints</Value>
+                                    <Value xsi:type="xs:string">There are no access constraints.</Value>
                                 </PropertySetProperty>
                             </PropertyArray>
                         </Props>

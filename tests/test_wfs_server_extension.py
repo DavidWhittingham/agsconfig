@@ -37,9 +37,9 @@ from .helpers import map_service_config as service_config
 def test_getters(service_config, attribute, expectedValue, exception):
     if exception is not None:
         with pytest.raises(exception):
-            assert getattr(service_config.wfs_server_extension, attribute) == expectedValue
+            assert getattr(service_config.wfs_server, attribute) == expectedValue
     else:
-        assert getattr(service_config.wfs_server_extension, attribute) == expectedValue
+        assert getattr(service_config.wfs_server, attribute) == expectedValue
 
 
 @pytest.mark.parametrize(
@@ -59,8 +59,8 @@ def test_getters(service_config, attribute, expectedValue, exception):
 def test_setters(service_config, attribute, newValue, exception):
     if exception is not None:
         with pytest.raises(exception):
-            setattr(service_config.wfs_server_extension, attribute, newValue)
-            assert getattr(service_config.wfs_server_extension, attribute) == newValue
+            setattr(service_config.wfs_server, attribute, newValue)
+            assert getattr(service_config.wfs_server, attribute) == newValue
     else:
-        setattr(service_config.wfs_server_extension, attribute, newValue)
-        assert getattr(service_config.wfs_server_extension, attribute) == newValue
+        setattr(service_config.wfs_server, attribute, newValue)
+        assert getattr(service_config.wfs_server, attribute) == newValue

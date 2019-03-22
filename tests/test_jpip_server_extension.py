@@ -15,12 +15,7 @@ import os.path
 import pytest
 
 import agsconfig
-
-SDDRAFT_FILE_PATH = os.path.abspath("{0}/samples/imageservice.sddraft".format(os.path.dirname(__file__)))
-
-@pytest.fixture
-def mapserver():
-    return agsconfig.load_map_sddraft(open(SDDRAFT_FILE_PATH, 'rb+'))
+from .helpers import image_service_config
 
 @pytest.mark.parametrize(
     ('attribute', 'expectedValue', 'exception'),
@@ -29,12 +24,12 @@ def mapserver():
         ('enabled', False, None)
     ]
 )
-def test_getters(mapserver, attribute, expectedValue, exception):
+def test_getters(image_service_config, attribute, expectedValue, exception):
     if exception is not None:
         with pytest.raises(exception):
-            assert getattr(mapserver.jpip_server_extension, attribute) == expectedValue
+            assert getattr(image_service_config.jpip_server, attribute) == expectedValue
     else:
-        assert getattr(mapserver.jpip_server_extension, attribute) == expectedValue
+        assert getattr(image_service_config.jpip_server, attribute) == expectedValue
 
 
 @pytest.mark.parametrize(
@@ -44,11 +39,11 @@ def test_getters(mapserver, attribute, expectedValue, exception):
         ('enabled', False, None)
     ]
 )
-def test_setters(mapserver, attribute, newValue, exception):
+def test_setters(image_service_config, attribute, newValue, exception):
     if exception is not None:
         with pytest.raises(exception):
-            setattr(mapserver.jpip_server_extension, attribute, newValue)
-            assert getattr(mapserver.jpip_server_extension, attribute) == newValue
+            setattr(image_service_config.jpip_server, attribute, newValue)
+            assert getattr(image_service_config.jpip_server, attribute) == newValue
     else:
-        setattr(mapserver.jpip_server_extension, attribute, newValue)
-        assert getattr(mapserver.jpip_server_extension, attribute) == newValue
+        setattr(image_service_config.jpip_server, attribute, newValue)
+        assert getattr(image_service_config.jpip_server, attribute) == newValue

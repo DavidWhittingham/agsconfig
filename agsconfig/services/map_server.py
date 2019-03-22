@@ -22,17 +22,15 @@ from ..services.wfs_server_extension import WFSServerExtension
 from ..services.wcs_server_extension import WCSServerExtension
 from ..services.wms_server_extension import WMSServerExtension
 from ..services.feature_server_extension import FeatureServerExtension
-from ..services.jpip_server_extension import JPIPServerExtension
 from ..services.kml_server_extension import KmlServerExtension
 
 class MapServer(MaxRecordCountMixin, OutputDirMixin, CacheableMixin, ImageDimensionsMixin, ServiceBase):
 
-    wfs_server_extension = None
-    wcs_server_extension = None
-    wms_server_extension = None
-    feature_server_extension = None
-    jpip_server_extension = None
-    kml_server_extension = None
+    _wfs_server_extension = None
+    _wcs_server_extension = None
+    _wms_server_extension = None
+    _feature_server_extension = None
+    _kml_server_extension = None
 
     class AntiAliasingMode(Enum):
         none = "None"
@@ -53,12 +51,46 @@ class MapServer(MaxRecordCountMixin, OutputDirMixin, CacheableMixin, ImageDimens
 
     def __init__(self, editor):
         super().__init__(editor)
-        self.wfs_server_extension = WFSServerExtension(editor)
-        self.wcs_server_extension = WCSServerExtension(editor)
-        self.wms_server_extension = WMSServerExtension(editor)
-        self.feature_server_extension = FeatureServerExtension(editor)
-        self.jpip_server_extension = JPIPServerExtension(editor)
-        self.kml_server_extension = KmlServerExtension(editor)
+        self._feature_server_extension = FeatureServerExtension(editor)
+        self._kml_server_extension = KmlServerExtension(editor)
+        self._wfs_server_extension = WFSServerExtension(editor)
+        self._wcs_server_extension = WCSServerExtension(editor)
+        self._wms_server_extension = WMSServerExtension(editor)
+
+    @property
+    def feature_server(self):
+        """Gets the properties for the Feature Server (Feature Access in Web UI) extension."""
+        return self._feature_server_extension
+
+    @property
+    def kml_server(self):
+        """Gets the properties for the KML Server extension."""
+        return self._kml_server_extension
+
+    @property
+    def mobile_server(self):
+        """Gets the properties for the Mobile (Mobile Data Access in the UI) server extension."""
+        return self._mobile_server_extension
+
+    @property
+    def na_server(self):
+        """Gets the properties for the Network Analysis server extension"""
+        return self._na_server_extension
+
+    @property
+    def wcs_server(self):
+        """Gets the properties for the WCS Server extension."""
+        return self._wcs_server_extension
+
+    @property
+    def wfs_server(self):
+        """Gets the properties for the WFS Server extension."""
+        return self._wfs_server_extension
+
+    @property
+    def wms_server(self):
+        """Gets the properties for the WMS Server extension."""
+        return self._wms_server_extension
 
     capabilities = EditorProperty(
         {

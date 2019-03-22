@@ -12,28 +12,70 @@ install_aliases()
 
 import pytest
 
-from .helpers import map_service_config as service_config
+from .helpers import map_service_config, image_service_config
 
-@pytest.fixture(params=["wcs_server_extension", "wfs_server_extension", "wms_server_extension"])
-def service_extension(request):
+
+GETTER_TEST_VALUES = [
+    ("britney_spears", "should cause an", AttributeError),  # because she isn't a member
+    ("abstract", "This is the abstract.", None),
+    ("access_constraints", "There are no access constraints.", None),
+    ("city", "Brisbane", None),
+    ("country", "Australia", None),
+    ("keyword", "These Are Keywords", None),
+    ("fees", "There are no fees.", None),
+    ("name", "Test_Service", None),
+    ("title", "Test Service", None)
+]
+
+SETTER_TEST_VALUES = [
+    ("britney_spears", "should cause an", TypeError),  # because she isn't a member
+    ("abstract", "This is the new abstract.", None),
+    ("access_constraints", "Access is not allowed.", None),
+    ("city", "Panama City", None),
+    ("country", "Republic of Panama", None),
+    ("keyword", "These Are Also Keywords", None),
+    ("fees", "nil", None),
+    ("name", "FooBar_Service", None),
+    ("title", "The FooBar Service", None)
+]
+
+@pytest.fixture(params=["wcs_server", "wfs_server", "wms_server"])
+def map_service_extension(request):
     return request.param
 
+@pytest.fixture(params=["wcs_server", "wms_server"])
+def image_service_extension(request):
+    return request.param
 
 @pytest.mark.parametrize(
     ("attribute", "expected_value", "exception"),
-    [
-        ("britney_spears", "should cause an", AttributeError),  # because she isn't a member
-        ("abstract", "This is the abstract.", None),
-        ("access_constraints", "There are no access constraints.", None),
-        ("city", "Brisbane", None),
-        ("country", "Australia", None),
-        ("keyword", "These Are Keywords", None),
-        ("fees", "The are no fees.", None),
-        ("name", "Test_Service", None),
-        ("title", "Test Service", None),
-    ]
+    GETTER_TEST_VALUES
 )
-def test_ogc_getters(service_config, service_extension, attribute, expected_value, exception):
+def test_map_ogc_getters(map_service_config, map_service_extension, attribute, expected_value, exception):
+    _test_ogc_getters(map_service_config, map_service_extension, attribute, expected_value, exception)
+
+@pytest.mark.parametrize(
+    ("attribute", "expected_value", "exception"),
+    GETTER_TEST_VALUES
+)
+def test_image_ogc_getters(image_service_config, image_service_extension, attribute, expected_value, exception):
+    _test_ogc_getters(image_service_config, image_service_extension, attribute, expected_value, exception)
+
+@pytest.mark.parametrize(
+    ("attribute", "new_value", "exception"),
+    SETTER_TEST_VALUES
+)
+def test_map_ogc_setters(map_service_config, map_service_extension, attribute, new_value, exception):
+    _test_ogc_setters(map_service_config, map_service_extension, attribute, new_value, exception)
+
+@pytest.mark.parametrize(
+    ("attribute", "new_value", "exception"),
+    SETTER_TEST_VALUES
+)
+def test_image_ogc_setters(image_service_config, image_service_extension, attribute, new_value, exception):
+    _test_ogc_setters(image_service_config, image_service_extension, attribute, new_value, exception)
+
+def _test_ogc_getters(service_config, service_extension, attribute, expected_value, exception):
     def get_and_compare():
         assert getattr(service_config[service_extension], attribute) == expected_value
 
@@ -43,22 +85,7 @@ def test_ogc_getters(service_config, service_extension, attribute, expected_valu
     else:
         get_and_compare()
 
-
-@pytest.mark.parametrize(
-    ("attribute", "new_value", "exception"),
-    [
-        ("britney_spears", "should cause an", TypeError),  # because she isn't a member
-        ("abstract", "This is the new abstract.", None),
-        ("access_constraints", "Access is not allowed.", None),
-        ("city", "Panama City", None),
-        ("country", "Republic of Panama", None),
-        ("keyword", "These Are Also Keywords", None),
-        ("fees", "nil", None),
-        ("name", "FooBar_Service", None),
-        ("title", "The FooBar Service", None),
-    ]
-)
-def test_ogc_setters(service_config, service_extension, attribute, new_value, exception):
+def _test_ogc_setters(service_config, service_extension, attribute, new_value, exception):
     def set_and_compare():
         setattr(service_config[service_extension], attribute, new_value)
         assert getattr(service_config[service_extension], attribute) == new_value
