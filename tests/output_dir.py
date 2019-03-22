@@ -1,5 +1,5 @@
 # coding=utf-8
-"""This module contains shared tests for all models that implement the SDDraftBase class."""
+"""This module contains shared tests for all models that implement output directories."""
 
 # Python 2/3 compatibility
 # pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
