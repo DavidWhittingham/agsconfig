@@ -18,8 +18,6 @@ from .custom_get_capabilities_extension_mixin import CustomGetCapabilitiesExtens
 class KmlServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensionMixin, ExtensionBase):
     """ Kml server extension properties for arcGIS services """
 
-    extension_name = None
-
     class Capability(Enum):
         single_image = "SingleImage"
         separate_images = "SeparateImages"
@@ -32,7 +30,6 @@ class KmlServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
 
     def __init__(self, editor):
         super().__init__(editor, "KmlServer")
-        extension_name = super().get_extension_name()
 
     enabled = EditorProperty(
         {

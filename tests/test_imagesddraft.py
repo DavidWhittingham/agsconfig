@@ -1,53 +1,60 @@
+# coding=utf-8
 """Tests for Image services."""
+
 # Python 2/3 compatibility
+# pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 from __future__ import (absolute_import, division, print_function, unicode_literals)
 from future.builtins import *
 from future.builtins.disabled import *
 from future.standard_library import install_aliases
 install_aliases()
+# pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
-import os.path
-import shutil
 import datetime
+import os.path
+
+import pytest
 
 import agsconfig
 from agsconfig.services.image_server import ImageServer
 
-import pytest
-
 SDDRAFT_FILE_PATH = os.path.abspath("{0}/samples/imageservice.sddraft".format(os.path.dirname(__file__)))
 SDDRAFT_FILE_PATH2 = os.path.abspath("{0}/samples/mapservice.sddraft".format(os.path.dirname(__file__)))
+
 
 @pytest.fixture
 def imageserver():
     return agsconfig.load_image_sddraft(open(SDDRAFT_FILE_PATH, 'rb+'))
 
+
 def test_load_imagesddraft():
     """Load a vector tile into a map sddraft object."""
     sddraft = agsconfig.load_image_sddraft(open(SDDRAFT_FILE_PATH, 'rb+'))
 
-    assert type(sddraft) == agsconfig.services.image_server.ImageServer
+    assert isinstance(sddraft, agsconfig.services.image_server.ImageServer)
 
 
 @pytest.mark.parametrize(
     ('attribute', 'expectedValue', 'exception'),
     [
-        ('britney_spears', 'should cause an', AttributeError), # because she isn't a member
-        ('capabilities', [ImageServer.Capability.image,
-                            ImageServer.Capability.metadata,
-                            ImageServer.Capability.catalog,
-                            ImageServer.Capability.mensuration], None),
+        ('britney_spears', 'should cause an', AttributeError),  # because she isn't a member
+        (
+            'capabilities', [
+                ImageServer.Capability.image, ImageServer.Capability.metadata, ImageServer.Capability.catalog,
+                ImageServer.Capability.mensuration
+            ], None
+        ),
         ('client_caching_allowed', True, None),
         ('cluster', 'default', None),
         ('access_information', None, None),
-        ('allowed_mosaic_methods', [ImageServer.MosaicMethod.north_west,
-                                    ImageServer.MosaicMethod.center,
-                                    ImageServer.MosaicMethod.lock_raster,
-                                    ImageServer.MosaicMethod.by_attribute,
-                                    ImageServer.MosaicMethod.nadir,
-                                    ImageServer.MosaicMethod.viewpoint,
-                                    ImageServer.MosaicMethod.seamline,
-                                    ImageServer.MosaicMethod.none], None),
+        (
+            'allowed_mosaic_methods', [
+                ImageServer.MosaicMethod.north_west, ImageServer.MosaicMethod.center,
+                ImageServer.MosaicMethod.lock_raster, ImageServer.MosaicMethod.by_attribute,
+                ImageServer.MosaicMethod.nadir, ImageServer.MosaicMethod.viewpoint, ImageServer.MosaicMethod.seamline,
+                ImageServer.MosaicMethod.none
+            ], None
+        ),
         ('cache_dir', 'cacheDir', None),
         ('cache_on_demand', False, None),
         ('client_caching_allowed', True, None),
@@ -90,7 +97,7 @@ def test_getters(imageserver, attribute, expectedValue, exception):
 @pytest.mark.parametrize(
     ('attribute', 'newValue', 'exception'),
     [
-        ('britney_spears', 'should cause a', TypeError), # because she isn't a member
+        ('britney_spears', 'should cause a', TypeError),  # because she isn't a member
         ('capabilities', [ImageServer.Capability.image], None),
         ('capabilities', 'Something', ValueError),
         ('client_caching_allowed', False, None),

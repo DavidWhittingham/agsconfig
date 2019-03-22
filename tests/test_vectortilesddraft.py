@@ -1,24 +1,29 @@
+# coding=utf-8
 """Tests for Vector Tile services."""
+
 # Python 2/3 compatibility
+# pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 from __future__ import (absolute_import, division, print_function, unicode_literals)
 from future.builtins import *
 from future.builtins.disabled import *
 from future.standard_library import install_aliases
 install_aliases()
+# pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
 import os.path
-import shutil
-
-import agsconfig
 
 import pytest
+
+import agsconfig
 
 SDDRAFT_FILE_PATH = os.path.abspath("{0}/samples/TestVectorTile.sddraft".format(os.path.dirname(__file__)))
 SDDRAFT_FILE_PATH2 = os.path.abspath("{0}/samples/mapservice.sddraft".format(os.path.dirname(__file__)))
 
+
 @pytest.fixture
 def vectortile():
     return agsconfig.load_vectortile_sddraft(open(SDDRAFT_FILE_PATH, 'rb+'))
+
 
 def test_load_vectortilesddraft():
     """Load a vector tile into a map sddraft object."""
@@ -26,10 +31,11 @@ def test_load_vectortilesddraft():
 
     assert type(sddraft) == agsconfig.services.vectortile_server.VectorTileServer
 
+
 @pytest.mark.parametrize(
     ('attribute', 'expectedValue', 'exception'),
     [
-        ('britney_spears', 'should cause an', AttributeError), # because she isn't a member of vectortile
+        ('britney_spears', 'should cause an', AttributeError),  # because she isn't a member of vectortile
         ('portal_url', 'https://uat-spatial.information.qld.gov.au/arcgis/', None),
         ('title', 'TestVectorTile', None),
         ('keep_existing_data', False, None),
@@ -60,10 +66,11 @@ def test_getters(vectortile, attribute, expectedValue, exception):
     else:
         assert getattr(vectortile, attribute) == expectedValue
 
+
 @pytest.mark.parametrize(
     ('attribute', 'newValue', 'exception'),
     [
-        ('britney_spears', 'should cause a', TypeError), # model_base prevents assignment of unknown members
+        ('britney_spears', 'should cause a', TypeError),  # model_base prevents assignment of unknown members
         ('portal_url', 'https://uat-spatial.information.qld.gov.au/arcgis/s', None),
         ('title', 'TestVectorTiles', None),
         ('keep_existing_data', True, None),
@@ -95,4 +102,4 @@ def test_setters(vectortile, attribute, newValue, exception):
             assert getattr(vectortile, attribute) == newValue
     else:
         setattr(vectortile, attribute, newValue)
-        assert getattr(vectortile, attribute) == newValue     
+        assert getattr(vectortile, attribute) == newValue

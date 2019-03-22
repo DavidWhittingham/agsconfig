@@ -15,8 +15,6 @@ from ..editing.edit_prop import EditorProperty
 
 class OutputDirMixin(object):
 
-    "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'FilePath']/Value"
-
     output_dir = EditorProperty(
         {
             "formats": {

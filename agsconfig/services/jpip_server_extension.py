@@ -18,11 +18,8 @@ from .custom_get_capabilities_extension_mixin import CustomGetCapabilitiesExtens
 class JPIPServerExtension(ExtensionBase):
     """ jpip server extension properties for arcGIS services """
 
-    extension_name = None
-
     def __init__(self, editor):
         super().__init__(editor, "JPIPServer")
-        extension_name = super().get_extension_name()
 
     enabled = EditorProperty(
         {

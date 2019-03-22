@@ -12,14 +12,8 @@ install_aliases()
 from ..editing.edit_prop import EditorProperty
 from .extension_base import ExtensionBase
 
-class CustomGetCapabilitiesExtensionMixin(ExtensionBase):
+class CustomGetCapabilitiesExtensionMixin(object):
     """ Attributes for custom Get Capabilities on ArcGIS services """
-
-    extension_name = None
-
-    def __init__(self, editor, extensionName):
-        super().__init__(editor, extensionName)
-        extension_name = super().get_extension_name()
 
     customGetCapabilities = EditorProperty(
         {

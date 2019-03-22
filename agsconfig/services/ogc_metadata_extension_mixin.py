@@ -12,13 +12,7 @@ install_aliases()
 from ..editing.edit_prop import EditorProperty
 from .extension_base import ExtensionBase
 
-class OGCMetadataExtensionMixin(ExtensionBase):
-
-    extension_name = None
-
-    def __init__(self, editor, extensionType):
-        super().__init__(editor, extensionType)
-        extension_name = super().get_extension_name()
+class OGCMetadataExtensionMixin(object):
 
     abstract = EditorProperty(
         {
