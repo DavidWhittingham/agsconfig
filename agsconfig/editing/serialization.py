@@ -42,14 +42,14 @@ def deserialize_string_to_bool(value, conversion, obj):
 
         return [deserialize_string_to_bool(v, conversion, obj) for v in value]
 
+    if value is True or value is False:
+        # value has already been desrialized to native type
+        return value
+    
     true = conversion.get("true", "true")
     false = conversion.get("false", "false")
     ignore_case = conversion.get("ignoreCase", True)
     default_true = conversion.get("defaultTrue", True)
-
-    if value is True or value is False:
-        # value has already been desrialized to native type
-        return value
 
     if ignore_case:
         value = value.upper()
@@ -195,13 +195,13 @@ def value_to_boolean(value):
     """Converts true-ish and false-ish values to boolean."""
     try:
         value = value.upper()
-        value = True if value in ["TRUE", "T"] else False
+        return True if value in ["TRUE", "T"] else False
     except AttributeError:
         pass
 
     try:
         value = int(value)
-        value = True if value == 1 else False
+        return True if value == 1 else False
     except ValueError:
         pass
 
