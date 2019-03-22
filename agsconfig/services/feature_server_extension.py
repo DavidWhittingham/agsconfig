@@ -33,7 +33,21 @@ class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExt
     allow_geometry_updates = EditorProperty(
         {
             "formats": {
+                "agsJson": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": "$.extensions[?(@.typeName = 'FeatureServer')].properties.allowGeometryUpdates"
+                        }
+                    ]
+                },
                 "sddraft": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
                     "paths": [
                         {
                             "path":

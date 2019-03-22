@@ -51,11 +51,25 @@ class ExtensionBase(ModelBase):
     enabled = EditorProperty(
         {
             "formats": {
+                "agsJson": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].enabled".format(extension_name)
+                        }
+                    ]
+                },
                 "sddraft": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
                     "paths": [
                         {
                             "path":
-                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Enabled".format(extension_name)
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Enabled".format(extension_name)
                         }
                     ]
                 }
