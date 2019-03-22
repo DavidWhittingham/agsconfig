@@ -15,15 +15,23 @@ import os.path
 import pytest
 
 import agsconfig
-from .helpers import map_service_config as mapserver
+from .helpers import map_service_config as mapserver, TRUEISH_TEST_PARAMS
+
+@pytest.mark.parametrize(("allow_geometry_updates", "expected"), TRUEISH_TEST_PARAMS)
+def test_allow_geometry_updates(mapserver, allow_geometry_updates, expected):
+    mapserver.feature_server.allow_geometry_updates = allow_geometry_updates
+    assert mapserver.feature_server.allow_geometry_updates == expected
+
+@pytest.mark.parametrize(("enabled", "expected"), TRUEISH_TEST_PARAMS)
+def test_enabled(mapserver, enabled, expected):
+    mapserver.feature_server.enabled = enabled
+    assert mapserver.feature_server.enabled == expected
 
 
 @pytest.mark.parametrize(
-    ('attribute', 'expectedValue', 'exception'),
+    ('attribute', 'expected_value', 'exception'),
     [
         ('britney_spears', 'should cause an', AttributeError),  # because she isn't a member
-        ('enabled', False, None),
-        ('allow_geometry_updates', True, None),
         ('allow_others_to_delete', False, None),
         ('allow_others_to_query', True, None),
         ('allow_others_to_update', False, None),
@@ -35,20 +43,18 @@ from .helpers import map_service_config as mapserver
         ('z_default_value', 0, None)
     ]
 )
-def test_getters(mapserver, attribute, expectedValue, exception):
+def test_getters(mapserver, attribute, expected_value, exception):
     if exception is not None:
         with pytest.raises(exception):
-            assert getattr(mapserver.feature_server, attribute) == expectedValue
+            assert getattr(mapserver.feature_server, attribute) == expected_value
     else:
-        assert getattr(mapserver.feature_server, attribute) == expectedValue
+        assert getattr(mapserver.feature_server, attribute) == expected_value
 
 
 @pytest.mark.parametrize(
-    ('attribute', 'newValue', 'exception'),
+    ('attribute', 'new_value', 'exception'),
     [
         ('britney_spears', 'should cause a', TypeError),  # because she isn't a member
-        ('enabled', False, None),
-        ('allow_geometry_updates', False, None),
         ('allow_others_to_delete', True, None),
         ('allow_others_to_query', False, None),
         ('allow_others_to_update', True, None),
@@ -60,11 +66,11 @@ def test_getters(mapserver, attribute, expectedValue, exception):
         ('z_default_value', 100, None)
     ]
 )
-def test_setters(mapserver, attribute, newValue, exception):
+def test_setters(mapserver, attribute, new_value, exception):
     if exception is not None:
         with pytest.raises(exception):
-            setattr(mapserver.feature_server, attribute, newValue)
-            assert getattr(mapserver.feature_server, attribute) == newValue
+            setattr(mapserver.feature_server, attribute, new_value)
+            assert getattr(mapserver.feature_server, attribute) == new_value
     else:
-        setattr(mapserver.feature_server, attribute, newValue)
-        assert getattr(mapserver.feature_server, attribute) == newValue
+        setattr(mapserver.feature_server, attribute, new_value)
+        assert getattr(mapserver.feature_server, attribute) == new_value
