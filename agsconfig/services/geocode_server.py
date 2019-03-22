@@ -60,29 +60,29 @@ class GeocodeServer(CacheableMixin, ImageDimensionsMixin, ServiceBase):
     )
 
     name = EditorProperty(
-    {
-        "formats": {
-            "sddraft": {
-                "paths": [
-                    {
-                        "path":
-                        "./ItemInfo/Name"
-                    }
-                ]
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            "./ItemInfo/Name"
+                        }
+                    ]
+                }
             }
-        }
-    })
+        })
 
     name = EditorProperty(
-    {
-        "formats": {
-            "sddraft": {
-                "paths": [
-                    {
-                        "path":
-                        "./ItemInfo/Title"
-                    }
-                ]
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            "./ItemInfo/Title"
+                        }
+                    ]
+                }
             }
-        }
-    })
+        })

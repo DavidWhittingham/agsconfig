@@ -7,9 +7,6 @@ from future.standard_library import install_aliases
 install_aliases()
 
 import os.path
-import shutil
-import datetime
-
 import agsconfig
 from agsconfig.services.geocode_server import GeocodeServer
 
@@ -29,25 +26,25 @@ def test_load_imagesddraft():
 
 
 @pytest.mark.parametrize(
-    ('attribute', 'expectedValue', 'exception'),
+    ('attribute', 'expected_value', 'exception'),
     [
         ('britney_spears', 'should cause an', AttributeError), # because she isn't a member
         ('capabilities', [GeocodeServer.Capability.geocode,
-                            GeocodeServer.Capability.reverse_geocode], None),
+                          GeocodeServer.Capability.reverse_geocode], None),
         ('name', 'NameOfGeocodeService', None),
         ('title', 'NameOfGeocodeService', None)
     ]
 )
-def test_getters(geocodeserver, attribute, expectedValue, exception):
+def test_getters(geocodeserver, attribute, expected_value, exception):
     if exception is not None:
         with pytest.raises(exception):
-            assert getattr(geocodeserver, attribute) == expectedValue
+            assert getattr(geocodeserver, attribute) == expected_value
     else:
-        assert getattr(geocodeserver, attribute) == expectedValue
+        assert getattr(geocodeserver, attribute) == expected_value
 
 
 @pytest.mark.parametrize(
-    ('attribute', 'newValue', 'exception'),
+    ('attribute', 'new_value', 'exception'),
     [
         ('britney_spears', 'should cause a', TypeError), # because she isn't a member
         ('capabilities', [GeocodeServer.Capability.geocode], None),
@@ -55,11 +52,11 @@ def test_getters(geocodeserver, attribute, expectedValue, exception):
         ('title', 'AnotherTitle', None)
     ]
 )
-def test_setters(geocodeserver, attribute, newValue, exception):
+def test_setters(geocodeserver, attribute, new_value, exception):
     if exception is not None:
         with pytest.raises(exception):
-            setattr(geocodeserver, attribute, newValue)
-            assert getattr(geocodeserver, attribute) == newValue
+            setattr(geocodeserver, attribute, new_value)
+            assert getattr(geocodeserver, attribute) == new_value
     else:
-        setattr(geocodeserver, attribute, newValue)
-        assert getattr(geocodeserver, attribute) == newValue
+        setattr(geocodeserver, attribute, new_value)
+        assert getattr(geocodeserver, attribute) == new_value
