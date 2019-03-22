@@ -72,7 +72,7 @@ def get_image_service(main_json_fp, info_json_fp):
 
 
 def get_vector_tile_sddraft(fp):
-    return agsconfig.load_vectortile_sddraft(fp)
+    return agsconfig.load_vector_tile_sddraft(fp)
 
 
 @pytest.fixture(
