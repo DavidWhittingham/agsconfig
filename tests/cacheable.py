@@ -12,7 +12,7 @@ install_aliases()
 
 import pytest
 
-from .helpers import *
+from .helpers import TRUEISH_TEST_PARAMS
 
 @pytest.mark.parametrize(("cache_dir", "expected"), [
     ("D:\\Test\\File\\Path", "D:\\Test\\File\\Path"),
