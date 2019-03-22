@@ -13,6 +13,7 @@ install_aliases()
 import json
 
 import jsonpath_ng as jp
+from jsonpath_ng.ext import parse
 
 from .editor_base import EditorBase
 
@@ -47,11 +48,11 @@ class AgsJsonEditor(EditorBase):
         document = self._document_map.get(path_info["document"])
 
         # find value in document based on path
-        return jp.parse(path_info["path"]).find(document)[0].value
+        return parse(path_info["path"]).find(document)[0].value
 
     def _set_value(self, value, path_info):
         document = self._document_map.get(path_info["document"])
-        jp.parse(path_info["path"]).update(document, value)
+        parse(path_info["path"]).update(document, value)
 
     @staticmethod
     def _overwrite_file(file_obj, obj_to_write):
