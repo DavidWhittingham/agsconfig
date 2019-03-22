@@ -18,6 +18,8 @@ from .custom_get_capabilities_extension_mixin import CustomGetCapabilitiesExtens
 class WCSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensionMixin, ExtensionBase):
     """ WCS server extension properties for arcGIS services """
 
+    _keyword_key = "keywords"
+
     def __init__(self, editor):
         super().__init__(editor, "WCSServer")
 

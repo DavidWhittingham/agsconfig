@@ -12,7 +12,10 @@ install_aliases()
 from ..editing.edit_prop import EditorProperty
 from .extension_base import ExtensionBase
 
+
 class OGCMetadataExtensionMixin(object):
+
+    _keyword_key = "keyword"
 
     abstract = EditorProperty(
         {
@@ -21,7 +24,7 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {
                             "path":
-                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='abstract']/Value".format(extension_name)
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='abstract']/Value".format(extension_name)
                         }
                     ]
                 }
@@ -35,7 +38,7 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {
                             "path":
-                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='accessConstraints']/Value".format(extension_name)
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='accessConstraints']/Value".format(extension_name)
                         }
                     ]
                 }
@@ -49,7 +52,7 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {
                             "path":
-                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='city']/Value".format(extension_name)
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='city']/Value".format(extension_name)
                         }
                     ]
                 }
@@ -63,21 +66,21 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {
                             "path":
-                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='country']/Value".format(extension_name)
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='country']/Value".format(extension_name)
                         }
                     ]
                 }
             }
         })
 
-    keywords = EditorProperty(
+    keyword = EditorProperty(
         {
             "formats": {
                 "sddraft": {
                     "paths": [
                         {
                             "path":
-                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='keywords']/Value".format(extension_name)
+                            lambda extension_name, _keyword_key: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='{1}']/Value".format(extension_name, _keyword_key)
                         }
                     ]
                 }
@@ -91,7 +94,7 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {
                             "path":
-                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='fees']/Value".format(extension_name)
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='fees']/Value".format(extension_name)
                         }
                     ]
                 }
@@ -105,7 +108,7 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {
                             "path":
-                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='name']/Value".format(extension_name)
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='name']/Value".format(extension_name)
                         }
                     ]
                 }
@@ -119,7 +122,7 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {
                             "path":
-                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='title']/Value".format(extension_name)
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='title']/Value".format(extension_name)
                         }
                     ]
                 }
