@@ -17,15 +17,6 @@ import pytest
 from .helpers import map_service_config as service_config
 # pylint: enable=unused-import
 
-@pytest.fixture
-def service_extension():
-    return "wcs_server_extension"
-
-# import shared tests for this extension
-# pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-position
-from .ogc_metadata_extension_mixin import *
-# pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-position
-
 
 @pytest.mark.parametrize(
     ('attribute', 'expectedValue', 'exception'),
