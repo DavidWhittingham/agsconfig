@@ -10,12 +10,14 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
+# Third party imports
 from enum import Enum
 
+# Local imports
 from .cacheable_mixin import CacheableMixin
 from .service_base import ServiceBase
+from .vector_tile_server_extension import VectorTileServerExtension
 from ..editing.edit_prop import EditorProperty
-from .vectortile_server_extension import VectorTileServerExtension
 
 
 class VectorTileServer(ServiceBase, CacheableMixin):
