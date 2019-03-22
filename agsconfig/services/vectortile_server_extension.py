@@ -23,48 +23,8 @@ class VectorTileServerExtension(ExtensionBase):
         uploads = "Uploads"
         editing = "Editing"
 
-    def __init__(self, editor, extension_type):
-        super().__init__(editor, extension_type)
-
-    typeName = EditorProperty(
-        {
-            "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.extensions.typeName" #TODO: resolve. Yet to see an example of this in json
-                    }]
-                },
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension/TypeName"
-                        }
-                    ]
-                }
-            }
-        })
-
-    enabled = EditorProperty(
-        {
-            "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.extensions.enabled" #TODO: resolve.
-                    }]
-                },
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension/Enabled"
-                        }
-                    ]
-                }
-            }
-        })
+    def __init__(self, editor):
+        super().__init__(editor, "VectorTileServer")
 
     web_enabled = EditorProperty(
         {

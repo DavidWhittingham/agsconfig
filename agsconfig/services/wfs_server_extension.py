@@ -15,6 +15,7 @@ from .extension_base import ExtensionBase
 from .ogc_metadata_extension_mixin import OGCMetadataExtensionMixin
 from .custom_get_capabilities_extension_mixin import CustomGetCapabilitiesExtensionMixin
 
+
 class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensionMixin, ExtensionBase):
     """ WMS server extension properties for arcGIS services """
 
@@ -24,20 +25,6 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
 
     def __init__(self, editor):
         super().__init__(editor, "WFSServer")
-
-    enabled = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Enabled".format(extension_name)
-                        }
-                    ]
-                }
-            }
-        })
 
     app_schema_uri = EditorProperty(
         {

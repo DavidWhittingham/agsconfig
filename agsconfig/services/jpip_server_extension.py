@@ -21,16 +21,3 @@ class JPIPServerExtension(ExtensionBase):
     def __init__(self, editor):
         super().__init__(editor, "JPIPServer")
 
-    enabled = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Enabled".format(extension_name)
-                        }
-                    ]
-                }
-            }
-        })
