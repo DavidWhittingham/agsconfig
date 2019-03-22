@@ -213,7 +213,7 @@
     {
       "typeName": "WMSServer",
       "capabilities": "GetCapabilities,GetLegendGraphic,GetSchemaExtension,GetFeatureInfo,GetMap,GetStyles",
-      "enabled": "true",
+      "enabled": "false",
       "maxUploadFileSize": 0,
       "allowedUploadFileTypes": "",
       "properties": {
