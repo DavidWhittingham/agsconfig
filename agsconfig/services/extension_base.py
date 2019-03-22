@@ -32,15 +32,12 @@ class ExtensionBase(ModelBase):
 
         Args:
             editor: An editor object that will receive metadata about each property
-            extensionType: Used to find xpaths in sddrafts where there is more than one extension
+            extension_name: Used to find xpaths in sddrafts where there is more than one extension
         """
 
         self._editor = editor
         self._extension_name = extension_name
-    
+
     @property
     def extension_name(self):
         return self._extension_name
-
-    def save(self):
-        self._editor.save()

@@ -898,27 +898,27 @@
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>name</Key>
-									<Value xsi:type="xs:string">psl_test</Value>
+									<Value xsi:type="xs:string">Test_Service</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>title</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">Test Service</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>abstract</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">This is the abstract.</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>keywords</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">These Are Keywords</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>fees</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">The are no fees.</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>accessConstraints</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">There are no access constraints.</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>maxImageWidth</Key>
@@ -962,7 +962,7 @@
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>city</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">Brisbane</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>province</Key>
@@ -974,7 +974,7 @@
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>country</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">Australia</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>serviceHour</Key>
