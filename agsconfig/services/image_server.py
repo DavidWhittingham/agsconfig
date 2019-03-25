@@ -13,12 +13,12 @@ install_aliases()
 from enum import Enum
 
 from .cacheable_mixin import CacheableMixin
-from ..editing.edit_prop import EditorProperty
 from .image_dimensions_mixin import ImageDimensionsMixin
 from .jpip_server_extension import JPIPServerExtension
 from .service_base import ServiceBase
 from .wcs_server_extension import WCSServerExtension
 from .wms_server_extension import WMSServerExtension
+from ..editing.edit_prop import EditorProperty
 
 
 class ImageServer(CacheableMixin, ImageDimensionsMixin, ServiceBase):
@@ -64,7 +64,7 @@ class ImageServer(CacheableMixin, ImageDimensionsMixin, ServiceBase):
         self._jpip_server_extension = JPIPServerExtension(editor)
         self._wcs_server_extension = WCSServerExtension(editor)
         self._wms_server_extension = WMSServerExtension(editor)
-    
+
     @property
     def jpip_server(self):
         """Gets the properties for the JPIP Server extension."""
