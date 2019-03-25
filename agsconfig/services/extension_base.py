@@ -1,5 +1,5 @@
 # coding=utf-8
-"""This module contains the ServiceBase abstract base class for implementing ArcGIS Server service configuration models."""
+"""This module contains the ExtensionBase abstract base class for implementing ArcGIS Server service extensions."""
 
 # Python 2/3 compatibility
 # pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
