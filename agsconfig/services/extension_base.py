@@ -48,6 +48,27 @@ class ExtensionBase(ModelBase):
     def extension_name(self):
         return self._extension_name
 
+    capabilities = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Info/PropertyArray/PropertySetProperty[Key='WebCapabilities']/Value".format(extension_name)
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "enumToString",
+                        "enum": "Capability"
+                    }, {
+                        "id": "stringToCsv"
+                    }]
+                }
+            }
+        }
+    )
+
     enabled = EditorProperty(
         {
             "formats": {

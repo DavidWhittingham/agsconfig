@@ -37,12 +37,12 @@ from .helpers import vector_tile_service_config as service_config
         ),
         (
             "capabilities", [
-                agsconfig.VectorTileServerExtension.ExtensionCapabilities.query,
-                agsconfig.VectorTileServerExtension.ExtensionCapabilities.create,
-                agsconfig.VectorTileServerExtension.ExtensionCapabilities.update,
-                agsconfig.VectorTileServerExtension.ExtensionCapabilities.delete,
-                agsconfig.VectorTileServerExtension.ExtensionCapabilities.uploads,
-                agsconfig.VectorTileServerExtension.ExtensionCapabilities.editing
+                agsconfig.VectorTileServerExtension.Capability.query,
+                agsconfig.VectorTileServerExtension.Capability.create,
+                agsconfig.VectorTileServerExtension.Capability.update,
+                agsconfig.VectorTileServerExtension.Capability.delete,
+                agsconfig.VectorTileServerExtension.Capability.uploads,
+                agsconfig.VectorTileServerExtension.Capability.editing
             ], None
         ), ("web_enabled", True, None)
     ]
@@ -69,7 +69,7 @@ def test_getters(service_config, attribute, expectedValue, exception):
             "online_resource",
             "https://uat-spatial.information.qld.gov.au/arcgis/services/TestVectorTile/VectorTileServer/VectorTileServer/something",
             None
-        ), ("capabilities", [agsconfig.VectorTileServerExtension.ExtensionCapabilities.query], None),
+        ), ("capabilities", [agsconfig.VectorTileServerExtension.Capability.query], None),
         ("web_enabled", False, None)
     ]
 )

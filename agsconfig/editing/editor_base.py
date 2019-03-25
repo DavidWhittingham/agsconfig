@@ -64,7 +64,10 @@ class EditorBase(object):
 
     @abstractmethod
     def save(self):
-        pass
+        """Save the current state of the edited config back to the input file object.
+        
+        Completely abstract function that is editor implementation specific.
+        """
 
     def set_value(self, value, meta, obj):
         format_info = self._get_format_info_and_check_support(meta, True)
@@ -93,11 +96,17 @@ class EditorBase(object):
 
     @abstractmethod
     def _get_value(self, path_info):
-        pass
+        """Get the value at the provided path.
+
+        Completely abstract function that is editor implementation specific.
+        """
 
     @abstractmethod
     def _set_value(self, value, path_info):
-        pass
+        """Set the value at the provided path.
+
+        Completely abstract function that is editor implementation specific.
+        """
 
     def _deserialize(self, value, format_info, obj):
         if "conversions" in format_info:

@@ -18,7 +18,7 @@ from .extension_base import ExtensionBase
 from ..editing.edit_prop import EditorProperty
 
 class VectorTileServerExtension(ExtensionBase):
-    class ExtensionCapabilities(Enum):
+    class Capability(Enum):
         query = "Query"
         create = "Create"
         update = "Update"
@@ -266,27 +266,6 @@ class VectorTileServerExtension(ExtensionBase):
                 }
             }
         })
-
-    capabilities = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension/Info/PropertyArray/PropertySetProperty[Key='webCapabilities']/Value"
-                        }
-                    ],
-                    "conversions": [{
-                        "id": "enumToString",
-                        "enum": "ExtensionCapabilities"
-                    }, {
-                        "id": "stringToCsv"
-                    }]
-                }
-            }
-        }
-    )
 
     editor_tracking_time_in_utc = EditorProperty(
         {

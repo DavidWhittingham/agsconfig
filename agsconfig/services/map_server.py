@@ -19,22 +19,25 @@ from .max_record_count_mixin import MaxRecordCountMixin
 from .output_dir_mixin import OutputDirMixin
 from .service_base import ServiceBase
 from ..editing.edit_prop import EditorProperty
+from ..services.feature_server_extension import FeatureServerExtension
+from ..services.kml_server_extension import KmlServerExtension
+from ..services.na_server_extension import NAServerExtension
 from ..services.wfs_server_extension import WFSServerExtension
 from ..services.wcs_server_extension import WCSServerExtension
 from ..services.wms_server_extension import WMSServerExtension
-from ..services.feature_server_extension import FeatureServerExtension
-from ..services.kml_server_extension import KmlServerExtension
+
 
 
 class MapServer(
     MaxRecordCountMixin, OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDimensionsMixin, ServiceBase
 ):
-
+    _feature_server_extension = None
+    _kml_server_extension = None
+    _na_server_extension = None
     _wfs_server_extension = None
     _wcs_server_extension = None
     _wms_server_extension = None
-    _feature_server_extension = None
-    _kml_server_extension = None
+    
 
     class AntiAliasingMode(Enum):
         none = "None"
@@ -57,6 +60,7 @@ class MapServer(
         super().__init__(editor)
         self._feature_server_extension = FeatureServerExtension(editor)
         self._kml_server_extension = KmlServerExtension(editor)
+        self._na_server_extension = NAServerExtension(editor)
         self._wfs_server_extension = WFSServerExtension(editor)
         self._wcs_server_extension = WCSServerExtension(editor)
         self._wms_server_extension = WMSServerExtension(editor)
@@ -70,11 +74,6 @@ class MapServer(
     def kml_server(self):
         """Gets the properties for the KML Server extension."""
         return self._kml_server_extension
-
-    @property
-    def mobile_server(self):
-        """Gets the properties for the Mobile (Mobile Data Access in the UI) server extension."""
-        return self._mobile_server_extension
 
     @property
     def na_server(self):

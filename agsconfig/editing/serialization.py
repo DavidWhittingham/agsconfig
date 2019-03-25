@@ -21,7 +21,7 @@ _TIME_STRING_REGEX = re.compile(r"^([0-9]{2}):([0-9]{2})$")
 
 
 def deserialize_csv_to_string_list(value, conversion, obj):
-    if len(value) == 0:
+    if value is None or len(value) == 0:
         return []
     return [val for val in value.split(",")]
 
@@ -45,7 +45,7 @@ def deserialize_string_to_bool(value, conversion, obj):
     if value is True or value is False:
         # value has already been desrialized to native type
         return value
-    
+
     true = conversion.get("true", "true")
     false = conversion.get("false", "false")
     ignore_case = conversion.get("ignoreCase", True)
@@ -202,7 +202,7 @@ def value_to_boolean(value):
     try:
         value = int(value)
         return True if value == 1 else False
-    except ValueError:
+    except TypeError, ValueError:
         pass
 
     return value is True

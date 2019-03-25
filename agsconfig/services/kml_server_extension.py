@@ -31,27 +31,6 @@ class KmlServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
     def __init__(self, editor):
         super().__init__(editor, "KmlServer")
 
-    capabilities = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Info/PropertyArray/PropertySetProperty[Key='WebCapabilities']/Value".format(extension_name)
-                        }
-                    ],
-                    "conversions": [{
-                        "id": "enumToString",
-                        "enum": "Capability"
-                    }, {
-                        "id": "stringToCsv"
-                    }]
-                }
-            }
-        }
-    )
-
     compatibility_mode = EditorProperty(
         {
             "formats": {
