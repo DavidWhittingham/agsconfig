@@ -14,14 +14,15 @@ install_aliases()
 import pytest
 
 # Fixture imports
-from .helpers import TRUEISH_TEST_PARAMS, map_service_config as service_config
+from .helpers import TRUEISH_TEST_PARAMS
 
-def test_capabilities(service_config):
+
+def test_na_capabilities(service_config):
     assert len(service_config.na_server.capabilities) == 0 
     with pytest.raises(ValueError):
         service_config.na_server.capabilities = "Blah"
 
 @pytest.mark.parametrize(("enabled", "expected"), TRUEISH_TEST_PARAMS)
-def test_enabled(service_config, enabled, expected):
+def test_na_enabled(service_config, enabled, expected):
     service_config.na_server.enabled = enabled
     assert service_config.na_server.enabled == expected

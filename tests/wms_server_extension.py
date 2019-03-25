@@ -10,16 +10,19 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
-import os.path
-
+# Third-party imports
 import pytest
 
-import agsconfig
 
-# Import shared fixtures
-# pylint: disable=unused-import
-from .helpers import map_service_config as service_config
-# pylint: enable=unused-import
+@pytest.fixture(scope="function")
+def service_extension(service_config):
+    return service_config.wcs_server
+
+
+# import tests that should be applied to MapServer
+# pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-position
+from .ogc_metadata_extension_mixin import *
+# pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-position
 
 
 @pytest.mark.parametrize(
@@ -31,7 +34,7 @@ from .helpers import map_service_config as service_config
         ("path_to_custom_sld_file", "C:\\MyCustomSldeFile.sld", None)
     ]
 )
-def test_getters(service_config, attribute, expected_value, exception):
+def test_wms_getters(service_config, attribute, expected_value, exception):
     if exception is not None:
         with pytest.raises(exception):
             assert getattr(service_config.wms_server, attribute) == expected_value
@@ -48,7 +51,7 @@ def test_getters(service_config, attribute, expected_value, exception):
         ("path_to_custom_sld_file", "a:/path", None)
     ]
 )
-def test_setters(service_config, attribute, new_value, exception):
+def test_wms_setters(service_config, attribute, new_value, exception):
     if exception is not None:
         with pytest.raises(exception):
             setattr(service_config.wms_server, attribute, new_value)

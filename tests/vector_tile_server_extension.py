@@ -16,9 +16,6 @@ import pytest
 # Local imports
 import agsconfig
 
-# Fixture imports
-from .helpers import vector_tile_service_config as service_config
-
 
 @pytest.mark.parametrize(
     ("attribute", "expectedValue", "exception"), [
@@ -47,7 +44,7 @@ from .helpers import vector_tile_service_config as service_config
         ), ("web_enabled", True, None)
     ]
 )
-def test_getters(service_config, attribute, expectedValue, exception):
+def test_vt_ext_getters(service_config, attribute, expectedValue, exception):
     if exception is not None:
         with pytest.raises(exception):
             getattr(service_config.vector_tile_server, attribute)
@@ -73,7 +70,7 @@ def test_getters(service_config, attribute, expectedValue, exception):
         ("web_enabled", False, None)
     ]
 )
-def test_setters(service_config, attribute, new_value, exception):
+def test_vt_ext_setters(service_config, attribute, new_value, exception):
     if exception is not None:
         with pytest.raises(exception):
             setattr(service_config.vector_tile_server, attribute, new_value)
