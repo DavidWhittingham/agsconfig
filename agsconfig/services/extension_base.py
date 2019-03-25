@@ -28,6 +28,7 @@ class ExtensionBase(ModelBase):
 
     _editor = None
     _extension_name = None
+    _web_capabilities_key = "WebCapabilities"
 
     class Capability(Enum):
         """Must be overridden by sub-classes if any capabilities are supported."""
@@ -55,7 +56,7 @@ class ExtensionBase(ModelBase):
                     "paths": [
                         {
                             "path":
-                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Info/PropertyArray/PropertySetProperty[Key='WebCapabilities']/Value".format(extension_name)
+                            lambda extension_name, _web_capabilities_key : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Info/PropertyArray/PropertySetProperty[Key='{1}']/Value".format(extension_name, _web_capabilities_key)
                         }
                     ],
                     "conversions": [{

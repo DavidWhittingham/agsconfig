@@ -18,6 +18,9 @@ from .extension_base import ExtensionBase
 from ..editing.edit_prop import EditorProperty
 
 class VectorTileServerExtension(ExtensionBase):
+
+    _web_capabilities_key = "webCapabilities"
+
     class Capability(Enum):
         query = "Query"
         create = "Create"
