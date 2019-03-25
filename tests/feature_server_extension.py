@@ -10,22 +10,21 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
-import os.path
-
+# Third-party imports
 import pytest
 
-import agsconfig
-from .helpers import map_service_config as mapserver, TRUEISH_TEST_PARAMS
+# Local imports
+from .helpers import TRUEISH_TEST_PARAMS
 
 @pytest.mark.parametrize(("allow_geometry_updates", "expected"), TRUEISH_TEST_PARAMS)
-def test_allow_geometry_updates(mapserver, allow_geometry_updates, expected):
-    mapserver.feature_server.allow_geometry_updates = allow_geometry_updates
-    assert mapserver.feature_server.allow_geometry_updates == expected
+def test_allow_geometry_updates(service_config, allow_geometry_updates, expected):
+    service_config.feature_server.allow_geometry_updates = allow_geometry_updates
+    assert service_config.feature_server.allow_geometry_updates == expected
 
 @pytest.mark.parametrize(("enabled", "expected"), TRUEISH_TEST_PARAMS)
-def test_enabled(mapserver, enabled, expected):
-    mapserver.feature_server.enabled = enabled
-    assert mapserver.feature_server.enabled == expected
+def test_enabled(service_config, enabled, expected):
+    service_config.feature_server.enabled = enabled
+    assert service_config.feature_server.enabled == expected
 
 
 @pytest.mark.parametrize(
@@ -43,12 +42,12 @@ def test_enabled(mapserver, enabled, expected):
         ('z_default_value', 0, None)
     ]
 )
-def test_getters(mapserver, attribute, expected_value, exception):
+def test_getters(service_config, attribute, expected_value, exception):
     if exception is not None:
         with pytest.raises(exception):
-            assert getattr(mapserver.feature_server, attribute) == expected_value
+            assert getattr(service_config.feature_server, attribute) == expected_value
     else:
-        assert getattr(mapserver.feature_server, attribute) == expected_value
+        assert getattr(service_config.feature_server, attribute) == expected_value
 
 
 @pytest.mark.parametrize(
@@ -66,11 +65,11 @@ def test_getters(mapserver, attribute, expected_value, exception):
         ('z_default_value', 100, None)
     ]
 )
-def test_setters(mapserver, attribute, new_value, exception):
+def test_setters(service_config, attribute, new_value, exception):
     if exception is not None:
         with pytest.raises(exception):
-            setattr(mapserver.feature_server, attribute, new_value)
-            assert getattr(mapserver.feature_server, attribute) == new_value
+            setattr(service_config.feature_server, attribute, new_value)
+            assert getattr(service_config.feature_server, attribute) == new_value
     else:
-        setattr(mapserver.feature_server, attribute, new_value)
-        assert getattr(mapserver.feature_server, attribute) == new_value
+        setattr(service_config.feature_server, attribute, new_value)
+        assert getattr(service_config.feature_server, attribute) == new_value

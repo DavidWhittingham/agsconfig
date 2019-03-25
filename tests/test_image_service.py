@@ -29,6 +29,9 @@ from .service_base import *
 from .cacheable_core import *
 from .cacheable_ext import *
 from .image_dimensions import *
+from .jpip_server_extension import *
+from .wcs_server_extension import *
+from .wms_server_extension import *
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-position
 
 

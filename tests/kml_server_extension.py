@@ -10,13 +10,11 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
-import os.path
-
+# Third-party imports
 import pytest
 
-import agsconfig
+# Local imports
 from agsconfig.services.kml_server_extension import KmlServerExtension as kml
-from .helpers import map_service_config as mapserver
 
 
 @pytest.mark.parametrize(
@@ -37,16 +35,16 @@ from .helpers import map_service_config as mapserver
         ('use_network_link_control_tag', 0, None)
     ]
 )
-def test_getters(mapserver, attribute, expectedValue, exception):
+def test_kml_getters(service_config, attribute, expectedValue, exception):
     if exception is not None:
         with pytest.raises(exception):
-            assert getattr(mapserver.kml_server, attribute) == expectedValue
+            assert getattr(service_config.kml_server, attribute) == expectedValue
     else:
-        assert getattr(mapserver.kml_server, attribute) == expectedValue
+        assert getattr(service_config.kml_server, attribute) == expectedValue
 
 
 @pytest.mark.parametrize(
-    ('attribute', 'newValue', 'exception'),
+    ('attribute', 'new_value', 'exception'),
     [
         ('britney_spears', 'should cause a', TypeError),  # because she isn't a member
         ('enabled', False, None),
@@ -63,11 +61,11 @@ def test_getters(mapserver, attribute, expectedValue, exception):
         ('use_network_link_control_tag', 10, None)
     ]
 )
-def test_setters(mapserver, attribute, newValue, exception):
+def test_kml_setters(service_config, attribute, new_value, exception):
     if exception is not None:
         with pytest.raises(exception):
-            setattr(mapserver.kml_server, attribute, newValue)
-            assert getattr(mapserver.kml_server, attribute) == newValue
+            setattr(service_config.kml_server, attribute, new_value)
+            assert getattr(service_config.kml_server, attribute) == new_value
     else:
-        setattr(mapserver.kml_server, attribute, newValue)
-        assert getattr(mapserver.kml_server, attribute) == newValue
+        setattr(service_config.kml_server, attribute, new_value)
+        assert getattr(service_config.kml_server, attribute) == new_value

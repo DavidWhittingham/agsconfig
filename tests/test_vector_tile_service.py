@@ -23,6 +23,7 @@ from .helpers import vector_tile_service_config as service_config
 # pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-position
 from .service_base import *
 from .cacheable_core import *
+from .vector_tile_server_extension import *
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-position
 
 
