@@ -60,7 +60,7 @@ class EditorProperty(object):
                     )
 
             if "max" in constraints:
-                max_value = constraints["min"]
+                max_value = constraints["max"]
                 if value > max_value:
                     raise ValueError(
                         "Value of property '{}' cannot be greater than '{}'.".format(self.name_of(obj), max_value)
@@ -92,4 +92,5 @@ class EditorProperty(object):
                 self.name = attr
                 return self.name
 
-        return None
+        # This should never happen.
+        raise ValueError("This EditorProperty is not assigned to a name on the given instance.")

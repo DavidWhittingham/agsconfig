@@ -42,16 +42,6 @@ def get_element_value(element, default=None):
 
 class SDDraftEditor(EditorBase):
 
-    _nsmap = None
-
-    @property
-    def nsmap(self):
-        if not self._nsmap is None:
-            return self._nsmap
-
-        self._nsmap = self._xml_tree.getroot().nsmap
-        return self._nsmap
-
     def __init__(self, xml_file):
         self._xml_file = xml_file
         self._xml_tree = self._load_xml(xml_file)

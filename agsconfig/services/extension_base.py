@@ -1,5 +1,5 @@
 # coding=utf-8
-"""This module contains the ServiceBase abstract base class for implementing ArcGIS Server service configuration models."""
+"""This module contains the ExtensionBase abstract base class for implementing ArcGIS Server service extensions."""
 
 # Python 2/3 compatibility
 # pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
@@ -28,6 +28,7 @@ class ExtensionBase(ModelBase):
 
     _editor = None
     _extension_name = None
+    _web_capabilities_key = "WebCapabilities"
 
     class Capability(Enum):
         """Must be overridden by sub-classes if any capabilities are supported."""
@@ -47,6 +48,27 @@ class ExtensionBase(ModelBase):
     @property
     def extension_name(self):
         return self._extension_name
+
+    capabilities = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            lambda extension_name, _web_capabilities_key : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Info/PropertyArray/PropertySetProperty[Key='{1}']/Value".format(extension_name, _web_capabilities_key)
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "enumToString",
+                        "enum": "Capability"
+                    }, {
+                        "id": "stringToCsv"
+                    }]
+                }
+            }
+        }
+    )
 
     enabled = EditorProperty(
         {

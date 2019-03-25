@@ -26,7 +26,8 @@ from .helpers import map_service_config as service_config
 # import tests that should be applied to MapServer
 # pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-position
 from .service_base import *
-from .cacheable import *
+from .cacheable_core import *
+from .cacheable_ext import *
 from .image_dimensions import *
 from .max_record_count import *
 from .output_dir import *

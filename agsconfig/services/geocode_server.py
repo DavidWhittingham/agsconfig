@@ -10,14 +10,14 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
+# Third-party imports
 from enum import Enum
 
-from .cacheable_mixin import CacheableMixin
-from ..editing.edit_prop import EditorProperty
-from .image_dimensions_mixin import ImageDimensionsMixin
+# Local imports
 from .service_base import ServiceBase
+from ..editing.edit_prop import EditorProperty
 
-class GeocodeServer(CacheableMixin, ImageDimensionsMixin, ServiceBase):
+class GeocodeServer(ServiceBase):
 
     class Capability(Enum):
         geocode = "Geocode"
@@ -71,18 +71,5 @@ class GeocodeServer(CacheableMixin, ImageDimensionsMixin, ServiceBase):
                     ]
                 }
             }
-        })
-
-    name = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            "./ItemInfo/Title"
-                        }
-                    ]
-                }
-            }
-        })
+        }
+    )
