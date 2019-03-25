@@ -202,7 +202,7 @@ def value_to_boolean(value):
     try:
         value = int(value)
         return True if value == 1 else False
-    except TypeError, ValueError:
+    except (TypeError, ValueError):
         pass
 
     return value is True
