@@ -75,7 +75,7 @@ class SDDraftEditor(EditorBase):
         self._create_child_elements(parent_element, path_info)
 
         return self._xml_tree.find(path_info["path"])
-    
+
     def _create_child_elements(self, parent_element, path_info):
         new_element = ET.SubElement(parent_element, path_info["tag"], path_info.get("attributes", {}))
 

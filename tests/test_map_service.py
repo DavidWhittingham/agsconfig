@@ -1,5 +1,5 @@
 # coding=utf-8
-"""This module contains shared tests for all models that implement the SDDraftBase class."""
+"""This module contains tests for map services."""
 
 # Python 2/3 compatibility
 # pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
@@ -25,7 +25,7 @@ from .helpers import map_service_config as service_config
 
 # import tests that should be applied to MapServer
 # pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-position
-from .sddraftbase import *
+from .service_base import *
 from .cacheable import *
 from .image_dimensions import *
 from .max_record_count import *

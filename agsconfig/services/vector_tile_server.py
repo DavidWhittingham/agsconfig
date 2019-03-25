@@ -10,16 +10,19 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
+# Third party imports
 from enum import Enum
 
+# Local imports
 from .cacheable_mixin import CacheableMixin
 from .service_base import ServiceBase
+from .vector_tile_server_extension import VectorTileServerExtension
 from ..editing.edit_prop import EditorProperty
-from .vectortile_server_extension import VectorTileServerExtension
+
 
 class VectorTileServer(ServiceBase, CacheableMixin):
 
-    _vectortile_server_extension = None
+    _vector_tile_server_extension = None
 
     class Capability(Enum):
         map = "Map"
@@ -31,13 +34,13 @@ class VectorTileServer(ServiceBase, CacheableMixin):
         normal = "Normal"
         best = "Best"
 
-    @property
-    def vectortile_server_extension(self):
-        return self._vectortile_server_extension
-
     def __init__(self, editor):
         super(VectorTileServer, self).__init__(editor)
-        self._vectortile_server_extension = VectorTileServerExtension(editor, 'VectorTile')
+        self._vector_tile_server_extension = VectorTileServerExtension(editor)
+
+    @property
+    def vector_tile_server(self):
+        return self._vector_tile_server_extension
 
     portal_url = EditorProperty(
         {
@@ -45,16 +48,13 @@ class VectorTileServer(ServiceBase, CacheableMixin):
                 "agsJson": {
                     "paths": [{
                         "document": "main",
-                        "path": "$.properties.portalUrl" # TODO: unknown
+                        "path": "$.properties.portalUrl"  # TODO: unknown
                     }]
                 },
                 "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            "./StagingSettings/PropertyArray/PropertySetProperty[Key='PortalURL']/Value"
-                        }
-                    ]
+                    "paths": [{
+                        "path": "./StagingSettings/PropertyArray/PropertySetProperty[Key='PortalURL']/Value"
+                    }]
                 }
             }
         }
@@ -70,12 +70,9 @@ class VectorTileServer(ServiceBase, CacheableMixin):
                     }]
                 },
                 "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            "./Configurations/SVCConfiguration/TypeName"
-                        }
-                    ]
+                    "paths": [{
+                        "path": "./Configurations/SVCConfiguration/TypeName"
+                    }]
                 }
             }
         }
@@ -91,12 +88,9 @@ class VectorTileServer(ServiceBase, CacheableMixin):
                     }]
                 },
                 "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Cluster"
-                        }
-                    ]
+                    "paths": [{
+                        "path": "./Configurations/SVCConfiguration/Definition/Cluster"
+                    }]
                 }
             }
         }
@@ -112,12 +106,9 @@ class VectorTileServer(ServiceBase, CacheableMixin):
                     }]
                 },
                 "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            "./KeepExistingData"
-                        }
-                    ]
+                    "paths": [{
+                        "path": "./KeepExistingData"
+                    }]
                 }
             }
         }
@@ -129,7 +120,7 @@ class VectorTileServer(ServiceBase, CacheableMixin):
                 "agsJson": {
                     "paths": [{
                         "document": "main",
-                        "path": "$.configuration.supportedImageReturnTypes" #TODO: fix
+                        "path": "$.configuration.supportedImageReturnTypes"  #TODO: fix
                     }]
                 },
                 "sddraft": {
@@ -171,16 +162,13 @@ class VectorTileServer(ServiceBase, CacheableMixin):
                 "agsJson": {
                     "paths": [{
                         "document": "main",
-                        "path": "$.serviceFolder" #TODO: unknown
+                        "path": "$.serviceFolder"  #TODO: unknown
                     }]
                 },
                 "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            "./Configurations/SVCConfiguration/ServiceFolder"
-                        }
-                    ]
+                    "paths": [{
+                        "path": "./Configurations/SVCConfiguration/ServiceFolder"
+                    }]
                 }
             }
         }
@@ -192,7 +180,7 @@ class VectorTileServer(ServiceBase, CacheableMixin):
                 "agsJson": {
                     "paths": [{
                         "document": "main",
-                        "path": "$.properties.tilingScheme" #TODO: unknown
+                        "path": "$.properties.tilingScheme"  #TODO: unknown
                     }]
                 },
                 "sddraft": {
@@ -213,7 +201,7 @@ class VectorTileServer(ServiceBase, CacheableMixin):
                 "agsJson": {
                     "paths": [{
                         "document": "main",
-                        "path": "$.properties.ignoreCache" #TODO: unknown
+                        "path": "$.properties.ignoreCache"  #TODO: unknown
                     }]
                 },
                 "sddraft": {
@@ -234,7 +222,7 @@ class VectorTileServer(ServiceBase, CacheableMixin):
                 "agsJson": {
                     "paths": [{
                         "document": "main",
-                        "path": "$.webEnabled" #TODO: unknown
+                        "path": "$.webEnabled"  #TODO: unknown
                     }]
                 },
                 "sddraft": {
@@ -325,23 +313,19 @@ class VectorTileServer(ServiceBase, CacheableMixin):
     )
 
     keep_existing_data = EditorProperty(
-    {
-        "formats": {
-            "agsJson": {
-                "paths": [{
-                    "document": "main",
-                    "path": "$.keepExistingData" #TODO: unknown
+        {
+            "formats": {
+                "agsJson": {
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.keepExistingData"  #TODO: unknown
                     }]
                 },
-            "sddraft": {
-                "paths": [
-                        {
-                            "path":
-                            "./KeepExistingData"
-                        }
-                    ]
+                "sddraft": {
+                    "paths": [{
+                        "path": "./KeepExistingData"
+                    }]
                 }
             }
         }
     )
-

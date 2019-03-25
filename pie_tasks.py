@@ -19,7 +19,7 @@ def setup():
 @task
 def test():
     with venv(r"venvs\test"):
-        cmd(r"python -m pytest -s --cov=agsconfig .\\tests")
+        cmd(r"python -m pytest -s --cov-report term --cov-report html --cov=agsconfig .\\tests")
 
 
 @task

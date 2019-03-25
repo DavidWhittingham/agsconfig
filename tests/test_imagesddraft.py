@@ -17,21 +17,12 @@ import pytest
 
 import agsconfig
 from agsconfig.services.image_server import ImageServer
-
-SDDRAFT_FILE_PATH = os.path.abspath("{0}/samples/imageservice.sddraft".format(os.path.dirname(__file__)))
-SDDRAFT_FILE_PATH2 = os.path.abspath("{0}/samples/mapservice.sddraft".format(os.path.dirname(__file__)))
+from .helpers import image_service_config as imageserver
 
 
-@pytest.fixture
-def imageserver():
-    return agsconfig.load_image_sddraft(open(SDDRAFT_FILE_PATH, 'rb+'))
-
-
-def test_load_imagesddraft():
-    """Load a vector tile into a map sddraft object."""
-    sddraft = agsconfig.load_image_sddraft(open(SDDRAFT_FILE_PATH, 'rb+'))
-
-    assert isinstance(sddraft, agsconfig.services.image_server.ImageServer)
+def test_load_service_config(imageserver):
+    # this just tests the fixture setup
+    assert True
 
 
 @pytest.mark.parametrize(

@@ -10,9 +10,12 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
+# Third party imports
 from enum import Enum
-from ..editing.edit_prop import EditorProperty
+
+# Local imports
 from .extension_base import ExtensionBase
+from ..editing.edit_prop import EditorProperty
 
 class VectorTileServerExtension(ExtensionBase):
     class ExtensionCapabilities(Enum):
@@ -23,48 +26,8 @@ class VectorTileServerExtension(ExtensionBase):
         uploads = "Uploads"
         editing = "Editing"
 
-    def __init__(self, editor, extension_type):
-        super().__init__(editor, extension_type)
-
-    typeName = EditorProperty(
-        {
-            "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.extensions.typeName" #TODO: resolve. Yet to see an example of this in json
-                    }]
-                },
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension/TypeName"
-                        }
-                    ]
-                }
-            }
-        })
-
-    enabled = EditorProperty(
-        {
-            "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.extensions.enabled" #TODO: resolve.
-                    }]
-                },
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension/Enabled"
-                        }
-                    ]
-                }
-            }
-        })
+    def __init__(self, editor):
+        super().__init__(editor, "VectorTileServer")
 
     web_enabled = EditorProperty(
         {

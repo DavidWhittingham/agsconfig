@@ -15,6 +15,7 @@ from .extension_base import ExtensionBase
 from .ogc_metadata_extension_mixin import OGCMetadataExtensionMixin
 from .custom_get_capabilities_extension_mixin import CustomGetCapabilitiesExtensionMixin
 
+
 class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensionMixin, ExtensionBase):
     """ WCS server extension properties for arcGIS services """
 
@@ -29,24 +30,24 @@ class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExt
     def __init__(self, editor):
         super().__init__(editor, "FeatureServer")
 
-    enabled = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Enabled".format(extension_name)
-                        }
-                    ]
-                }
-            }
-        })
-
     allow_geometry_updates = EditorProperty(
         {
             "formats": {
+                "agsJson": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": "$.extensions[?(@.typeName = 'FeatureServer')].properties.allowGeometryUpdates"
+                        }
+                    ]
+                },
                 "sddraft": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
                     "paths": [
                         {
                             "path":

@@ -13,18 +13,19 @@ install_aliases()
 from enum import Enum
 
 from .cacheable_mixin import CacheableMixin
-from ..editing.edit_prop import EditorProperty
 from .image_dimensions_mixin import ImageDimensionsMixin
-from .service_base import ServiceBase
-from .wms_server_extension import WMSServerExtension
 from .jpip_server_extension import JPIPServerExtension
+from .service_base import ServiceBase
 from .wcs_server_extension import WCSServerExtension
+from .wms_server_extension import WMSServerExtension
+from ..editing.edit_prop import EditorProperty
+
 
 class ImageServer(CacheableMixin, ImageDimensionsMixin, ServiceBase):
 
-    wms_server_extension = None
-    wcs_server_extension = None
-    jpip_server_extension = None
+    _jpip_server_extension = None
+    _wcs_server_extension = None
+    _wms_server_extension = None
 
     class Capability(Enum):
         catalog = "Catalog"
@@ -60,9 +61,24 @@ class ImageServer(CacheableMixin, ImageDimensionsMixin, ServiceBase):
 
     def __init__(self, editor):
         super().__init__(editor)
-        self.jpip_server_extension = JPIPServerExtension(editor)
-        self.wcs_server_extension = WCSServerExtension(editor)
-        self.wms_server_extension = WMSServerExtension(editor)
+        self._jpip_server_extension = JPIPServerExtension(editor)
+        self._wcs_server_extension = WCSServerExtension(editor)
+        self._wms_server_extension = WMSServerExtension(editor)
+
+    @property
+    def jpip_server(self):
+        """Gets the properties for the JPIP Server extension."""
+        return self._jpip_server_extension
+
+    @property
+    def wcs_server(self):
+        """Gets the properties for the WCS Server extension."""
+        return self._wcs_server_extension
+
+    @property
+    def wms_server(self):
+        """Gets the properties for the WMS Server extension."""
+        return self._wms_server_extension
 
     allowed_mosaic_methods = EditorProperty(
         {

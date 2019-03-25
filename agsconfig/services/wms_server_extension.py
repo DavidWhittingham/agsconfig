@@ -29,20 +29,6 @@ class WMSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
     def __init__(self, editor):
         super().__init__(editor, "WMSServer")
 
-    enabled = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Enabled".format(extension_name)
-                        }
-                    ]
-                }
-            }
-        })
-
     inherit_layer_names = EditorProperty(
         {
             "formats": {
