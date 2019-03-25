@@ -32,12 +32,6 @@ class VectorTileServerExtension(ExtensionBase):
     web_enabled = EditorProperty(
         {
             "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.extensions.webEnabled" #TODO: resolve.
-                    }]
-                },
                 "sddraft": {
                     "paths": [
                         {
@@ -52,12 +46,6 @@ class VectorTileServerExtension(ExtensionBase):
     enable_z_defaults = EditorProperty(
         {
             "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.extensions.enableZDefaults" #TODO: resolve.
-                    }]
-                },
                 "sddraft": {
                     "paths": [
                         {
@@ -72,12 +60,6 @@ class VectorTileServerExtension(ExtensionBase):
     z_default_value = EditorProperty(
         {
             "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.extensions.zDefaultValue" #TODO: resolve.
-                    }]
-                },
                 "sddraft": {
                     "paths": [
                         {
@@ -92,12 +74,6 @@ class VectorTileServerExtension(ExtensionBase):
     enable_ownership_based_access_control = EditorProperty(
         {
             "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.extensions.enableOwnershipBasedAccessControl" #TODO: resolve.
-                    }]
-                },
                 "sddraft": {
                     "paths": [
                         {
@@ -112,12 +88,6 @@ class VectorTileServerExtension(ExtensionBase):
     allow_others_to_query = EditorProperty(
         {
             "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.extensions.allowOthersToQuery" #TODO: resolve.
-                    }]
-                },
                 "sddraft": {
                     "paths": [
                         {
@@ -132,12 +102,6 @@ class VectorTileServerExtension(ExtensionBase):
     allow_others_to_update = EditorProperty(
         {
             "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.extensions.allowOthersToUpdate" #TODO: resolve.
-                    }]
-                },
                 "sddraft": {
                     "paths": [
                         {
@@ -152,12 +116,6 @@ class VectorTileServerExtension(ExtensionBase):
     allow_others_to_delete = EditorProperty(
         {
             "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.extensions.allowOthersToDelete" #TODO: resolve.
-                    }]
-                },
                 "sddraft": {
                     "paths": [
                         {
@@ -172,12 +130,6 @@ class VectorTileServerExtension(ExtensionBase):
     realm = EditorProperty(
         {
             "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.extensions.realm" #TODO: resolve.
-                    }]
-                },
                 "sddraft": {
                     "paths": [
                         {
@@ -192,12 +144,6 @@ class VectorTileServerExtension(ExtensionBase):
     allow_true_curves_updates = EditorProperty(
         {
             "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.extensions.allowTrueCurvesUpdates" #TODO: resolve.
-                    }]
-                },
                 "sddraft": {
                     "paths": [
                         {
@@ -212,12 +158,6 @@ class VectorTileServerExtension(ExtensionBase):
     only_allow_true_curve_updates_by_true_curve_clients = EditorProperty(
         {
             "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.extensions.onlyAllowTrueCurveUpdatesByTrueCurveClients" #TODO: resolve.
-                    }]
-                },
                 "sddraft": {
                     "paths": [
                         {
@@ -232,12 +172,6 @@ class VectorTileServerExtension(ExtensionBase):
     xss_prevention_enabled = EditorProperty(
         {
             "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.extensions.xssPreventionEnabled" #TODO: resolve.
-                    }]
-                },
                 "sddraft": {
                     "paths": [
                         {
@@ -252,12 +186,6 @@ class VectorTileServerExtension(ExtensionBase):
     sync_version_creation_rule = EditorProperty(
         {
             "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.extensions.syncVersionCreationRule" #TODO: resolve.
-                    }]
-                },
                 "sddraft": {
                     "paths": [
                         {
@@ -272,12 +200,6 @@ class VectorTileServerExtension(ExtensionBase):
     editor_tracking_respects_daylight_saving_time = EditorProperty(
         {
             "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.extensions.editorTrackingRespectsDaylightSavingTime" #TODO: resolve.
-                    }]
-                },
                 "sddraft": {
                     "paths": [
                         {
@@ -292,12 +214,6 @@ class VectorTileServerExtension(ExtensionBase):
     allow_geometry_updates = EditorProperty(
         {
             "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.extensions.allowGeometryUpdates" #TODO: resolve.
-                    }]
-                },
                 "sddraft": {
                     "paths": [
                         {
@@ -312,12 +228,6 @@ class VectorTileServerExtension(ExtensionBase):
     editor_tracking_time_zone_id = EditorProperty(
         {
             "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.extensions.editorTrackingTimezoneId" #TODO: resolve.
-                    }]
-                },
                 "sddraft": {
                     "paths": [
                         {
@@ -332,12 +242,6 @@ class VectorTileServerExtension(ExtensionBase):
     max_record_count = EditorProperty(
         {
             "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.extensions.maxRecordCount" #TODO: resolve.
-                    }]
-                },
                 "sddraft": {
                     "paths": [
                         {
@@ -352,12 +256,6 @@ class VectorTileServerExtension(ExtensionBase):
     online_resource = EditorProperty(
         {
             "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.extensions.onlineResource" #TODO: resolve.
-                    }]
-                },
                 "sddraft": {
                     "paths": [
                         {
@@ -372,18 +270,6 @@ class VectorTileServerExtension(ExtensionBase):
     capabilities = EditorProperty(
         {
             "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.properties.antialiasingMode"
-                    }],
-                    "conversions": [{
-                        "id": "enumToString",
-                        "enum": "ExtensionCapabilities"
-                    }, {
-                        "id": "stringToCsv"
-                    }]
-                },
                 "sddraft": {
                     "paths": [
                         {
@@ -405,12 +291,6 @@ class VectorTileServerExtension(ExtensionBase):
     editor_tracking_time_in_utc = EditorProperty(
         {
             "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.extensions.editorTrackingTimeInUtc" #TODO: resolve.
-                    }]
-                },
                 "sddraft": {
                     "paths": [
                         {

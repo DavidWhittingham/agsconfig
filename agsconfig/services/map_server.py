@@ -12,7 +12,8 @@ install_aliases()
 
 from enum import Enum
 
-from .cacheable_mixin import CacheableMixin
+from .cacheable_core_mixin import CacheableCoreMixin
+from .cacheable_ext_mixin import CacheableExtMixin
 from .image_dimensions_mixin import ImageDimensionsMixin
 from .max_record_count_mixin import MaxRecordCountMixin
 from .output_dir_mixin import OutputDirMixin
@@ -24,7 +25,10 @@ from ..services.wms_server_extension import WMSServerExtension
 from ..services.feature_server_extension import FeatureServerExtension
 from ..services.kml_server_extension import KmlServerExtension
 
-class MapServer(MaxRecordCountMixin, OutputDirMixin, CacheableMixin, ImageDimensionsMixin, ServiceBase):
+
+class MapServer(
+    MaxRecordCountMixin, OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDimensionsMixin, ServiceBase
+):
 
     _wfs_server_extension = None
     _wcs_server_extension = None

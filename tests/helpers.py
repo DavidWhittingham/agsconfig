@@ -49,9 +49,17 @@ IMAGE_INFO_JSON_FILE_PATH_COPY = os.path.abspath(
     "{0}/samples/imageservice.itemInfo.copy.json".format(os.path.dirname(__file__))
 )
 
-VECTOR_TILE_SDDRAFT_FILE_PATH = os.path.abspath("{0}/samples/TestVectorTile.sddraft".format(os.path.dirname(__file__)))
+VECTOR_TILE_SDDRAFT_FILE_PATH = os.path.abspath("{0}/samples/vectortileservice.sddraft".format(os.path.dirname(__file__)))
 VECTOR_TILE_SDDRAFT_FILE_PATH_COPY = os.path.abspath(
-    "{0}/samples/TestVectorTile.copy.sddraft".format(os.path.dirname(__file__))
+    "{0}/samples/vectortileservice.copy.sddraft".format(os.path.dirname(__file__))
+)
+VECTOR_TILE_MAIN_JSON_FILE_PATH = os.path.abspath("{0}/samples/vectortileservice.main.json".format(os.path.dirname(__file__)))
+VECTOR_TILE_MAIN_JSON_FILE_PATH_COPY = os.path.abspath(
+    "{0}/samples/vectortileservice.main.copy.json".format(os.path.dirname(__file__))
+)
+VECTOR_TILE_INFO_JSON_FILE_PATH = os.path.abspath("{0}/samples/vectortileservice.itemInfo.json".format(os.path.dirname(__file__)))
+VECTOR_TILE_INFO_JSON_FILE_PATH_COPY = os.path.abspath(
+    "{0}/samples/vectortileservice.itemInfo.copy.json".format(os.path.dirname(__file__))
 )
 
 
@@ -73,6 +81,10 @@ def get_image_service(main_json_fp, info_json_fp):
 
 def get_vector_tile_sddraft(fp):
     return agsconfig.load_vector_tile_sddraft(fp)
+
+
+def get_vector_tile_service(main_json_fp, info_json_fp):
+    return agsconfig.load_vector_tile_service(main_json_fp, info_json_fp)
 
 
 @pytest.fixture(
@@ -135,11 +147,11 @@ def image_service_config(request):
         {
             "func": get_vector_tile_sddraft,
             "paths": [(VECTOR_TILE_SDDRAFT_FILE_PATH, VECTOR_TILE_SDDRAFT_FILE_PATH_COPY)]
-        }  #,
-        #{
-        #    "func": get_vector_tile_service,
-        #    "paths": [(VECTOR_TILE_MAIN_JSON_FILE_PATH, VECTOR_TILE_MAIN_JSON_FILE_PATH_COPY), (VECTOR_TILE_INFO_JSON_FILE_PATH, VECTOR_TILE_INFO_JSON_FILE_PATH_COPY)]
-        #}
+        },
+        {
+            "func": get_vector_tile_service,
+            "paths": [(VECTOR_TILE_MAIN_JSON_FILE_PATH, VECTOR_TILE_MAIN_JSON_FILE_PATH_COPY), (VECTOR_TILE_INFO_JSON_FILE_PATH, VECTOR_TILE_INFO_JSON_FILE_PATH_COPY)]
+        }
     ]
 )
 def vector_tile_service_config(request):

@@ -23,8 +23,8 @@
     "maxUploadFileSize": 0,
     "allowedUploadFileTypes": "",
     "properties": {
-     "outputDir": "\\\\file-uat.scs.local\\fileshare\\arcgis\\directories\\arcgisoutput",
-     "cacheDir": "\\\\file-uat.scs.local\\fileshare\\arcgis\\directories\\arcgiscache",
+     "outputDir": "\\\\server\\fileshare\\arcgis\\directories\\arcgisoutput",
+     "cacheDir": "\\\\server\\fileshare\\arcgis\\directories\\arcgiscache",
      "maxScale": "0",
      "maxRecordCount": "1000",
      "clientCachingAllowed": "true",

@@ -1,5 +1,5 @@
 # coding=utf-8
-"""This module contains the MapServer class for editing MapServer configuration pre or post publish"""
+"""This module contains extended mixins for classic cacheable services (i.e. map, image)."""
 
 # Python 2/3 compatibility
 # pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
@@ -13,28 +13,7 @@ install_aliases()
 from ..editing.edit_prop import EditorProperty
 
 
-class CacheableMixin(object):
-
-    cache_dir = EditorProperty(
-        {
-            "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.properties.cacheDir"
-                    }]
-                },
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'cacheDir']/Value"
-                        }
-                    ]
-                }
-            }
-        }
-    )
+class CacheableExtMixin(object):
 
     cache_on_demand = EditorProperty(
         {
@@ -53,50 +32,6 @@ class CacheableMixin(object):
                         {
                             "path":
                             "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'cacheOnDemand']/Value"
-                        }
-                    ],
-                    "conversions": [{
-                        "id": "boolToString"
-                    }]
-                }
-            }
-        }
-    )
-
-    client_caching_allowed = EditorProperty(
-        {
-            "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.properties.clientCachingAllowed"
-                    }],
-                    "conversions": [{
-                        "id": "boolToString"
-                    }]
-                },
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'clientCachingAllowed']/Value"
-                        }
-                    ],
-                    "conversions": [{
-                        "id": "boolToString"
-                    }]
-                }
-            }
-        }
-    )
-
-    keep_cache = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path": "./KeepExistingMapCache"
                         }
                     ],
                     "conversions": [{

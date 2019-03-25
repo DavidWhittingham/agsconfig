@@ -10,23 +10,35 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
+# Python lib imports
 import datetime
 import os.path
 
+# Third-party imports
 import pytest
 
-import agsconfig
+# Local imports
 from agsconfig.services.image_server import ImageServer
-from .helpers import image_service_config as imageserver
+
+# import fixtures
+from .helpers import image_service_config as service_config
+
+# import tests that should be applied to MapServer
+# pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-position
+from .service_base import *
+from .cacheable_core import *
+from .cacheable_ext import *
+from .image_dimensions import *
+# pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-position
 
 
-def test_load_service_config(imageserver):
+def test_load_service_config(service_config):
     # this just tests the fixture setup
     assert True
 
 
 @pytest.mark.parametrize(
-    ('attribute', 'expectedValue', 'exception'),
+    ('attribute', 'expected_value', 'exception'),
     [
         ('britney_spears', 'should cause an', AttributeError),  # because she isn't a member
         (
@@ -47,17 +59,14 @@ def test_load_service_config(imageserver):
             ], None
         ),
         ('cache_dir', 'cacheDir', None),
-        ('cache_on_demand', False, None),
         ('client_caching_allowed', True, None),
         ('credits', None, None),
         ('description', None, None),
-        ('export_tiles_allowed', False, None),
         ('folder', None, None),
         ('high_isolation', True, None),
         ('idle_timeout', 1800, None),
         ('instances_per_container', 1, None),
         ('keep_cache', False, None),
-        ('max_export_tiles_count', 100000, None),
         ('max_image_height', 4100, None),
         ('max_image_width', 15000, None),
         ('max_instances', 2, None),
@@ -73,20 +82,19 @@ def test_load_service_config(imageserver):
         ('tags', [], None),
         ('title', 'IMG.QldOrthoSecure_Gda94', None),
         ('usage_timeout', 600, None),
-        ('use_local_cache_dir', True, None),
         ('wait_timeout', 60, None)
     ]
 )
-def test_getters(imageserver, attribute, expectedValue, exception):
+def test_getters(service_config, attribute, expected_value, exception):
     if exception is not None:
         with pytest.raises(exception):
-            assert getattr(imageserver, attribute) == expectedValue
+            assert getattr(service_config, attribute) == expected_value
     else:
-        assert getattr(imageserver, attribute) == expectedValue
+        assert getattr(service_config, attribute) == expected_value
 
 
 @pytest.mark.parametrize(
-    ('attribute', 'newValue', 'exception'),
+    ('attribute', 'new_value', 'exception'),
     [
         ('britney_spears', 'should cause a', TypeError),  # because she isn't a member
         ('capabilities', [ImageServer.Capability.image], None),
@@ -96,17 +104,14 @@ def test_getters(imageserver, attribute, expectedValue, exception):
         ('access_information', "Access information", None),
         ('allowed_mosaic_methods', [ImageServer.MosaicMethod.north_west], None),
         ('cache_dir', 'a:/cache/dir', None),
-        ('cache_on_demand', True, None),
         ('client_caching_allowed', False, None),
         ('credits', 'Credits', None),
         ('description', "Description", None),
-        ('export_tiles_allowed', True, None),
         ('folder', "a:/folder", None),
         ('high_isolation', False, None),
         ('idle_timeout', 1200, None),
         ('instances_per_container', 2, None),
         ('keep_cache', True, None),
-        ('max_export_tiles_count', 10000, None),
         ('max_image_height', 410, None),
         ('max_image_width', 1500, None),
         ('max_instances', 2, None),
@@ -120,15 +125,14 @@ def test_getters(imageserver, attribute, expectedValue, exception):
         ('tags', ['blah'], None),
         ('title', 'SomeTitle', None),
         ('usage_timeout', 6000, None),
-        ('use_local_cache_dir', False, None),
         ('wait_timeout', 160, None)
     ]
 )
-def test_setters(imageserver, attribute, newValue, exception):
+def test_setters(service_config, attribute, new_value, exception):
     if exception is not None:
         with pytest.raises(exception):
-            setattr(imageserver, attribute, newValue)
-            assert getattr(imageserver, attribute) == newValue
+            setattr(service_config, attribute, new_value)
+            assert getattr(service_config, attribute) == new_value
     else:
-        setattr(imageserver, attribute, newValue)
-        assert getattr(imageserver, attribute) == newValue
+        setattr(service_config, attribute, new_value)
+        assert getattr(service_config, attribute) == new_value

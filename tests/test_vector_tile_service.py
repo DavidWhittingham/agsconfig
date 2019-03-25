@@ -10,21 +10,29 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
-import os.path
-
+# Third-party imports
 import pytest
 
+# Local imports
 import agsconfig
-from .helpers import vector_tile_service_config as vectortile
+
+# Fixture imports
+from .helpers import vector_tile_service_config as service_config
+
+# import tests that should be applied to MapServer
+# pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-position
+from .service_base import *
+from .cacheable_core import *
+# pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-position
 
 
-def test_load_service_config(vectortile):
+def test_load_service_config(service_config):
     # this just tests the fixture setup
     assert True
 
 
 @pytest.mark.parametrize(
-    ("attribute", "expectedValue", "exception"),
+    ("attribute", "expected_value", "exception"),
     [
         ("britney_spears", "should cause an", AttributeError),  # because she isn"t a member of vectortile
         ("portal_url", "https://uat-spatial.information.qld.gov.au/arcgis/", None),
@@ -37,10 +45,7 @@ def test_load_service_config(vectortile):
         ("service_folder", "Test2", None),
         ("supported_image_return_types", "MIME", None),
         ("max_record_count", 2000, None),
-        ("export_tiles_allowed", False, None),
-        ("max_export_tiles_count", 100000, None),
         ("cache_dir", None, None),
-        ("cache_on_demand", False, None),
         ("client_caching_allowed", True, None),
         ("antialiasing_mode", [agsconfig.VectorTileServer.AntiAliasingMode.fast], None),
         ("text_antialiasing_mode", "Force", None),
@@ -50,16 +55,16 @@ def test_load_service_config(vectortile):
         ("web_enabled", True, None)
     ]
 )
-def test_getters(vectortile, attribute, expectedValue, exception):
+def test_getters(service_config, attribute, expected_value, exception):
     if exception is not None:
         with pytest.raises(exception):
-            assert getattr(vectortile, attribute) == expectedValue
+            assert getattr(service_config, attribute) == expected_value
     else:
-        assert getattr(vectortile, attribute) == expectedValue
+        assert getattr(service_config, attribute) == expected_value
 
 
 @pytest.mark.parametrize(
-    ("attribute", "newValue", "exception"),
+    ("attribute", "new_value", "exception"),
     [
         ("britney_spears", "should cause a", TypeError),  # model_base prevents assignment of unknown members
         ("portal_url", "https://uat-spatial.information.qld.gov.au/arcgis/s", None),
@@ -72,10 +77,7 @@ def test_getters(vectortile, attribute, expectedValue, exception):
         ("service_folder", "Test1", None),
         ("supported_image_return_types", "xMIME", None),
         ("max_record_count", 4000, None),
-        ("export_tiles_allowed", False, None),
-        ("max_export_tiles_count", 10000, None),
         ("cache_dir", True, None),
-        ("cache_on_demand", True, None),
         ("client_caching_allowed", False, None),
         ("antialiasing_mode", "somevalue not in the enum", ValueError),
         ("antialiasing_mode", [agsconfig.VectorTileServer.AntiAliasingMode.best], None),
@@ -86,11 +88,11 @@ def test_getters(vectortile, attribute, expectedValue, exception):
         ("web_enabled", False, None)
     ]
 )
-def test_setters(vectortile, attribute, newValue, exception):
+def test_setters(service_config, attribute, new_value, exception):
     if exception is not None:
         with pytest.raises(exception):
-            setattr(vectortile, attribute, newValue)
-            assert getattr(vectortile, attribute) == newValue
+            setattr(service_config, attribute, new_value)
+            assert getattr(service_config, attribute) == new_value
     else:
-        setattr(vectortile, attribute, newValue)
-        assert getattr(vectortile, attribute) == newValue
+        setattr(service_config, attribute, new_value)
+        assert getattr(service_config, attribute) == new_value

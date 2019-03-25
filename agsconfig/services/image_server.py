@@ -12,7 +12,8 @@ install_aliases()
 
 from enum import Enum
 
-from .cacheable_mixin import CacheableMixin
+from .cacheable_core_mixin import CacheableCoreMixin
+from .cacheable_ext_mixin import CacheableExtMixin
 from .image_dimensions_mixin import ImageDimensionsMixin
 from .jpip_server_extension import JPIPServerExtension
 from .service_base import ServiceBase
@@ -21,7 +22,7 @@ from .wms_server_extension import WMSServerExtension
 from ..editing.edit_prop import EditorProperty
 
 
-class ImageServer(CacheableMixin, ImageDimensionsMixin, ServiceBase):
+class ImageServer(CacheableExtMixin, CacheableCoreMixin, ImageDimensionsMixin, ServiceBase):
 
     _jpip_server_extension = None
     _wcs_server_extension = None
