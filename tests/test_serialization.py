@@ -164,7 +164,8 @@ def test_serialize_time_to_string(value, conversion, expected, exception):
     ('value', 'expected', 'exception'),
     [
         (55063.00000000, False, None),
-        ({}, False, None)
+        ({}, False, None),
+        (True, True, None)
     ]
 )
 def test_value_to_boolean(value, expected, exception):
