@@ -69,6 +69,9 @@ class SDDraftEditor(EditorBase):
     def _create_child_elements(self, parent_element, path_info):
         new_element = ET.SubElement(parent_element, path_info["tag"], path_info.get("attributes", {}))
 
+        if "value" in path_info:
+            self._set_element_value(new_element, path_info["value"])
+
         if "children" in path_info:
             for child in path_info["children"]:
                 self._create_child_elements(new_element, child)
