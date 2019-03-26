@@ -49,6 +49,12 @@ def test_save(service_config):
     service_config.save()
     assert True
 
+def test_save_a_copy(service_config):
+    sddraft_file = "{0}/samples/mapservice.sddraft".format(os.path.dirname(__file__))
+    with open(sddraft_file, "rb+") as f:
+        draft = agsconfig.load_map_sddraft(f)
+    draft.save_a_copy(sddraft_file.replace('.sddraft', '.copy.sddraft'))
+    assert True
 
 @pytest.mark.parametrize(
     ("capabilities", "expected", "ex"),

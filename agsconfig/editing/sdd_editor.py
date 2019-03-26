@@ -62,7 +62,7 @@ class SDDraftEditor(EditorBase):
         self._xml_file.write(ET.tostring(self._xml_tree.getroot(), encoding="utf-8", pretty_print=True))
 
     def save_a_copy(self, path):
-        with open(path, "rb+") as file:
+        with open(path, "wb+") as file:
             file.write(ET.tostring(self._xml_tree.getroot(), encoding="utf-8", pretty_print=True))
 
     def _create_element(self, path_info):
