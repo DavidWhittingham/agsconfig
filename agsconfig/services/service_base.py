@@ -71,7 +71,9 @@ class ServiceBase(ModelBase):
                 "agsJson": {
                     "paths": [{
                         "document": "itemInfo",
-                        "path": "$.licenseInfo"
+                        "path": "$.licenseInfo",
+                        "parentPath": "$",
+                        "key": "licenseInfo"
                     }]
                 },
                 "sddraft": {
@@ -89,7 +91,9 @@ class ServiceBase(ModelBase):
                 "agsJson": {
                     "paths": [{
                         "document": "main",
-                        "path": "$.clusterName"
+                        "path": "$.clusterName",
+                        "parentPath": "$",
+                        "key": "clusterName"
                     }]
                 },
                 "sddraft": {
@@ -107,7 +111,9 @@ class ServiceBase(ModelBase):
                 "agsJson": {
                     "paths": [{
                         "document": "itemInfo",
-                        "path": "$.accessInformation"
+                        "path": "$.accessInformation",
+                        "parentPath": "$",
+                        "key": "accessInformation"
                     }]
                 },
                 "sddraft": {
@@ -126,10 +132,14 @@ class ServiceBase(ModelBase):
                     "paths":
                     [{
                         "document": "main",
-                        "path": "$.description"
+                        "path": "$.description",
+                        "parentPath": "$",
+                        "key": "description"
                     }, {
                         "document": "itemInfo",
-                        "path": "$.description"
+                        "path": "$.description",
+                        "parentPath": "$",
+                        "key": "description"
                     }]
                 },
                 "sddraft": {
@@ -451,7 +461,9 @@ class ServiceBase(ModelBase):
                 "agsJson": {
                     "paths": [{
                         "document": "itemInfo",
-                        "path": "$.snippet"
+                        "path": "$.snippet",
+                        "parentPath": "$",
+                        "key": "snippet"
                     }]
                 },
                 "sddraft": {
@@ -469,7 +481,9 @@ class ServiceBase(ModelBase):
                 "agsJson": {
                     "paths": [{
                         "document": "itemInfo",
-                        "path": "$.tags"
+                        "path": "$.tags",
+                        "parentPath": "$",
+                        "key": "tags"
                     }]
                 },
                 "sddraft": {
@@ -498,7 +512,9 @@ class ServiceBase(ModelBase):
                 "agsJson": {
                     "paths": [{
                         "document": "itemInfo",
-                        "path": "$.title"
+                        "path": "$.title",
+                        "parentPath": "$",
+                        "key": "title"
                     }]
                 },
                 "sddraft": {

@@ -10,12 +10,16 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
+# Python lib imports
+import io
 import os
 import shutil
 
+# Third-party imports
 import pytest
 from contextlib2 import ExitStack
 
+# Local imports
 import agsconfig
 
 TRUEISH_TEST_PARAMS = [
@@ -68,7 +72,12 @@ def get_map_sddraft(fp):
 
 
 def get_map_service(main_json_fp, info_json_fp):
-    return agsconfig.load_map_service(main_json_fp, info_json_fp)
+    # Reading files in and turning into binary file objects
+    # This is the most likely use case for editing this data (following on from requesting the REST objects from ArcGIS
+    # Server and having them in memory), so we need a test case that makes sure this works.
+    main_json_bin = main_json_fp.read()
+    info_json_bin = info_json_fp.read()
+    return agsconfig.load_map_service(io.BytesIO(main_json_bin), io.BytesIO(info_json_bin))
 
 
 def get_image_sddraft(fp):
@@ -122,11 +131,11 @@ def map_service_config(request):
         {
             "func": get_image_sddraft,
             "paths": [(IMAGE_SDDRAFT_FILE_PATH, IMAGE_SDDRAFT_FILE_PATH_COPY)]
-        }  #,
-        #{
-        #    "func": get_image_service,
-        #    "paths": [(IMAGE_MAIN_JSON_FILE_PATH, IMAGE_MAIN_JSON_FILE_PATH_COPY), (IMAGE_INFO_JSON_FILE_PATH, IMAGE_INFO_JSON_FILE_PATH_COPY)]
-        #}
+        },
+        {
+            "func": get_image_service,
+            "paths": [(IMAGE_MAIN_JSON_FILE_PATH, IMAGE_MAIN_JSON_FILE_PATH_COPY), (IMAGE_INFO_JSON_FILE_PATH, IMAGE_INFO_JSON_FILE_PATH_COPY)]
+        }
     ]
 )
 def image_service_config(request):

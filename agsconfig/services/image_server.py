@@ -87,7 +87,7 @@ class ImageServer(CacheableExtMixin, CacheableCoreMixin, ImageDimensionsMixin, S
                 "agsJson": {
                     "paths": [{
                         "document": "main",
-                        "path": "$.capabilities"
+                        "path": "$.properties.allowedMosaicMethods"
                     }],
                     "conversions": [{
                         "id": "enumToString",

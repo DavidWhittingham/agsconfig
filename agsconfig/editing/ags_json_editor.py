@@ -44,14 +44,43 @@ class AgsJsonEditor(EditorBase):
         self._overwrite_file(self._main_file, self._main)
         self._overwrite_file(self._item_info_file, self._item_info)
 
+    def _create_node(self, document, path_info):
+        """Creates a new node on the JSON document."""
+
+        parent_element = parse(path_info["parentPath"]).find(document)[0].value
+
+        self._create_child_nodes(parent_element, path_info)
+
+    def _create_child_nodes(self, parent_node, path_info):
+        """Recursively creates child nodes of a new parent node in a JSON document."""
+
+        parent_node[path_info["key"]] = None
+
+        if "children" in path_info:
+            new_node = {}
+            parent_node[path_info["key"]] = new_node
+            for child in path_info["children"]:
+                self._create_child_nodes(new_node, child)
+
     def _get_value(self, path_info):
         document = self._document_map.get(path_info["document"])
 
         # find value in document based on path
-        return parse(path_info["path"]).find(document)[0].value
+        values = parse(path_info["path"]).find(document)
+
+        if values:
+            return values[0].value
+
+        return None
 
     def _set_value(self, value, path_info):
         document = self._document_map.get(path_info["document"])
+
+        # check if node exists
+        if not parse(path_info["path"]).find(document):
+            # node does not exist, create
+            self._create_node(document, path_info)
+
         parse(path_info["path"]).update(document, value)
 
     @staticmethod
