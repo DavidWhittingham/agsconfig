@@ -76,7 +76,7 @@
             <ServiceFolder/>
             <DataFolder/>
             <Definition xsi:type='typens:SVCConfigurationDefinition'>
-                <Description/>
+                <Description>This is a description</Description>
                 <ConfigurationProperties xsi:type='typens:PropertySet'>
                     <PropertyArray xsi:type='typens:ArrayOfPropertySetProperty'>
                         <PropertySetProperty xsi:type='typens:PropertySetProperty'>
@@ -345,11 +345,11 @@
                         </PropertySetProperty>
                         <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                             <Key>recycleStartTime</Key>
-                            <Value xsi:type='xs:string'/>
+                            <Value xsi:type='xs:string'>00:00</Value>
                         </PropertySetProperty>
                         <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                             <Key>recycleInterval</Key>
-                            <Value xsi:type='xs:string'/>
+                            <Value xsi:type='xs:string'>24</Value>
                         </PropertySetProperty>
                     </PropertyArray>
                 </Props>
@@ -762,8 +762,8 @@
         <Type>Service Definition</Type>
         <TypeKeywords xsi:nil='true'/>
         <CatalogPath/>
-        <Title>IMG.QldOrthoSecure_Gda94</Title>
-        <Description/>
+        <Title>Example Image Service</Title>
+        <Description>This is a description</Description>
         <Snippet/>
         <SpatialReference xsi:type='typens:GeographicCoordinateSystem'>
             <WKT>GEOGCS[&quot;GCS_GDA_1994&quot;,DATUM[&quot;D_GDA_1994&quot;,SPHEROID[&quot;GRS_1980&quot;,6378137.0,298.257222101]],PRIMEM[&quot;Greenwich&quot;,0.0],UNIT[&quot;Degree&quot;,0.0174532925199433],AUTHORITY[&quot;EPSG&quot;,4283]]</WKT>
