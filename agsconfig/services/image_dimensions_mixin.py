@@ -28,6 +28,9 @@ class ImageDimensionsMixin(object):
                     "paths": [{
                         "document": "main",
                         "path": "$.properties.maxImageHeight"
+                    }],
+                    "conversions": [{
+                        "id": "numberToString"
                     }]
                 },
                 "sddraft": {
@@ -36,7 +39,10 @@ class ImageDimensionsMixin(object):
                             "path":
                             "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'MaxImageHeight']/Value"
                         }
-                    ]
+                    ],
+                    "conversions": [{
+                        "id": "numberToString"
+                    }]
                 }
             }
         }
@@ -54,6 +60,9 @@ class ImageDimensionsMixin(object):
                     "paths": [{
                         "document": "main",
                         "path": "$.properties.maxImageWidth"
+                    }],
+                    "conversions": [{
+                        "id": "numberToString"
                     }]
                 },
                 "sddraft": {
@@ -62,7 +71,10 @@ class ImageDimensionsMixin(object):
                             "path":
                             "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'MaxImageWidth']/Value"
                         }
-                    ]
+                    ],
+                    "conversions": [{
+                        "id": "numberToString"
+                    }]
                 }
             }
         }
