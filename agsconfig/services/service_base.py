@@ -62,6 +62,9 @@ class ServiceBase(ModelBase):
     def save(self):
         self._editor.save()
 
+    def save_a_copy(self, path):
+        self._editor.save_a_copy(path)
+
     access_information = EditorProperty(
         {
             "formats": {

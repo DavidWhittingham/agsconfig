@@ -52,11 +52,18 @@ class SDDraftEditor(EditorBase):
         )
 
     def save(self):
+        if self._xml_file.closed:
+            self._xml_file = open(self._xml_file.name, "rb+")
+
         self._xml_file.seek(0)
         self._xml_file.truncate()
 
         # explictly write it out to file as binary UTF-8
         self._xml_file.write(ET.tostring(self._xml_tree.getroot(), encoding="utf-8", pretty_print=True))
+
+    def save_a_copy(self, path):
+        with open(path, "rb+") as file:
+            file.write(ET.tostring(self._xml_tree.getroot(), encoding="utf-8", pretty_print=True))
 
     def _create_element(self, path_info):
         # get parent element
