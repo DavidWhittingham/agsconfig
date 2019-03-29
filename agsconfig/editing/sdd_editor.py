@@ -116,6 +116,13 @@ class SDDraftEditor(EditorBase):
         tag_name = conversion["tag"]
         attributes = conversion.get("attributes", {})
 
+        # A comma separated string
+        try:
+            if isinstance(value, str) and len(value.split(',')) > 1:
+                value = value.split(',')
+        except Exception:
+            pass
+        # Or a list
         elems = []
         for i in value:
             elem = ET.Element(tag_name, attributes)

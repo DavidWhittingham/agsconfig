@@ -69,6 +69,35 @@ class AgsJsonEditor(EditorBase):
         values = parse(path_info["path"]).find(document)
 
         if values:
+            # Return pythonic things for known types
+            try:
+                return int(values[0].value)
+            except (ValueError, TypeError):
+                pass
+
+            try:
+                return float(values[0].value)
+            except (ValueError, TypeError):
+                pass
+
+            try:
+                if values[0].value.upper() == "TRUE":
+                    return True
+            except AttributeError:
+                pass
+            
+            try:
+                if values[0].value.upper() == "FALSE":
+                    return False
+            except AttributeError:
+                pass
+
+            try:
+                if len(values[0].value.split(',')) > 1:
+                    return values[0].value.split(',')
+            except AttributeError:
+                pass
+
             return values[0].value
 
         return None

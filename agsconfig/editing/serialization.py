@@ -21,8 +21,12 @@ _TIME_STRING_REGEX = re.compile(r"^([0-9]{2}):([0-9]{2})$")
 
 
 def deserialize_csv_to_string_list(value, conversion, obj):
+    if isinstance(value, list):
+        return value
+
     if value is None or len(value) == 0:
         return []
+        
     return [val for val in value.split(",")]
 
 
@@ -158,8 +162,18 @@ def serialize_none_to_empty_string(value, conversion, obj):
 
 
 def serialize_string_list_to_csv(value, conversion, obj):
+    # Already a comma separated string
+    try:
+        if len(value.split(',')) > 1:
+            return value
+    except:
+        pass
+
+    # Empty string
     if len(value) == 0:
         return ""
+
+    # List of strings
     return ",".join(value)
 
 
