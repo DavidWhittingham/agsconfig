@@ -192,7 +192,7 @@
                         </PropertySetProperty>
                         <PropertySetProperty xsi:type="typens:PropertySetProperty">
                             <Key>cacheDir</Key>
-                            <Value xsi:type="xs:string"/>
+                            <Value xsi:type="xs:string">\\server\fileshare\arcgis\directories\arcgiscache</Value>
                         </PropertySetProperty>
                         <PropertySetProperty xsi:type="typens:PropertySetProperty">
                             <Key>cacheOnDemand</Key>
