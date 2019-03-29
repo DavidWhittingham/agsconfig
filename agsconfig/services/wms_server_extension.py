@@ -18,6 +18,7 @@ from .custom_get_capabilities_extension_mixin import CustomGetCapabilitiesExtens
 class WMSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensionMixin, ExtensionBase):
     """ WMS server extension properties for arcGIS services """
 
+
     class Capability(Enum):
         get_capabilities = "GetCapabilities"
         get_map = "GetMap"
@@ -53,6 +54,23 @@ class WMSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                             lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='pathToCustomSLDFile']/Value".format(extension_name)
                         }
                     ]
+                }
+            }
+        })
+
+    additional_spatial_ref_sys = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='ListSupportedCRS']/Value".format(extension_name)
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "stringToCsv"
+                    }]
                 }
             }
         })

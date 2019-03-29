@@ -146,3 +146,24 @@ class ImageServer(CacheableExtMixin, CacheableCoreMixin, ImageDimensionsMixin, S
             }
         }
     )
+
+    has_valid_sr = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.properties.hasValidSR"
+                    }]
+                },
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='HasValidSR']/Value"
+                        }
+                    ]
+                }
+            }
+        }
+    )
