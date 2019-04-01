@@ -18,4 +18,3 @@ class NAServerExtension(ExtensionBase):
 
     def __init__(self, editor):
         super().__init__(editor, "NAServer")
-

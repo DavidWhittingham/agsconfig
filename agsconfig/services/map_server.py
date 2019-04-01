@@ -29,7 +29,7 @@ from ..services.wms_server_extension import WMSServerExtension
 
 
 class MapServer(
-    MaxRecordCountMixin, OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDimensionsMixin, ServiceBase
+        MaxRecordCountMixin, OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDimensionsMixin, ServiceBase
 ):
     _feature_server_extension = None
     _kml_server_extension = None
@@ -37,7 +37,7 @@ class MapServer(
     _wfs_server_extension = None
     _wcs_server_extension = None
     _wms_server_extension = None
-    
+
 
     class AntiAliasingMode(Enum):
         none = "None"

@@ -33,7 +33,7 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     "paths": [
                         {
                             "path":
-                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='appSchemaURI']/Value".format(extension_name)
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='appSchemaURI']/Value".format(extension_name)
                         }
                     ]
                 }
@@ -47,7 +47,7 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     "paths": [
                         {
                             "path":
-                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='appSchemaPrefix']/Value".format(extension_name)
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='appSchemaPrefix']/Value".format(extension_name)
                         }
                     ]
                 }
@@ -61,7 +61,7 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     "paths": [
                         {
                             "path":
-                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='enableTransactions']/Value".format(extension_name)
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='enableTransactions']/Value".format(extension_name)
                         }
                     ]
                 }
@@ -75,7 +75,7 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     "paths": [
                         {
                             "path":
-                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='axisOrderWFS10']/Value".format(extension_name)
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='axisOrderWFS10']/Value".format(extension_name)
                         }
                     ],
                     "conversions": [{
@@ -95,7 +95,7 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     "paths": [
                         {
                             "path":
-                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='axisOrderWFS11']/Value".format(extension_name)
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='axisOrderWFS11']/Value".format(extension_name)
                         }
                     ],
                     "conversions": [{
@@ -115,7 +115,7 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     "paths": [
                         {
                             "path":
-                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='serviceType']/Value".format(extension_name)
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='serviceType']/Value".format(extension_name)
                         }
                     ]
                 }
@@ -129,7 +129,7 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     "paths": [
                         {
                             "path":
-                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='serviceTypeVersion']/Value".format(extension_name)
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='serviceTypeVersion']/Value".format(extension_name)
                         }
                     ]
                 }

@@ -26,7 +26,7 @@ class EditorProperty(object):
         self.meta = meta
 
     def __get__(self, obj, type=None):
-        if (obj is None):
+        if obj is None:
             # this is used to get the property metadata via the type, if needed
             return self
 
@@ -78,7 +78,7 @@ class EditorProperty(object):
         """Gets the name of the property a descriptor is assigned to."""
 
         # retrieved cached name if it exists
-        if self.name != None:
+        if self.name is not None:
             return self.name
 
         attributes = set()

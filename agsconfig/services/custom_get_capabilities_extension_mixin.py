@@ -22,7 +22,7 @@ class CustomGetCapabilitiesExtensionMixin(object):
                     "paths": [
                         {
                             "path":
-                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='customGetCapabilities']/Value".format(extension_name)
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='customGetCapabilities']/Value".format(extension_name)
                         }
                     ]
                 }
@@ -36,10 +36,9 @@ class CustomGetCapabilitiesExtensionMixin(object):
                     "paths": [
                         {
                             "path":
-                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='pathToCustomGetCapabilitiesFiles']/Value".format(extension_name)
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='pathToCustomGetCapabilitiesFiles']/Value".format(extension_name)
                         }
                     ]
                 }
             }
         })
-

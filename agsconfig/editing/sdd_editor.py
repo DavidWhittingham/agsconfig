@@ -1,3 +1,4 @@
+"""SDDRaftEditor is an object for changing ArcGIS server draft files."""
 # Python 2/3 compatibility
 from __future__ import (absolute_import, division, print_function, unicode_literals)
 from future.builtins import *
@@ -19,7 +20,7 @@ def get_element_value(element, default=None):
             return element
         return [get_element_value(v, default) for v in element]
 
-    if element == None or element.text == None:
+    if element is None or element.text is None:
         return default
     if element.text.upper() == "TRUE":
         return True
@@ -41,7 +42,7 @@ def get_element_value(element, default=None):
 
 
 class SDDraftEditor(EditorBase):
-
+    """Object for editing ArcGIS sddraft files."""
     def __init__(self, xml_file):
         self._xml_file = xml_file
         self._xml_tree = self._load_xml(xml_file)
@@ -86,7 +87,7 @@ class SDDraftEditor(EditorBase):
     def _get_value(self, path_info):
         element = self._xml_tree.find(path_info["path"])
 
-        if element != None and len(element) > 0:
+        if element is None and len(element) > 0:
             # element has children, return as iterable
             return element.getchildren()
 
@@ -106,7 +107,7 @@ class SDDraftEditor(EditorBase):
 
     @staticmethod
     def _deserialize_elements_to_list(value, conversion, obj):
-        if value == None or len(value) == 0:
+        if value is None or len(value) == 0:
             return []
 
         return [get_element_value(e) for e in value]
@@ -133,7 +134,7 @@ class SDDraftEditor(EditorBase):
 
     @staticmethod
     def _set_element_value(element, value, set_xsi_type=False, set_xsi_nil=False):
-        if value == None:
+        if value is None:
             element.text = None
 
             if set_xsi_nil:

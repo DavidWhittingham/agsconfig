@@ -67,8 +67,8 @@ VECTOR_TILE_INFO_JSON_FILE_PATH_COPY = os.path.abspath(
 )
 
 
-def get_map_sddraft(fp):
-    return agsconfig.load_map_sddraft(fp)
+def get_map_sddraft(file_path):
+    return agsconfig.load_map_sddraft(file_path)
 
 
 def get_map_service(main_json_fp, info_json_fp):
@@ -80,16 +80,16 @@ def get_map_service(main_json_fp, info_json_fp):
     return agsconfig.load_map_service(io.BytesIO(main_json_bin), io.BytesIO(info_json_bin))
 
 
-def get_image_sddraft(fp):
-    return agsconfig.load_image_sddraft(fp)
+def get_image_sddraft(file_path):
+    return agsconfig.load_image_sddraft(file_path)
 
 
 def get_image_service(main_json_fp, info_json_fp):
     return agsconfig.load_image_service(main_json_fp, info_json_fp)
 
 
-def get_vector_tile_sddraft(fp):
-    return agsconfig.load_vector_tile_sddraft(fp)
+def get_vector_tile_sddraft(file_path):
+    return agsconfig.load_vector_tile_sddraft(file_path)
 
 
 def get_vector_tile_service(main_json_fp, info_json_fp):
@@ -114,15 +114,15 @@ def get_vector_tile_service(main_json_fp, info_json_fp):
     ]
 )
 def map_service_config(request):
-    for p in request.param["paths"]:
-        shutil.copyfile(p[0], p[1])
+    for path in request.param["paths"]:
+        shutil.copyfile(path[0], path[1])
 
     with ExitStack() as stack:
-        files = [stack.enter_context(open(p[1], mode="rb+")) for p in request.param["paths"]]
+        files = [stack.enter_context(open(path[1], mode="rb+")) for path in request.param["paths"]]
         yield request.param["func"](*files)
 
-    for p in request.param["paths"]:
-        os.remove(p[1])
+    for path in request.param["paths"]:
+        os.remove(path[1])
 
 @pytest.fixture(
     scope="function",
@@ -149,15 +149,15 @@ def map_service_config(request):
     ]
 )
 def map_and_image_service_config(request):
-    for p in request.param["paths"]:
-        shutil.copyfile(p[0], p[1])
+    for path in request.param["paths"]:
+        shutil.copyfile(path[0], path[1])
 
     with ExitStack() as stack:
-        files = [stack.enter_context(open(p[1], mode="rb+")) for p in request.param["paths"]]
+        files = [stack.enter_context(open(path[1], mode="rb+")) for path in request.param["paths"]]
         yield request.param["func"](*files)
 
-    for p in request.param["paths"]:
-        os.remove(p[1])
+    for path in request.param["paths"]:
+        os.remove(path[1])
 
 
 @pytest.fixture(
@@ -174,15 +174,15 @@ def map_and_image_service_config(request):
     ]
 )
 def image_service_config(request):
-    for p in request.param["paths"]:
-        shutil.copyfile(p[0], p[1])
+    for path in request.param["paths"]:
+        shutil.copyfile(path[0], path[1])
 
     with ExitStack() as stack:
-        files = [stack.enter_context(open(p[1], mode="rb+")) for p in request.param["paths"]]
+        files = [stack.enter_context(open(path[1], mode="rb+")) for path in request.param["paths"]]
         yield request.param["func"](*files)
 
-    for p in request.param["paths"]:
-        os.remove(p[1])
+    for path in request.param["paths"]:
+        os.remove(path[1])
 
 
 @pytest.fixture(
@@ -199,12 +199,12 @@ def image_service_config(request):
     ]
 )
 def vector_tile_service_config(request):
-    for p in request.param["paths"]:
-        shutil.copyfile(p[0], p[1])
+    for path in request.param["paths"]:
+        shutil.copyfile(path[0], path[1])
 
     with ExitStack() as stack:
-        files = [stack.enter_context(open(p[1], mode="rb+")) for p in request.param["paths"]]
+        files = [stack.enter_context(open(path[1], mode="rb+")) for path in request.param["paths"]]
         yield request.param["func"](*files)
 
-    for p in request.param["paths"]:
-        os.remove(p[1])
+    for path in request.param["paths"]:
+        os.remove(path[1])

@@ -52,7 +52,7 @@ class ServiceBase(ModelBase):
 
     def __init__(self, editor):
         """Initilises the class.
-        
+
         Args:
             editor: An editor object that will receive metadata about each property
         """

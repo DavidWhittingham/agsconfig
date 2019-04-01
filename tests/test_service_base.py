@@ -82,7 +82,7 @@ def test_high_isolation(service_config, high_isolation, expected):
     (-10, ValueError)
 ])
 def test_idle_timeout(service_config, timeout, ex):
-    if ex != None:
+    if ex is not None:
         with pytest.raises(ex):
             service_config.idle_timeout = timeout
     else:
@@ -114,7 +114,7 @@ def test_instances_per_container(service_config, instances):
     (5, 2, 2, 2, None)
 ])
 def test_instances_counts(service_config, min_number, max_number, exp_min, exp_max, ex):
-    if (ex != None):
+    if ex is not None:
         with pytest.raises(ex):
             service_config.min_instances = min_number
             service_config.max_instances = max_number
@@ -128,7 +128,7 @@ def test_instances_counts(service_config, min_number, max_number, exp_min, exp_m
     ("TestName", None), ("", ValueError)
 ])
 def test_name(service_config, name, ex):
-    if ex != None:
+    if ex is not None:
         with pytest.raises(ex):
             service_config.name = name
     else:
@@ -143,7 +143,7 @@ def test_name(service_config, name, ex):
     (None, 24, None)
 ])
 def test_recycle_interval(service_config, interval, expected, exception):
-    if exception != None:
+    if exception is not None:
         with pytest.raises(exception):
             service_config.recycle_interval = interval
     else:
@@ -156,7 +156,7 @@ def test_recycle_interval(service_config, interval, expected, exception):
     ("nonsense", None, ValueError)
 ])
 def test_recycle_start_time(service_config, input, expected, ex):
-    if ex != None:
+    if ex is not None:
         with pytest.raises(ex):
             service_config.recycle_start_time = input
     else:
@@ -181,7 +181,7 @@ def test_summary(service_config, summary):
     (["Multiple", "Tags"], ["Multiple", "Tags"], None)
 ])
 def test_tags(service_config, tags, expected, ex):
-    if ex != None:
+    if ex is not None:
         with pytest.raises(ex):
             service_config.tags = tags
     else:
@@ -194,7 +194,7 @@ def test_tags(service_config, tags, expected, ex):
     ("", None)
 ])
 def test_title(service_config, title, ex):
-    if ex != None:
+    if ex is not None:
         with pytest.raises(ex):
             service_config.title = title
     else:
@@ -208,7 +208,7 @@ def test_title(service_config, title, ex):
     (-10, ValueError)
 ])
 def test_usage_timeout(service_config, timeout, ex):
-    if ex != None:
+    if ex is not None:
         with pytest.raises(ex):
             service_config.usage_timeout = timeout
     else:
@@ -222,7 +222,7 @@ def test_usage_timeout(service_config, timeout, ex):
     (-10, ValueError)
 ])
 def test_wait_timeout(service_config, timeout, ex):
-    if ex != None:
+    if ex is not None:
         with pytest.raises(ex):
             service_config.wait_timeout = timeout
     else:

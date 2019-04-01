@@ -49,7 +49,7 @@ def test_save_a_copy(service_config):
     ]
 )  # yapf: disable
 def test_capabilities(service_config, capabilities, expected, ex):
-    if ex != None:
+    if ex is not None:
         with pytest.raises(ex):
             service_config.capabilities = capabilities
     else:

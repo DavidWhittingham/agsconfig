@@ -19,7 +19,7 @@ from . import serialization
 
 
 class EditorBase(object):
-
+    """ Base class for implementing ArcGIS service configuration editors."""
     __metaclass__ = ABCMeta
     _format_id = None
     _deserialization_func_map = None
@@ -37,7 +37,7 @@ class EditorBase(object):
             "timeToString": serialization.deserialize_string_to_time
         }
 
-        if deserialization_func_map != None:
+        if deserialization_func_map is not None:
             self._deserialization_func_map.update(deserialization_func_map)
 
         self._serialization_func_map = {
@@ -49,7 +49,7 @@ class EditorBase(object):
             "timeToString": serialization.serialize_time_to_string
         }
 
-        if serialization_func_map != None:
+        if serialization_func_map is not None:
             self._serialization_func_map.update(serialization_func_map)
 
     def get_value(self, meta, obj):

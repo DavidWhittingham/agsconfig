@@ -56,7 +56,7 @@ class ExtensionBase(ModelBase):
                     "paths": [
                         {
                             "path":
-                            lambda extension_name, _web_capabilities_key : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Info/PropertyArray/PropertySetProperty[Key='{1}']/Value".format(extension_name, _web_capabilities_key)
+                            lambda extension_name, _web_capabilities_key: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Info/PropertyArray/PropertySetProperty[Key='{1}']/Value".format(extension_name, _web_capabilities_key)
                         }
                     ],
                     "conversions": [{

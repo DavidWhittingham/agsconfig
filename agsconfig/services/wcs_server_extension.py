@@ -9,7 +9,6 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
-from enum import Enum
 from .extension_base import ExtensionBase
 from .ogc_metadata_extension_mixin import OGCMetadataExtensionMixin
 from .custom_get_capabilities_extension_mixin import CustomGetCapabilitiesExtensionMixin
@@ -21,4 +20,3 @@ class WCSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
 
     def __init__(self, editor):
         super().__init__(editor, "WCSServer")
-
