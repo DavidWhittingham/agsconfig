@@ -65,7 +65,7 @@ class EditorBase(object):
     @abstractmethod
     def save(self):
         """Save the current state of the edited config back to the input file object.
-        
+
         Completely abstract function that is editor implementation specific.
         """
 

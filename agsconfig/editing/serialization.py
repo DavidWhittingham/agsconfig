@@ -26,7 +26,7 @@ def deserialize_csv_to_string_list(value, conversion, obj):
 
     if value is None or len(value) == 0:
         return []
-        
+
     return [val for val in value.split(",")]
 
 
@@ -92,6 +92,11 @@ def deserialize_string_to_number(value, conversion, obj):
 
         return [deserialize_string_to_number(v, conversion, obj) for v in value]
 
+    # If we already have a number
+    if isinstance(value, (float, int)):
+        return value
+
+    # Or conver strings
     try:
         return int(value)
     except ValueError:

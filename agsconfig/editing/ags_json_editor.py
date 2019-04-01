@@ -71,12 +71,13 @@ class AgsJsonEditor(EditorBase):
         if values:
             # Return pythonic things for known types
             try:
-                return int(values[0].value)
+                return float(values[0].value)
             except (ValueError, TypeError):
+
                 pass
 
             try:
-                return float(values[0].value)
+                return int(values[0].value)
             except (ValueError, TypeError):
                 pass
 
@@ -85,7 +86,7 @@ class AgsJsonEditor(EditorBase):
                     return True
             except AttributeError:
                 pass
-            
+
             try:
                 if values[0].value.upper() == "FALSE":
                     return False
