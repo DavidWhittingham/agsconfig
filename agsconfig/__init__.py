@@ -8,3 +8,7 @@ from .agsconfig import (load_geocode_sddraft, load_image_sddraft, load_image_ser
 from .services.map_server import MapServer
 from .services.vector_tile_server import VectorTileServer, VectorTileServerExtension
 from .services.image_server import ImageServer
+from .services.wms_server_extension import WMSServerExtension
+from .services.wfs_server_extension import WFSServerExtension
+from .services.kml_server_extension import KmlServerExtension
+from .services.feature_server_extension import FeatureServerExtension
