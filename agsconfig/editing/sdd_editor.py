@@ -87,7 +87,7 @@ class SDDraftEditor(EditorBase):
     def _get_value(self, path_info):
         element = self._xml_tree.find(path_info["path"])
 
-        if element is None and len(element) > 0:
+        if element is not None and len(element) > 0:
             # element has children, return as iterable
             return element.getchildren()
 
