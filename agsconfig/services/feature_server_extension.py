@@ -26,6 +26,8 @@ class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExt
         query = "Query"
         sync = "Sync"
         update = "Update"
+        uploads = "Uploads"
+        editing = "Editing"
 
     def __init__(self, editor):
         super().__init__(editor, "FeatureServer")
