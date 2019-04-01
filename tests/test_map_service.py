@@ -11,32 +11,14 @@ install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
 import os.path
-import shutil
 
 import pytest
 from contextlib2 import ExitStack
 
 import agsconfig
 
-# Import shared fixtures
-# pylint: disable=unused-import
-from .helpers import map_service_config as service_config
-# pylint: enable=unused-import
 
-# import tests that should be applied to MapServer
-# pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-position
-from .service_base import *
-from .cacheable_core import *
-from .cacheable_ext import *
-from .feature_server_extension import *
-from .kml_server_extension import *
-from .image_dimensions import *
-from .max_record_count import *
-from .na_server_extension import *
-from .output_dir import *
-from .wcs_server_extension import *
-from .wfs_server_extension import *
-from .wms_server_extension import *
+from .helpers import map_service_config as service_config
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-position
 
 

@@ -11,7 +11,7 @@ install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
 import pytest
-
+from .helpers import map_service_config as service_config
 
 @pytest.mark.parametrize(
     ("output_dir", "ex"),

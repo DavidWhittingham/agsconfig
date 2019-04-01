@@ -15,6 +15,7 @@ import datetime
 import pytest
 
 from .helpers import TRUEISH_TEST_PARAMS
+from .helpers import map_and_image_service_config as service_config
 
 SCALES = [
     (1.1, 1.1),
@@ -23,7 +24,8 @@ SCALES = [
 
 @pytest.mark.parametrize(("access_information"), [
     ("This is a test description"),
-    ("This is a much longer test description, it should still work\nIt includes line breaks, we'll see how they go."),
+    ("This is a much longer test description. It should still work\nIt includes line breaks. We'll see how they go."),
+    ("These long descriptions cannot contain commas."),
     ("")
 ])
 def test_access_information(service_config, access_information):
@@ -48,7 +50,7 @@ def test_credits(service_config, credit_text, expected):
 
 @pytest.mark.parametrize(("description"), [
     ("This is a test description"),
-    ("This is a much longer test description, it should still work\nIt includes line breaks, we'll see how they go."),
+    ("This is a much longer test description. It should still work\nIt includes line breaks. We'll see how they go."),
     ("")
 ])
 def test_description(service_config, description):
@@ -61,7 +63,7 @@ def test_description(service_config, description):
     (None, None, None)
 ])
 def test_folder(service_config, folder, expected, ex):
-    if ex != None:
+    if ex is not None:
         with pytest.raises(ex):
             service_config.folder = folder
     else:
@@ -188,7 +190,7 @@ def test_tags(service_config, tags, expected, ex):
 
 @pytest.mark.parametrize(("title", "ex"), [
     ("This is a title", None),
-    ("This is a much longer title, it should still work\nIt includes line breaks, we'll see how they go.", None),
+    ("This is a much longer title. It should still work\nIt includes line breaks. We'll see how they go.", None),
     ("", None)
 ])
 def test_title(service_config, title, ex):

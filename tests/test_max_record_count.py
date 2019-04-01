@@ -12,6 +12,7 @@ install_aliases()
 
 
 import pytest
+from .helpers import map_service_config as service_config
 
 @pytest.mark.parametrize(("number", "ex"), [
     (-1, ValueError),
@@ -20,7 +21,7 @@ import pytest
     (8000, None)
 ])
 def test_max_record_count(service_config, number, ex):
-    if (ex != None):
+    if ex is not None:
         with pytest.raises(ex):
             service_config.max_record_count = number
     else:

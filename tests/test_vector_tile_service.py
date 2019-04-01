@@ -19,13 +19,6 @@ import agsconfig
 # Fixture imports
 from .helpers import vector_tile_service_config as service_config
 
-# import tests that should be applied to MapServer
-# pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-position
-from .service_base import *
-from .cacheable_core import *
-from .vector_tile_server_extension import *
-# pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-position
-
 
 def test_load_service_config(service_config):
     # this just tests the fixture setup
@@ -46,14 +39,15 @@ def test_load_service_config(service_config):
         ("service_folder", "Test2", None),
         ("supported_image_return_types", "MIME", None),
         ("max_record_count", 2000, None),
-        ("cache_dir", None, None),
+        ("cache_dir", "\\\\server\\fileshare\\arcgis\\directories\\arcgiscache", None),
         ("client_caching_allowed", True, None),
         ("antialiasing_mode", [agsconfig.VectorTileServer.AntiAliasingMode.fast], None),
         ("text_antialiasing_mode", "Force", None),
         ("is_cached", True, None),
         ("tiling_scheme", 0, None),
         ("ignore_cache", False, None),
-        ("web_enabled", True, None)
+        ("web_enabled", True, None),
+        ("tags", ["tag"], None)
     ]
 )
 def test_getters(service_config, attribute, expected_value, exception):
@@ -65,35 +59,46 @@ def test_getters(service_config, attribute, expected_value, exception):
 
 
 @pytest.mark.parametrize(
-    ("attribute", "new_value", "exception"),
+    ("attribute", "new_value", "expected", "exception"),
     [
-        ("britney_spears", "should cause a", TypeError),  # model_base prevents assignment of unknown members
-        ("portal_url", "https://uat-spatial.information.qld.gov.au/arcgis/s", None),
-        ("title", "TestVectorTiles", None),
-        ("keep_existing_data", True, None),
-        ("keep_cache", True, None),
-        ("cluster", "defaultx", None),
-        ("name", "TestVectorTilex", None),
-        ("type_name", "VectorTileServerx", None),
-        ("service_folder", "Test1", None),
-        ("supported_image_return_types", "xMIME", None),
-        ("max_record_count", 4000, None),
-        ("cache_dir", True, None),
-        ("client_caching_allowed", False, None),
-        ("antialiasing_mode", "somevalue not in the enum", ValueError),
-        ("antialiasing_mode", [agsconfig.VectorTileServer.AntiAliasingMode.best], None),
-        ("text_antialiasing_mode", "Unknown", None),
-        ("is_cached", False, None),
-        ("tiling_scheme", 1, None),
-        ("ignore_cache", True, None),
-        ("web_enabled", False, None)
+        ("britney_spears", "should cause a", None, TypeError),  # model_base prevents assignment of unknown members
+        ("portal_url", 
+         "https://uat-spatial.information.qld.gov.au/arcgis/s",
+         "https://uat-spatial.information.qld.gov.au/arcgis/s",
+          None),
+        ("title", "TestVectorTiles", "TestVectorTiles", None),
+        ("keep_existing_data", True, True, None),
+        ("keep_cache", True, True, None),
+        ("cluster", "defaultx", "defaultx", None),
+        ("name", "TestVectorTilex", "TestVectorTilex", None),
+        ("type_name", "VectorTileServerx", "VectorTileServerx", None),
+        ("service_folder", "Test1", "Test1", None),
+        ("supported_image_return_types", "xMIME", "xMIME", None),
+        ("max_record_count", 4000, 4000, None),
+        ("cache_dir", True, True, None),
+        ("client_caching_allowed", False, False, None),
+        ("antialiasing_mode", "somevalue not in the enum", None, ValueError),
+        ("antialiasing_mode", 
+         [agsconfig.VectorTileServer.AntiAliasingMode.best],
+         [agsconfig.VectorTileServer.AntiAliasingMode.best],
+         None),
+        ("antialiasing_mode",
+         ['Fastest'],
+         [agsconfig.VectorTileServer.AntiAliasingMode.fastest],
+         None),
+        ("text_antialiasing_mode", "Unknown", "Unknown", None),
+        ("is_cached", False, False, None),
+        ("tiling_scheme", 1, 1, None),
+        ("ignore_cache", True, True, None),
+        ("web_enabled", False, False, None),
+        ("tags", "tags,more tags", ['tags', 'more tags'], None)
     ]
 )
-def test_setters(service_config, attribute, new_value, exception):
+def test_setters(service_config, attribute, new_value, expected, exception):
     if exception is not None:
         with pytest.raises(exception):
             setattr(service_config, attribute, new_value)
-            assert getattr(service_config, attribute) == new_value
+            assert getattr(service_config, attribute) == expected
     else:
         setattr(service_config, attribute, new_value)
-        assert getattr(service_config, attribute) == new_value
+        assert getattr(service_config, attribute) == expected

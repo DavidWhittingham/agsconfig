@@ -11,15 +11,12 @@ install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
 import pytest
+# import fixtures
+from .helpers import image_service_config as service_config
 
 @pytest.fixture(scope = "function")
 def service_extension(service_config):
     return service_config.wcs_server
-
-# import tests that should be applied to MapServer
-# pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-position
-from .ogc_metadata_extension_mixin import *
-# pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-position
 
 
 @pytest.mark.parametrize(

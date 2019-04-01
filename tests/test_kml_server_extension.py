@@ -12,7 +12,7 @@ install_aliases()
 
 # Third-party imports
 import pytest
-
+from .helpers import map_service_config
 # Local imports
 from agsconfig.services.kml_server_extension import KmlServerExtension as kml
 
@@ -35,12 +35,12 @@ from agsconfig.services.kml_server_extension import KmlServerExtension as kml
         ('use_network_link_control_tag', 0, None)
     ]
 )
-def test_kml_getters(service_config, attribute, expectedValue, exception):
+def test_kml_getters(map_service_config, attribute, expectedValue, exception):
     if exception is not None:
         with pytest.raises(exception):
-            assert getattr(service_config.kml_server, attribute) == expectedValue
+            assert getattr(map_service_config.kml_server, attribute) == expectedValue
     else:
-        assert getattr(service_config.kml_server, attribute) == expectedValue
+        assert getattr(map_service_config.kml_server, attribute) == expectedValue
 
 
 @pytest.mark.parametrize(
@@ -61,11 +61,11 @@ def test_kml_getters(service_config, attribute, expectedValue, exception):
         ('use_network_link_control_tag', 10, None)
     ]
 )
-def test_kml_setters(service_config, attribute, new_value, exception):
+def test_kml_setters(map_service_config, attribute, new_value, exception):
     if exception is not None:
         with pytest.raises(exception):
-            setattr(service_config.kml_server, attribute, new_value)
-            assert getattr(service_config.kml_server, attribute) == new_value
+            setattr(map_service_config.kml_server, attribute, new_value)
+            assert getattr(map_service_config.kml_server, attribute) == new_value
     else:
-        setattr(service_config.kml_server, attribute, new_value)
-        assert getattr(service_config.kml_server, attribute) == new_value
+        setattr(map_service_config.kml_server, attribute, new_value)
+        assert getattr(map_service_config.kml_server, attribute) == new_value

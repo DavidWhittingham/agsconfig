@@ -124,6 +124,41 @@ def map_service_config(request):
     for p in request.param["paths"]:
         os.remove(p[1])
 
+@pytest.fixture(
+    scope="function",
+    params=[
+        {
+            "func": get_map_sddraft,
+            "paths": [(MAP_SDDRAFT_FILE_PATH, MAP_SDDRAFT_FILE_PATH_COPY)]
+        },
+        {
+            "func": get_map_service,
+            "paths": [
+                (MAP_MAIN_JSON_FILE_PATH, MAP_MAIN_JSON_FILE_PATH_COPY),
+                (MAP_INFO_JSON_FILE_PATH, MAP_INFO_JSON_FILE_PATH_COPY)
+            ]
+        },
+        {
+            "func": get_image_sddraft,
+            "paths": [(IMAGE_SDDRAFT_FILE_PATH, IMAGE_SDDRAFT_FILE_PATH_COPY)]
+        },
+        {
+            "func": get_image_service,
+            "paths": [(IMAGE_MAIN_JSON_FILE_PATH, IMAGE_MAIN_JSON_FILE_PATH_COPY), (IMAGE_INFO_JSON_FILE_PATH, IMAGE_INFO_JSON_FILE_PATH_COPY)]
+        }
+    ]
+)
+def map_and_image_service_config(request):
+    for p in request.param["paths"]:
+        shutil.copyfile(p[0], p[1])
+
+    with ExitStack() as stack:
+        files = [stack.enter_context(open(p[1], mode="rb+")) for p in request.param["paths"]]
+        yield request.param["func"](*files)
+
+    for p in request.param["paths"]:
+        os.remove(p[1])
+
 
 @pytest.fixture(
     scope="function",

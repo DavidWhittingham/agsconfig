@@ -15,7 +15,7 @@ import pytest
 
 # Local imports
 import agsconfig
-
+from .helpers import vector_tile_service_config as service_config
 
 @pytest.mark.parametrize(
     ("attribute", "expectedValue", "exception"), [

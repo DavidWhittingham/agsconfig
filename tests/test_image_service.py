@@ -22,17 +22,6 @@ from agsconfig.services.image_server import ImageServer
 # import fixtures
 from .helpers import image_service_config as service_config
 
-# import tests that should be applied to MapServer
-# pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-position
-from .service_base import *
-from .cacheable_core import *
-from .cacheable_ext import *
-from .image_dimensions import *
-from .jpip_server_extension import *
-from .wcs_server_extension import *
-from .wms_server_extension import *
-# pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-position
-
 
 def test_load_service_config(service_config):
     # this just tests the fixture setup
@@ -72,11 +61,8 @@ def test_load_service_config(service_config):
         ("max_image_height", 4100, None),
         ("max_image_width", 15000, None),
         ("max_instances", 2, None),
-        ("max_scale", -1, None),
         ("min_instances", 1, None),
-        ("min_scale", -1, None),
         ("min_instances", 1, None),
-        ("min_scale", -1, None),
         ("name", "ExampleImageService", None),
         ("recycle_interval", 24, None),
         ("recycle_start_time", datetime.time(0, 0), None),
@@ -84,7 +70,8 @@ def test_load_service_config(service_config):
         ("tags", [], None),
         ("title", "Example Image Service", None),
         ("usage_timeout", 600, None),
-        ("wait_timeout", 60, None)
+        ("wait_timeout", 60, None),
+        ("has_valid_sr", True, None)
     ]
 )
 def test_getters(service_config, attribute, expected_value, exception):
@@ -127,7 +114,8 @@ def test_getters(service_config, attribute, expected_value, exception):
         ("tags", ["blah"], None),
         ("title", "SomeTitle", None),
         ("usage_timeout", 6000, None),
-        ("wait_timeout", 160, None)
+        ("wait_timeout", 160, None),
+        ("has_valid_sr", False, None)
     ]
 )
 def test_setters(service_config, attribute, new_value, exception):

@@ -15,6 +15,7 @@ import pytest
 
 # Local imports
 from .helpers import TRUEISH_TEST_PARAMS
+from .helpers import map_service_config as service_config
 
 @pytest.mark.parametrize(("allow_geometry_updates", "expected"), TRUEISH_TEST_PARAMS)
 def test_allow_geometry_updates(service_config, allow_geometry_updates, expected):
