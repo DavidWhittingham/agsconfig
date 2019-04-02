@@ -52,25 +52,33 @@ def test_getters(service_config, attribute, expected_value, exception):
 
 
 @pytest.mark.parametrize(
-    ('attribute', 'new_value', 'exception'),
+    ('attribute', 'new_value', 'expected_value', 'exception'),
     [
-        ('britney_spears', 'should cause a', TypeError),  # because she isn't a member
-        ('allow_others_to_delete', True, None),
-        ('allow_others_to_query', False, None),
-        ('allow_others_to_update', True, None),
-        ('allow_true_curves_updates', True, None),
-        ('enable_ownership_based_access_control', True, None),
-        ('enable_z_defaults', True, None),
-        ('max_record_count', 100, None),
-        ('realm', 'realm', None),
-        ('z_default_value', 100, None)
+        ('britney_spears', 'should cause a', None, TypeError),  # because she isn't a member
+        ('allow_others_to_delete', True, True, None),
+        ('allow_others_to_query', False, False, None),
+        ('allow_others_to_update', True, True, None),
+        ('allow_true_curves_updates', True, True, None),
+        ('enable_ownership_based_access_control', True, True, None),
+        ('enable_z_defaults', True, True, None),
+        ('max_record_count', 100, 100, None),
+        ('max_record_count', "1000", 1000, None),
+        ('max_record_count', -1000, None, ValueError),
+        ('realm', 'realm', 'realm', None),
+        ('z_default_value', 100, 100, None),
+        ('z_default_value', '200', 200, None),
+        ('z_default_value', 'xyz', None, ValueError),
+        ('z_default_value', 128.234569871, 128.234569871, None)
     ]
 )
-def test_setters(service_config, attribute, new_value, exception):
+def test_setters(service_config, attribute, new_value, expected_value, exception):
     if exception is not None:
         with pytest.raises(exception):
             setattr(service_config.feature_server, attribute, new_value)
-            assert getattr(service_config.feature_server, attribute) == new_value
     else:
         setattr(service_config.feature_server, attribute, new_value)
-        assert getattr(service_config.feature_server, attribute) == new_value
+        assert getattr(service_config.feature_server, attribute) == expected_value
+
+def test_setter(service_config):
+    service_config.feature_server.max_record_count = "10000"
+    assert service_config.feature_server.max_record_count == 10000

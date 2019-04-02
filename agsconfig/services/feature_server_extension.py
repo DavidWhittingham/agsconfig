@@ -69,6 +69,11 @@ class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExt
                             "path":
                             lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='allowOthersToDelete']/Value".format(extension_name)
                         }
+                    ],
+                    "conversions": [
+                        {
+                            "id": "boolToString"
+                        }
                     ]
                 }
             }
@@ -82,6 +87,11 @@ class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExt
                         {
                             "path":
                             lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='allowOthersToQuery']/Value".format(extension_name)
+                        }
+                    ],
+                    "conversions": [
+                        {
+                            "id": "boolToString"
                         }
                     ]
                 }
@@ -97,6 +107,11 @@ class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExt
                             "path":
                             lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='allowOthersToUpdate']/Value".format(extension_name)
                         }
+                    ],
+                    "conversions": [
+                        {
+                            "id": "boolToString"
+                        }
                     ]
                 }
             }
@@ -110,6 +125,11 @@ class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExt
                         {
                             "path":
                             lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='allowTrueCurvesUpdates']/Value".format(extension_name)
+                        }
+                    ],
+                    "conversions": [
+                        {
+                            "id": "boolToString"
                         }
                     ]
                 }
@@ -125,6 +145,11 @@ class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExt
                             "path":
                             lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='enableOwnershipBasedAccessControl']/Value".format(extension_name)
                         }
+                    ],
+                    "conversions": [
+                        {
+                            "id": "boolToString"
+                        }
                     ]
                 }
             }
@@ -139,6 +164,11 @@ class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExt
                             "path":
                             lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='enableZDefaults']/Value".format(extension_name)
                         }
+                    ],
+                    "conversions": [
+                        {
+                            "id": "boolToString"
+                        }
                     ]
                 }
             }
@@ -146,12 +176,21 @@ class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExt
 
     max_record_count = EditorProperty(
         {
+            "constraints": {
+                "int": True,
+                "min": 0
+            },
             "formats": {
                 "sddraft": {
                     "paths": [
                         {
                             "path":
                             lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='maxRecordCount']/Value".format(extension_name)
+                        }
+                    ],
+                    "conversions": [
+                        {
+                            "id": "numberToString"
                         }
                     ]
                 }
@@ -180,6 +219,11 @@ class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExt
                         {
                             "path":
                             lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='zDefaultValue']/Value".format(extension_name)
+                        }
+                    ],
+                    "conversions": [
+                        {
+                            "id": "numberToString"
                         }
                     ]
                 }
