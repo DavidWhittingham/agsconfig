@@ -96,7 +96,7 @@ def deserialize_string_to_number(value, conversion, obj):
     if isinstance(value, (float, int)):
         return value
 
-    # Or conver strings
+    # Or convert strings
     try:
         return int(value)
     except ValueError:
@@ -146,13 +146,23 @@ def serialize_enum_to_string(value, conversion, obj):
 
 
 def serialize_number_to_string(value, conversion, obj):
-    # check if value is a list
+    # Check if value is a list
     if isinstance(value, Sequence) and not isinstance(value, str):
         if len(value) == 0:
             return value
 
         return [serialize_number_to_string(item, conversion, obj) for item in value]
 
+    # Already a string
+    elif isinstance(value, str):
+        # Check that its a number
+        try:
+            if float(value):
+                return value
+        except ValueError:
+            raise ValueError
+
+    # Number. Return a string.
     return str(repr(value))
 
 
