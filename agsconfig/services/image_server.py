@@ -114,6 +114,39 @@ class ImageServer(CacheableExtMixin, CacheableCoreMixin, ImageDimensionsMixin, S
         }
     )
 
+    allowed_compressions = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.properties.allowedCompressionMethods"
+                    }],
+                    "conversions": [{
+                        "id": "enumToString",
+                        "enum": "CompressionMethod"
+                    }, {
+                        "id": "stringToCsv"
+                    }]
+                },
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='AllowedCompressions']/Value"
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "enumToString",
+                        "enum": "CompressionMethod"
+                    }, {
+                        "id": "stringToCsv"
+                    }]
+                }
+            }
+        }
+    )
+
     capabilities = EditorProperty(
         {
             "formats": {
@@ -161,6 +194,135 @@ class ImageServer(CacheableExtMixin, CacheableCoreMixin, ImageDimensionsMixin, S
                         {
                             "path":
                             "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='HasValidSR']/Value"
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
+    available_fields = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='AvailableFields']/Value"
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "stringToCsv"
+                    }]
+                }
+            }
+        }
+    )
+
+    default_resampling_method = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='DefaultResamplingMethod']/Value"
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "enumToString",
+                        "enum": "ResamplingMethod"
+                    }]
+                }
+            }
+        }
+    )
+
+    max_download_image_count = EditorProperty(
+        {
+            "constraints": {
+                "int": True,
+                "min": 0
+            },
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='MaxDownloadImageCount']/Value"
+                        }
+                    ],
+                    "conversions": [
+                        {
+                            "id": "numberToString"
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
+    max_download_size_limit = EditorProperty(
+        {
+            "constraints": {
+                "int": True,
+                "min": 0
+            },
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='MaxDownloadSizeLimit']/Value"
+                        }
+                    ],
+                    "conversions": [
+                        {
+                            "id": "numberToString"
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
+    max_mosaic_image_count = EditorProperty(
+        {
+            "constraints": {
+                "int": True,
+                "min": 0
+            },
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='MaxMosaicImageCount']/Value"
+                        }
+                    ],
+                    "conversions": [
+                        {
+                            "id": "numberToString"
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
+    return_jpgpng_as_jpg = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='ReturnJPGPNGAsJPG']/Value"
+                        }
+                    ],
+                    "conversions": [
+                        {
+                            "id": "boolToString"
                         }
                     ]
                 }

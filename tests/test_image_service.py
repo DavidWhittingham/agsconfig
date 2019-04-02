@@ -83,46 +83,60 @@ def test_getters(service_config, attribute, expected_value, exception):
 
 
 @pytest.mark.parametrize(
-    ("attribute", "new_value", "exception"),
+    ("attribute", "new_value", "expected_value", "exception"),
     [
-        ("britney_spears", "should cause a", TypeError),  # because she isn't a member
-        ("capabilities", [ImageServer.Capability.image], None),
-        ("capabilities", "Something", ValueError),
-        ("client_caching_allowed", False, None),
-        ("cluster", "default", None),
-        ("access_information", "Access information", None),
-        ("allowed_mosaic_methods", [ImageServer.MosaicMethod.north_west], None),
-        ("cache_dir", "a:/cache/dir", None),
-        ("client_caching_allowed", False, None),
-        ("credits", "Credits", None),
-        ("description", "Description", None),
-        ("folder", "a:/folder", None),
-        ("high_isolation", False, None),
-        ("idle_timeout", 1200, None),
-        ("instances_per_container", 2, None),
-        ("keep_cache", True, None),
-        ("max_image_height", 410, None),
-        ("max_image_width", 1500, None),
-        ("max_instances", 2, None),
-        ("max_scale", 1000, None),
-        ("min_instances", 2, None),
-        ("min_scale", 10, None),
-        ("name", "Example", None),
-        ("recycle_interval", 1, None),
-        ("recycle_start_time", datetime.time(16, 0), None),
-        ("summary", "summary", None),
-        ("tags", ["blah"], None),
-        ("title", "SomeTitle", None),
-        ("usage_timeout", 6000, None),
-        ("wait_timeout", 160, None),
-        ("has_valid_sr", False, None)
+        ("britney_spears", "should cause a", None, TypeError),  # because she isn't a member
+        ("capabilities", [ImageServer.Capability.image], [ImageServer.Capability.image], None),
+        ("capabilities", "Something", "Something", ValueError),
+        ("client_caching_allowed", False, False, None),
+        ("cluster", "default", "default", None),
+        ("access_information", "Access information", "Access information", None),
+        ("allowed_mosaic_methods", [ImageServer.MosaicMethod.north_west], [ImageServer.MosaicMethod.north_west], None),
+        ("cache_dir", "a:/cache/dir", "a:/cache/dir", None),
+        ("client_caching_allowed", False, False, None),
+        ("credits", "Credits", "Credits", None),
+        ("description", "Description", "Description", None),
+        ("folder", "a:/folder", "a:/folder", None),
+        ("high_isolation", False, False, None),
+        ("idle_timeout", 1200, 1200, None),
+        ("instances_per_container", 2, 2, None),
+        ("keep_cache", True, True, None),
+        ("max_image_height", 410, 410, None),
+        ("max_image_width", 1500, 1500, None),
+        ("max_instances", 2, 2, None),
+        ("max_scale", 1000, 1000, None),
+        ("min_instances", 2, 2, None),
+        ("min_scale", 10, 10, None),
+        ("name", "Example", "Example", None),
+        ("recycle_interval", 1, 1, None),
+        ("recycle_start_time", datetime.time(16, 0), datetime.time(16, 0), None),
+        ("summary", "summary", "summary", None),
+        ("tags", ["blah"], ["blah"], None),
+        ("title", "SomeTitle", "SomeTitle", None),
+        ("usage_timeout", 6000, 6000, None),
+        ("wait_timeout", 160, 160, None),
+        ("has_valid_sr", False, False, None),
+        ("default_resampling_method", ImageServer.ResamplingMethod.cubic, ImageServer.ResamplingMethod.cubic, None),
+        ("available_fields", "ONE,TWO,THREE", ["ONE", "TWO", "THREE"], None),
+        ("available_fields", ["ONE", "TWO"], ["ONE", "TWO"], None),
+        ("return_jpgpng_as_jpg", True, True, None),
+        ("max_mosaic_image_count", 10, 10, None),
+        ("max_download_size_limit", 10, 10, None),
+        ("max_download_size_limit", -1, None, ValueError),
+        ("max_download_size_limit", None, None, None),
+        ("max_download_image_count", 20, 20, None),
+        ("max_download_image_count", -1, None, ValueError),
+        ("max_download_image_count", None, None, None),
+        ("has_valid_sr", True, True, None)
     ]
 )
-def test_setters(service_config, attribute, new_value, exception):
+def test_setters(service_config, attribute, new_value, expected_value, exception):
     if exception is not None:
         with pytest.raises(exception):
             setattr(service_config, attribute, new_value)
-            assert getattr(service_config, attribute) == new_value
     else:
         setattr(service_config, attribute, new_value)
-        assert getattr(service_config, attribute) == new_value
+        assert getattr(service_config, attribute) == expected_value
+
+def test_setter(service_config):
+    setattr(service_config, "max_download_size_limit", 10)

@@ -54,17 +54,19 @@ class EditorProperty(object):
 
             if "min" in constraints:
                 min_value = constraints["min"]
-                if value < min_value:
-                    raise ValueError(
-                        "Value of property '{}' cannot be less than '{}'.".format(self.name_of(obj), min_value)
-                    )
+                if value is not None:
+                    if value < min_value:
+                        raise ValueError(
+                            "Value of property '{}' cannot be less than '{}'.".format(self.name_of(obj), min_value)
+                        )
 
             if "max" in constraints:
                 max_value = constraints["max"]
-                if value > max_value:
-                    raise ValueError(
-                        "Value of property '{}' cannot be greater than '{}'.".format(self.name_of(obj), max_value)
-                    )
+                if value is not None:
+                    if value > max_value:
+                        raise ValueError(
+                            "Value of property '{}' cannot be greater than '{}'.".format(self.name_of(obj), max_value)
+                        )
 
             if "func" in constraints:
                 value = constraints["func"](obj, value)
