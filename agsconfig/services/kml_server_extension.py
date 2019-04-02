@@ -44,16 +44,18 @@ class KmlServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     "conversions": [{
                         "id": "enumToString",
                         "enum": "CompatibilityMode"
-                    }, {
-                        "id": "stringToCsv"
                     }]
                 }
             }
         }
     )
-    
+
     dpi = EditorProperty(
         {
+            "constraints": {
+                "min": 1,
+                "int": True
+            },
             "formats": {
                 "sddraft": {
                     "paths": [
@@ -64,10 +66,15 @@ class KmlServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     ]
                 }
             }
-        })
+        }
+    )
 
     feature_limit = EditorProperty(
         {
+            "constraints": {
+                "min": 1,
+                "int": True
+            },
             "formats": {
                 "sddraft": {
                     "paths": [
@@ -78,10 +85,15 @@ class KmlServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     ]
                 }
             }
-        })
+        }
+    )
 
     image_size = EditorProperty(
         {
+            "constraints": {
+                "min": 0,
+                "int": True
+            },
             "formats": {
                 "sddraft": {
                     "paths": [
@@ -92,7 +104,8 @@ class KmlServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     ]
                 }
             }
-        })
+        }
+    )
 
     link_description = EditorProperty(
         {
@@ -106,7 +119,8 @@ class KmlServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     ]
                 }
             }
-        })
+        }
+    )
 
     link_name = EditorProperty(
         {
@@ -120,7 +134,8 @@ class KmlServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     ]
                 }
             }
-        })
+        }
+    )
 
     message = EditorProperty(
         {
@@ -134,10 +149,15 @@ class KmlServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     ]
                 }
             }
-        })
+        }
+    )
 
     min_refresh_period = EditorProperty(
         {
+            "constraints": {
+                "min": 0,
+                "int": True
+            },
             "formats": {
                 "sddraft": {
                     "paths": [
@@ -148,7 +168,8 @@ class KmlServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     ]
                 }
             }
-        })
+        }
+    )
 
     use_default_snippets = EditorProperty(
         {
@@ -159,10 +180,16 @@ class KmlServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                             "path":
                             lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='useDefaultSnippets']/Value".format(extension_name)
                         }
+                    ],
+                    "conversions": [
+                        {
+                            "id": "boolToString"
+                        }
                     ]
                 }
             }
-        })
+        }
+    )
 
     use_network_link_control_tag = EditorProperty(
         {
@@ -173,7 +200,13 @@ class KmlServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                             "path":
                             lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='useNetworkLinkControlTag']/Value".format(extension_name)
                         }
+                    ],
+                    "conversions": [
+                        {
+                            "id": "boolToString"
+                        }
                     ]
                 }
             }
-        })
+        }
+    )
