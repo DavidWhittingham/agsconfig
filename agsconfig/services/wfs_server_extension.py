@@ -63,12 +63,15 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                             "path":
                             lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='enableTransactions']/Value".format(extension_name)
                         }
-                    ]
+                    ],
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
                 }
             }
         })
 
-    axis_order_wfs10 = EditorProperty(
+    axis_order_wfs_10 = EditorProperty(
         {
             "formats": {
                 "sddraft": {
@@ -81,14 +84,12 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     "conversions": [{
                         "id": "enumToString",
                         "enum": "AxisOrder"
-                    }, {
-                        "id": "stringToCsv"
                     }]
                 }
             }
         })
 
-    axis_order_wfs11 = EditorProperty(
+    axis_order_wfs_11 = EditorProperty(
         {
             "formats": {
                 "sddraft": {
@@ -101,8 +102,6 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     "conversions": [{
                         "id": "enumToString",
                         "enum": "AxisOrder"
-                    }, {
-                        "id": "stringToCsv"
                     }]
                 }
             }
@@ -130,6 +129,48 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                         {
                             "path":
                             lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='serviceTypeVersion']/Value".format(extension_name)
+                        }
+                    ]
+                }
+            }
+        })
+
+    hours_of_service = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='hoursOfService']/Value".format(extension_name)
+                        }
+                    ]
+                }
+            }
+        })
+
+    provider_site = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='providerSite']/Value".format(extension_name)
+                        }
+                    ]
+                }
+            }
+        })
+
+    contact_instructions = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='contactInstructions']/Value".format(extension_name)
                         }
                     ]
                 }
