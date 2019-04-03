@@ -127,3 +127,110 @@ class MapServer(
             }
         }
     )
+
+    anti_aliasing_mode = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='antialiasingMode']/Value"
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "enumToString",
+                        "enum": "AntiAliasingMode"
+                    }]
+                }
+            }
+        }
+    )
+
+    text_anti_aliasing_mode = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='textAntialiasingMode']/Value"
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "enumToString",
+                        "enum": "TextAntiAliasingMode"
+                    }]
+                }
+            }
+        }
+    )
+
+    disable_identify_relates = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='disableIdentifyRelates']/Value"
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
+                }
+            }
+        }
+    )
+
+    enable_dynamic_layers = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='enableDynamicLayers']/Value"
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
+                }
+            }
+        }
+    )
+
+    file_path = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='FilePath']/Value"
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
+    schema_locking_enabled = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='schemaLockingEnabled']/Value"
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
+                }
+            }
+        }
+    )
