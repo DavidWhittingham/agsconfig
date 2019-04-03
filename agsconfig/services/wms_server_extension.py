@@ -39,7 +39,10 @@ class WMSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                             "path":
                             lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='inheritLayerNames']/Value".format(extension_name)
                         }
-                    ]
+                    ],
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
                 }
             }
         })
@@ -71,6 +74,55 @@ class WMSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     "conversions": [{
                         "id": "stringToCsv"
                     }]
+                }
+            }
+        })
+
+    reaspect = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='Reaspect']/Value".format(extension_name)
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
+                }
+            }
+        })
+
+    post_code = EditorProperty(
+        {
+            "constraints": {
+                "int": True,
+                "min": 1
+            },
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='postCode']/Value".format(extension_name)
+                        }
+                    ]
+                }
+            }
+        })
+
+    address_type = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='addressType']/Value".format(extension_name)
+                        }
+                    ]
                 }
             }
         })

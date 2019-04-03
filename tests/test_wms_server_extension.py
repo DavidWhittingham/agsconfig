@@ -61,7 +61,11 @@ def test_wms_getters(service_config, attribute, expected_value, exception):
         ("capabilities",
          ["GetCapabilities", "GetMap", "GetFeatureInfo"],
          [wms.Capability.get_capabilities, wms.Capability.get_map, wms.Capability.get_feature_info],
-         None)
+         None),
+        ('post_code', 4001, 4001, None),
+        ('post_code', '4001', 4001, None),
+        ('post_code', 'say what?', None, ValueError),
+        ('address_type', 'Sometype', 'Sometype', None)
     ]
 )
 def test_wms_setters(service_config, attribute, new_value, expected, exception):
