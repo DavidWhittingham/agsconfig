@@ -24,6 +24,11 @@ class CustomGetCapabilitiesExtensionMixin(object):
                             "path":
                             lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='customGetCapabilities']/Value".format(extension_name)
                         }
+                    ],
+                    "conversions": [
+                        {
+                            "id": "boolToString"
+                        }
                     ]
                 }
             }

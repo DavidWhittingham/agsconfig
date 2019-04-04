@@ -66,6 +66,8 @@ VECTOR_TILE_INFO_JSON_FILE_PATH_COPY = os.path.abspath(
     "{0}/samples/vectortileservice.itemInfo.copy.json".format(os.path.dirname(__file__))
 )
 
+GEOPROCESSING_FILE_PATH = os.path.abspath("{0}/samples/pythongpservice.sddraft".format(os.path.dirname(__file__)))
+GEOPROCESSING_FILE_PATH_COPY = os.path.abspath("{0}/samples/pythongpservice.copy.sddraft".format(os.path.dirname(__file__)))
 
 def get_map_sddraft(file_path):
     return agsconfig.load_map_sddraft(file_path)
@@ -95,6 +97,9 @@ def get_vector_tile_sddraft(file_path):
 def get_vector_tile_service(main_json_fp, info_json_fp):
     return agsconfig.load_vector_tile_service(main_json_fp, info_json_fp)
 
+def get_geoprocessing_sddraft(file_path):
+    return agsconfig.load_geoprocessing_sddraft(file_path)
+
 
 @pytest.fixture(
     scope="function",
@@ -123,6 +128,27 @@ def map_service_config(request):
 
     for path in request.param["paths"]:
         os.remove(path[1])
+
+@pytest.fixture(
+    scope="function",
+    params=[
+        {
+            "func": get_geoprocessing_sddraft,
+            "paths": [(GEOPROCESSING_FILE_PATH, GEOPROCESSING_FILE_PATH_COPY)]
+        }
+    ]
+)
+def geoprocessing_service_config(request):
+    for path in request.param["paths"]:
+        shutil.copyfile(path[0], path[1])
+
+    with ExitStack() as stack:
+        files = [stack.enter_context(open(path[1], mode="rb+")) for path in request.param["paths"]]
+        yield request.param["func"](*files)
+
+    for path in request.param["paths"]:
+        os.remove(path[1])
+
 
 @pytest.fixture(
     scope="function",

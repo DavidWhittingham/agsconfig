@@ -204,7 +204,8 @@ class ServiceBase(ModelBase):
     idle_timeout = EditorProperty(
         {
             "constraints": {
-                "min": 0
+                "min": 0,
+                "int": True
             },
             "formats": {
                 "agsJson": {
@@ -228,7 +229,8 @@ class ServiceBase(ModelBase):
     instances_per_container = EditorProperty(
         {
             "constraints": {
-                "min": 1
+                "min": 1,
+                "int": True
             },
             "formats": {
                 "agsJson": {
@@ -252,6 +254,7 @@ class ServiceBase(ModelBase):
     max_instances = EditorProperty(
         {
             "constraints": {
+                "int": True,
                 "min": 1,
                 "func": max_instances_constraint
             },
@@ -305,6 +308,7 @@ class ServiceBase(ModelBase):
     min_instances = EditorProperty(
         {
             "constraints": {
+                "int": True,
                 "min": 0,
                 "func": min_instances_constraint
             },
