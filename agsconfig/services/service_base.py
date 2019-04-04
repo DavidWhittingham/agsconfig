@@ -60,10 +60,23 @@ class ServiceBase(ModelBase):
         self._editor = editor
 
     def save(self):
+        """Overwrite this file."""
         self._editor.save()
 
     def save_a_copy(self, path):
+        """Save this sddraft to a new file."""
         self._editor.save_a_copy(path)
+
+    def _set_props_from_dict(self, prop_dict):
+        """Method for setting properties from a dictionary where keys match property names.
+        Can be overridden by sub-classes.
+        """
+        for key, value in prop_dict.items():
+            if hasattr(self, key):
+                try:
+                    setattr(self, key, value)
+                except AttributeError:
+                    getattr(self, key)._set_props_from_dict(value)
 
     access_information = EditorProperty(
         {

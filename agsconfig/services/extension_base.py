@@ -49,6 +49,16 @@ class ExtensionBase(ModelBase):
     def extension_name(self):
         return self._extension_name
 
+    def _set_props_from_dict(self, prop_dict):
+        """Method for setting properties from a dictionary where keys match property names.
+        """
+        for key, value in prop_dict.items():
+            if hasattr(self, key):
+                try:
+                    setattr(self, key, value)
+                except AttributeError:
+                    getattr(self, key)._set_props_from_dict(value)
+
     capabilities = EditorProperty(
         {
             "formats": {
