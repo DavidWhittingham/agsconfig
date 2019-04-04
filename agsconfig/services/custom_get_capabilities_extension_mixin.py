@@ -15,7 +15,7 @@ from .extension_base import ExtensionBase
 class CustomGetCapabilitiesExtensionMixin(object):
     """ Attributes for custom Get Capabilities on ArcGIS services """
 
-    customGetCapabilities = EditorProperty(
+    custom_get_capabilities = EditorProperty(
         {
             "formats": {
                 "sddraft": {
@@ -29,7 +29,7 @@ class CustomGetCapabilitiesExtensionMixin(object):
             }
         })
 
-    pathToCustomGetCapabilitiesFiles = EditorProperty(
+    path_to_custom_get_capabilities_files = EditorProperty(
         {
             "formats": {
                 "sddraft": {
