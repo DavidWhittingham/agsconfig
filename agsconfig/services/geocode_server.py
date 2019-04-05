@@ -23,6 +23,10 @@ class GeocodeServer(ServiceBase):
         geocode = "Geocode"
         reverse_geocode = "ReverseGeocode"
 
+    class MessageLevel(Enum):
+        error = "Error"
+        none = "None"
+
     def __init__(self, editor):
         super().__init__(editor)
 
