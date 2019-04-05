@@ -126,3 +126,20 @@ class WMSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                 }
             }
         })
+
+    name = EditorProperty(
+        {
+            "constraints": {
+                "notEmpty": True
+            },
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='name']/Value".format(extension_name)
+                        }
+                    ]
+                }
+            }
+        })
