@@ -44,7 +44,7 @@ def test_save_a_copy(service_config):
         ([], [], None),
         (["Query"], [agsconfig.MapServer.Capability.query], None),
         (["Fail"], None, ValueError),
-        ([123], None, TypeError)
+        ([123], None, ValueError)
     ]
 )  # yapf: disable
 def test_capabilities(service_config, capabilities, expected, ex):

@@ -217,8 +217,8 @@ def serialize_time_to_string(value, conversion, obj):
 
 
 def _enum_to_str(value, enum, exception_message):
-    if isinstance(value, str):
-        # Convert string to enum to check compatibility
+    if isinstance(value, (str, int)):
+        # Convert string or int to enum to check compatibility
         # Raises ValueError if unknown value.
         value = enum(value)
     elif not isinstance(value, enum):
