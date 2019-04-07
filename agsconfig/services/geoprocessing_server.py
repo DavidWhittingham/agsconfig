@@ -29,6 +29,7 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
         error = "Error"
         warning = "Warning"
         info = "Info"
+        debug = "Debug"
 
     def __init__(self, editor):
         super().__init__(editor)
@@ -128,7 +129,11 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
                             "path":
                             "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='showMessages']/Value"
                         }
-                    ]
+                    ],
+                    "conversions": [{
+                        "id": "enumToString",
+                        "enum": "MessageLevel"
+                    }]
                 }
             }
         }
