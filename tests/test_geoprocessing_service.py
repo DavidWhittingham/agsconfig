@@ -41,7 +41,7 @@ def test_load_service_config(service_config):
         ("replace_existing", False, None),
         ("result_map_server", False, None),
         ("summary", "Test Extraction Service", None),
-        ("show_messages", "None", None),
+        ("show_messages", GeoprocessingServer.MessageLevel.none, None),
         ("usage_timeout", 600, None),
         ("wait_timeout", 60, None)
     ]
@@ -87,7 +87,7 @@ def test_getters(service_config, attribute, expected_value, exception):
         ("replace_existing", True, True, None),
         ("result_map_server", True, True, None),
         ("summary", "Service", "Service", None),
-        ("show_messages", "Debug", "Debug", None),
+        ("show_messages", "Debug", GeoprocessingServer.MessageLevel.debug, None),
         ("usage_timeout", 60, 60, None),
         ("usage_timeout", -1, None, ValueError),
         ("usage_timeout", "x", None, ValueError),
