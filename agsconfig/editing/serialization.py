@@ -10,7 +10,6 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
-#import collections
 import datetime
 import re
 
@@ -80,7 +79,7 @@ def deserialize_string_to_enum(value, conversion, obj):
             return value
         return [deserialize_string_to_enum(item, conversion, obj) for item in value]
 
-    if value == None or value == "":
+    if value is None or value == "":
         return None
 
     enum = obj[conversion["enum"]]
@@ -119,7 +118,7 @@ def deserialize_string_to_time(value, conversion, obj):
 
         return [deserialize_string_to_time(v, conversion, obj) for v in value]
 
-    if value == None:
+    if value is None:
         return None
 
     time_parts = value.split(":")
