@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 with open('agsconfig/_version.py') as fin: exec(fin.read(), globals())
 with open('requirements.txt') as fin: requirements=[s.strip() for s in fin.readlines()]
-with open('readme.rst') as fin: long_description = fin.read()
+with open('readme.md') as fin: long_description = fin.read()
 
 packages = find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"])
 
