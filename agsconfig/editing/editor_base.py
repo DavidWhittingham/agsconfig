@@ -86,9 +86,17 @@ class EditorBase(object):
             # don't modify the original path_info object, it may need to be evaluated multiple times with different
             # arguments being passed, so return a shallow copy of the object with just the "path" key resolved
             path_info = copy.copy(path_info)
-            args = inspect.getargspec(path_info["path"])
+
+            # python 2/3 code split here, inspect module has changed
+            if hasattr(inspect, "signature"):
+                # running on Py 3
+                args = [param for param in inspect.signature(path_info["path"]).parameters]
+            else:
+                # running on Py 2
+                args = [arg for arg in inspect.getargspec(path_info["path"]).args]
+            
             kwargs = {}
-            for arg in args.args:
+            for arg in args:
                 kwargs[arg] = getattr(obj, arg)
             path_info["path"] = path_info["path"](**kwargs)
 
