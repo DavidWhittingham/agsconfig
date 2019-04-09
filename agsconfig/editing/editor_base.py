@@ -77,12 +77,12 @@ class EditorBase(object):
 
         # set the value in all locations listed
         for path_info in format_info["paths"]:
-            self._set_value(value, self._resolve_lambda(path_info, obj))
+            self._set_value(value, self._resolve_lambda(path_info, obj), obj)
 
     @staticmethod
-    def _resolve_lambda(path_info, obj):
+    def _resolve_lambda(path_info, obj, key="path"):
         # if the path is a lambda, get the arg names and assume they're in obj
-        if callable(path_info["path"]):
+        if callable(path_info[key]):
             # don't modify the original path_info object, it may need to be evaluated multiple times with different
             # arguments being passed, so return a shallow copy of the object with just the "path" key resolved
             path_info = copy.copy(path_info)
@@ -90,15 +90,15 @@ class EditorBase(object):
             # python 2/3 code split here, inspect module has changed
             if hasattr(inspect, "signature"):
                 # running on Py 3
-                args = [param for param in inspect.signature(path_info["path"]).parameters]
+                args = [param for param in inspect.signature(path_info[key]).parameters]
             else:
                 # running on Py 2
-                args = [arg for arg in inspect.getargspec(path_info["path"]).args]
+                args = [arg for arg in inspect.getargspec(path_info[key]).args]
             
             kwargs = {}
             for arg in args:
                 kwargs[arg] = getattr(obj, arg)
-            path_info["path"] = path_info["path"](**kwargs)
+            path_info[key] = path_info[key](**kwargs)
 
         return path_info
 

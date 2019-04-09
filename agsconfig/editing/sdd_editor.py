@@ -66,9 +66,9 @@ class SDDraftEditor(EditorBase):
         with open(path, "wb+") as file:
             file.write(ET.tostring(self._xml_tree.getroot(), encoding="utf-8", pretty_print=True))
 
-    def _create_element(self, path_info):
+    def _create_element(self, path_info, obj):
         # get parent element
-        parent_element = self._xml_tree.find(path_info["parentPath"])
+        parent_element = self._xml_tree.find(self._resolve_lambda(path_info, obj, "parentPath")["parentPath"])
 
         self._create_child_elements(parent_element, path_info)
 
@@ -93,11 +93,11 @@ class SDDraftEditor(EditorBase):
 
         return self._get_element_value(element)
 
-    def _set_value(self, value, path_info):
+    def _set_value(self, value, path_info, obj):
         element = self._xml_tree.find(path_info["path"])
 
         if element is None:
-            element = self._create_element(path_info)
+            element = self._create_element(path_info, obj)
 
         self._set_element_value(element, value)
 

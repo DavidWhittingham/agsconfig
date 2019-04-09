@@ -103,7 +103,7 @@ class AgsJsonEditor(EditorBase):
 
         return None
 
-    def _set_value(self, value, path_info):
+    def _set_value(self, value, path_info, obj):
         document = self._document_map.get(path_info["document"])
 
         # check if node exists
