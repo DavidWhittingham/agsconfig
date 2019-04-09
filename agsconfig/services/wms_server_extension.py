@@ -70,7 +70,7 @@ class WMSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                             "path":
                             lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='ListSupportedCRS']/Value".format(extension_name),
                             "parentPath":
-                            lambda extension_name : "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray".format(extension_name),
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray".format(extension_name),
                             "tag": "PropertySetProperty",
                             "attributes": {
                                 "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
