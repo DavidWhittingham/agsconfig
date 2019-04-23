@@ -68,6 +68,9 @@ class SDDraftEditor(EditorBase):
 
     def _create_element(self, path_info, obj):
         # get parent element
+        if not "parentPath" in path_info:
+            raise KeyError("path_info does not contain parentPath for given path: {}".format(path_info["path"]))
+
         parent_element = self._xml_tree.find(self._resolve_lambda(path_info, obj, "parentPath")["parentPath"])
 
         self._create_child_elements(parent_element, path_info)
