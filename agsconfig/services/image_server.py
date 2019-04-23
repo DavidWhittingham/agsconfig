@@ -180,6 +180,53 @@ class ImageServer(CacheableExtMixin, CacheableCoreMixin, ImageDimensionsMixin, S
         }
     )
 
+    default_jpeg_compression_quality = EditorProperty(
+        {
+            "constraints": {
+                "int": True,
+                "min": 1,
+                "max": 100
+            },
+            "formats": {
+                "agsJson": {
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.properties.defaultCompressionQuality"
+                    }]
+                },
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='DefaultCompressionQuality']/Value",
+                            "parentPath": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray",
+                            "tag": "PropertySetProperty",
+                            "attributes": {
+                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                            },
+                            "children": [
+                                {
+                                    "tag": "Key",
+                                    "value": "DefaultCompressionQuality"
+                                },
+                                {
+                                    "tag": "Value",
+                                    "attributes": {
+                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "conversions": [
+                        {
+                            "id": "numberToString"
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
     has_valid_sr = EditorProperty(
         {
             "formats": {
@@ -316,8 +363,24 @@ class ImageServer(CacheableExtMixin, CacheableCoreMixin, ImageDimensionsMixin, S
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='ReturnJPGPNGAsJPG']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='ReturnJPGPNGAsJPG']/Value",
+                            "parentPath": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray",
+                            "tag": "PropertySetProperty",
+                            "attributes": {
+                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                            },
+                            "children": [
+                                {
+                                    "tag": "Key",
+                                    "value": "ReturnJPGPNGAsJPG"
+                                },
+                                {
+                                    "tag": "Value",
+                                    "attributes": {
+                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                    }
+                                }
+                            ]
                         }
                     ],
                     "conversions": [
