@@ -43,6 +43,7 @@ def get_element_value(element, default=None):
 
 class SDDraftEditor(EditorBase):
     """Object for editing ArcGIS sddraft files."""
+
     def __init__(self, xml_file):
         self._xml_file = xml_file
         self._xml_tree = self._load_xml(xml_file)
@@ -52,6 +53,9 @@ class SDDraftEditor(EditorBase):
             {"listToElements": self._serialize_list_to_elements}
         )
 
+    def export(self):
+        return self._get_xml_tree_as_string()
+
     def save(self):
         if self._xml_file.closed:
             self._xml_file = open(self._xml_file.name, "rb+")
@@ -60,11 +64,11 @@ class SDDraftEditor(EditorBase):
         self._xml_file.truncate()
 
         # explictly write it out to file as binary UTF-8
-        self._xml_file.write(ET.tostring(self._xml_tree.getroot(), encoding="utf-8", pretty_print=True))
+        self._xml_file.write(self._get_xml_tree_as_string())
 
     def save_a_copy(self, path):
         with open(path, "wb+") as file:
-            file.write(ET.tostring(self._xml_tree.getroot(), encoding="utf-8", pretty_print=True))
+            file.write(self._get_xml_tree_as_string())
 
     def _create_element(self, path_info, obj):
         # get parent element
@@ -95,6 +99,9 @@ class SDDraftEditor(EditorBase):
             return element.getchildren()
 
         return self._get_element_value(element)
+
+    def _get_xml_tree_as_string(self):
+        return ET.tostring(self._xml_tree.getroot(), encoding="utf-8", pretty_print=True)
 
     def _set_value(self, value, path_info, obj):
         element = self._xml_tree.find(path_info["path"])

@@ -59,13 +59,17 @@ class ServiceBase(ModelBase):
 
         self._editor = editor
 
+    def export(self):
+        """Exports the configuration into an in-memory object."""
+        return self._editor.export()
+
     def save(self):
         """Overwrite this file."""
         self._editor.save()
 
-    def save_a_copy(self, path):
-        """Save this sddraft to a new file."""
-        self._editor.save_a_copy(path)
+    def save_a_copy(self, *paths):
+        """Save this service to one or more new files (one file per input to the service type)."""
+        self._editor.save_a_copy(*paths)
 
     def _set_props_from_dict(self, prop_dict):
         """Method for setting properties from a dictionary where keys match property names.
