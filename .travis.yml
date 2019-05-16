@@ -1,0 +1,12 @@
+language: python
+python:
+  - "2.7"
+  - "3.4"
+  - "3.5"
+  - "3.6"
+  # command to install dependencies
+install:
+  - python pie.py setup
+# command to run tests
+script:
+  - python pie.py test
