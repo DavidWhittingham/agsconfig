@@ -11,7 +11,7 @@ def build():
 
 @task
 def createVenvs():
-    venv(VENV_TEST)
+    venv(VENV_TEST).create()
 
 
 @task
