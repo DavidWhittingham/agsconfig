@@ -2,7 +2,7 @@ import os
 from pie import *
 
 # Get OS-specific partial path
-VENV_TEST = os.path.join(".", "venv", "test")
+VENV_TEST = os.path.join("venv", "test")
 
 @task
 def build():
