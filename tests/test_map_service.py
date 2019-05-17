@@ -30,12 +30,6 @@ def test_save(service_config):
     service_config.save()
     assert True
 
-def test_save_a_copy(service_config):
-    sddraft_file = "{0}/samples/mapservice.sddraft".format(os.path.dirname(__file__))
-    with open(sddraft_file, "rb+") as f:
-        draft = agsconfig.load_map_sddraft(f)
-    draft.save_a_copy(sddraft_file.replace('.sddraft', '.copy.sddraft'))
-    assert True
 
 @pytest.mark.parametrize(
     ("capabilities", "expected", "ex"),
@@ -55,15 +49,12 @@ def test_capabilities(service_config, capabilities, expected, ex):
         service_config.capabilities = capabilities
         assert set(service_config.capabilities) == set(expected)
 
+
 @pytest.mark.parametrize(
-    ('attribute', 'value', 'exception'),
-    [
-        ('comic_book_guy', None, AttributeError),
-        ('anti_aliasing_mode', MapServer.AntiAliasingMode.fastest, None),
+    ('attribute', 'value', 'exception'), [
+        ('comic_book_guy', None, AttributeError), ('anti_aliasing_mode', MapServer.AntiAliasingMode.fastest, None),
         ('text_anti_aliasing_mode', MapServer.TextAntiAliasingMode.force, None),
-        ('disable_identify_relates', False, None),
-        ('enable_dynamic_layers', False, None),
-        ('file_path', None, None),
+        ('disable_identify_relates', False, None), ('enable_dynamic_layers', False, None), ('file_path', None, None),
         ('schema_locking_enabled', True, None)
     ]
 )
@@ -74,17 +65,15 @@ def test_getters(service_config, attribute, value, exception):
     else:
         assert getattr(service_config, attribute) == value
 
+
 @pytest.mark.parametrize(
-    ('attribute', 'new_value', 'expected_value', 'exception'),
-    [
+    ('attribute', 'new_value', 'expected_value', 'exception'), [
         ('anti_aliasing_mode', 'comic book guy', None, ValueError),
         ('anti_aliasing_mode', 'Best', MapServer.AntiAliasingMode.best, None),
         ('text_anti_aliasing_mode', 'comic book guy', None, ValueError),
         ('text_anti_aliasing_mode', 'Normal', MapServer.TextAntiAliasingMode.normal, None),
-        ('disable_identify_relates', True, True, None),
-        ('enable_dynamic_layers', True, True, None),
-        ('file_path', 'A:/path', 'A:/path', None),
-        ('schema_locking_enabled', False, False, None)
+        ('disable_identify_relates', True, True, None), ('enable_dynamic_layers', True, True, None),
+        ('file_path', 'A:/path', 'A:/path', None), ('schema_locking_enabled', False, False, None)
     ]
 )
 def test_setters(service_config, attribute, new_value, expected_value, exception):

@@ -1,4 +1,4 @@
-"""Tests for Image services."""
+"""Tests for Geocode services."""
 # Python 2/3 compatibility
 from __future__ import (absolute_import, division, print_function, unicode_literals)
 from future.builtins.disabled import *
