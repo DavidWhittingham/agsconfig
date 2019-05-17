@@ -16,8 +16,6 @@ import io
 import os
 import shutil
 
-from contextlib import contextmanager
-
 # Third-party imports
 import pytest
 from contextlib2 import ExitStack
