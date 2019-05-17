@@ -6,7 +6,8 @@ python:
   - "3.6"
   # command to install dependencies
 install:
-  - python pie.py setup
+  - pip install -r requirements.test.txt
+  - pip install -r requirements.txt
 # command to run tests
 script:
-  - python pie.py test
+  - python -m pytest tests
