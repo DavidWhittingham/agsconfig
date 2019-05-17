@@ -148,7 +148,8 @@ def get_geoprocessing_sddraft(file_path):
         {
             "func": get_map_sddraft,
             "paths": [(MAP_SDDRAFT_FILE_PATH, MAP_SDDRAFT_FILE_PATH_COPY)]
-        }, {
+        },
+        {
             "func":
             get_map_service,
             "paths": [
@@ -159,7 +160,8 @@ def get_geoprocessing_sddraft(file_path):
     ]
 )
 def map_service_config(request):
-    for s in _load_service_yield_on_func(request): yield s
+    for s in _load_service_yield_on_func(request):
+        yield s
 
 
 @pytest.fixture(
@@ -170,7 +172,8 @@ def map_service_config(request):
     }]
 )
 def geoprocessing_service_config(request):
-    for s in _load_service_yield_on_func(request): yield s
+    for s in _load_service_yield_on_func(request):
+        yield s
 
 
 @pytest.fixture(
@@ -179,7 +182,8 @@ def geoprocessing_service_config(request):
         {
             "func": get_geodata_sddraft,
             "paths": [(GEODATA_SDDRAFT_FILE_PATH, GEODATA_SDDRAFT_FILE_PATH_COPY)]
-        }, {
+        },
+        {
             "func":
             get_geodata_service,
             "paths": [
@@ -190,7 +194,8 @@ def geoprocessing_service_config(request):
     ]
 )
 def geodata_service_config(request):
-    for s in _load_service_yield_on_func(request): yield s
+    for s in _load_service_yield_on_func(request):
+        yield s
 
 
 @pytest.fixture(
@@ -199,7 +204,8 @@ def geodata_service_config(request):
         {
             "func": get_map_sddraft,
             "paths": [(MAP_SDDRAFT_FILE_PATH, MAP_SDDRAFT_FILE_PATH_COPY)]
-        }, {
+        },
+        {
             "func":
             get_map_service,
             "paths": [
@@ -209,7 +215,8 @@ def geodata_service_config(request):
         }, {
             "func": get_image_sddraft,
             "paths": [(IMAGE_SDDRAFT_FILE_PATH, IMAGE_SDDRAFT_FILE_PATH_COPY)]
-        }, {
+        },
+        {
             "func":
             get_image_service,
             "paths": [
@@ -220,7 +227,8 @@ def geodata_service_config(request):
     ]
 )
 def map_and_image_service_config(request):
-    for s in _load_service_yield_on_func(request): yield s
+    for s in _load_service_yield_on_func(request):
+        yield s
 
 
 @pytest.fixture(
@@ -229,7 +237,8 @@ def map_and_image_service_config(request):
         {
             "func": get_image_sddraft,
             "paths": [(IMAGE_SDDRAFT_FILE_PATH, IMAGE_SDDRAFT_FILE_PATH_COPY)]
-        }, {
+        },
+        {
             "func":
             get_image_service,
             "paths": [
@@ -240,7 +249,8 @@ def map_and_image_service_config(request):
     ]
 )
 def image_service_config(request):
-    for s in _load_service_yield_on_func(request): yield s
+    for s in _load_service_yield_on_func(request):
+        yield s
 
 
 @pytest.fixture(
@@ -249,7 +259,8 @@ def image_service_config(request):
         {
             "func": get_vector_tile_sddraft,
             "paths": [(VECTOR_TILE_SDDRAFT_FILE_PATH, VECTOR_TILE_SDDRAFT_FILE_PATH_COPY)]
-        }, {
+        },
+        {
             "func":
             get_vector_tile_service,
             "paths": [
@@ -260,7 +271,8 @@ def image_service_config(request):
     ]
 )
 def vector_tile_service_config(request):
-    for s in _load_service_yield_on_func(request): yield s
+    for s in _load_service_yield_on_func(request):
+        yield s
 
 
 def silentremove(filename):
