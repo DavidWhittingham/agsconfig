@@ -16,7 +16,33 @@ from .services.image_server import ImageServer
 from .services.map_server import MapServer
 from .services.vector_tile_server import VectorTileServer
 from .services.geocode_server import GeocodeServer
+from .services.geodata_server import GeodataServer
 from .services.geoprocessing_server import GeoprocessingServer
+
+
+def load_geocode_sddraft(sddraft_file):
+    return GeocodeServer(SDDraftEditor(sddraft_file))
+
+
+def load_geocode_service(service_file, item_info_file):
+    return GeocodeServer(AgsJsonEditor(service_file, item_info_file))
+
+
+def load_geodata_sddraft(sddraft_file):
+    return GeodataServer(SDDraftEditor(sddraft_file))
+
+
+def load_geodata_service(service_file, item_info_file):
+    return GeodataServer(AgsJsonEditor(service_file, item_info_file))
+
+
+def load_geoprocessing_sddraft(sddraft_file):
+    return GeoprocessingServer(SDDraftEditor(sddraft_file))
+
+
+def load_geoprocessing_service(service_file, item_info_file):
+    return GeoprocessingServer(AgsJsonEditor(service_file, item_info_file))
+
 
 def load_image_sddraft(sddraft_file):
     return ImageServer(SDDraftEditor(sddraft_file))
@@ -40,14 +66,3 @@ def load_vector_tile_sddraft(sddraft_file):
 
 def load_vector_tile_service(service_file, item_info_file):
     return VectorTileServer(AgsJsonEditor(service_file, item_info_file))
-
-
-def load_geocode_sddraft(sddraft_file):
-    return GeocodeServer(SDDraftEditor(sddraft_file))
-
-
-def load_geocode_service(service_file, item_info_file):
-    return GeocodeServer(AgsJsonEditor(service_file, item_info_file))
-
-def load_geoprocessing_sddraft(sddraft_file):
-    return GeoprocessingServer(SDDraftEditor(sddraft_file))

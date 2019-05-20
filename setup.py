@@ -23,6 +23,7 @@ setup(
     author = __author__,
     description = "Provides classes that can edit ArcGIS service configuration as either running services (ArcGIS Server Admin JSON format) or Service Definition Drafts.",
     long_description = long_description,
+    long_description_content_type = "text/markdown",
     license = "BSD 3-Clause",
     keywords = "arcgis esri",
     url = "https://github.com/DavidWhittingham/agsconfig",

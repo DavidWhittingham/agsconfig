@@ -1,0 +1,18 @@
+{
+    "culture": "en-AU",
+    "name": "ExampleGeoDataService",
+    "guid": "",
+    "catalogPath": "",
+    "snippet": "",
+    "description": "",
+    "summary": "",
+    "title": "ExampleGeoDataService",
+    "tags": [],
+    "type": "Geodata Service",
+    "typeKeywords": ["Data", "Service", "Geodata Service", "ArcGIS Server"],
+    "thumbnail": "",
+    "url": "",
+    "spatialReference": "",
+    "accessInformation": "",
+    "licenseInfo": ""
+}

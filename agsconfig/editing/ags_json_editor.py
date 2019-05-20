@@ -10,6 +10,7 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
+import copy
 import json
 
 import jsonpath_ng as jp
@@ -40,9 +41,16 @@ class AgsJsonEditor(EditorBase):
 
         super().__init__("agsJson")
 
+    def export(self):
+        return (copy.deepcopy(self._main), copy.deepcopy(self._item_info))
+
     def save(self):
         self._overwrite_file(self._main_file, self._main)
         self._overwrite_file(self._item_info_file, self._item_info)
+
+    def save_a_copy(self, main_json_output_path, item_info_output_path):
+        self._save_json_to_file(self._main, main_json_output_path)
+        self._save_json_to_file(self._item_info, item_info_output_path)
 
     def _create_node(self, document, path_info):
         """Creates a new node on the JSON document."""
@@ -68,40 +76,39 @@ class AgsJsonEditor(EditorBase):
         # find value in document based on path
         values = parse(path_info["path"]).find(document)
 
-        if values:
-            # Return pythonic things for known types
-            try:
-                return float(values[0].value)
-            except (ValueError, TypeError):
+        if not values:
+            return None
 
-                pass
+        # Return pythonic things for known types
+        try:
+            return float(values[0].value)
+        except (ValueError, TypeError):
+            pass
 
-            try:
-                return int(values[0].value)
-            except (ValueError, TypeError):
-                pass
+        try:
+            return int(values[0].value)
+        except (ValueError, TypeError):
+            pass
 
-            try:
-                if values[0].value.upper() == "TRUE":
-                    return True
-            except AttributeError:
-                pass
+        try:
+            if values[0].value.upper() == "TRUE":
+                return True
+        except AttributeError:
+            pass
 
-            try:
-                if values[0].value.upper() == "FALSE":
-                    return False
-            except AttributeError:
-                pass
+        try:
+            if values[0].value.upper() == "FALSE":
+                return False
+        except AttributeError:
+            pass
 
-            try:
-                if len(values[0].value.split(',')) > 1:
-                    return values[0].value.split(',')
-            except AttributeError:
-                pass
+        try:
+            if len(values[0].value.split(',')) > 1:
+                return values[0].value.split(',')
+        except AttributeError:
+            pass
 
-            return values[0].value
-
-        return None
+        return values[0].value
 
     def _set_value(self, value, path_info, obj):
         document = self._document_map.get(path_info["document"])
@@ -118,3 +125,8 @@ class AgsJsonEditor(EditorBase):
         file_obj.seek(0)
         file_obj.truncate()
         file_obj.write(json.dumps(obj_to_write, indent=4).encode("utf-8"))
+
+    @staticmethod
+    def _save_json_to_file(input_json, file_path):
+        with open(file_path, "wb+") as fp:
+            json.dump(input_json, fp, indent=4, separators=(',', ': '), sort_keys=True)
