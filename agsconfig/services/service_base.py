@@ -175,6 +175,15 @@ class ServiceBase(ModelBase):
     folder = EditorProperty(
         {
             "formats": {
+                "agsJson": {
+                    "paths":
+                    [{
+                        "document": "main",
+                        "path": "$.serviceFolder",
+                        "parentPath": "$",
+                        "key": "serviceFolder"
+                    }]
+                },
                 "sddraft": {
                     "paths": [{
                         "path": "./Configurations/SVCConfiguration/ServiceFolder"
@@ -460,6 +469,19 @@ class ServiceBase(ModelBase):
     replace_existing = EditorProperty(
         {
             "formats": {
+                "agsJson": {
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.replaceExisting",
+                        "parentPath": "$",
+                        "key": "replaceExisting"
+                    }],
+                    "conversions": [{
+                            "id": "boolToString",
+                            "true": "esriServiceDefinitionType_Replacement",
+                            "false": "esriServiceDefinitionType_New"
+                    }]
+                },
                 "sddraft": {
                     "paths": [{
                         "path": "./Type"

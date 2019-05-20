@@ -62,6 +62,22 @@ class ExtensionBase(ModelBase):
     capabilities = EditorProperty(
         {
             "formats": {
+                    "agsJson": {
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].capabilities".format(extension_name),
+                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')]".format(extension_name),
+                            "key": "capabilities"
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "enumToString",
+                        "enum": "Capability"
+                    }, {
+                        "id": "stringToCsv"
+                    }],
+                },
                 "sddraft": {
                     "paths": [
                         {

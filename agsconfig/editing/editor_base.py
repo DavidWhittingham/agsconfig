@@ -77,6 +77,10 @@ class EditorBase(object):
 
         # set the value in all locations listed
         for path_info in format_info["paths"]:
+            # resolve the parent path if required
+            if "parentPath" in path_info:
+                path_info["parentPath"] = self._resolve_lambda(path_info, obj, "parentPath")["parentPath"]
+
             self._set_value(value, self._resolve_lambda(path_info, obj), obj)
 
     @staticmethod
@@ -94,7 +98,7 @@ class EditorBase(object):
             else:
                 # running on Py 2
                 args = [arg for arg in inspect.getargspec(path_info[key]).args]
-            
+
             kwargs = {}
             for arg in args:
                 kwargs[arg] = getattr(obj, arg)
