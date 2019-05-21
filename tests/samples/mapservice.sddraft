@@ -542,7 +542,7 @@
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>WebCapabilities</Key>
-									<Value xsi:nil="true"/>
+									<Value xsi:type="xs:string">NotImplemented</Value>
 								</PropertySetProperty>
 							</PropertyArray>
 						</Info>

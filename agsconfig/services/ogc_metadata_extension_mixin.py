@@ -23,8 +23,8 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {
                             "document": "main",
-                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].abstract".format(extension_name),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')]".format(extension_name),
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.abstract".format(extension_name),
+                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
                             "key": "abstract"
                         }
                     ]
@@ -47,8 +47,8 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {
                             "document": "main",
-                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].accessConstraints".format(extension_name),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')]".format(extension_name),
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.accessConstraints".format(extension_name),
+                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
                             "key": "accessConstraints"
                         }
                     ]
@@ -71,8 +71,8 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {
                             "document": "main",
-                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].city".format(extension_name),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')]".format(extension_name),
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.city".format(extension_name),
+                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
                             "key": "city"
                         }
                     ]
@@ -95,8 +95,8 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {
                             "document": "main",
-                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].country".format(extension_name),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')]".format(extension_name),
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.country".format(extension_name),
+                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
                             "key": "country"
                         }
                     ]
@@ -119,9 +119,9 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {
                             "document": "main",
-                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].keyword".format(extension_name),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')]".format(extension_name),
-                            "key": "keyword"
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.keywords".format(extension_name),
+                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
+                            "key": "keywords"
                         }
                     ]
                 },
@@ -143,8 +143,8 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {
                             "document": "main",
-                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].fees".format(extension_name),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')]".format(extension_name),
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.fees".format(extension_name),
+                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
                             "key": "fees"
                         }
                     ]
@@ -167,8 +167,8 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {
                             "document": "main",
-                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].name".format(extension_name),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')]".format(extension_name),
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.name".format(extension_name),
+                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
                             "key": "name"
                         }
                     ]
@@ -191,8 +191,8 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {
                             "document": "main",
-                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].title".format(extension_name),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')]".format(extension_name),
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.title".format(extension_name),
+                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
                             "key": "title"
                         }
                     ]

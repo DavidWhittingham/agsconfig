@@ -16,5 +16,8 @@ from .extension_base import ExtensionBase
 class NAServerExtension(ExtensionBase):
     """Network Analysis server extension properties for ArcGIS Server services."""
 
+    class Capability(Enum):
+        not_implemented = "NotImplemented"
+
     def __init__(self, editor):
         super().__init__(editor, "NAServer")

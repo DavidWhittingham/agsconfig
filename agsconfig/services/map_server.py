@@ -134,15 +134,13 @@ class MapServer(
                 "agsJson": {
                     "paths": [{
                         "document": "main",
-                        "path": "$.antialiasingMode",
-                        "parentPath": "$",
+                        "path": "$.properties.antialiasingMode",
+                        "parentPath": "$.properties",
                         "key": "antialiasingMode"
                     }],
                     "conversions": [{
                         "id": "enumToString",
                         "enum": "AntiAliasingMode"
-                    }, {
-                        "id": "stringToCsv"
                     }]
                 },
                 "sddraft": {
@@ -167,8 +165,8 @@ class MapServer(
                 "agsJson": {
                     "paths": [{
                         "document": "main",
-                        "path": "$.textAntialiasingMode",
-                        "parentPath": "$",
+                        "path": "$.properties.textAntialiasingMode",
+                        "parentPath": "$.properties",
                         "key": "textAntialiasingMode"
                     }],
                     "conversions": [{
@@ -216,8 +214,8 @@ class MapServer(
                 "agsJson": {
                     "paths": [{
                         "document": "main",
-                        "path": "$.enableDynamicLayers",
-                        "parentPath": "$",
+                        "path": "$.properties.enableDynamicLayers",
+                        "parentPath": "$.properties",
                         "key": "enableDynamicLayers"
                     }],
                     "conversions": [{
@@ -260,7 +258,7 @@ class MapServer(
                 "agsJson": {
                     "paths": [{
                         "document": "main",
-                        "path": "$.schemaLockingEnabled",
+                        "path": "$.properties.schemaLockingEnabled",
                         "parentPath": "$",
                         "key": "schemaLockingEnabled"
                     }],

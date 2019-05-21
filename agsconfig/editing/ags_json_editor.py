@@ -52,10 +52,10 @@ class AgsJsonEditor(EditorBase):
         self._save_json_to_file(self._main, main_json_output_path)
         self._save_json_to_file(self._item_info, item_info_output_path)
 
-    def _create_node(self, document, path_info):
+    def _create_node(self, document, path_info, obj):
         """Creates a new node on the JSON document."""
 
-        parent_element = parse(path_info["parentPath"]).find(document)[0].value
+        parent_element = parse(self._resolve_lambda(path_info, obj, "parentPath")["parentPath"]).find(document)[0].value
 
         self._create_child_nodes(parent_element, path_info)
 
@@ -116,7 +116,7 @@ class AgsJsonEditor(EditorBase):
         # check if node exists
         if not parse(path_info["path"]).find(document):
             # node does not exist, create
-            self._create_node(document, path_info)
+            self._create_node(document, path_info, obj)
 
         parse(path_info["path"]).update(document, value)
 

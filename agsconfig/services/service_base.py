@@ -175,15 +175,6 @@ class ServiceBase(ModelBase):
     folder = EditorProperty(
         {
             "formats": {
-                "agsJson": {
-                    "paths":
-                    [{
-                        "document": "main",
-                        "path": "$.serviceFolder",
-                        "parentPath": "$",
-                        "key": "serviceFolder"
-                    }]
-                },
                 "sddraft": {
                     "paths": [{
                         "path": "./Configurations/SVCConfiguration/ServiceFolder"
