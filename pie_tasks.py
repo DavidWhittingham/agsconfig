@@ -2,15 +2,18 @@ import os
 from pie import *
 
 # Get OS-specific partial path
-VENV_TEST = os.path.join("venv", "test")
+VENV_BUILD = os.path.join(".venvs", "build")
+VENV_TEST = os.path.join(".venvs", "test")
 
 @task
 def build():
-    cmd(r"python setup.py bdist_wheel clean --all")
+    with venv(VENV_BUILD):
+        cmd(r"python setup.py bdist_wheel clean --all")
 
 
 @task
 def createVenvs():
+    venv(VENV_BUILD).create()
     venv(VENV_TEST).create()
 
 
@@ -28,6 +31,11 @@ def test():
 
 @task
 def updatePackages():
+    with venv(VENV_BUILD):
+        pip(r"install -U pip")
+        pip(r"install -U -r requirements.build.txt")
+        pip(r"install -U -r requirements.txt")
+
     with venv(VENV_TEST):
         pip(r"install -U pip")
         pip(r"install -U -r requirements.test.txt")
