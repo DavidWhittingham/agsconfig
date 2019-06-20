@@ -120,7 +120,7 @@ class ImageServer(CacheableExtMixin, CacheableCoreMixin, ImageDimensionsMixin, S
                 "agsJson": {
                     "paths": [{
                         "document": "main",
-                        "path": "$.properties.allowedCompressionMethods"
+                        "path": "$.properties.allowedCompressions"
                     }],
                     "conversions": [{
                         "id": "enumToString",
