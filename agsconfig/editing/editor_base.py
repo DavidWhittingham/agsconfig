@@ -52,8 +52,8 @@ class EditorBase(object):
         if serialization_func_map is not None:
             self._serialization_func_map.update(serialization_func_map)
 
-    def get_value(self, meta, obj):
-        format_info = self._get_format_info_and_check_support(meta)
+    def get_value(self, property_name, meta, obj):
+        format_info = self._get_format_info_and_check_support(property_name, meta)
 
         # even if the result is in multiple locations, return only the first
         path_info = self._resolve_lambda(format_info["paths"][0], obj)
@@ -69,8 +69,8 @@ class EditorBase(object):
         Completely abstract function that is editor implementation specific.
         """
 
-    def set_value(self, value, meta, obj):
-        format_info = self._get_format_info_and_check_support(meta, True)
+    def set_value(self, property_name, value, meta, obj):
+        format_info = self._get_format_info_and_check_support(property_name, meta, True)
 
         # serialize value
         value = self._serialize(value, format_info, obj)
@@ -94,7 +94,7 @@ class EditorBase(object):
             else:
                 # running on Py 2
                 args = [arg for arg in inspect.getargspec(path_info[key]).args]
-            
+
             kwargs = {}
             for arg in args:
                 kwargs[arg] = getattr(obj, arg)
@@ -124,12 +124,12 @@ class EditorBase(object):
 
         return value
 
-    def _get_format_info_and_check_support(self, meta, check_constraints=False):
+    def _get_format_info_and_check_support(self, property_name, meta, check_constraints=False):
         # check if metadata exists for our format, throw exception if it does not
         if not self._format_id in meta["formats"]:
             raise NotImplementedError(
-                "Support for this property has not been implemented on the '{}' configuration format.".format(
-                    self._format_id
+                "Support for the '{}' property has not been implemented on the '{}' configuration format.".format(
+                    property_name, self._format_id
                 )
             )
 
@@ -138,7 +138,10 @@ class EditorBase(object):
         if check_constraints is True and "constraints" in format_info:
             constraints = format_info["constraints"]
             if constraints.get("readOnly", False):
-                raise NotImplementedError("Setting this property on this configuration format is not supported.")
+                raise NotImplementedError(
+                    "Setting the '{}' property on the '{}' configuration format is not permitted (property is read-only)."
+                    .format(property_name, self._format_id)
+                )
 
         return format_info
 

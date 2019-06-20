@@ -3,6 +3,10 @@
 
 """
 
+# setup module logging with null handler
+import logging as _logging
+_logging.getLogger(__name__).addHandler(_logging.NullHandler())
+
 from ._version import *
 from .agsconfig import (
     load_geocode_sddraft, load_geocode_service, load_geodata_sddraft, load_geodata_service, load_geoprocessing_sddraft, load_geoprocessing_service,

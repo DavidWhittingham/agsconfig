@@ -8,19 +8,21 @@ from future.builtins.disabled import *
 from future.builtins import *
 from future.standard_library import install_aliases
 install_aliases()
+from future.utils import raise_
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
-import datetime
-import re
+import datetime as _datetime
+import logging as _logging
+import sys as _sys
 
-from abc import ABCMeta
+from abc import ABCMeta as _ABCMeta
 
-from enum import Enum
+from enum import Enum as _Enum
 
-from ..model_base import ModelBase
-from ..editing.edit_prop import EditorProperty
+from ..model_base import ModelBase as _ModelBase
+from ..editing.edit_prop import EditorProperty as _EditorProperty
 
-MIDNIGHT = datetime.time(0, 0)
+MIDNIGHT = _datetime.time(0, 0)
 
 
 def max_instances_constraint(self, value):
@@ -39,14 +41,15 @@ def min_instances_constraint(self, value):
     return value
 
 
-class ServiceBase(ModelBase):
+class ServiceBase(_ModelBase):
     """Contains base settings/configuration that are common across ArcGIS Service types."""
 
-    __metaclass__ = ABCMeta
+    __metaclass__ = _ABCMeta
 
     _editor = None
+    _logger = _logging.getLogger(__name__)
 
-    class Capability(Enum):
+    class Capability(_Enum):
         """Must be overridden by sub-classes if any capabilities are supported."""
         pass
 
@@ -71,7 +74,7 @@ class ServiceBase(ModelBase):
         """Save this service to one or more new files (one file per input to the service type)."""
         self._editor.save_a_copy(*paths)
 
-    def _set_props_from_dict(self, prop_dict):
+    def _set_props_from_dict(self, prop_dict, ignore_not_implemented=False):
         """Method for setting properties from a dictionary where keys match property names.
         Can be overridden by sub-classes.
         """
@@ -80,13 +83,26 @@ class ServiceBase(ModelBase):
                 try:
                     setattr(self, key, value)
                 except AttributeError:
-                    getattr(self, key)._set_props_from_dict(value)
+                    getattr(self, key)._set_props_from_dict(value, ignore_not_implemented)
+                except NotImplementedError:
+                    t, v, tb = _sys.exc_info()
+                    if ignore_not_implemented:
+                        self._logger.warning(
+                            "Tried to set the '%s' property to '%s', but this is not supported on the supplied configuration format.", key, value
+                        )
+                    else:
+                        raise_(t, v, tb)
+                except Exception:
+                    t, v, tb = _sys.exc_info()
+                    self._logger.error("An unknown exception was thrown setting the '%s' property.", key)
+                    raise_(t, v, tb)
 
-    access_information = EditorProperty(
+    access_information = _EditorProperty(
         {
             "formats": {
                 "agsJson": {
-                    "paths": [{
+                    "paths":
+                    [{
                         "document": "itemInfo",
                         "path": "$.licenseInfo",
                         "parentPath": "$",
@@ -102,7 +118,7 @@ class ServiceBase(ModelBase):
         }
     )
 
-    cluster = EditorProperty(
+    cluster = _EditorProperty(
         {
             "formats": {
                 "agsJson": {
@@ -122,16 +138,18 @@ class ServiceBase(ModelBase):
         }
     )
 
-    credits = EditorProperty(
+    credits = _EditorProperty(
         {
             "formats": {
                 "agsJson": {
-                    "paths": [{
-                        "document": "itemInfo",
-                        "path": "$.accessInformation",
-                        "parentPath": "$",
-                        "key": "accessInformation"
-                    }]
+                    "paths": [
+                        {
+                            "document": "itemInfo",
+                            "path": "$.accessInformation",
+                            "parentPath": "$",
+                            "key": "accessInformation"
+                        }
+                    ]
                 },
                 "sddraft": {
                     "paths": [{
@@ -142,22 +160,23 @@ class ServiceBase(ModelBase):
         }
     )
 
-    description = EditorProperty(
+    description = _EditorProperty(
         {
             "formats": {
                 "agsJson": {
-                    "paths":
-                    [{
-                        "document": "main",
-                        "path": "$.description",
-                        "parentPath": "$",
-                        "key": "description"
-                    }, {
-                        "document": "itemInfo",
-                        "path": "$.description",
-                        "parentPath": "$",
-                        "key": "description"
-                    }]
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": "$.description",
+                            "parentPath": "$",
+                            "key": "description"
+                        }, {
+                            "document": "itemInfo",
+                            "path": "$.description",
+                            "parentPath": "$",
+                            "key": "description"
+                        }
+                    ]
                 },
                 "sddraft": {
                     "paths": [
@@ -172,7 +191,7 @@ class ServiceBase(ModelBase):
         }
     )
 
-    folder = EditorProperty(
+    folder = _EditorProperty(
         {
             "formats": {
                 "sddraft": {
@@ -187,7 +206,7 @@ class ServiceBase(ModelBase):
         }
     )
 
-    high_isolation = EditorProperty(
+    high_isolation = _EditorProperty(
         {
             "formats": {
                 "agsJson": {
@@ -218,7 +237,7 @@ class ServiceBase(ModelBase):
         }
     )
 
-    idle_timeout = EditorProperty(
+    idle_timeout = _EditorProperty(
         {
             "constraints": {
                 "min": 0,
@@ -243,7 +262,7 @@ class ServiceBase(ModelBase):
         }
     )
 
-    instances_per_container = EditorProperty(
+    instances_per_container = _EditorProperty(
         {
             "constraints": {
                 "min": 1,
@@ -268,7 +287,7 @@ class ServiceBase(ModelBase):
         }
     )
 
-    max_instances = EditorProperty(
+    max_instances = _EditorProperty(
         {
             "constraints": {
                 "int": True,
@@ -294,7 +313,7 @@ class ServiceBase(ModelBase):
         }
     )
 
-    max_scale = EditorProperty(
+    max_scale = _EditorProperty(
         {
             "constraints": {
                 "min": 1,
@@ -322,7 +341,7 @@ class ServiceBase(ModelBase):
         }
     )
 
-    min_instances = EditorProperty(
+    min_instances = _EditorProperty(
         {
             "constraints": {
                 "int": True,
@@ -348,7 +367,7 @@ class ServiceBase(ModelBase):
         }
     )
 
-    min_scale = EditorProperty(
+    min_scale = _EditorProperty(
         {
             "constraints": {
                 "float": True
@@ -375,7 +394,7 @@ class ServiceBase(ModelBase):
         }
     )
 
-    name = EditorProperty(
+    name = _EditorProperty(
         {
             "constraints": {
                 "notEmpty": True
@@ -401,7 +420,7 @@ class ServiceBase(ModelBase):
         }
     )
 
-    recycle_interval = EditorProperty(
+    recycle_interval = _EditorProperty(
         {
             "constraints": {
                 "default": 24,
@@ -427,7 +446,7 @@ class ServiceBase(ModelBase):
         }
     )
 
-    recycle_start_time = EditorProperty(
+    recycle_start_time = _EditorProperty(
         {
             "constraints": {
                 "default": MIDNIGHT
@@ -457,7 +476,7 @@ class ServiceBase(ModelBase):
         }
     )
 
-    replace_existing = EditorProperty(
+    replace_existing = _EditorProperty(
         {
             "formats": {
                 "sddraft": {
@@ -476,7 +495,7 @@ class ServiceBase(ModelBase):
         }
     )
 
-    summary = EditorProperty(
+    summary = _EditorProperty(
         {
             "formats": {
                 "agsJson": {
@@ -496,7 +515,7 @@ class ServiceBase(ModelBase):
         }
     )
 
-    tags = EditorProperty(
+    tags = _EditorProperty(
         {
             "formats": {
                 "agsJson": {
@@ -527,7 +546,7 @@ class ServiceBase(ModelBase):
         }
     )
 
-    title = EditorProperty(
+    title = _EditorProperty(
         {
             "formats": {
                 "agsJson": {
@@ -547,7 +566,7 @@ class ServiceBase(ModelBase):
         }
     )
 
-    usage_timeout = EditorProperty(
+    usage_timeout = _EditorProperty(
         {
             "constraints": {
                 "min": 0,
@@ -572,7 +591,7 @@ class ServiceBase(ModelBase):
         }
     )
 
-    wait_timeout = EditorProperty(
+    wait_timeout = _EditorProperty(
         {
             "constraints": {
                 "min": 0,

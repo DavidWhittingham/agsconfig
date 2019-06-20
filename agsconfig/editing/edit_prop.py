@@ -8,7 +8,6 @@ from future.builtins.disabled import *
 from future.builtins import *
 from future.standard_library import install_aliases
 install_aliases()
-
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
 
@@ -20,7 +19,7 @@ class EditorProperty(object):
 
     """
 
-    name = None
+    _name = None
 
     def __init__(self, meta):
         self.meta = meta
@@ -30,7 +29,7 @@ class EditorProperty(object):
             # this is used to get the property metadata via the type, if needed
             return self
 
-        value = obj._editor.get_value(self.meta, obj)
+        value = obj._editor.get_value(self.name_of(obj), self.meta, obj)
 
         return value
 
@@ -71,7 +70,7 @@ class EditorProperty(object):
             if "func" in constraints:
                 value = constraints["func"](obj, value)
 
-        obj._editor.set_value(value, self.meta, obj)
+        obj._editor.set_value(self.name_of(obj), value, self.meta, obj)
 
     def __delete__(self, obj):
         raise AttributeError("You cannot delete the '{}' property.".format(self.name_of(obj)))
@@ -80,8 +79,8 @@ class EditorProperty(object):
         """Gets the name of the property a descriptor is assigned to."""
 
         # retrieved cached name if it exists
-        if self.name is not None:
-            return self.name
+        if self._name is not None:
+            return self._name
 
         attributes = set()
 
@@ -91,8 +90,8 @@ class EditorProperty(object):
 
         for attr in attributes:
             if getattr(type(instance), attr) is self:
-                self.name = attr
-                return self.name
+                self._name = attr
+                return self._name
 
         # This should never happen.
         raise ValueError("This EditorProperty is not assigned to a name on the given instance.")

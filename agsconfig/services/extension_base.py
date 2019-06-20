@@ -8,9 +8,13 @@ from future.builtins.disabled import *
 from future.builtins import *
 from future.standard_library import install_aliases
 install_aliases()
+from future.utils import raise_
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
 # Python lib imports
+import logging as _logging
+import sys as _sys
+
 from abc import ABCMeta
 
 # Third-party package imports
@@ -28,6 +32,7 @@ class ExtensionBase(ModelBase):
 
     _editor = None
     _extension_name = None
+    _logger = _logging.getLogger(__name__)
     _web_capabilities_key = "WebCapabilities"
 
     class Capability(Enum):
@@ -49,15 +54,23 @@ class ExtensionBase(ModelBase):
     def extension_name(self):
         return self._extension_name
 
-    def _set_props_from_dict(self, prop_dict):
-        """Method for setting properties from a dictionary where keys match property names.
-        """
+    def _set_props_from_dict(self, prop_dict, ignore_not_implemented=False):
+        """Method for setting properties from a dictionary where keys match property names."""
         for key, value in prop_dict.items():
             if hasattr(self, key):
                 try:
                     setattr(self, key, value)
                 except AttributeError:
-                    getattr(self, key)._set_props_from_dict(value)
+                    getattr(self, key)._set_props_from_dict(value, ignore_not_implemented)
+                except NotImplementedError:
+                    t, v, tb = _sys.exc_info()
+                    if ignore_not_implemented:
+                        self._logger.warning(
+                            "Tried to set the '{}' property to '{}', but this is not supported on the supplied configuration format."
+                            .format(key, value)
+                        )
+                    else:
+                        raise_(t, v, tb)
 
     capabilities = EditorProperty(
         {
@@ -85,7 +98,9 @@ class ExtensionBase(ModelBase):
             "formats": {
                 "agsJson": {
                     "conversions": [{
-                        "id": "boolToString"
+                        "id": "boolToString",
+                        "true": "true",
+                        "false": "false"
                     }],
                     "paths": [
                         {
