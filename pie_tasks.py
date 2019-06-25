@@ -44,4 +44,5 @@ def updatePackages():
 
 @task([OptionsParameter('version')])
 def upload(version):
-    cmd(r'python -m twine upload dist\agsconfig-{}-py2.py3-none-any.whl'.format(version))
+    with venv(VENV_BUILD):
+        cmd(r'python -m twine upload dist\agsconfig-{}-py2.py3-none-any.whl'.format(version))
