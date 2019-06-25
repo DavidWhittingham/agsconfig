@@ -127,7 +127,9 @@ class ExtensionBase(ModelBase):
                 },
                 "sddraft": {
                     "conversions": [{
-                        "id": "boolToString"
+                        "id": "boolToString",
+                        "true": "true",
+                        "false": "false"
                     }],
                     "paths": [
                         {
