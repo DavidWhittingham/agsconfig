@@ -19,6 +19,16 @@ class OGCMetadataExtensionMixin(object):
     abstract = EditorProperty(
         {
             "formats": {
+                "agsJson": {
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.abstract".format(extension_name),
+                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
+                            "key": "abstract"
+                        }
+                    ]
+                },
                 "sddraft": {
                     "paths": [
                         {
@@ -33,6 +43,16 @@ class OGCMetadataExtensionMixin(object):
     access_constraints = EditorProperty(
         {
             "formats": {
+                 "agsJson": {
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.accessConstraints".format(extension_name),
+                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
+                            "key": "accessConstraints"
+                        }
+                    ]
+                },
                 "sddraft": {
                     "paths": [
                         {
@@ -47,6 +67,16 @@ class OGCMetadataExtensionMixin(object):
     city = EditorProperty(
         {
             "formats": {
+                 "agsJson": {
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.city".format(extension_name),
+                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
+                            "key": "city"
+                        }
+                    ]
+                },
                 "sddraft": {
                     "paths": [
                         {
@@ -61,6 +91,16 @@ class OGCMetadataExtensionMixin(object):
     country = EditorProperty(
         {
             "formats": {
+                 "agsJson": {
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.country".format(extension_name),
+                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
+                            "key": "country"
+                        }
+                    ]
+                },
                 "sddraft": {
                     "paths": [
                         {
@@ -75,6 +115,16 @@ class OGCMetadataExtensionMixin(object):
     keyword = EditorProperty(
         {
             "formats": {
+                 "agsJson": {
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.keywords".format(extension_name),
+                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
+                            "key": "keywords"
+                        }
+                    ]
+                },
                 "sddraft": {
                     "paths": [
                         {
@@ -89,6 +139,16 @@ class OGCMetadataExtensionMixin(object):
     fees = EditorProperty(
         {
             "formats": {
+                 "agsJson": {
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.fees".format(extension_name),
+                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
+                            "key": "fees"
+                        }
+                    ]
+                },
                 "sddraft": {
                     "paths": [
                         {
@@ -103,6 +163,16 @@ class OGCMetadataExtensionMixin(object):
     name = EditorProperty(
         {
             "formats": {
+                 "agsJson": {
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.name".format(extension_name),
+                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
+                            "key": "name"
+                        }
+                    ]
+                },
                 "sddraft": {
                     "paths": [
                         {
@@ -117,6 +187,16 @@ class OGCMetadataExtensionMixin(object):
     title = EditorProperty(
         {
             "formats": {
+                 "agsJson": {
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.title".format(extension_name),
+                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
+                            "key": "title"
+                        }
+                    ]
+                },
                 "sddraft": {
                     "paths": [
                         {
@@ -131,6 +211,16 @@ class OGCMetadataExtensionMixin(object):
     address = EditorProperty(
         {
             "formats": {
+                 "agsJson": {
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].address".format(extension_name),
+                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')]".format(extension_name),
+                            "key": "address"
+                        }
+                    ]
+                },
                 "sddraft": {
                     "paths": [
                         {

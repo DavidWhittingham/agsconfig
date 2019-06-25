@@ -18,6 +18,19 @@ class CustomGetCapabilitiesExtensionMixin(object):
     custom_get_capabilities = EditorProperty(
         {
             "formats": {
+                 "agsJson": {
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.customGetCapabilities".format(extension_name),
+                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
+                            "key": "customGetCapabilities"
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                },
                 "sddraft": {
                     "paths": [
                         {

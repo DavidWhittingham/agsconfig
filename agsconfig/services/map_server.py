@@ -131,6 +131,18 @@ class MapServer(
     anti_aliasing_mode = EditorProperty(
         {
             "formats": {
+                "agsJson": {
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.properties.antialiasingMode",
+                        "parentPath": "$.properties",
+                        "key": "antialiasingMode"
+                    }],
+                    "conversions": [{
+                        "id": "enumToString",
+                        "enum": "AntiAliasingMode"
+                    }]
+                },
                 "sddraft": {
                     "paths": [
                         {
@@ -150,6 +162,18 @@ class MapServer(
     text_anti_aliasing_mode = EditorProperty(
         {
             "formats": {
+                "agsJson": {
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.properties.textAntialiasingMode",
+                        "parentPath": "$.properties",
+                        "key": "textAntialiasingMode"
+                    }],
+                    "conversions": [{
+                        "id": "enumToString",
+                        "enum": "TextAntiAliasingMode"
+                    }]
+                },
                 "sddraft": {
                     "paths": [
                         {
@@ -187,6 +211,17 @@ class MapServer(
     enable_dynamic_layers = EditorProperty(
         {
             "formats": {
+                "agsJson": {
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.properties.enableDynamicLayers",
+                        "parentPath": "$.properties",
+                        "key": "enableDynamicLayers"
+                    }],
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
+                },
                 "sddraft": {
                     "paths": [
                         {
@@ -220,6 +255,17 @@ class MapServer(
     schema_locking_enabled = EditorProperty(
         {
             "formats": {
+                "agsJson": {
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.properties.schemaLockingEnabled",
+                        "parentPath": "$",
+                        "key": "schemaLockingEnabled"
+                    }],
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
+                },
                 "sddraft": {
                     "paths": [
                         {

@@ -2,7 +2,7 @@
     "serviceName": "TestVectorTile",
     "type": "VectorTileServer",
     "description": "",
-    "capabilities": "TilesOnly",
+    "capabilities": "Query,Create,Update,Delete,Uploads,Editing",
     "provider": "ArcObjects",
     "clusterName": "default",
     "minInstancesPerNode": 0,
@@ -43,7 +43,11 @@
       "type": "VectorTileServer"
      }]
     },
-    "extensions": [],
+    "extensions": [
+        {
+        "typeName": "VectorTileServer",
+        "capabilities": "Query,Create,Update,Delete,Uploads,Editing"
+        }],
     "frameworkProperties": {},
     "datasets": []
    }

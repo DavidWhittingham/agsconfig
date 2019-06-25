@@ -33,6 +33,19 @@ class WMSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
     inherit_layer_names = EditorProperty(
         {
             "formats": {
+                "agsJson": {
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.inheritLayerNames".format(extension_name),
+                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
+                            "key": "inheritLayerNames"
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                },
                 "sddraft": {
                     "paths": [
                         {
@@ -64,6 +77,19 @@ class WMSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
     additional_spatial_ref_sys = EditorProperty(
         {
             "formats": {
+                "agsJson": {
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.listSupportedCRS".format(extension_name),
+                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
+                            "key": "listSupportedCRS"
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "stringToCsv"
+                    }],
+                },
                 "sddraft": {
                     "paths": [
                         {
@@ -151,6 +177,16 @@ class WMSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                 "notEmpty": True
             },
             "formats": {
+                "agsJson": {
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.name".format(extension_name),
+                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
+                            "key": "name"
+                        }
+                    ],
+                },
                 "sddraft": {
                     "paths": [
                         {
