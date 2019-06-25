@@ -18,3 +18,10 @@ class NAServerExtension(ExtensionBase):
 
     def __init__(self, editor):
         super().__init__(editor, "NAServer")
+
+    # Capabilities is not implemented for NAServer
+    capabilities = EditorProperty(
+        {
+            "formats": {}
+        }
+    )
