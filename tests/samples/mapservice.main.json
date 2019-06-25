@@ -57,7 +57,7 @@
   "extensions": [
     {
       "typeName": "NAServer",
-      "capabilities": "NotImplemented",
+      "capabilities": "null",
       "enabled": "false",
       "maxUploadFileSize": 0,
       "allowedUploadFileTypes": "",
