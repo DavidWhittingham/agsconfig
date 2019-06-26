@@ -114,9 +114,7 @@ class ExtensionBase(ModelBase):
             "formats": {
                 "agsJson": {
                     "conversions": [{
-                        "id": "boolToString",
-                        "true": "true",
-                        "false": "false"
+                        "id": "boolToString"
                     }],
                     "paths": [
                         {
@@ -127,9 +125,7 @@ class ExtensionBase(ModelBase):
                 },
                 "sddraft": {
                     "conversions": [{
-                        "id": "boolToString",
-                        "true": "true",
-                        "false": "false"
+                        "id": "boolToString"
                     }],
                     "paths": [
                         {
