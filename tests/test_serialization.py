@@ -99,8 +99,8 @@ def test_deserialize_string_to_number(value, conversion, expected, exception):
 @pytest.mark.parametrize(
     ('value', 'conversion', 'expected', 'exception'),
     [
-        (True, {'enum' : 'Capabilities', 'id' : 'enumToString'}, 'TRUE', None),
-        ([True, False], {'enum' : 'Capabilities', 'id' : 'enumToString'}, ['TRUE', 'FALSE'], None),
+        (True, {'enum' : 'Capabilities', 'id' : 'enumToString'}, 'true', None),
+        ([True, False], {'enum' : 'Capabilities', 'id' : 'enumToString'}, ['true', 'false'], None),
         ([], {'enum' : 'Capabilities', 'id' : 'enumToString'}, [], None),
     ]
 )
