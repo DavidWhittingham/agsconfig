@@ -25,8 +25,8 @@ class HostedFeatureServer(
     MaxRecordCountMixin, CacheableExtMixin, CacheableCoreMixin, ServiceBase):
     _feature_server_extension = None
 
-# Not to be confused with allowGeometryUpdates from the feature server extension
-allow_geometry_updates = EditorProperty(
+    # Not to be confused with allowGeometryUpdates from the feature server extension
+    allow_geometry_updates = EditorProperty(
         {
             "formats": {
                 "agsJson": {
@@ -52,8 +52,8 @@ allow_geometry_updates = EditorProperty(
         }
     )
 
-# Not to be confused with allowTrueCurvesUpdates from the feature server extension
-allow_true_curves_updates = EditorProperty(
+    # Not to be confused with allowTrueCurvesUpdates from the feature server extension
+    allow_true_curves_updates = EditorProperty(
         {
             "formats": {
                 "agsJson": {
@@ -79,7 +79,7 @@ allow_true_curves_updates = EditorProperty(
         }
     )
 
-only_allow_true_curve_updates_by_true_curve_clients = EditorProperty(
+    only_allow_true_curve_updates_by_true_curve_clients = EditorProperty(
         {
             "formats": {
                 "agsJson": {
@@ -105,7 +105,7 @@ only_allow_true_curve_updates_by_true_curve_clients = EditorProperty(
         }
     )
 
-enable_z_defaults = EditorProperty(
+    enable_z_defaults = EditorProperty(
         {
             "formats": {
                 "agsJson": {
@@ -131,7 +131,7 @@ enable_z_defaults = EditorProperty(
         }
     )
 
-z_default_value = EditorProperty(
+    z_default_value = EditorProperty(
         {
             "formats": {
                 "agsJson": {
@@ -157,7 +157,7 @@ z_default_value = EditorProperty(
         }
     )
 
-allow_update_without_m_values = EditorProperty(
+    allow_update_without_m_values = EditorProperty(
         {
             "formats": {
                 "agsJson": {
@@ -183,7 +183,7 @@ allow_update_without_m_values = EditorProperty(
         }
     )
 
-dataset_inspected = EditorProperty(
+    dataset_inspected = EditorProperty(
         {
             "formats": {
                 "agsJson": {
@@ -209,7 +209,7 @@ dataset_inspected = EditorProperty(
         }
     )
 
-creator_present = EditorProperty(
+    creator_present = EditorProperty(
         {
             "formats": {
                 "agsJson": {
