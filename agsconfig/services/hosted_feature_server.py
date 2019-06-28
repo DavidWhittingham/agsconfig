@@ -1,15 +1,15 @@
 # coding=utf-8
-"""This module contains the HostedFeatureServer class 
+"""This module contains the HostedFeatureServer class
 for editing HostedFeatureServer configuration pre or post publish"""
 
 # Python 2/3 compatibility
-# pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
+# pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position,no-name-in-module,import-error
 from __future__ import (absolute_import, division, print_function, unicode_literals)
 from future.builtins.disabled import *
 from future.builtins import *
 from future.standard_library import install_aliases
 install_aliases()
-# pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
+# pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position,no-name-in-module,import-error
 
 from enum import Enum
 
@@ -22,8 +22,13 @@ from ..editing.edit_prop import EditorProperty
 from ..services.feature_server_extension import FeatureServerExtension
 
 class HostedFeatureServer(
-    MaxRecordCountMixin, CacheableExtMixin, CacheableCoreMixin, ServiceBase):
+        MaxRecordCountMixin, CacheableExtMixin, CacheableCoreMixin, ServiceBase):
+    """ Class for editing hosted feature services."""
     _feature_server_extension = None
+
+    def __init__(self, editor):
+        super().__init__(editor)
+        self._feature_server_extension = FeatureServerExtension(editor)
 
     # Not to be confused with allowGeometryUpdates from the feature server extension
     allow_geometry_updates = EditorProperty(
@@ -249,6 +254,32 @@ class HostedFeatureServer(
                         {
                             "path":
                             "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='dataInGdb']/Value"
+                        }
+                    ],
+                     "conversions": [
+                         {
+                            "id": "boolToString"
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
+    sync_enabled = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.properties.syncEnabled" # TODO: Verify
+                    }]
+                },
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='syncEnabled']/Value"
                         }
                     ],
                      "conversions": [
