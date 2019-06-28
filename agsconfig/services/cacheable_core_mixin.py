@@ -63,6 +63,60 @@ class CacheableCoreMixin(object):
         }
     )
 
+    ignore_cache = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.properties.ignoreCache"
+                    }],
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
+                },
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'ignoreCache']/Value"
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
+                }
+            }
+        }
+    )
+
+    cache_on_demand = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.properties.cacheOnDemand"
+                    }],
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
+                },
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'cacheOnDemand']/Value"
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
+                }
+            }
+        }
+    )
+
     keep_cache = EditorProperty(
         {
             "formats": {

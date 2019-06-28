@@ -97,6 +97,19 @@ class ServiceBase(_ModelBase):
                     self._logger.error("An unknown exception was thrown setting the '%s' property.", key)
                     raise_(t, v, tb)
 
+    # esriSVCServerType_FullServer or esriSVCServerType_LightweightOnline
+    server_type = _EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [{
+                        "path": "./ServerType"
+                    }]
+                }
+            }
+        }
+    )
+
     access_information = _EditorProperty(
         {
             "formats": {

@@ -15,33 +15,6 @@ from ..editing.edit_prop import EditorProperty
 
 class CacheableExtMixin(object):
 
-    cache_on_demand = EditorProperty(
-        {
-            "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.properties.cacheOnDemand"
-                    }],
-                    "conversions": [{
-                        "id": "boolToString"
-                    }]
-                },
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'cacheOnDemand']/Value"
-                        }
-                    ],
-                    "conversions": [{
-                        "id": "boolToString"
-                    }]
-                }
-            }
-        }
-    )
-
     export_tiles_allowed = EditorProperty(
         {
             "formats": {
