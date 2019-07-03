@@ -18,7 +18,7 @@ from .services.vector_tile_server import VectorTileServer
 from .services.geocode_server import GeocodeServer
 from .services.geodata_server import GeodataServer
 from .services.geoprocessing_server import GeoprocessingServer
-
+from .services.hosted_feature_server import HostedFeatureServer
 
 def load_geocode_sddraft(sddraft_file):
     return GeocodeServer(SDDraftEditor(sddraft_file))
@@ -66,3 +66,11 @@ def load_vector_tile_sddraft(sddraft_file):
 
 def load_vector_tile_service(service_file, item_info_file):
     return VectorTileServer(AgsJsonEditor(service_file, item_info_file))
+
+
+def load_hosted_feature_sddraft(sddraft_file):
+    return HostedFeatureServer(SDDraftEditor(sddraft_file))
+
+
+def load_hosted_feature_service(service_file, item_info_file):
+    return HostedFeatureServer(AgsJsonEditor(service_file, item_info_file))

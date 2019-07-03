@@ -100,8 +100,8 @@ class HostedFeatureServer(
                             "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='onlyAllowTrueCurveUpdatesByTrueCurveClients']/Value"
                         }
                     ],
-                     "conversions": [
-                         {
+                    "conversions": [
+                        {
                             "id": "boolToString"
                         }
                     ]
@@ -126,8 +126,8 @@ class HostedFeatureServer(
                             "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='EnableZDefaults']/Value"
                         }
                     ],
-                     "conversions": [
-                         {
+                    "conversions": [
+                        {
                             "id": "boolToString"
                         }
                     ]
@@ -151,11 +151,6 @@ class HostedFeatureServer(
                             "path":
                             "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='zDefaultValue']/Value"
                         }
-                    ],
-                     "conversions": [
-                         {
-                            "id": "boolToString"
-                        }
                     ]
                 }
             }
@@ -178,8 +173,8 @@ class HostedFeatureServer(
                             "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='allowUpdateWithoutMValues']/Value"
                         }
                     ],
-                     "conversions": [
-                         {
+                    "conversions": [
+                        {
                             "id": "boolToString"
                         }
                     ]
@@ -201,11 +196,11 @@ class HostedFeatureServer(
                     "paths": [
                         {
                             "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='datasetInspected']/Value"
+                            "./StagingSettings/PropertyArray/PropertySetProperty[Key='datasetInspected']/Value"
                         }
                     ],
-                     "conversions": [
-                         {
+                    "conversions": [
+                        {
                             "id": "boolToString"
                         }
                     ]
@@ -227,11 +222,11 @@ class HostedFeatureServer(
                     "paths": [
                         {
                             "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='creatorPresent']/Value"
+                            "./StagingSettings/PropertyArray/PropertySetProperty[Key='creatorPresent']/Value"
                         }
                     ],
-                     "conversions": [
-                         {
+                    "conversions": [
+                        {
                             "id": "boolToString"
                         }
                     ]
@@ -253,11 +248,11 @@ class HostedFeatureServer(
                     "paths": [
                         {
                             "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='dataInGdb']/Value"
+                            "./StagingSettings/PropertyArray/PropertySetProperty[Key='dataInGdb']/Value"
                         }
                     ],
-                     "conversions": [
-                         {
+                    "conversions": [
+                        {
                             "id": "boolToString"
                         }
                     ]
@@ -282,8 +277,8 @@ class HostedFeatureServer(
                             "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='syncEnabled']/Value"
                         }
                     ],
-                     "conversions": [
-                         {
+                    "conversions": [
+                        {
                             "id": "boolToString"
                         }
                     ]

@@ -11,7 +11,7 @@ from ._version import *
 from .agsconfig import (
     load_geocode_sddraft, load_geocode_service, load_geodata_sddraft, load_geodata_service, load_geoprocessing_sddraft, load_geoprocessing_service,
     load_image_sddraft, load_image_service, load_map_sddraft, load_map_service, load_vector_tile_sddraft,
-    load_vector_tile_service
+    load_vector_tile_service, load_hosted_feature_sddraft, load_hosted_feature_service
 )
 from .services.map_server import MapServer
 from .services.geodata_server import GeodataServer
