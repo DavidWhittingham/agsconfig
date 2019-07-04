@@ -26,9 +26,51 @@ class HostedFeatureServer(
     """ Class for editing hosted feature services."""
     _feature_server_extension = None
 
+    class Capability(Enum):
+        create = "Create"
+        query = "Query"
+        update = "Update"
+        delete = "Delete"
+        sync = "Sync"
+        extract = "Extract"
+        editing = "Editing"
+
     def __init__(self, editor):
         super().__init__(editor)
         self._feature_server_extension = FeatureServerExtension(editor)
+
+    capabilities = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.capabilities"
+                    }],
+                    "conversions": [{
+                        "id": "enumToString",
+                        "enum": "Capability"
+                    }, {
+                        "id": "stringToCsv"
+                    }]
+                },
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            "./Configurations/SVCConfiguration/Definition/Info/PropertyArray/PropertySetProperty[Key='webCapabilities']/Value"
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "enumToString",
+                        "enum": "Capability"
+                    }, {
+                        "id": "stringToCsv"
+                    }]
+                }
+            }
+        }
+    )
 
     # Not to be confused with allowGeometryUpdates from the feature server extension
     allow_geometry_updates = EditorProperty(
@@ -48,7 +90,7 @@ class HostedFeatureServer(
                         }
                     ],
                      "conversions": [
-                         {
+                        {
                             "id": "boolToString"
                         }
                     ]
@@ -64,7 +106,7 @@ class HostedFeatureServer(
                 "agsJson": {
                     "paths": [{
                         "document": "main",
-                        "path": "$.properties.allowTrueCurvesUpdates" # TODO: Verify
+                        "path": "$.properties.allowTrueCurvesUpdates"
                     }]
                 },
                 "sddraft": {
@@ -75,7 +117,7 @@ class HostedFeatureServer(
                         }
                     ],
                      "conversions": [
-                         {
+                        {
                             "id": "boolToString"
                         }
                     ]
@@ -90,7 +132,7 @@ class HostedFeatureServer(
                 "agsJson": {
                     "paths": [{
                         "document": "main",
-                        "path": "$.properties.onlyAllowTrueCurveUpdateByTrueCurveClients" # TODO: Verify
+                        "path": "$.properties.onlyAllowTrueCurveUpdatesByTrueCurveClients"
                     }]
                 },
                 "sddraft": {
@@ -116,7 +158,7 @@ class HostedFeatureServer(
                 "agsJson": {
                     "paths": [{
                         "document": "main",
-                        "path": "$.properties.enableZDefaults" # TODO: Verify
+                        "path": "$.properties.enableZDefaults"
                     }]
                 },
                 "sddraft": {
@@ -142,7 +184,7 @@ class HostedFeatureServer(
                 "agsJson": {
                     "paths": [{
                         "document": "main",
-                        "path": "$.properties.zDefaultValue" # TODO: Verify
+                        "path": "$.properties.zDefaultValue"
                     }]
                 },
                 "sddraft": {
@@ -163,7 +205,7 @@ class HostedFeatureServer(
                 "agsJson": {
                     "paths": [{
                         "document": "main",
-                        "path": "$.properties.allowUpdateWithoutMValues" # TODO: Verify
+                        "path": "$.properties.allowUpdateWithoutMValues"
                     }]
                 },
                 "sddraft": {
@@ -186,12 +228,7 @@ class HostedFeatureServer(
     dataset_inspected = EditorProperty(
         {
             "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.properties.datasetInspected" # TODO: Verify
-                    }]
-                },
+                # Apparently no json implementation
                 "sddraft": {
                     "paths": [
                         {
@@ -212,12 +249,7 @@ class HostedFeatureServer(
     creator_present = EditorProperty(
         {
             "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.properties.creatorPresent" # TODO: Verify
-                    }]
-                },
+                # Not found in json file
                 "sddraft": {
                     "paths": [
                         {
@@ -238,12 +270,7 @@ class HostedFeatureServer(
     data_in_gdb = EditorProperty(
         {
             "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.properties.dataInGdb" # TODO: Verify
-                    }]
-                },
+                # Not found in json file
                 "sddraft": {
                     "paths": [
                         {
@@ -267,7 +294,7 @@ class HostedFeatureServer(
                 "agsJson": {
                     "paths": [{
                         "document": "main",
-                        "path": "$.properties.syncEnabled" # TODO: Verify
+                        "path": "$.properties.syncEnabled"
                     }]
                 },
                 "sddraft": {

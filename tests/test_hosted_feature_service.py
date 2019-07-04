@@ -31,9 +31,9 @@ def test_save(service_config):
 @pytest.mark.parametrize(
     ("capabilities", "expected", "ex"),
     [
-        ([agsconfig.MapServer.Capability.map], [agsconfig.MapServer.Capability.map], None),
+        ([HostedFeatureServer.Capability.query], [HostedFeatureServer.Capability.query], None),
         ([], [], None),
-        (["Query"], [agsconfig.MapServer.Capability.query], None),
+        (["Editing"], [HostedFeatureServer.Capability.editing], None),
         (["Fail"], None, ValueError),
         ([123], None, ValueError)
     ]
@@ -70,12 +70,15 @@ def test_getters(service_config, attribute, value, exception):
 
 @pytest.mark.parametrize(
     ('attribute', 'new_value', 'expected_value', 'exception'), [
-        ('anti_aliasing_mode', 'comic book guy', None, ValueError),
-        ('text_anti_aliasing_mode', 'comic book guy', None, ValueError),
-        ('disable_identify_relates', True, True, None),
-        ('enable_dynamic_layers', True, True, None),
-        ('file_path', 'A:/path', 'A:/path', None),
-        ('schema_locking_enabled', False, False, None)
+        ('allow_geometry_updates', False, False, None),
+        ('allow_true_curves_updates', True, True, None),
+        ('only_allow_true_curve_updates_by_true_curve_clients', True, True, None),
+        ('enable_z_defaults', False, False, None),
+        ('z_default_value', 1, 1, None),
+        ('allow_update_without_m_values', False, False, None),
+        ('dataset_inspected', False, False, None),
+        ('creator_present', True, True, None),
+        ('data_in_gdb', False, False, None)
     ]
 )
 def test_setters(service_config, attribute, new_value, expected_value, exception):
