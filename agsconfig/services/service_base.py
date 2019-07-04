@@ -79,23 +79,23 @@ class ServiceBase(_ModelBase):
         Can be overridden by sub-classes.
         """
         for key, value in prop_dict.items():
-            if hasattr(self, key):
-                try:
-                    setattr(self, key, value)
-                except AttributeError:
-                    getattr(self, key)._set_props_from_dict(value, ignore_not_implemented)
-                except NotImplementedError:
-                    t, v, tb = _sys.exc_info()
-                    if ignore_not_implemented:
-                        self._logger.warning(
-                            "Tried to set the '%s' property to '%s', but this is not supported on the supplied configuration format.", key, value
-                        )
-                    else:
-                        raise_(t, v, tb)
-                except Exception:
-                    t, v, tb = _sys.exc_info()
-                    self._logger.error("An unknown exception was thrown setting the '%s' property.", key)
+            try:
+                setattr(self, key, value)
+            except AttributeError:
+                # property has no setter, probably an extension
+                getattr(self, key)._set_props_from_dict(value, ignore_not_implemented)
+            except NotImplementedError:
+                t, v, tb = _sys.exc_info()
+                if ignore_not_implemented:
+                    self._logger.warning(
+                        "Tried to set the '%s' property to '%s', but this is not supported on the supplied configuration format.", key, value
+                    )
+                else:
                     raise_(t, v, tb)
+            except Exception:
+                t, v, tb = _sys.exc_info()
+                self._logger.error("An unknown exception was thrown setting the '%s' property.", key)
+                raise_(t, v, tb)
 
     access_information = _EditorProperty(
         {
