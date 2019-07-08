@@ -1,11 +1,12 @@
 """SDDRaftEditor is an object for changing ArcGIS server draft files."""
 # Python 2/3 compatibility
+# pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position,no-name-in-module,import-error
 from __future__ import (absolute_import, division, print_function, unicode_literals)
 from future.builtins.disabled import *
 from future.builtins import *
 from future.standard_library import install_aliases
-from future.utils import viewitems
 install_aliases()
+# pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position,no-name-in-module,import-error
 
 import collections
 

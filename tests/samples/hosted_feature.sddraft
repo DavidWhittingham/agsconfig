@@ -1,0 +1,488 @@
+﻿<SVCManifest xsi:type='typens:SVCManifest' 
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' 
+    xmlns:xs='http://www.w3.org/2001/XMLSchema' 
+    xmlns:typens='http://www.esri.com/schemas/ArcGIS/2.3.0'>
+    <Databases xsi:type='typens:ArrayOfSVCDatabase' />
+    <Resources xsi:type='typens:ArrayOfSVCResource'>
+        <SVCResource xsi:type='typens:SVCResource'>
+            <ID>0120C8DD-45FF-4380-9B99-EDED0CC19BD9</ID>
+            <Name>map.xml</Name>
+            <ClientName>NRM03659</ClientName>
+            <OnPremisePath>C:\Users\Blanchfieldc1\AppData\Local\Temp\ArcGISPro9524\b5960c44-88ba-496d-9e48-06dde0bd0263\Untitled.aprx</OnPremisePath>
+            <CIMPath>CIMPATH=map/map.xml</CIMPath>
+            <RepositoryID>0</RepositoryID>
+        </SVCResource>
+    </Resources>
+    <ID>4CA57582-D7F2-4FB9-B46F-0565EDE816E8</ID>
+    <Name>hosted_feature</Name>
+    <OnPremisePath>C:\Users\Blanchfieldc1\AppData\Local\Esri\ArcGISPro\Staging\My Hosted Services (Spatial Portal (test))</OnPremisePath>
+    <ByReference>false</ByReference>
+    <Type>esriServiceDefinitionType_New</Type>
+    <State>esriSDState_Draft</State>
+    <ServerType>esriSVCServerType_LightweightOnline</ServerType>
+    <StagingSettings xsi:type='typens:PropertySet'>
+        <PropertyArray xsi:type='typens:ArrayOfPropertySetProperty'>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>CookTilesLocally</Key>
+                <Value xsi:type='xs:string'>false</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>PackageUnderMyContent</Key>
+                <Value xsi:type='xs:boolean'>true</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>PackageUnderMyOrg</Key>
+                <Value xsi:type='xs:boolean'>false</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>PackageIsPublic</Key>
+                <Value xsi:type='xs:boolean'>false</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>PackageShareGroups</Key>
+                <Value xsi:type='xs:boolean'>false</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>PackageGroupIDs</Key>
+                <Value xsi:type='xs:string' />
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>ServerConnectionString</Key>
+                <Value xsi:type='xs:string'>MESSAGEFORMAT=esriAGSInternetMessageFormatBin;SERVERTYPE=esriAGSServerTypeAGO;CONNECTIONMODE=esriAGSConnectionModeAdmin;SERVERURL=https://uat-spatial.information.qld.gov.au/arcgis/;TOKENPROVIDERTYPE=https://uat-spatial.information.qld.gov.au/arcgis/;REFERER=http://www.esri.com/AGO/70C9C1E2-5ABD-42EA-9092-9EAD61428344</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>SaveToSDFile</Key>
+                <Value xsi:type='xs:string'>FALSE</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>IncludeDataInSDFile</Key>
+                <Value xsi:type='xs:string'>TRUE</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>dataInGdb</Key>
+                <Value xsi:type='xs:string'>true</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>datasetInspected</Key>
+                <Value xsi:type='xs:string'>true</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>creatorPresent</Key>
+                <Value xsi:type='xs:string'>false</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>hasEditorTrackingDates</Key>
+                <Value xsi:type='xs:string'>false</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>hasEditorField</Key>
+                <Value xsi:type='xs:string'>false</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>hasEditorTrackingDatesInUTC</Key>
+                <Value xsi:type='xs:string'>false</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>hasEditorTrackingDatesInDbTimezone</Key>
+                <Value xsi:type='xs:string'>false</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>PackageLayerList</Key>
+                <Value xsi:type='xs:string' />
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>ServerRunTimeVersion</Key>
+                <Value xsi:type='xs:int'>5</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>SDCreatorVersion</Key>
+                <Value xsi:type='xs:string'>esriArcGISProVersion2_3</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>ServiceSubType</Key>
+                <Value xsi:type='xs:string' />
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>ServiceTitle</Key>
+                <Value xsi:type='xs:string'>Map</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>PackageTableList</Key>
+                <Value xsi:type='xs:string' />
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>CallingContext</Key>
+                <Value xsi:type='xs:int'>0</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>AGSServerVersion</Key>
+                <Value xsi:type='xs:string'>10.1</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>AdminVersion</Key>
+                <Value xsi:type='xs:string'>5.1</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>PortalVersion</Key>
+                <Value xsi:type='xs:string'>5.1</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>IsPortal</Key>
+                <Value xsi:type='xs:string'>true</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>PortalURL</Key>
+                <Value xsi:type='xs:string'>https://uat-spatial.information.qld.gov.au/arcgis/</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>UserName</Key>
+                <Value xsi:type='xs:string'>Chris.Blanchfield</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>TileCachePath</Key>
+                <Value xsi:type='xs:string' />
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>EnableWFSServer</Key>
+                <Value xsi:type='xs:string'>false</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>WFSProperties</Key>
+                <Value xsi:type='xs:string'>{"appSchemaPrefix":"hosted_feature"}</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>SceneServiceName</Key>
+                <Value xsi:type='xs:string' />
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>avoidDataProjection</Key>
+                <Value xsi:type='xs:string'>false</Value>
+            </PropertySetProperty>
+        </PropertyArray>
+    </StagingSettings>
+    <TemplateSettings xsi:type='typens:PropertySet'>
+        <PropertyArray xsi:type='typens:ArrayOfPropertySetProperty'>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>TemplateName</Key>
+                <Value xsi:type='xs:string'>ESRI Default FeatureService Template</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>TemplateID</Key>
+                <Value xsi:type='xs:string'>2</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>TemplateType</Key>
+                <Value xsi:type='xs:string'>AGOFeatureServer</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>TemplateDescription</Key>
+                <Value xsi:type='xs:string'>This is the default template for a feature service in AGO</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>TemplateSmallImagePath</Key>
+                <Value xsi:type='xs:string' />
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>TemplateLargeImagePath</Key>
+                <Value xsi:type='xs:string' />
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>TemplateGroupID</Key>
+                <Value xsi:type='xs:string'>-1</Value>
+            </PropertySetProperty>
+            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                <Key>TemplateIsHidden</Key>
+                <Value xsi:type='xs:string'>FALSE</Value>
+            </PropertySetProperty>
+        </PropertyArray>
+    </TemplateSettings>
+    <KeepExistingData>false</KeepExistingData>
+    <KeepExistingMapCache>false</KeepExistingMapCache>
+    <ClientHostName>NRM03659</ClientHostName>
+    <Configurations xsi:type='typens:ArrayOfSVCConfiguration'>
+        <SVCConfiguration xsi:type='typens:SVCConfiguration'>
+            <ID>E7BDAFCF-2886-49E3-83B7-FE6839FB05A1</ID>
+            <Name>hosted_feature</Name>
+            <TypeName>FeatureServer</TypeName>
+            <ResourceID>0120C8DD-45FF-4380-9B99-EDED0CC19BD9</ResourceID>
+            <ServiceFolder>test</ServiceFolder>
+            <Definition xsi:type='typens:SVCConfigurationDefinition'>
+                <ConfigurationProperties xsi:type='typens:PropertySet'>
+                    <PropertyArray xsi:type='typens:ArrayOfPropertySetProperty'>
+                        <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                            <Key>supportedImageReturnTypes</Key>
+                            <Value xsi:type='xs:string'>MIME</Value>
+                        </PropertySetProperty>
+                        <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                            <Key>maxRecordCount</Key>
+                            <Value xsi:type='xs:string'>2000</Value>
+                        </PropertySetProperty>
+                        <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                            <Key>exportTilesAllowed</Key>
+                            <Value xsi:type='xs:string'>false</Value>
+                        </PropertySetProperty>
+                        <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                            <Key>maxExportTilesCount</Key>
+                            <Value xsi:type='xs:string'>100000</Value>
+                        </PropertySetProperty>
+                        <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                            <Key>cacheOnDemand</Key>
+                            <Value xsi:type='xs:string'>false</Value>
+                        </PropertySetProperty>
+                        <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                            <Key>clientCachingAllowed</Key>
+                            <Value xsi:type='xs:string'>true</Value>
+                        </PropertySetProperty>
+                        <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                            <Key>ignoreCache</Key>
+                            <Value xsi:type='xs:string'>false</Value>
+                        </PropertySetProperty>
+                        <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                            <Key>antialiasingMode</Key>
+                            <Value xsi:type='xs:string'>Best</Value>
+                        </PropertySetProperty>
+                        <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                            <Key>textAntialiasingMode</Key>
+                            <Value xsi:type='xs:string'>Force</Value>
+                        </PropertySetProperty>
+                        <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                            <Key>minScale</Key>
+                            <Value xsi:type='xs:double'>12769767.100485953</Value>
+                        </PropertySetProperty>
+                        <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                            <Key>maxScale</Key>
+                            <Value xsi:type='xs:double'>4513.988705</Value>
+                        </PropertySetProperty>
+                        <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                            <Key>isCached</Key>
+                            <Value xsi:type='xs:string'>false</Value>
+                        </PropertySetProperty>
+                        <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                            <Key>allowGeometryUpdates</Key>
+                            <Value xsi:type='xs:string'>true</Value>
+                        </PropertySetProperty>
+                        <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                            <Key>allowTrueCurvesUpdates</Key>
+                            <Value xsi:type='xs:string'>false</Value>
+                        </PropertySetProperty>
+                        <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                            <Key>onlyAllowTrueCurveUpdatesByTrueCurveClients</Key>
+                            <Value xsi:type='xs:string'>false</Value>
+                        </PropertySetProperty>
+                        <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                            <Key>EnableZDefaults</Key>
+                            <Value xsi:type='xs:string'>true</Value>
+                        </PropertySetProperty>
+                        <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                            <Key>zDefaultValue</Key>
+                            <Value xsi:type='xs:string'>0</Value>
+                        </PropertySetProperty>
+                        <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                            <Key>allowUpdateWithoutMValues</Key>
+                            <Value xsi:type='xs:string'>true</Value>
+                        </PropertySetProperty>
+                    </PropertyArray>
+                </ConfigurationProperties>
+                <Info xsi:type='typens:PropertySet'>
+                    <PropertyArray xsi:type='typens:ArrayOfPropertySetProperty'>
+                        <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                            <Key>webEnabled</Key>
+                            <Value xsi:type='xs:string'>true</Value>
+                        </PropertySetProperty>
+                        <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                            <Key>webCapabilities</Key>
+                            <Value xsi:type='xs:string'>Query</Value>
+                        </PropertySetProperty>
+                    </PropertyArray>
+                </Info>
+                <Props xsi:type='typens:PropertySet'>
+                    <PropertyArray xsi:type='typens:ArrayOfPropertySetProperty' />
+                </Props>
+                <RecyclingStart>0</RecyclingStart>
+                <Extensions xsi:type='typens:ArrayOfSVCExtension'>
+                    <SVCExtension xsi:type='typens:SVCExtension'>
+                        <Enabled>false</Enabled>
+                        <Info xsi:type='typens:PropertySet'>
+                            <PropertyArray xsi:type='typens:ArrayOfPropertySetProperty'>
+                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                                    <Key>WebEnabled</Key>
+                                    <Value xsi:type='xs:string'>true</Value>
+                                </PropertySetProperty>
+                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                                    <Key>WebCapabilities</Key>
+                                    <Value xsi:type='xs:string'>Query</Value>
+                                </PropertySetProperty>
+                            </PropertyArray>
+                        </Info>
+                        <Props xsi:type='typens:PropertySet'>
+                            <PropertyArray xsi:type='typens:ArrayOfPropertySetProperty'>
+                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                                    <Key>maxRecordCount</Key>
+                                    <Value xsi:type='xs:string'>2000</Value>
+                                </PropertySetProperty>
+                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                                    <Key>enableZDefaults</Key>
+                                    <Value xsi:type='xs:string'>true</Value>
+                                </PropertySetProperty>
+                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                                    <Key>zDefaultValue</Key>
+                                    <Value xsi:type='xs:string'>0</Value>
+                                </PropertySetProperty>
+                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                                    <Key>enableOwnershipBasedAccessControl</Key>
+                                    <Value xsi:type='xs:string'>false</Value>
+                                </PropertySetProperty>
+                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                                    <Key>allowOthersToQuery</Key>
+                                    <Value xsi:type='xs:string'>true</Value>
+                                </PropertySetProperty>
+                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                                    <Key>allowOthersToUpdate</Key>
+                                    <Value xsi:type='xs:string'>false</Value>
+                                </PropertySetProperty>
+                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                                    <Key>allowOthersToDelete</Key>
+                                    <Value xsi:type='xs:string'>false</Value>
+                                </PropertySetProperty>
+                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                                    <Key>datasetInspected</Key>
+                                    <Value xsi:type='xs:string'>true</Value>
+                                </PropertySetProperty>
+                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                                    <Key>creatorPresent</Key>
+                                    <Value xsi:type='xs:string'>false</Value>
+                                </PropertySetProperty>
+                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                                    <Key>dataInGdb</Key>
+                                    <Value xsi:type='xs:string'>true</Value>
+                                </PropertySetProperty>
+                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                                    <Key>realm</Key>
+                                    <Value xsi:type='xs:string' />
+                                </PropertySetProperty>
+                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                                    <Key>editorTrackingTimeZoneID</Key>
+                                    <Value xsi:type='xs:string'>UTC</Value>
+                                </PropertySetProperty>
+                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                                    <Key>editorTrackingRespectsDayLightSavingTime</Key>
+                                    <Value xsi:type='xs:string'>false</Value>
+                                </PropertySetProperty>
+                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                                    <Key>editorTrackingTimeInUTC</Key>
+                                    <Value xsi:type='xs:string'>true</Value>
+                                </PropertySetProperty>
+                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                                    <Key>allowGeometryUpdates</Key>
+                                    <Value xsi:type='xs:string'>true</Value>
+                                </PropertySetProperty>
+                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                                    <Key>allowTrueCurvesUpdates</Key>
+                                    <Value xsi:type='xs:string'>false</Value>
+                                </PropertySetProperty>
+                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                                    <Key>onlyAllowTrueCurveUpdatesByTrueCurveClients</Key>
+                                    <Value xsi:type='xs:string'>false2</Value>
+                                </PropertySetProperty>
+                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                                    <Key>xssPreventionEnabled</Key>
+                                    <Value xsi:type='xs:string'>true</Value>
+                                </PropertySetProperty>
+                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                                    <Key>syncEnabled</Key>
+                                    <Value xsi:type='xs:string'>false</Value>
+                                </PropertySetProperty>
+                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
+                                    <Key>onlineResource</Key>
+                                    <Value xsi:type='xs:string'>https://uat-spatial.information.qld.gov.au/arcgis/services/Map/FeatureServer/FeatureServer</Value>
+                                </PropertySetProperty>
+                            </PropertyArray>
+                        </Props>
+                        <TypeName>FeatureServer</TypeName>
+                    </SVCExtension>
+                </Extensions>
+                <Cluster>default</Cluster>
+            </Definition>
+        </SVCConfiguration>
+    </Configurations>
+    <CacheSchema xsi:type='typens:CacheInfo'>
+        <TileCacheInfo xsi:type='typens:TileCacheInfo'>
+            <TileOrigin xsi:type='typens:PointN'>
+                <X>0</X>
+                <Y>0</Y>
+            </TileOrigin>
+            <TileCols>256</TileCols>
+            <TileRows>256</TileRows>
+            <DPI>96</DPI>
+            <PreciseDPI>96</PreciseDPI>
+        </TileCacheInfo>
+        <TileImageInfo xsi:type='typens:TileImageInfo'>
+            <CacheTileFormat>PNG</CacheTileFormat>
+            <CompressionQuality>0</CompressionQuality>
+            <Antialiasing>false</Antialiasing>
+            <LERCError>0</LERCError>
+        </TileImageInfo>
+        <CacheStorageInfo xsi:type='typens:CacheStorageInfo'>
+            <StorageFormat>esriMapCacheStorageModeExploded</StorageFormat>
+            <PacketSize>0</PacketSize>
+        </CacheStorageInfo>
+    </CacheSchema>
+    <ItemInfo xsi:type='typens:ItemInfo'>
+        <Name>hosted_feature</Name>
+        <Type>Service Definition</Type>
+        <Title>hosted feature</Title>
+        <Tags xsi:type='typens:ArrayOfString'>
+            <String>tags</String>
+        </Tags>
+        <Snippet>summary</Snippet>
+        <Url>https://uat-spatial.information.qld.gov.au/arcgis/</Url>
+        <DataLastModifiedTime xsi:nil='true' />
+        <Extent xsi:type='typens:EnvelopeN'>
+            <XMin>137.99464620000003</XMin>
+            <YMin>-29.178663410999945</YMin>
+            <XMax>153.55184958900008</XMax>
+            <YMax>-9.0879905559999656</YMax>
+            <SpatialReference xsi:type='typens:GeographicCoordinateSystem'>
+                <WKT>GEOGCS["GCS_GDA_1994",DATUM["D_GDA_1994",SPHEROID["GRS_1980",6378137.0,298.257222101]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433],AUTHORITY["EPSG",4283]]</WKT>
+                <XOrigin>-400</XOrigin>
+                <YOrigin>-400</YOrigin>
+                <XYScale>999999999.99999988</XYScale>
+                <ZOrigin>-100000</ZOrigin>
+                <ZScale>10000</ZScale>
+                <MOrigin>-100000</MOrigin>
+                <MScale>10000</MScale>
+                <XYTolerance>8.98315284119521E-09</XYTolerance>
+                <ZTolerance>0.001</ZTolerance>
+                <MTolerance>0.001</MTolerance>
+                <HighPrecision>true</HighPrecision>
+                <LeftLongitude>-180</LeftLongitude>
+                <WKID>4283</WKID>
+                <LatestWKID>4283</LatestWKID>
+            </SpatialReference>
+        </Extent>
+        <SpatialReference xsi:type='typens:GeographicCoordinateSystem'>
+            <WKT>GEOGCS["GCS_GDA_1994",DATUM["D_GDA_1994",SPHEROID["GRS_1980",6378137.0,298.257222101]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433],AUTHORITY["EPSG",4283]]</WKT>
+            <XOrigin>-400</XOrigin>
+            <YOrigin>-400</YOrigin>
+            <XYScale>999999999.99999988</XYScale>
+            <ZOrigin>-100000</ZOrigin>
+            <ZScale>10000</ZScale>
+            <MOrigin>-100000</MOrigin>
+            <MScale>10000</MScale>
+            <XYTolerance>8.98315284119521E-09</XYTolerance>
+            <ZTolerance>0.001</ZTolerance>
+            <MTolerance>0.001</MTolerance>
+            <HighPrecision>true</HighPrecision>
+            <LeftLongitude>-180</LeftLongitude>
+            <WKID>4283</WKID>
+            <LatestWKID>4283</LatestWKID>
+        </SpatialReference>
+        <MinScale>12769767.100485953</MinScale>
+        <MaxScale>4513.988705</MaxScale>
+    </ItemInfo>
+    <Metadata xsi:type='typens:XmlPropertySet'>
+        <XmlDoc>&lt;?xml version="1.0"?&gt;
+&lt;metadata xml:lang="en"&gt;&lt;Esri&gt;&lt;CreaDate&gt;20190627&lt;/CreaDate&gt;&lt;CreaTime&gt;12573200&lt;/CreaTime&gt;&lt;ArcGISFormat&gt;1.0&lt;/ArcGISFormat&gt;&lt;SyncOnce&gt;TRUE&lt;/SyncOnce&gt;&lt;/Esri&gt;&lt;/metadata&gt;
+        </XmlDoc>
+    </Metadata>
+</SVCManifest>

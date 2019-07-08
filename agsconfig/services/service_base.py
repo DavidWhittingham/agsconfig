@@ -88,7 +88,8 @@ class ServiceBase(_ModelBase):
                 t, v, tb = _sys.exc_info()
                 if ignore_not_implemented:
                     self._logger.warning(
-                        "Tried to set the '%s' property to '%s', but this is not supported on the supplied configuration format.", key, value
+                        "Tried to set the '%s' property to '%s', but this is not supported on the supplied configuration format.",
+                        key, value
                     )
                 else:
                     raise_(t, v, tb)
@@ -494,6 +495,9 @@ class ServiceBase(_ModelBase):
             }
         }
     )
+
+    # esriSVCServerType_FullServer or esriSVCServerType_LightweightOnline
+    server_type = _EditorProperty({"formats": {"sddraft": {"paths": [{"path": "./ServerType"}]}}})
 
     summary = _EditorProperty(
         {

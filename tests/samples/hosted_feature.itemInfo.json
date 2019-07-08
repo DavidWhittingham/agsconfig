@@ -1,0 +1,35 @@
+{
+    "culture": "en-AU",
+    "name": "Test_hosting_with_copydata",
+    "guid": "370D939F-8866-44BE-A7A5-44DAB2F762E9",
+    "catalogPath": "",
+    "snippet": "Regulated areas - chemical distribution - Queensland",
+    "description": "This service details areas where aerial and ground distribution is regulated in Queensland (regulated areas), as well as those areas where its provisions do not apply at this point in time (excluded (non-regulated) areas). The dataset also describes the three declared hazardous areas in which additional conditions apply to aerial and ground distribution generally and restrictions apply on how a number of volatile chemicals can be used.",
+    "summary": "Regulated areas - chemical distribution - Queensland",
+    "title": "Test hosting with copydata",
+    "tags": ["copydata"],
+    "type": "Feature Service",
+    "typeKeywords": [
+      "Data",
+      "Service",
+      "Feature Service",
+      "ArcGIS Server",
+      "Feature Access",
+      "providerSDS"
+    ],
+    "thumbnail": "thumbnail/thumbnail.png",
+    "url": "",
+    "extent": [
+      [
+        137.9946462,
+        -29.178663411
+      ],
+      [
+        153.551849589,
+        -9.08799055600002
+      ]
+    ],
+    "spatialReference": "GCS_GDA_1994",
+    "accessInformation": "© State of Queensland (Department of Agriculture, Fisheries and Forestry) 2015.",
+    "licenseInfo": ""
+  }

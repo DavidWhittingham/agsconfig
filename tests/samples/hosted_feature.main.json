@@ -1,0 +1,417 @@
+{
+    "serviceName": "Test_hosting_with_copydata",
+    "type": "FeatureServer",
+    "description": "",
+    "capabilities": "Query",
+    "provider": "SDS",
+    "clusterName": "default",
+    "minInstancesPerNode": 0,
+    "maxInstancesPerNode": 0,
+    "instancesPerContainer": 1,
+    "maxWaitTime": 60,
+    "maxStartupTime": 300,
+    "maxIdleTime": 1800,
+    "maxUsageTime": 600,
+    "loadBalancing": "ROUND_ROBIN",
+    "isolationLevel": "HIGH",
+    "configuredState": "STARTED",
+    "recycleInterval": 24,
+    "recycleStartTime": "00:00",
+    "keepAliveInterval": 1800,
+    "private": false,
+    "isDefault": false,
+    "maxUploadFileSize": 0,
+    "allowedUploadFileTypes": "",
+    "properties": {
+     "cacheDir": "\\\\file-uat.scs.local\\fileshare\\arcgis\\directories\\arcgiscache",
+     "allowGeometryUpdates": "true",
+     "maxRecordCount": "2000",
+     "antialiasingMode": "Best",
+     "onlyAllowTrueCurveUpdatesByTrueCurveClients": "false",
+     "isCached": "false",
+     "virtualOutputDir": "/rest/directories/arcgisoutput",
+     "exportTilesAllowed": "false",
+     "cacheOnDemand": "false",
+     "minScale": "14774879.652937498",
+     "enableZDefaults": "true",
+     "allowUpdateWithoutMValues": "true",
+     "outputDir": "\\\\file-uat.scs.local\\fileshare\\arcgis\\directories\\arcgisoutput",
+     "maxScale": "4513.9887049999998",
+     "filePath": "\\\\file-uat.scs.local\\fileshare\\arcgis\\directories\\arcgissystem\\arcgisinput\\Hosted\\Test_hosting_with_copydata.FeatureServer\\extracted\\v101\\Test_hosting_with_copydata.msd",
+     "supportedImageReturnTypes": "MIME",
+     "clientCachingAllowed": "true",
+     "userName": "Chris.Blanchfield",
+     "textAntialiasingMode": "Force",
+     "maxExportTilesCount": "100000",
+     "ignoreCache": "false",
+     "portalURL": "https://uat-spatial.information.qld.gov.au/arcgis/",
+     "allowTrueCurvesUpdates": "false",
+     "zDefaultValue": "0",
+     "virtualCacheDir": "/rest/directories/arcgiscache"
+    },
+    "jsonProperties": {
+     "currentVersion": 10.51,
+     "serviceDescription": "",
+     "maxRecordCount": 2000,
+     "description": "",
+     "copyrightText": "",
+     "spatialReference": {
+      "wkid": 4283,
+      "latestWkid": 4283
+     },
+     "initialExtent": {
+      "xmin": 123.19797058738962,
+      "ymin": -32.905329812314434,
+      "xmax": 169.80202941261038,
+      "ymax": -5.094670187685569,
+      "spatialReference": {
+       "wkid": 4283,
+       "latestWkid": 4283
+      }
+     },
+     "fullExtent": {
+      "xmin": 137.99464620000003,
+      "ymin": -29.178663411000002,
+      "xmax": 153.55184958899997,
+      "ymax": -9.087990556000022,
+      "spatialReference": {
+       "wkid": 4283,
+       "latestWkid": 4283
+      }
+     },
+     "units": "esriDecimalDegrees",
+     "allowGeometryUpdates": true,
+     "hasVersionedData": false,
+     "supportsDisconnectedEditing": false,
+     "supportedQueryFormats": "JSON, geoJSON",
+     "editorTrackingInfo": {
+      "enableEditorTracking": false,
+      "enableOwnershipAccessControl": false,
+      "allowOthersToUpdate": true,
+      "allowOthersToDelete": false,
+      "allowOthersToQuery": true
+     },
+     "xssPreventionInfo": {
+      "xssPreventionEnabled": true,
+      "xssPreventionRule": "input",
+      "xssInputRule": "rejectInvalid"
+     },
+     "adminServiceInfo": {
+      "database": {"datasource": {"name": "/enterpriseDatabases/AGSDataStore_ds_8ro9t0tp"}},
+      "name": "Test_hosting_with_copydata",
+      "status": "Started",
+      "type": "FeatureServer"
+     },
+     "capabilities": "Query",
+     "enableZDefaults": true,
+     "zDefault": 0,
+     "allowUpdateWithoutMValues": true,
+     "layers": {"0": {
+      "currentVersion": 10.51,
+      "id": 0,
+      "name": "Test with copydata",
+      "parentLayerId": -1,
+      "defaultVisibility": true,
+      "minScale": 0,
+      "maxScale": 0,
+      "type": "Feature Layer",
+      "geometryType": "esriGeometryPolygon",
+      "description": "",
+      "copyrightText": "",
+      "editFieldsInfo": null,
+      "syncCanReturnChanges": true,
+      "relationships": [],
+      "isDataVersioned": false,
+      "supportsRollbackOnFailureParameter": true,
+      "supportsStatistics": true,
+      "supportsAdvancedQueries": true,
+      "supportsValidateSQL": true,
+      "supportsCalculate": true,
+      "advancedQueryCapabilities": {
+       "supportsReturningQueryExtent": true,
+       "supportsStatistics": true,
+       "supportsDistinct": true,
+       "supportsPagination": true,
+       "supportsOrderBy": true,
+       "supportsQueryWithDistance": true,
+       "supportsLod": false,
+       "supportsPaginationOnAggregatedQueries": true,
+       "supportsQueryWithResultType": true
+      },
+      "extent": {
+       "xmin": 137.99464620000003,
+       "ymin": -29.178663411000002,
+       "xmax": 153.55184958899997,
+       "ymax": -9.087990556000022,
+       "spatialReference": {
+        "wkid": 4283,
+        "latestWkid": 4283
+       }
+      },
+      "drawingInfo": {
+       "renderer": {
+        "type": "uniqueValue",
+        "field1": "type",
+        "field2": null,
+        "field3": null,
+        "defaultSymbol": null,
+        "defaultLabel": null,
+        "uniqueValueInfos": [
+         {
+          "symbol": {
+           "type": "esriSFS",
+           "style": "esriSFSBackwardDiagonal",
+           "color": [
+            115,
+            178,
+            255,
+            255
+           ],
+           "outline": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+             0,
+             0,
+             0,
+             255
+            ],
+            "width": 0.1
+           }
+          },
+          "value": "Excluded (non regulated) area",
+          "label": "Excluded (non regulated) areas",
+          "description": ""
+         },
+         {
+          "symbol": {
+           "type": "esriSFS",
+           "style": "esriSFSBackwardDiagonal",
+           "color": [
+            255,
+            127,
+            127,
+            255
+           ],
+           "outline": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+             0,
+             0,
+             0,
+             255
+            ],
+            "width": 0.1
+           }
+          },
+          "value": "Regulated Hazardous",
+          "label": "Regulated Hazardous areas",
+          "description": ""
+         },
+         {
+          "symbol": {
+           "type": "esriSFS",
+           "style": "esriSFSHorizontal",
+           "color": [
+            232,
+            190,
+            255,
+            255
+           ],
+           "outline": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+             0,
+             0,
+             0,
+             255
+            ],
+            "width": 0.1
+           }
+          },
+          "value": "Regulated area",
+          "label": "Regulated areas",
+          "description": ""
+         }
+        ],
+        "fieldDelimiter": ","
+       },
+       "transparency": 0,
+       "labelingInfo": null
+      },
+      "hasM": false,
+      "hasZ": false,
+      "allowTrueCurvesUpdates": false,
+      "onlyAllowTrueCurveUpdatesByTrueCurveClients": true,
+      "hasAttachments": false,
+      "supportsApplyEditsWithGlobalIds": false,
+      "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+      "objectIdField": "objectid",
+      "globalIdField": null,
+      "displayField": "type",
+      "typeIdField": "type",
+      "fields": [
+       {
+        "name": "objectid",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "domain": null,
+        "nullable": false,
+        "editable": false,
+        "sqlTypeCode": 4,
+        "sqlType": "sqlTypeInteger",
+        "typeName": "int4",
+        "adminFieldInfo": {"uniqueValueGenerator": {"function": true}}
+       },
+       {
+        "name": "type",
+        "type": "esriFieldTypeString",
+        "alias": "TYPE",
+        "domain": null,
+        "editable": true,
+        "nullable": true,
+        "length": 50,
+        "sqlTypeCode": 12,
+        "sqlType": "sqlTypeVarchar",
+        "typeName": "varchar"
+       },
+       {
+        "name": "subtype",
+        "type": "esriFieldTypeString",
+        "alias": "SUBTYPE",
+        "domain": null,
+        "editable": true,
+        "nullable": true,
+        "length": 20,
+        "sqlTypeCode": 12,
+        "sqlType": "sqlTypeVarchar",
+        "typeName": "varchar"
+       }
+      ],
+      "indexes": [
+       {
+        "name": "r120_sde_rowid_uk",
+        "fields": "OBJECTID",
+        "isAscending": true,
+        "isUnique": true,
+        "description": ""
+       },
+       {
+        "name": "a87_ix1",
+        "fields": "SHAPE",
+        "isAscending": true,
+        "isUnique": true,
+        "description": ""
+       }
+      ],
+      "dateFieldsTimeReference": {
+       "timeZone": "UTC",
+       "respectsDaylightSaving": false
+      },
+      "types": [
+       {
+        "id": "Excluded (non regulated) area",
+        "name": "Excluded (non regulated) area",
+        "domains": {},
+        "templates": [{
+         "name": "Excluded (non regulated) areas",
+         "description": "",
+         "prototype": {"attributes": {
+          "subtype": null,
+          "type": "Excluded (non regulated) area"
+         }},
+         "drawingTool": "esriFeatureEditToolPolygon"
+        }]
+       },
+       {
+        "id": "Regulated Hazardous",
+        "name": "Regulated Hazardous",
+        "domains": {},
+        "templates": [{
+         "name": "Regulated Hazardous areas",
+         "description": "",
+         "prototype": {"attributes": {
+          "subtype": null,
+          "type": "Regulated Hazardous"
+         }},
+         "drawingTool": "esriFeatureEditToolPolygon"
+        }]
+       },
+       {
+        "id": "Regulated area",
+        "name": "Regulated area",
+        "domains": {},
+        "templates": [{
+         "name": "Regulated areas",
+         "description": "",
+         "prototype": {"attributes": {
+          "subtype": null,
+          "type": "Regulated area"
+         }},
+         "drawingTool": "esriFeatureEditToolPolygon"
+        }]
+       }
+      ],
+      "templates": [],
+      "useStandardizedQueries": true,
+      "supportedQueryFormats": "JSON, geoJSON",
+      "maxRecordCount": 2000,
+      "allowGeometryUpdates": true,
+      "adminLayerInfo": {
+       "geometryField": {
+        "name": "shape",
+        "type": "esriFieldTypeGeometry",
+        "sqlTypeCode": 1111,
+        "sqlType": "sqlTypeOther",
+        "typeName": "st_geometry",
+        "length": 2147483647,
+        "nullable": true,
+        "editable": true
+       },
+       "tableName": "db_283sr.hsu_auqop.test_hosting_with_copydata_qld_hazardous_areas",
+       "typesBasedOnSubtypes": false,
+       "xssTrustedFields": [],
+       "tableExtent": {
+        "xmin": 137.99464620000003,
+        "ymin": -29.178663411000002,
+        "xmax": 153.55184958899997,
+        "ymax": -9.087990556000022,
+        "spatialReference": {
+         "wkid": 4283,
+         "wkt": "GEOGCS[\"GCS_GDA_1994\",DATUM[\"D_GDA_1994\",SPHEROID[\"GRS_1980\",6378137.0,298.257222101]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]]",
+         "sdesrid": 4283
+        }
+       },
+       "syncEnabled": false
+      },
+      "capabilities": "Query",
+      "enableZDefaults": true,
+      "zDefault": 0,
+      "allowUpdateWithoutMValues": true,
+      "supportsCoordinatesQuantization": false,
+      "supportsAttachmentsByUploadId": false,
+      "hasStaticData": false,
+      "ogcGeometryType": [
+       "POLYGON",
+       "MULTIPOLYGON"
+      ],
+      "serviceItemId": "b8ffa0f508da4a98a5988187b46e57af"
+     }},
+     "layerIds": ["0"],
+     "syncEnabled": false,
+     "supportsApplyEditsWithGlobalIds": false,
+     "serviceItemId": "b8ffa0f508da4a98a5988187b46e57af"
+    },
+    "portalProperties": {
+     "isHosted": true,
+     "portalItems": [{
+      "itemID": "b8ffa0f508da4a98a5988187b46e57af",
+      "type": "FeatureServer"
+     }]
+    },
+    "extensions": [],
+    "frameworkProperties": {},
+    "datasets": []
+   }

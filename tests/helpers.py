@@ -95,6 +95,19 @@ GEOPROCESSING_FILE_PATH_COPY = os.path.abspath(
     "{0}/samples/pythongpservice.copy.sddraft".format(os.path.dirname(__file__))
 )
 
+HOSTED_FEATURE_SDDRAFT = os.path.abspath("{0}/samples/hosted_feature.sddraft".format(os.path.dirname(__file__)))
+HOSTED_FEATURE_SDDRAFT_COPY = os.path.abspath(
+    "{0}/samples/hosted_feature.copy.sddraft".format(os.path.dirname(__file__))
+)
+HOSTED_FEATURE_MAIN_JSON = os.path.abspath("{0}/samples/hosted_feature.main.json".format(os.path.dirname(__file__)))
+HOSTED_FEATURE_MAIN_JSON_COPY = os.path.abspath(
+    "{0}/samples/hosted_feature.main.copy.json".format(os.path.dirname(__file__))
+)
+HOSTED_FEATURE_INFO_JSON = os.path.abspath("{0}/samples/hosted_feature.itemInfo.json".format(os.path.dirname(__file__)))
+HOSTED_FEATURE_INFO_JSON_COPY = os.path.abspath(
+    "{0}/samples/hosted_feature.itemInfo.copy.json".format(os.path.dirname(__file__))
+)
+
 
 def get_map_sddraft(file_path):
     return agsconfig.load_map_sddraft(file_path)
@@ -142,6 +155,14 @@ def get_geoprocessing_sddraft(file_path):
     return agsconfig.load_geoprocessing_sddraft(file_path)
 
 
+def get_hosted_feature_sddraft(file_path):
+    return agsconfig.load_hosted_feature_sddraft(file_path)
+
+
+def get_hosted_feature_service(main_json_fp, info_json_fp):
+    return agsconfig.load_hosted_feature_service(main_json_fp, info_json_fp)
+
+
 @pytest.fixture(
     scope="function",
     params=[
@@ -160,6 +181,28 @@ def get_geoprocessing_sddraft(file_path):
     ]
 )
 def map_service_config(request):
+    for s in _load_service_yield_on_func(request):
+        yield s
+
+
+@pytest.fixture(
+    scope="function",
+    params=[
+        {
+            "func": get_hosted_feature_sddraft,
+            "paths": [(HOSTED_FEATURE_SDDRAFT, HOSTED_FEATURE_SDDRAFT_COPY)]
+        },
+        {
+            "func":
+            get_hosted_feature_service,
+            "paths": [
+                (HOSTED_FEATURE_MAIN_JSON, HOSTED_FEATURE_MAIN_JSON_COPY),
+                (HOSTED_FEATURE_INFO_JSON, HOSTED_FEATURE_INFO_JSON_COPY)
+            ]
+        }
+    ]
+)
+def hosted_feature_config(request):
     for s in _load_service_yield_on_func(request):
         yield s
 
