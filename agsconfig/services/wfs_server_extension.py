@@ -19,6 +19,9 @@ from .custom_get_capabilities_extension_mixin import CustomGetCapabilitiesExtens
 class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensionMixin, ExtensionBase):
     """ WMS server extension properties for arcGIS services """
 
+    _agsjson_key_address = "deliveryPoint"
+    _sddraft_key_address = "deliveryPoint"
+
     class AxisOrder(Enum):
         lat_long = "LatLong"
         long_lat = "LongLat"
@@ -31,45 +34,28 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
             "formats": {
                 "sddraft": {
                     "paths": [
-                        {
-                            "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='appSchemaURI']/Value".format(extension_name)
-                        }
+                        {# yapf: disable
+                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='appSchemaURI']/Value".format(extension_name)
+                        }# yapf: enable
                     ]
                 }
             }
-        })
+        }
+    )
 
     app_schema_prefix = EditorProperty(
         {
             "formats": {
                 "sddraft": {
                     "paths": [
-                        {
-                            "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='appSchemaPrefix']/Value".format(extension_name)
-                        }
+                        {# yapf: disable
+                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='appSchemaPrefix']/Value".format(extension_name)
+                        }# yapf: enable
                     ]
                 }
             }
-        })
-
-    enable_transactions = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='enableTransactions']/Value".format(extension_name)
-                        }
-                    ],
-                    "conversions": [{
-                        "id": "boolToString"
-                    }]
-                }
-            }
-        })
+        }
+    )
 
     axis_order_wfs_10 = EditorProperty(
         {
@@ -78,7 +64,9 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     "paths": [
                         {
                             "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='axisOrderWFS10']/Value".format(extension_name)
+                            lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='axisOrderWFS10']/Value"
+                            .format(extension_name)
                         }
                     ],
                     "conversions": [{
@@ -87,7 +75,8 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     }]
                 }
             }
-        })
+        }
+    )
 
     axis_order_wfs_11 = EditorProperty(
         {
@@ -96,7 +85,9 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     "paths": [
                         {
                             "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='axisOrderWFS11']/Value".format(extension_name)
+                            lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='axisOrderWFS11']/Value"
+                            .format(extension_name)
                         }
                     ],
                     "conversions": [{
@@ -105,63 +96,8 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     }]
                 }
             }
-        })
-
-    service_type = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='serviceType']/Value".format(extension_name)
-                        }
-                    ]
-                }
-            }
-        })
-
-    service_type_version = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='serviceTypeVersion']/Value".format(extension_name)
-                        }
-                    ]
-                }
-            }
-        })
-
-    hours_of_service = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='hoursOfService']/Value".format(extension_name)
-                        }
-                    ]
-                }
-            }
-        })
-
-    provider_site = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='providerSite']/Value".format(extension_name)
-                        }
-                    ]
-                }
-            }
-        })
+        }
+    )
 
     contact_instructions = EditorProperty(
         {
@@ -170,9 +106,189 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     "paths": [
                         {
                             "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='contactInstructions']/Value".format(extension_name)
+                            lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='contactInstructions']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
             }
-        })
+        }
+    )
+
+    enable_transactions = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='enableTransactions']/Value"
+                            .format(extension_name)
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
+                }
+            }
+        }
+    )
+
+    hours_of_service = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='hoursOfService']/Value"
+                            .format(extension_name)
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
+    individual_name = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='individualName']/Value"
+                            .format(extension_name)
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
+    position_name = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='positionName']/Value"
+                            .format(extension_name)
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
+    post_code = EditorProperty(
+        {
+            "constraints": {
+                "int": True,
+                "min": 1
+            },
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='postalCode']/Value"
+                            .format(extension_name)
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
+    phone = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='phone']/Value"
+                            .format(extension_name)
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
+    provider_name = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='providerName']/Value"
+                            .format(extension_name)
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
+    provider_site = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='providerSite']/Value"
+                            .format(extension_name)
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
+    service_type = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='serviceType']/Value"
+                            .format(extension_name)
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
+    service_type_version = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='serviceTypeVersion']/Value"
+                            .format(extension_name)
+                        }
+                    ]
+                }
+            }
+        }
+    )

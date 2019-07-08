@@ -18,6 +18,8 @@ from .custom_get_capabilities_extension_mixin import CustomGetCapabilitiesExtens
 class WMSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensionMixin, ExtensionBase):
     """ WMS server extension properties for arcGIS services """
 
+    _sddraft_key_administrative_area = "stateOrProvince"
+    _sddraft_key_email = "contactElectronicMailAddress"
 
     class Capability(Enum):
         get_capabilities = "GetCapabilities"
@@ -29,50 +31,6 @@ class WMSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
 
     def __init__(self, editor):
         super().__init__(editor, "WMSServer")
-
-    inherit_layer_names = EditorProperty(
-        {
-            "formats": {
-                "agsJson": {
-                    "paths": [
-                        {
-                            "document": "main",
-                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.inheritLayerNames".format(extension_name),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
-                            "key": "inheritLayerNames"
-                        }
-                    ],
-                    "conversions": [{
-                        "id": "boolToString"
-                    }],
-                },
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='inheritLayerNames']/Value".format(extension_name)
-                        }
-                    ],
-                    "conversions": [{
-                        "id": "boolToString"
-                    }]
-                }
-            }
-        })
-
-    path_to_custom_sld_file = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='pathToCustomSLDFile']/Value".format(extension_name)
-                        }
-                    ]
-                }
-            }
-        })
 
     additional_spatial_ref_sys = EditorProperty(
         {
@@ -120,42 +78,8 @@ class WMSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     }]
                 }
             }
-        })
-
-    reaspect = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='Reaspect']/Value".format(extension_name)
-                        }
-                    ],
-                    "conversions": [{
-                        "id": "boolToString"
-                    }]
-                }
-            }
-        })
-
-    post_code = EditorProperty(
-        {
-            "constraints": {
-                "int": True,
-                "min": 1
-            },
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='postCode']/Value".format(extension_name)
-                        }
-                    ]
-                }
-            }
-        })
+        }
+    )
 
     address_type = EditorProperty(
         {
@@ -169,7 +93,56 @@ class WMSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     ]
                 }
             }
-        })
+        }
+    )
+
+    contact_organization = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='contactOrganization']/Value"
+                            .format(extension_name)
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
+    inherit_layer_names = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.inheritLayerNames".format(extension_name),
+                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
+                            "key": "inheritLayerNames"
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                },
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='inheritLayerNames']/Value".format(extension_name)
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
+                }
+            }
+        }
+    )
 
     name = EditorProperty(
         {
@@ -196,4 +169,57 @@ class WMSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     ]
                 }
             }
-        })
+        }
+    )
+
+    path_to_custom_sld_file = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='pathToCustomSLDFile']/Value".format(extension_name)
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
+    post_code = EditorProperty(
+        {
+            "constraints": {
+                "int": True,
+                "min": 1
+            },
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='postCode']/Value".format(extension_name)
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
+    reaspect = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='Reaspect']/Value".format(extension_name)
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
+                }
+            }
+        }
+    )
