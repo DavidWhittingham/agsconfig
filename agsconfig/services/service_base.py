@@ -8,12 +8,10 @@ from future.builtins.disabled import *
 from future.builtins import *
 from future.standard_library import install_aliases
 install_aliases()
-from future.utils import raise_
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
 import datetime as _datetime
 import logging as _logging
-import sys as _sys
 
 from abc import ABCMeta as _ABCMeta
 
@@ -73,30 +71,6 @@ class ServiceBase(_ModelBase):
     def save_a_copy(self, *paths):
         """Save this service to one or more new files (one file per input to the service type)."""
         self._editor.save_a_copy(*paths)
-
-    def _set_props_from_dict(self, prop_dict, ignore_not_implemented=False):
-        """Method for setting properties from a dictionary where keys match property names.
-        Can be overridden by sub-classes.
-        """
-        for key, value in prop_dict.items():
-            try:
-                setattr(self, key, value)
-            except AttributeError:
-                # property has no setter, probably an extension
-                getattr(self, key)._set_props_from_dict(value, ignore_not_implemented)
-            except NotImplementedError:
-                t, v, tb = _sys.exc_info()
-                if ignore_not_implemented:
-                    self._logger.warning(
-                        "Tried to set the '%s' property to '%s', but this is not supported on the supplied configuration format.",
-                        key, value
-                    )
-                else:
-                    raise_(t, v, tb)
-            except Exception:
-                t, v, tb = _sys.exc_info()
-                self._logger.error("An unknown exception was thrown setting the '%s' property.", key)
-                raise_(t, v, tb)
 
     access_information = _EditorProperty(
         {
