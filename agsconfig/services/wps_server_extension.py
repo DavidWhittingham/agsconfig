@@ -1,9 +1,13 @@
-"""Edit WPS server extension properties for ArcGIS geoprocessing services."""
+"""This module contains the WPS Server extension class"""
+
+# Python 2/3 compatibility
+# pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 from __future__ import (absolute_import, division, print_function, unicode_literals)
 from future.builtins.disabled import *
 from future.builtins import *
 from future.standard_library import install_aliases
 install_aliases()
+# pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
 from enum import Enum
 from ..editing.edit_prop import EditorProperty
@@ -15,8 +19,13 @@ from .custom_get_capabilities_extension_mixin import CustomGetCapabilitiesExtens
 class WPSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensionMixin, ExtensionBase):
     """ WMS server extension properties for arcGIS services """
 
-    _agsjson_key_address = "deliveryPoint"
-    _sddraft_key_address = "deliveryPoint"
+    # ArcGIS Server JSON key names
+    _AGSJSON_KEY_ADDRESS = "deliveryPoint"
+    _AGSJSON_KEY_FEES = "fee"
+
+    # Service Definition Draft key names
+    _SDDRAFT_KEY_ADDRESS = "deliveryPoint"
+    _SDDRAFT_KEY_FEES = "fee"
 
     class Capability(Enum):
         get_capabilities = "GetCapabilities"
@@ -57,20 +66,6 @@ class WPSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
         }
     )
 
-    facsimile = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {# yapf: disable
-                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='facsimile']/Value".format(extension_name)
-                        }# yapf: enable
-                    ]
-                }
-            }
-        }
-    )
-
     hours_of_service = EditorProperty(
         {
             "formats": {
@@ -78,76 +73,6 @@ class WPSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     "paths": [
                         {# yapf: disable
                             "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='hoursOfService']/Value".format(extension_name)
-                        }# yapf: enable
-                    ]
-                }
-            }
-        }
-    )
-
-    individual_name = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {# yapf: disable
-                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='individualName']/Value".format(extension_name)
-                        }# yapf: enable
-                    ]
-                }
-            }
-        }
-    )
-
-    organisation = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {# yapf: disable
-                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='organisation']/Value".format(extension_name)
-                        }# yapf: enable
-                    ]
-                }
-            }
-        }
-    )
-
-    phone = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {# yapf: disable
-                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='phone']/Value".format(extension_name)
-                        }# yapf: enable
-                    ]
-                }
-            }
-        }
-    )
-
-    position_name = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {# yapf: disable
-                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='positionName']/Value".format(extension_name)
-                        }# yapf: enable
-                    ]
-                }
-            }
-        }
-    )
-
-    postal_code = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {# yapf: disable
-                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='postalCode']/Value".format(extension_name)
                         }# yapf: enable
                     ]
                 }
@@ -176,20 +101,6 @@ class WPSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     "paths": [
                         {# yapf: disable
                             "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='profile']/Value".format(extension_name)
-                        }# yapf: enable
-                    ]
-                }
-            }
-        }
-    )
-
-    provider_name = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {# yapf: disable
-                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='providerName']/Value".format(extension_name)
                         }# yapf: enable
                     ]
                 }
@@ -246,20 +157,6 @@ class WPSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     "paths": [
                         {# yapf: disable
                             "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='serviceType']/Value".format(extension_name)
-                        }# yapf: enable
-                    ]
-                }
-            }
-        }
-    )
-
-    fee = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {# yapf: disable
-                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='fee']/Value".format(extension_name)
                         }# yapf: enable
                     ]
                 }

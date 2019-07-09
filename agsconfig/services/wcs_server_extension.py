@@ -18,58 +18,36 @@ from .custom_get_capabilities_extension_mixin import CustomGetCapabilitiesExtens
 class WCSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensionMixin, ExtensionBase):
     """ WCS server extension properties for arcGIS services """
 
-    _sddraft_key_administrative_area = "province"
-    _sddraft_key_email = "email"
-    _sddraft_key_keyword = "keywords"
+    # ArcGIS Server JSON key names
+    _AGSJSON_KEY_ADMINISTRATIVE_AREA = "province"
+    _AGSJSON_KEY_EMAIL = "email"
+    _AGSJSON_KEY_FACSIMILE = "fax"
+    _AGSJSON_KEY_INDIVIDUAL_NAME = "responsiblePerson"
+    _AGSJSON_KEY_KEYWORDS = "keywords"
+    _AGSJSON_KEY_POSITION_NAME = "responsiblePosition"
+    _AGSJSON_KEY_POSTAL_CODE = "zipcode"
+
+    # Service Definition Draft key names
+    _SDDRAFT_KEY_ADMINISTRATIVE_AREA = "province"
+    _SDDRAFT_KEY_EMAIL = "email"
+    _SDDRAFT_KEY_FACSIMILE = "fax"
+    _SDDRAFT_KEY_INDIVIDUAL_NAME = "responsiblePerson"
+    _SDDRAFT_KEY_KEYWORDS = "keywords"
+    _SDDRAFT_KEY_POSITION_NAME = "responsiblePosition"
+    _SDDRAFT_KEY_POSTAL_CODE = "zipcode"
 
     def __init__(self, editor):
         super().__init__(editor, "WCSServer")
-
-    phone = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='phone']/Value"
-                            .format(extension_name)
-                        }
-                    ]
-                }
-            }
-        }
-    )
-
-    provider_name = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='providerName']/Value"
-                            .format(extension_name)
-                        }
-                    ]
-                }
-            }
-        }
-    )
 
     provider_site = EditorProperty(
         {
             "formats": {
                 "sddraft": {
                     "paths": [
-                        {
-                            "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='providerSite']/Value"
-                            .format(extension_name)
-                        }
+                        {#yapf: disable
+                            "path": lambda extension_name:
+                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='providerWebsite']/Value".format(extension_name)
+                        }#yapf: enable
                     ]
                 }
             }

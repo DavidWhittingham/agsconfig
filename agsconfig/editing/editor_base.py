@@ -56,7 +56,7 @@ class EditorBase(object):
         format_info = self._get_format_info_and_check_support(property_name, meta)
 
         # even if the result is in multiple locations, return only the first
-        path_info = self._resolve_lambda(format_info["paths"][0], obj)
+        path_info = self._resolve_lambda(format_info["paths"][0], obj, "path")
 
         value = self._get_value(path_info)
 
@@ -77,10 +77,10 @@ class EditorBase(object):
 
         # set the value in all locations listed
         for path_info in format_info["paths"]:
-            self._set_value(value, self._resolve_lambda(path_info, obj), obj)
+            self._set_value(value, self._resolve_lambda(path_info, obj, "path"), obj)
 
     @staticmethod
-    def _resolve_lambda(path_info, obj, key="path"):
+    def _resolve_lambda(path_info, obj, key):
         # if the path is a lambda, get the arg names and assume they're in obj
         if callable(path_info[key]):
             # don't modify the original path_info object, it may need to be evaluated multiple times with different

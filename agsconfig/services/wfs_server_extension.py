@@ -19,8 +19,11 @@ from .custom_get_capabilities_extension_mixin import CustomGetCapabilitiesExtens
 class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensionMixin, ExtensionBase):
     """ WMS server extension properties for arcGIS services """
 
-    _agsjson_key_address = "deliveryPoint"
-    _sddraft_key_address = "deliveryPoint"
+    # ArcGIS Server JSON key names
+    _AGSJSON_KEY_ADDRESS = "deliveryPoint"
+
+    # Service Definition Draft key names
+    _SDDRAFT_KEY_ADDRESS = "deliveryPoint"
 
     class AxisOrder(Enum):
         lat_long = "LatLong"
@@ -179,61 +182,6 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                             "path":
                             lambda extension_name:
                             "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='positionName']/Value"
-                            .format(extension_name)
-                        }
-                    ]
-                }
-            }
-        }
-    )
-
-    post_code = EditorProperty(
-        {
-            "constraints": {
-                "int": True,
-                "min": 1
-            },
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='postalCode']/Value"
-                            .format(extension_name)
-                        }
-                    ]
-                }
-            }
-        }
-    )
-
-    phone = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='phone']/Value"
-                            .format(extension_name)
-                        }
-                    ]
-                }
-            }
-        }
-    )
-
-    provider_name = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='providerName']/Value"
                             .format(extension_name)
                         }
                     ]

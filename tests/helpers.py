@@ -171,8 +171,7 @@ def get_hosted_feature_service(main_json_fp, info_json_fp):
             "paths": [(MAP_SDDRAFT_FILE_PATH, MAP_SDDRAFT_FILE_PATH_COPY)]
         },
         {
-            "func":
-            get_map_service,
+            "func": get_map_service,
             "paths": [
                 (MAP_MAIN_JSON_FILE_PATH, MAP_MAIN_JSON_FILE_PATH_COPY),
                 (MAP_INFO_JSON_FILE_PATH, MAP_INFO_JSON_FILE_PATH_COPY)

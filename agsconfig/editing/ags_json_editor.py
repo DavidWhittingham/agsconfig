@@ -57,10 +57,13 @@ class AgsJsonEditor(EditorBase):
 
         parent_element = parse(self._resolve_lambda(path_info, obj, "parentPath")["parentPath"]).find(document)[0].value
 
-        self._create_child_nodes(parent_element, path_info)
+        self._create_child_nodes(obj, parent_element, path_info)
 
-    def _create_child_nodes(self, parent_node, path_info):
+    def _create_child_nodes(self, obj, parent_node, path_info):
         """Recursively creates child nodes of a new parent node in a JSON document."""
+
+        # resolve a possible lamda on the "key" name for a property
+        path_info = self._resolve_lambda(path_info, obj, "key")
 
         parent_node[path_info["key"]] = None
 
@@ -68,7 +71,7 @@ class AgsJsonEditor(EditorBase):
             new_node = {}
             parent_node[path_info["key"]] = new_node
             for child in path_info["children"]:
-                self._create_child_nodes(new_node, child)
+                self._create_child_nodes(obj, new_node, child)
 
     def _get_value(self, path_info):
         document = self._document_map.get(path_info["document"])
@@ -79,14 +82,17 @@ class AgsJsonEditor(EditorBase):
         if not values:
             return None
 
-        # Return pythonic things for known types
+        # special case, don't convert strings starting with a "+", probably a phone number
         try:
-            return float(values[0].value)
-        except (ValueError, TypeError):
+            if values[0].value.startswith("+"):
+                return values[0].value
+        except AttributeError:
             pass
 
+        # Return pythonic things for known types
         try:
-            return int(values[0].value)
+            val = float(values[0].value)
+            return int(val) if val.is_integer() else val
         except (ValueError, TypeError):
             pass
 

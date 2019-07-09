@@ -28,14 +28,17 @@ def get_element_value(element, default=None):
     if element.text.upper() == "FALSE":
         return False
 
+    # special case, don't convert strings starting with a "+", probably a phone number
     try:
-        return int(element.text)
-    except ValueError:
+        if element.text.startswith("+"):
+            return element.text
+    except AttributeError:
         pass
 
     try:
-        return float(element.text)
-    except ValueError:
+        val = float(element.text)
+        return int(val) if val.is_integer() else val
+    except (ValueError, TypeError):
         pass
 
     # value seems to be a string, get it as a Py2/3 compatible string

@@ -18,8 +18,25 @@ from .custom_get_capabilities_extension_mixin import CustomGetCapabilitiesExtens
 class WMSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensionMixin, ExtensionBase):
     """ WMS server extension properties for arcGIS services """
 
-    _sddraft_key_administrative_area = "stateOrProvince"
-    _sddraft_key_email = "contactElectronicMailAddress"
+    # ArcGIS Server JSON key names
+    _AGSJSON_KEY_ADMINISTRATIVE_AREA = "stateOrProvince"
+    _AGSJSON_KEY_EMAIL = "contactElectronicMailAddress"
+    _AGSJSON_KEY_FACSIMILE = "contactFacsimileTelephone"
+    _AGSJSON_KEY_INDIVIDUAL_NAME = "contactPerson"
+    _AGSJSON_KEY_PHONE = "contactVoiceTelephone"
+    _AGSJSON_KEY_POSITION_NAME = "contactPosition"
+    _AGSJSON_KEY_POSTAL_CODE = "postCode"
+    _AGSJSON_KEY_PROVIDER_NAME = "contactOrganization"
+
+    # Service Definition Draft key names
+    _SDDRAFT_KEY_ADMINISTRATIVE_AREA = "stateOrProvince"
+    _SDDRAFT_KEY_EMAIL = "contactElectronicMailAddress"
+    _SDDRAFT_KEY_FACSIMILE = "contactFacsimileTelephone"
+    _SDDRAFT_KEY_INDIVIDUAL_NAME = "contactPerson"
+    _SDDRAFT_KEY_PHONE = "contactVoiceTelephone"
+    _SDDRAFT_KEY_POSITION_NAME = "contactPosition"
+    _SDDRAFT_KEY_POSTAL_CODE = "postCode"
+    _SDDRAFT_KEY_PROVIDER_NAME = "contactOrganization"
 
     class Capability(Enum):
         get_capabilities = "GetCapabilities"
@@ -96,23 +113,6 @@ class WMSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
         }
     )
 
-    contact_organization = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='contactOrganization']/Value"
-                            .format(extension_name)
-                        }
-                    ]
-                }
-            }
-        }
-    )
-
     inherit_layer_names = EditorProperty(
         {
             "formats": {
@@ -180,25 +180,6 @@ class WMSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                         {
                             "path":
                             lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='pathToCustomSLDFile']/Value".format(extension_name)
-                        }
-                    ]
-                }
-            }
-        }
-    )
-
-    post_code = EditorProperty(
-        {
-            "constraints": {
-                "int": True,
-                "min": 1
-            },
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='postCode']/Value".format(extension_name)
                         }
                     ]
                 }
