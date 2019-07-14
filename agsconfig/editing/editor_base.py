@@ -31,6 +31,7 @@ class EditorBase(object):
         self._deserialization_func_map = {
             "boolToString": serialization.deserialize_string_to_bool,
             "enumToString": serialization.deserialize_string_to_enum,
+            "formatString": serialization.deserialize_formatted_to_string,
             "noneToEmptyString": serialization.deserialize_empty_string_to_none,
             "numberToString": serialization.deserialize_string_to_number,
             "stringToCsv": serialization.deserialize_csv_to_string_list,
@@ -43,6 +44,7 @@ class EditorBase(object):
         self._serialization_func_map = {
             "boolToString": serialization.serialize_bool_to_string,
             "enumToString": serialization.serialize_enum_to_string,
+            "formatString": serialization.serialize_formatted_string,
             "noneToEmptyString": serialization.serialize_none_to_empty_string,
             "numberToString": serialization.serialize_number_to_string,
             "stringToCsv": serialization.serialize_string_list_to_csv,

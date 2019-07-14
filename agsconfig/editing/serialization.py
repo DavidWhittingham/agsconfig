@@ -11,6 +11,7 @@ install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
 import datetime
+import logging as _logging
 import re
 
 from collections import Sequence
@@ -37,6 +38,47 @@ def deserialize_empty_string_to_none(value, conversion, obj):
 
     return None if value == "" else value
 
+
+def deserialize_formatted_to_string(value, conversion, obj):
+    logger = _get_logger()
+
+    # deal with a sequence of formatted strings
+    if isinstance(value, Sequence) and not isinstance(value, str):
+        if len(value) == 0:
+            return value
+
+        return [deserialize_formatted_to_string(v, conversion, obj) for v in value]
+
+    if value is None:
+        # no match to find
+        return None
+
+    # get format
+    frmt = conversion["format"]
+
+    # make sure format use "{}" notation and not "{0}" notation
+    frmt = frmt.format("{}")
+
+    # split string around format marker and escape parts
+    frmt_parts = frmt.split("{}")
+    frmt_parts = [re.escape(p) for p in frmt_parts]
+    escaped_frmt = "{}".join(frmt_parts)
+
+    # add capture group where format marker is
+    pattern = escaped_frmt.format(r"(\w+)")
+
+    # find matches
+    logger.debug("Match pattern: %s", pattern)
+    logger.debug("Value: %s", value)
+    match = re.match(pattern, value)
+
+    if match is None:
+        raise ValueError("Could not find a matching value given the formatted string.")
+    
+    if len(match.groups()) > 1:
+        raise ValueError("Too many matches found.  Value: {}; Format: {}".format(value, frmt))
+
+    return match.groups(1)
 
 def deserialize_string_to_bool(value, conversion, obj):
     if isinstance(value, Sequence) and not isinstance(value, str):
@@ -135,7 +177,7 @@ def serialize_bool_to_string(value, conversion, obj):
     true = conversion["true"] if "true" in conversion else "true"
     false = conversion["false"] if "false" in conversion else "false"
 
-    return true if value_to_boolean(value) == True else false
+    return true if _value_to_boolean(value) == True else false
 
 
 def serialize_enum_to_string(value, conversion, obj):
@@ -149,6 +191,21 @@ def serialize_enum_to_string(value, conversion, obj):
     enum = obj[conversion["enum"]]
 
     return _enum_to_str(value, enum, "Could not convert to a known value.")
+
+
+def serialize_formatted_string(value, conversion, obj):
+    # deak with a sequence
+    if isinstance(value, Sequence) and not isinstance(value, str):
+        if len(value) == 0:
+            return value
+
+        return [serialize_formatted_string(v, conversion, obj) for v in value]
+
+    # get the format
+    frmt = conversion["format"]
+
+    # return the formatted value
+    return frmt.format(value)
 
 
 def serialize_number_to_string(value, conversion, obj):
@@ -177,9 +234,9 @@ def serialize_none_to_empty_string(value, conversion, obj):
         if len(value) == 0:
             return value
 
-        return [deserialize_empty_string_to_none(v, conversion, obj) for v in value]
+        return [serialize_none_to_empty_string(v, conversion, obj) for v in value]
 
-    return "" if value == None else value
+    return "" if value is None else value
 
 
 def serialize_string_list_to_csv(value, conversion, obj):
@@ -226,7 +283,11 @@ def _enum_to_str(value, enum, exception_message):
     return value.value
 
 
-def value_to_boolean(value):
+def _get_logger():
+    return _logging.getLogger(__name__)
+
+
+def _value_to_boolean(value):
     """Converts true-ish and false-ish values to boolean."""
     try:
         value = value.upper()
