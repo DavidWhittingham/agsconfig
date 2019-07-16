@@ -14,11 +14,12 @@ install_aliases()
 from enum import Enum
 
 # Local imports
+from .output_dir_mixin import OutputDirMixin
 from .service_base import ServiceBase
 from ..editing.edit_prop import EditorProperty
 
 
-class GeodataServer(ServiceBase):
+class GeodataServer(OutputDirMixin, ServiceBase):
     class Capability(Enum):
         extraction = "Extraction"
         query = "Query"
@@ -33,12 +34,10 @@ class GeodataServer(ServiceBase):
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main",
-                        "path": "$.capabilities"
+                        "document": "main", "path": "$.capabilities"
                     }],
                     "conversions": [{
-                        "id": "enumToString",
-                        "enum": "Capability"
+                        "id": "enumToString", "enum": "Capability"
                     }, {
                         "id": "stringToCsv"
                     }]
@@ -51,8 +50,7 @@ class GeodataServer(ServiceBase):
                         }
                     ],
                     "conversions": [{
-                        "id": "enumToString",
-                        "enum": "Capability"
+                        "id": "enumToString", "enum": "Capability"
                     }, {
                         "id": "stringToCsv"
                     }]
@@ -70,10 +68,8 @@ class GeodataServer(ServiceBase):
                 "agsJson": {
                     "constraints": {
                         "readOnly": True
-                    },
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.serviceName"
+                    }, "paths": [{
+                        "document": "main", "path": "$.serviceName"
                     }]
                 },
                 "sddraft": {
