@@ -215,7 +215,7 @@ class MapServer(
                         }
                     ],
                     "conversions": [{
-                        "id": "olsenTimeZoneToWindowsTimeZone"
+                        "id": "olsonTimeZoneToWindowsTimeZone"
                     }]
                 },
                 "sddraft": {
@@ -243,7 +243,7 @@ class MapServer(
                         }
                     ],
                     "conversions": [{
-                        "id": "olsenTimeZoneToWindowsTimeZone"
+                        "id": "olsonTimeZoneToWindowsTimeZone"
                     }]
                 }
             }

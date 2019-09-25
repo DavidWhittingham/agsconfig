@@ -170,17 +170,17 @@ def deserialize_string_to_time(value, conversion, obj):
     return datetime.time(int(time_parts[0]), int(time_parts[1]))
 
 
-def deserialize_windows_tz_to_olsen_tz(value, conversion, obj):
+def deserialize_windows_tz_to_olson_tz(value, conversion, obj):
     if isinstance(value, Sequence) and not isinstance(value, str):
         if len(value) == 0:
             return value
 
-        return [deserialize_windows_tz_to_olsen_tz(v, conversion, obj) for v in value]
+        return [deserialize_windows_tz_to_olson_tz(v, conversion, obj) for v in value]
 
     if value is None or len(value) == 0:
         return None
 
-    # check if value is already is already an OLSEN ID
+    # check if value is already is already an olson ID
     if value in tzlocal.windows_tz.tz_win:
         return value
 
@@ -260,12 +260,12 @@ def serialize_none_to_empty_string(value, conversion, obj):
     return "" if value is None else value
 
 
-def serialize_olsen_tz_to_windows_tz(value, conversion, obj):
+def serialize_olson_tz_to_windows_tz(value, conversion, obj):
     if isinstance(value, Sequence) and not isinstance(value, str):
         if len(value) == 0:
             return value
 
-        return [serialize_olsen_tz_to_windows_tz(v, conversion, obj) for v in value]
+        return [serialize_olson_tz_to_windows_tz(v, conversion, obj) for v in value]
 
     if value is None or len(value) == 0:
         return None
