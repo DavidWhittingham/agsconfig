@@ -27,9 +27,8 @@ from ..services.wcs_server_extension import WCSServerExtension
 from ..services.wms_server_extension import WMSServerExtension
 
 
-
 class MapServer(
-        MaxRecordCountMixin, OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDimensionsMixin, ServiceBase
+    MaxRecordCountMixin, OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDimensionsMixin, ServiceBase
 ):
     _feature_server_extension = None
     _kml_server_extension = None
@@ -37,7 +36,6 @@ class MapServer(
     _wfs_server_extension = None
     _wcs_server_extension = None
     _wms_server_extension = None
-
 
     class AntiAliasingMode(Enum):
         none = "None"
@@ -100,12 +98,10 @@ class MapServer(
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main",
-                        "path": "$.capabilities"
+                        "document": "main", "path": "$.capabilities"
                     }],
                     "conversions": [{
-                        "id": "enumToString",
-                        "enum": "Capability"
+                        "id": "enumToString", "enum": "Capability"
                     }, {
                         "id": "stringToCsv"
                     }]
@@ -118,8 +114,7 @@ class MapServer(
                         }
                     ],
                     "conversions": [{
-                        "id": "enumToString",
-                        "enum": "Capability"
+                        "id": "enumToString", "enum": "Capability"
                     }, {
                         "id": "stringToCsv"
                     }]
@@ -132,15 +127,16 @@ class MapServer(
         {
             "formats": {
                 "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.properties.antialiasingMode",
-                        "parentPath": "$.properties",
-                        "key": "antialiasingMode"
-                    }],
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": "$.properties.antialiasingMode",
+                            "parentPath": "$.properties",
+                            "key": "antialiasingMode"
+                        }
+                    ],
                     "conversions": [{
-                        "id": "enumToString",
-                        "enum": "AntiAliasingMode"
+                        "id": "enumToString", "enum": "AntiAliasingMode"
                     }]
                 },
                 "sddraft": {
@@ -151,8 +147,103 @@ class MapServer(
                         }
                     ],
                     "conversions": [{
-                        "id": "enumToString",
-                        "enum": "AntiAliasingMode"
+                        "id": "enumToString", "enum": "AntiAliasingMode"
+                    }]
+                }
+            }
+        }
+    )
+
+    date_fields_respects_daylight_saving_time = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": "$.properties.dateFieldsRespectsDayLightSavingTime",
+                            "parentPath": "$.properties",
+                            "key": "dateFieldsRespectsDayLightSavingTime"
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
+                },
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='dateFieldsRespectsDayLightSavingTime']/Value",
+                            "parentPath": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray",
+                            "tag": "PropertySetProperty",
+                            "attributes": {
+                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                            },
+                            "children": [
+                                {
+                                    "tag": "Key",
+                                    "value": "dateFieldsRespectsDayLightSavingTime"
+                                },
+                                {
+                                    "tag": "Value",
+                                    "attributes": {
+                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
+                }
+            }
+        }
+    )
+
+    date_fields_timezone_id = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": "$.properties.dateFieldsTimezoneID",
+                            "parentPath": "$.properties",
+                            "key": "dateFieldsTimezoneID"
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "olsenTimeZoneToWindowsTimeZone"
+                    }]
+                },
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='dateFieldsTimezoneID']/Value",
+                            "parentPath": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray",
+                            "tag": "PropertySetProperty",
+                            "attributes": {
+                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                            },
+                            "children": [
+                                {
+                                    "tag": "Key",
+                                    "value": "dateFieldsTimezoneID"
+                                },
+                                {
+                                    "tag": "Value",
+                                    "attributes": {
+                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "olsenTimeZoneToWindowsTimeZone"
                     }]
                 }
             }
@@ -163,15 +254,16 @@ class MapServer(
         {
             "formats": {
                 "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.properties.textAntialiasingMode",
-                        "parentPath": "$.properties",
-                        "key": "textAntialiasingMode"
-                    }],
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": "$.properties.textAntialiasingMode",
+                            "parentPath": "$.properties",
+                            "key": "textAntialiasingMode"
+                        }
+                    ],
                     "conversions": [{
-                        "id": "enumToString",
-                        "enum": "TextAntiAliasingMode"
+                        "id": "enumToString", "enum": "TextAntiAliasingMode"
                     }]
                 },
                 "sddraft": {
@@ -182,8 +274,7 @@ class MapServer(
                         }
                     ],
                     "conversions": [{
-                        "id": "enumToString",
-                        "enum": "TextAntiAliasingMode"
+                        "id": "enumToString", "enum": "TextAntiAliasingMode"
                     }]
                 }
             }
@@ -212,12 +303,14 @@ class MapServer(
         {
             "formats": {
                 "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.properties.enableDynamicLayers",
-                        "parentPath": "$.properties",
-                        "key": "enableDynamicLayers"
-                    }],
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": "$.properties.enableDynamicLayers",
+                            "parentPath": "$.properties",
+                            "key": "enableDynamicLayers"
+                        }
+                    ],
                     "conversions": [{
                         "id": "boolToString"
                     }]
@@ -256,12 +349,14 @@ class MapServer(
         {
             "formats": {
                 "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.properties.schemaLockingEnabled",
-                        "parentPath": "$",
-                        "key": "schemaLockingEnabled"
-                    }],
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": "$.properties.schemaLockingEnabled",
+                            "parentPath": "$",
+                            "key": "schemaLockingEnabled"
+                        }
+                    ],
                     "conversions": [{
                         "id": "boolToString"
                     }]

@@ -63,7 +63,8 @@ class ModelBase(object):
                 if ignore_not_implemented:
                     self._logger.warning(
                         "Tried to set the '%s' property to '%s', but this is not supported on the supplied configuration format.",
-                        key, value
+                        key,
+                        value
                     )
                     continue
                 else:
@@ -79,7 +80,8 @@ class ModelBase(object):
                 if ignore_not_implemented:
                     self._logger.warning(
                         "Tried to set the '%s' property to '%s', but this is not supported on the supplied configuration format.",
-                        key, value
+                        key,
+                        value
                     )
                     continue
                 else:

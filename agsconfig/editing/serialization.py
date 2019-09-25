@@ -14,6 +14,8 @@ import datetime
 import logging as _logging
 import re
 
+import tzlocal.windows_tz
+
 from collections import Sequence
 
 #: A regular expression for matching time notation
@@ -74,11 +76,12 @@ def deserialize_formatted_to_string(value, conversion, obj):
 
     if match is None:
         raise ValueError("Could not find a matching value given the formatted string.")
-    
+
     if len(match.groups()) > 1:
         raise ValueError("Too many matches found.  Value: {}; Format: {}".format(value, frmt))
 
     return match.groups(1)
+
 
 def deserialize_string_to_bool(value, conversion, obj):
     if isinstance(value, Sequence) and not isinstance(value, str):
@@ -167,6 +170,24 @@ def deserialize_string_to_time(value, conversion, obj):
     return datetime.time(int(time_parts[0]), int(time_parts[1]))
 
 
+def deserialize_windows_tz_to_olsen_tz(value, conversion, obj):
+    if isinstance(value, Sequence) and not isinstance(value, str):
+        if len(value) == 0:
+            return value
+
+        return [deserialize_windows_tz_to_olsen_tz(v, conversion, obj) for v in value]
+
+    if value is None or len(value) == 0:
+        return None
+
+    # check if value is already is already an OLSEN ID
+    if value in tzlocal.windows_tz.tz_win:
+        return value
+
+    # surrounded with str to ensure unicode
+    return str(tzlocal.windows_tz.win_tz[value])
+
+
 def serialize_bool_to_string(value, conversion, obj):
     if isinstance(value, Sequence) and not isinstance(value, str):
         if len(value) == 0:
@@ -237,6 +258,24 @@ def serialize_none_to_empty_string(value, conversion, obj):
         return [serialize_none_to_empty_string(v, conversion, obj) for v in value]
 
     return "" if value is None else value
+
+
+def serialize_olsen_tz_to_windows_tz(value, conversion, obj):
+    if isinstance(value, Sequence) and not isinstance(value, str):
+        if len(value) == 0:
+            return value
+
+        return [serialize_olsen_tz_to_windows_tz(v, conversion, obj) for v in value]
+
+    if value is None or len(value) == 0:
+        return None
+
+    # check if value is already is already a Windows TZ ID
+    if value in tzlocal.windows_tz.win_tz:
+        return value
+
+    # surrounded with str to ensure unicode
+    return str(tzlocal.windows_tz.tz_win[value])
 
 
 def serialize_string_list_to_csv(value, conversion, obj):

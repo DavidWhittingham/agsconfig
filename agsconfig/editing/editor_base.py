@@ -35,7 +35,8 @@ class EditorBase(object):
             "noneToEmptyString": serialization.deserialize_empty_string_to_none,
             "numberToString": serialization.deserialize_string_to_number,
             "stringToCsv": serialization.deserialize_csv_to_string_list,
-            "timeToString": serialization.deserialize_string_to_time
+            "timeToString": serialization.deserialize_string_to_time,
+            "olsenTimeZoneToWindowsTimeZone": serialization.deserialize_windows_tz_to_olsen_tz
         }
 
         if deserialization_func_map is not None:
@@ -48,7 +49,8 @@ class EditorBase(object):
             "noneToEmptyString": serialization.serialize_none_to_empty_string,
             "numberToString": serialization.serialize_number_to_string,
             "stringToCsv": serialization.serialize_string_list_to_csv,
-            "timeToString": serialization.serialize_time_to_string
+            "timeToString": serialization.serialize_time_to_string,
+            "olsenTimeZoneToWindowsTimeZone": serialization.serialize_olsen_tz_to_windows_tz
         }
 
         if serialization_func_map is not None:
@@ -70,7 +72,6 @@ class EditorBase(object):
 
         Completely abstract function that is editor implementation specific.
         """
-
     def set_value(self, property_name, value, meta, obj):
         format_info = self._get_format_info_and_check_support(property_name, meta, True)
 
@@ -110,14 +111,12 @@ class EditorBase(object):
 
         Completely abstract function that is editor implementation specific.
         """
-
     @abstractmethod
     def _set_value(self, value, path_info):
         """Set the value at the provided path.
 
         Completely abstract function that is editor implementation specific.
         """
-
     def _deserialize(self, value, format_info, obj):
         if "conversions" in format_info:
             # a sequence of conversions has been specified for serializing, reverse the order to process

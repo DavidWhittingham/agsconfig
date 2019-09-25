@@ -51,11 +51,12 @@ def test_capabilities(service_config, capabilities, expected, ex):
 
 
 @pytest.mark.parametrize(
-    ('attribute', 'value', 'exception'), [
-        ('comic_book_guy', None, AttributeError), ('anti_aliasing_mode', MapServer.AntiAliasingMode.fastest, None),
-        ('text_anti_aliasing_mode', MapServer.TextAntiAliasingMode.force, None),
-        ('disable_identify_relates', False, None), ('enable_dynamic_layers', False, None), ('file_path', None, None),
-        ('schema_locking_enabled', True, None)
+    ("attribute", "value", "exception"),
+    [
+        ("comic_book_guy", None, AttributeError), ("anti_aliasing_mode", MapServer.AntiAliasingMode.fastest, None),
+        ("text_anti_aliasing_mode", MapServer.TextAntiAliasingMode.force, None),
+        ("disable_identify_relates", False, None), ("enable_dynamic_layers", False, None), ("file_path", None, None),
+        ("schema_locking_enabled", True, None)
     ]
 )
 def test_getters(service_config, attribute, value, exception):
@@ -67,13 +68,25 @@ def test_getters(service_config, attribute, value, exception):
 
 
 @pytest.mark.parametrize(
-    ('attribute', 'new_value', 'expected_value', 'exception'), [
-        ('anti_aliasing_mode', 'comic book guy', None, ValueError),
-        ('anti_aliasing_mode', 'Best', MapServer.AntiAliasingMode.best, None),
-        ('text_anti_aliasing_mode', 'comic book guy', None, ValueError),
-        ('text_anti_aliasing_mode', 'Normal', MapServer.TextAntiAliasingMode.normal, None),
-        ('disable_identify_relates', True, True, None), ('enable_dynamic_layers', True, True, None),
-        ('file_path', 'A:/path', 'A:/path', None), ('schema_locking_enabled', False, False, None)
+    ("attribute", "new_value", "expected_value", "exception"),
+    [
+        ("anti_aliasing_mode", "comic book guy", None, ValueError),
+        ("anti_aliasing_mode", "Best", MapServer.AntiAliasingMode.best, None),
+        ("text_anti_aliasing_mode", "comic book guy", None, ValueError),
+        ("text_anti_aliasing_mode", "Normal", MapServer.TextAntiAliasingMode.normal, None),
+        ("disable_identify_relates", True, True, None),
+        ("enable_dynamic_layers", True, True, None),
+        ("file_path", "A:/path", "A:/path", None),
+        ("schema_locking_enabled", False, False, None),
+        ("date_fields_respects_daylight_saving_time", True, True, None),
+        ("date_fields_respects_daylight_saving_time", False, False, None),
+        ("date_fields_timezone_id", "Australia/Brisbane", "Australia/Brisbane", None),
+
+        # this happens/is expected because the time zones are equivalent
+        ("date_fields_timezone_id", "Australia/Canberra", "Australia/Sydney", None),
+
+        # this should happen because input should allow the Windows Timezone IDs
+        ("date_fields_timezone_id", "E. Australia Standard Time", "Australia/Brisbane", None)
     ]
 )
 def test_setters(service_config, attribute, new_value, expected_value, exception):
