@@ -78,8 +78,8 @@ def test_getters(service_config, attribute, value, exception):
         ("enable_dynamic_layers", True, True, None),
         ("file_path", "A:/path", "A:/path", None),
         ("schema_locking_enabled", False, False, None),
-        ("date_fields_respects_daylight_saving_time", True, True, None),
-        ("date_fields_respects_daylight_saving_time", False, False, None),
+        ("date_fields_respect_daylight_saving_time", True, True, None),
+        ("date_fields_respect_daylight_saving_time", False, False, None),
         ("date_fields_timezone_id", "Australia/Brisbane", "Australia/Brisbane", None),
 
         # this happens/is expected because the time zones are equivalent

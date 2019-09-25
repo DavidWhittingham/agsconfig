@@ -154,7 +154,7 @@ class MapServer(
         }
     )
 
-    date_fields_respects_daylight_saving_time = EditorProperty(
+    date_fields_respect_daylight_saving_time = EditorProperty(
         {
             "formats": {
                 "agsJson": {
