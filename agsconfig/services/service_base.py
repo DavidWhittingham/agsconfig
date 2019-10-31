@@ -470,9 +470,6 @@ class ServiceBase(_ModelBase):
         }
     )
 
-    # esriSVCServerType_FullServer or esriSVCServerType_LightweightOnline
-    server_type = _EditorProperty({"formats": {"sddraft": {"paths": [{"path": "./ServerType"}]}}})
-
     summary = _EditorProperty(
         {
             "formats": {
