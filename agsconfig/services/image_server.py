@@ -350,6 +350,49 @@ class ImageServer(OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDi
         }
     )
 
+    raster_functions = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.properties.rasterFunctions"
+                    }],
+                    "conversions": [{
+                        "id": "stringToCsv"
+                    }]
+                },
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='RasterFunctions']/Value",
+                            "parentPath": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray",
+                            "tag": "PropertySetProperty",
+                            "attributes": {
+                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                            },
+                            "children": [
+                                {
+                                    "tag": "Key",
+                                    "value": "RasterFunctions"
+                                },
+                                {
+                                    "tag": "Value",
+                                    "attributes": {
+                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "stringToCsv"
+                    }]
+                }
+            }
+        }
+    )
+
     return_jpgpng_as_jpg = EditorProperty(
         {
             "formats": {

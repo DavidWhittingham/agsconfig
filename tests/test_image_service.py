@@ -108,6 +108,7 @@ def test_getters(service_config, attribute, expected_value, exception):
         ("min_instances", 2, 2, None),
         ("min_scale", 10, 10, None),
         ("name", "Example", "Example", None),
+        ("raster_functions", ["None", "Path/To/RasterFunction.xml"], ["None", "Path/To/RasterFunction.xml"], None),
         ("recycle_interval", 1, 1, None),
         ("recycle_start_time", datetime.time(16, 0), datetime.time(16, 0), None),
         ("summary", "summary", "summary", None),
@@ -137,6 +138,7 @@ def test_setters(service_config, attribute, new_value, expected_value, exception
     else:
         setattr(service_config, attribute, new_value)
         assert getattr(service_config, attribute) == expected_value
+
 
 def test_setter(service_config):
     setattr(service_config, "max_download_size_limit", 10)
