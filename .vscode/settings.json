@@ -15,5 +15,6 @@
     "search.exclude": {
         "**/.git": true,
         "**/.venvs": true
-    }
+    },
+    "python.linting.pylintEnabled": true
 }

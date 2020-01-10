@@ -17,8 +17,7 @@ from .custom_get_capabilities_extension_mixin import CustomGetCapabilitiesExtens
 
 
 class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensionMixin, ExtensionBase):
-    """ WCS server extension properties for arcGIS services """
-
+    """Feature Server extension properties for ArcGIS services."""
     class Capability(Enum):
         create = "Create"
         delete = "Delete"
@@ -53,12 +52,15 @@ class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExt
                     "paths": [
                         {
                             "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='allowGeometryUpdates']/Value".format(extension_name)
+                            lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='allowGeometryUpdates']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
             }
-        })
+        }
+    )
 
     allow_others_to_delete = EditorProperty(
         {
@@ -67,17 +69,18 @@ class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExt
                     "paths": [
                         {
                             "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='allowOthersToDelete']/Value".format(extension_name)
+                            lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='allowOthersToDelete']/Value"
+                            .format(extension_name)
                         }
                     ],
-                    "conversions": [
-                        {
-                            "id": "boolToString"
-                        }
-                    ]
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
                 }
             }
-        })
+        }
+    )
 
     allow_others_to_query = EditorProperty(
         {
@@ -86,17 +89,18 @@ class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExt
                     "paths": [
                         {
                             "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='allowOthersToQuery']/Value".format(extension_name)
+                            lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='allowOthersToQuery']/Value"
+                            .format(extension_name)
                         }
                     ],
-                    "conversions": [
-                        {
-                            "id": "boolToString"
-                        }
-                    ]
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
                 }
             }
-        })
+        }
+    )
 
     allow_others_to_update = EditorProperty(
         {
@@ -105,36 +109,49 @@ class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExt
                     "paths": [
                         {
                             "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='allowOthersToUpdate']/Value".format(extension_name)
+                            lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='allowOthersToUpdate']/Value"
+                            .format(extension_name)
                         }
                     ],
-                    "conversions": [
-                        {
-                            "id": "boolToString"
-                        }
-                    ]
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
                 }
             }
-        })
+        }
+    )
 
     allow_true_curves_updates = EditorProperty(
         {
             "formats": {
+                "agsJson": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": "$.extensions[?(@.typeName = 'FeatureServer')].properties.allowTrueCurvesUpdates"
+                        }
+                    ]
+                },
                 "sddraft": {
                     "paths": [
                         {
                             "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='allowTrueCurvesUpdates']/Value".format(extension_name)
+                            lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='allowTrueCurvesUpdates']/Value"
+                            .format(extension_name)
                         }
                     ],
-                    "conversions": [
-                        {
-                            "id": "boolToString"
-                        }
-                    ]
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
                 }
             }
-        })
+        }
+    )
 
     enable_ownership_based_access_control = EditorProperty(
         {
@@ -143,17 +160,18 @@ class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExt
                     "paths": [
                         {
                             "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='enableOwnershipBasedAccessControl']/Value".format(extension_name)
+                            lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='enableOwnershipBasedAccessControl']/Value"
+                            .format(extension_name)
                         }
                     ],
-                    "conversions": [
-                        {
-                            "id": "boolToString"
-                        }
-                    ]
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
                 }
             }
-        })
+        }
+    )
 
     enable_z_defaults = EditorProperty(
         {
@@ -162,40 +180,74 @@ class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExt
                     "paths": [
                         {
                             "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='enableZDefaults']/Value".format(extension_name)
+                            lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='enableZDefaults']/Value"
+                            .format(extension_name)
                         }
                     ],
-                    "conversions": [
-                        {
-                            "id": "boolToString"
-                        }
-                    ]
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
                 }
             }
-        })
+        }
+    )
 
     max_record_count = EditorProperty(
         {
             "constraints": {
-                "int": True,
-                "min": 0
+                "int": True, "min": 0
             },
             "formats": {
                 "sddraft": {
                     "paths": [
                         {
                             "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='maxRecordCount']/Value".format(extension_name)
+                            lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='maxRecordCount']/Value"
+                            .format(extension_name)
                         }
                     ],
-                    "conversions": [
-                        {
-                            "id": "numberToString"
-                        }
-                    ]
+                    "conversions": [{
+                        "id": "numberToString"
+                    }]
                 }
             }
-        })
+        }
+    )
+
+    only_allow_true_curve_updates_by_true_curve_clients = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                    "paths": [
+                        {
+                            "document":
+                            "main",
+                            "path":
+                            "$.extensions[?(@.typeName = 'FeatureServer')].properties.onlyAllowTrueCurveUpdatesByTrueCurveClients"
+                        }
+                    ]
+                },
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path":
+                            lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='onlyAllowTrueCurveUpdatesByTrueCurveClients']/Value"
+                            .format(extension_name)
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
+                }
+            }
+        }
+    )
 
     realm = EditorProperty(
         {
@@ -204,12 +256,15 @@ class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExt
                     "paths": [
                         {
                             "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='realm']/Value".format(extension_name)
+                            lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='realm']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
             }
-        })
+        }
+    )
 
     z_default_value = EditorProperty(
         {
@@ -218,14 +273,15 @@ class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExt
                     "paths": [
                         {
                             "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='zDefaultValue']/Value".format(extension_name)
+                            lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='zDefaultValue']/Value"
+                            .format(extension_name)
                         }
                     ],
-                    "conversions": [
-                        {
-                            "id": "numberToString"
-                        }
-                    ]
+                    "conversions": [{
+                        "id": "numberToString"
+                    }]
                 }
             }
-        })
+        }
+    )
