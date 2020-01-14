@@ -79,7 +79,7 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
                 "agsJson": {
                     "paths": [{
                         "document": "main",
-                        "path": "$.capabilities"
+                        "path": "$.properties.executionType"
                     }],
                     "conversions": [{
                         "id": "enumToString",
