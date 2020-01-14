@@ -15,6 +15,7 @@ import datetime
 from .helpers import geoprocessing_service_config as service_config
 from agsconfig.services.geoprocessing_server import GeoprocessingServer
 
+
 def test_load_service_config(service_config):
     # this just tests the fixture setup
     assert True
@@ -87,7 +88,7 @@ def test_getters(service_config, attribute, expected_value, exception):
         ("replace_existing", True, True, None),
         ("result_map_server", True, True, None),
         ("summary", "Service", "Service", None),
-        ("show_messages", "Debug", GeoprocessingServer.MessageLevel.debug, None),
+        ("show_messages", "Debug", GeoprocessingServer.MessageLevel.info, None),
         ("usage_timeout", 60, 60, None),
         ("usage_timeout", -1, None, ValueError),
         ("usage_timeout", "x", None, ValueError),
@@ -103,6 +104,7 @@ def test_setters(service_config, attribute, new_value, expected_value, exception
     else:
         setattr(service_config, attribute, new_value)
         assert getattr(service_config, attribute) == expected_value
+
 
 def test_setter(service_config):
     setattr(service_config, "usage_timeout", 10)
