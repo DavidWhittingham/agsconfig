@@ -181,6 +181,37 @@ class ImageServer(OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDi
         }
     )
 
+    credits = _EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "paths": [
+                        {
+                            "document": "itemInfo",
+                            "path": "$.accessInformation",
+                            "parentPath": "$",
+                            "key": "accessInformation"
+                        },
+                        {
+                            "document": "main",
+                            "path": "$.properties.copyright"
+                        }
+                    ]
+                },
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path": "./ItemInfo/Credits"
+                        },
+                        {
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='copyright']/Value"
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
     default_jpeg_compression_quality = EditorProperty(
         {
             "constraints": {
