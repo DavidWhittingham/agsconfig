@@ -29,7 +29,6 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
         error = "Error"
         warning = "Warning"
         info = "Info"
-        debug = "Debug"
 
     def __init__(self, editor):
         super().__init__(editor)
