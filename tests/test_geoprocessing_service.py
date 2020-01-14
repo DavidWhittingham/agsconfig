@@ -88,7 +88,7 @@ def test_getters(service_config, attribute, expected_value, exception):
         ("replace_existing", True, True, None),
         ("result_map_server", True, True, None),
         ("summary", "Service", "Service", None),
-        ("show_messages", "Debug", GeoprocessingServer.MessageLevel.info, None),
+        ("show_messages", "Info", GeoprocessingServer.MessageLevel.info, None),
         ("usage_timeout", 60, 60, None),
         ("usage_timeout", -1, None, ValueError),
         ("usage_timeout", "x", None, ValueError),
