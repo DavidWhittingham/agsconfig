@@ -22,6 +22,8 @@ from .wcs_server_extension import WCSServerExtension
 from .wms_server_extension import WMSServerExtension
 from ..editing.edit_prop import EditorProperty
 
+__all__ = ["ImageServer"]
+
 
 class ImageServer(OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDimensionsMixin, ServiceBase):
 
@@ -181,7 +183,7 @@ class ImageServer(OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDi
         }
     )
 
-    credits = _EditorProperty(
+    credits = EditorProperty(
         {
             "formats": {
                 "agsJson": {
