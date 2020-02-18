@@ -51,7 +51,7 @@ class OGCMetadataExtensionMixin(object):
     _SDDRAFT_KEY_POSTAL_CODE = "postalCode"
     _SDDRAFT_KEY_PROVIDER_NAME = "providerName"
     _SDDRAFT_KEY_TITLE = "title"
-    
+
 
     abstract = EditorProperty(
         {
@@ -70,7 +70,69 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {# yapf: disable
                             "path": lambda extension_name, _SDDRAFT_KEY_ABSTRACT:
-                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_ABSTRACT)
+                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_ABSTRACT),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        },
+                                    }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "Key",
+                                                    "value": lambda _SDDRAFT_KEY_ABSTRACT: "{}".format(_SDDRAFT_KEY_ABSTRACT)
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "parent":{
+                                        "children": [
+                                            {
+                                                "tag": "PropertyArray",
+                                                "attributes": {
+                                                    "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:ArrayOfPropertySetProperty"
+                                                }
+                                            }
+                                        ],
+                                        "parent": {
+                                            "children": [
+                                                {
+                                                    "tag": "Props",
+                                                    "attributes": {
+                                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySet"
+                                                    }
+                                                }
+                                            ],
+                                            "parent": {
+                                                "children": [
+                                                    {
+                                                        "tag": "SVCExtension",
+                                                        "attributes": {
+                                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:SVCExtension"
+                                                        },
+                                                        "children": [
+                                                            {
+                                                                "tag": "TypeName",
+                                                                "value": lambda extension_name: "{}".format(extension_name)
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }# yapf: enable
                     ]
                 }
@@ -95,7 +157,69 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {# yapf: disable
                             "path": lambda extension_name, _SDDRAFT_KEY_ACCESS_CONSTRAINTS:
-                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_ACCESS_CONSTRAINTS)
+                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_ACCESS_CONSTRAINTS),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        },
+                                    }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "Key",
+                                                    "value": lambda _SDDRAFT_KEY_ACCESS_CONSTRAINTS: "{}".format(_SDDRAFT_KEY_ACCESS_CONSTRAINTS)
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "parent":{
+                                        "children": [
+                                            {
+                                                "tag": "PropertyArray",
+                                                "attributes": {
+                                                    "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:ArrayOfPropertySetProperty"
+                                                }
+                                            }
+                                        ],
+                                        "parent": {
+                                            "children": [
+                                                {
+                                                    "tag": "Props",
+                                                    "attributes": {
+                                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySet"
+                                                    }
+                                                }
+                                            ],
+                                            "parent": {
+                                                "children": [
+                                                    {
+                                                        "tag": "SVCExtension",
+                                                        "attributes": {
+                                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:SVCExtension"
+                                                        },
+                                                        "children": [
+                                                            {
+                                                                "tag": "TypeName",
+                                                                "value": lambda extension_name: "{}".format(extension_name)
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }# yapf: enable
                     ]
                 }
@@ -119,7 +243,69 @@ class OGCMetadataExtensionMixin(object):
                 "sddraft": {
                     "paths": [
                         {# yapf: disable
-                            "path": lambda extension_name, _SDDRAFT_KEY_ADDRESS: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_ADDRESS)
+                            "path": lambda extension_name, _SDDRAFT_KEY_ADDRESS: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_ADDRESS),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        },
+                                    }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "Key",
+                                                    "value": lambda _SDDRAFT_KEY_ADDRESS: "{}".format(_SDDRAFT_KEY_ADDRESS)
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "parent":{
+                                        "children": [
+                                            {
+                                                "tag": "PropertyArray",
+                                                "attributes": {
+                                                    "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:ArrayOfPropertySetProperty"
+                                                }
+                                            }
+                                        ],
+                                        "parent": {
+                                            "children": [
+                                                {
+                                                    "tag": "Props",
+                                                    "attributes": {
+                                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySet"
+                                                    }
+                                                }
+                                            ],
+                                            "parent": {
+                                                "children": [
+                                                    {
+                                                        "tag": "SVCExtension",
+                                                        "attributes": {
+                                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:SVCExtension"
+                                                        },
+                                                        "children": [
+                                                            {
+                                                                "tag": "TypeName",
+                                                                "value": lambda extension_name: "{}".format(extension_name)
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }# yapf: enable
                     ]
                 }
@@ -143,8 +329,70 @@ class OGCMetadataExtensionMixin(object):
                 "sddraft": {
                     "paths": [
                         {# yapf: disable
-                            "path": lambda extension_name, _SDDRAFT_KEY_ADMINISTRATIVE_AREA: 
-                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_ADMINISTRATIVE_AREA)
+                            "path": lambda extension_name, _SDDRAFT_KEY_ADMINISTRATIVE_AREA:
+                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_ADMINISTRATIVE_AREA),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        },
+                                    }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "Key",
+                                                    "value": lambda _SDDRAFT_KEY_ADMINISTRATIVE_AREA: "{}".format(_SDDRAFT_KEY_ADMINISTRATIVE_AREA)
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "parent":{
+                                        "children": [
+                                            {
+                                                "tag": "PropertyArray",
+                                                "attributes": {
+                                                    "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:ArrayOfPropertySetProperty"
+                                                }
+                                            }
+                                        ],
+                                        "parent": {
+                                            "children": [
+                                                {
+                                                    "tag": "Props",
+                                                    "attributes": {
+                                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySet"
+                                                    }
+                                                }
+                                            ],
+                                            "parent": {
+                                                "children": [
+                                                    {
+                                                        "tag": "SVCExtension",
+                                                        "attributes": {
+                                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:SVCExtension"
+                                                        },
+                                                        "children": [
+                                                            {
+                                                                "tag": "TypeName",
+                                                                "value": lambda extension_name: "{}".format(extension_name)
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }# yapf: enable
                     ]
                 }
@@ -169,7 +417,69 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {# yapf: disable
                             "path": lambda extension_name, _SDDRAFT_KEY_CITY:
-                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_CITY)
+                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_CITY),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        },
+                                    }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "Key",
+                                                    "value": lambda _SDDRAFT_KEY_CITY: "{}".format(_SDDRAFT_KEY_CITY)
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "parent":{
+                                        "children": [
+                                            {
+                                                "tag": "PropertyArray",
+                                                "attributes": {
+                                                    "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:ArrayOfPropertySetProperty"
+                                                }
+                                            }
+                                        ],
+                                        "parent": {
+                                            "children": [
+                                                {
+                                                    "tag": "Props",
+                                                    "attributes": {
+                                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySet"
+                                                    }
+                                                }
+                                            ],
+                                            "parent": {
+                                                "children": [
+                                                    {
+                                                        "tag": "SVCExtension",
+                                                        "attributes": {
+                                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:SVCExtension"
+                                                        },
+                                                        "children": [
+                                                            {
+                                                                "tag": "TypeName",
+                                                                "value": lambda extension_name: "{}".format(extension_name)
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }# yapf: enable
                     ]
                 }
@@ -194,7 +504,69 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {# yapf: disable
                             "path": lambda extension_name, _SDDRAFT_KEY_COUNTRY:
-                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_COUNTRY)
+                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_COUNTRY),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        },
+                                    }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "Key",
+                                                    "value": lambda _SDDRAFT_KEY_COUNTRY: "{}".format(_SDDRAFT_KEY_COUNTRY)
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "parent":{
+                                        "children": [
+                                            {
+                                                "tag": "PropertyArray",
+                                                "attributes": {
+                                                    "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:ArrayOfPropertySetProperty"
+                                                }
+                                            }
+                                        ],
+                                        "parent": {
+                                            "children": [
+                                                {
+                                                    "tag": "Props",
+                                                    "attributes": {
+                                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySet"
+                                                    }
+                                                }
+                                            ],
+                                            "parent": {
+                                                "children": [
+                                                    {
+                                                        "tag": "SVCExtension",
+                                                        "attributes": {
+                                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:SVCExtension"
+                                                        },
+                                                        "children": [
+                                                            {
+                                                                "tag": "TypeName",
+                                                                "value": lambda extension_name: "{}".format(extension_name)
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }# yapf: enable
                     ]
                 }
@@ -219,7 +591,69 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {# yapf: disable
                             "path": lambda extension_name, _SDDRAFT_KEY_EMAIL:
-                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_EMAIL)
+                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_EMAIL),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        },
+                                    }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "Key",
+                                                    "value": lambda _SDDRAFT_KEY_EMAIL: "{}".format(_SDDRAFT_KEY_EMAIL)
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "parent":{
+                                        "children": [
+                                            {
+                                                "tag": "PropertyArray",
+                                                "attributes": {
+                                                    "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:ArrayOfPropertySetProperty"
+                                                }
+                                            }
+                                        ],
+                                        "parent": {
+                                            "children": [
+                                                {
+                                                    "tag": "Props",
+                                                    "attributes": {
+                                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySet"
+                                                    }
+                                                }
+                                            ],
+                                            "parent": {
+                                                "children": [
+                                                    {
+                                                        "tag": "SVCExtension",
+                                                        "attributes": {
+                                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:SVCExtension"
+                                                        },
+                                                        "children": [
+                                                            {
+                                                                "tag": "TypeName",
+                                                                "value": lambda extension_name: "{}".format(extension_name)
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }# yapf: enable
                     ]
                 }
@@ -244,7 +678,69 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {# yapf: disable
                             "path": lambda extension_name, _SDDRAFT_KEY_FACSIMILE:
-                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_FACSIMILE)
+                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_FACSIMILE),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        },
+                                    }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "Key",
+                                                    "value": lambda _SDDRAFT_KEY_FACSIMILE: "{}".format(_SDDRAFT_KEY_FACSIMILE)
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "parent":{
+                                        "children": [
+                                            {
+                                                "tag": "PropertyArray",
+                                                "attributes": {
+                                                    "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:ArrayOfPropertySetProperty"
+                                                }
+                                            }
+                                        ],
+                                        "parent": {
+                                            "children": [
+                                                {
+                                                    "tag": "Props",
+                                                    "attributes": {
+                                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySet"
+                                                    }
+                                                }
+                                            ],
+                                            "parent": {
+                                                "children": [
+                                                    {
+                                                        "tag": "SVCExtension",
+                                                        "attributes": {
+                                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:SVCExtension"
+                                                        },
+                                                        "children": [
+                                                            {
+                                                                "tag": "TypeName",
+                                                                "value": lambda extension_name: "{}".format(extension_name)
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }# yapf: enable
                     ]
                 }
@@ -269,7 +765,69 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {# yapf: disable
                             "path": lambda extension_name, _SDDRAFT_KEY_FEES:
-                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_FEES)
+                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_FEES),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        },
+                                    }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "Key",
+                                                    "value": lambda _SDDRAFT_KEY_FEES: "{}".format(_SDDRAFT_KEY_FEES)
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "parent":{
+                                        "children": [
+                                            {
+                                                "tag": "PropertyArray",
+                                                "attributes": {
+                                                    "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:ArrayOfPropertySetProperty"
+                                                }
+                                            }
+                                        ],
+                                        "parent": {
+                                            "children": [
+                                                {
+                                                    "tag": "Props",
+                                                    "attributes": {
+                                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySet"
+                                                    }
+                                                }
+                                            ],
+                                            "parent": {
+                                                "children": [
+                                                    {
+                                                        "tag": "SVCExtension",
+                                                        "attributes": {
+                                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:SVCExtension"
+                                                        },
+                                                        "children": [
+                                                            {
+                                                                "tag": "TypeName",
+                                                                "value": lambda extension_name: "{}".format(extension_name)
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }# yapf: enable
                     ]
                 }
@@ -294,7 +852,69 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {# yapf: disable
                             "path": lambda extension_name, _SDDRAFT_KEY_INDIVIDUAL_NAME:
-                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_INDIVIDUAL_NAME)
+                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_INDIVIDUAL_NAME),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        },
+                                    }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "Key",
+                                                    "value": lambda _SDDRAFT_KEY_INDIVIDUAL_NAME: "{}".format(_SDDRAFT_KEY_INDIVIDUAL_NAME)
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "parent":{
+                                        "children": [
+                                            {
+                                                "tag": "PropertyArray",
+                                                "attributes": {
+                                                    "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:ArrayOfPropertySetProperty"
+                                                }
+                                            }
+                                        ],
+                                        "parent": {
+                                            "children": [
+                                                {
+                                                    "tag": "Props",
+                                                    "attributes": {
+                                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySet"
+                                                    }
+                                                }
+                                            ],
+                                            "parent": {
+                                                "children": [
+                                                    {
+                                                        "tag": "SVCExtension",
+                                                        "attributes": {
+                                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:SVCExtension"
+                                                        },
+                                                        "children": [
+                                                            {
+                                                                "tag": "TypeName",
+                                                                "value": lambda extension_name: "{}".format(extension_name)
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }# yapf: enable
                     ]
                 }
@@ -319,7 +939,69 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {# yapf: disable
                             "path": lambda extension_name, _SDDRAFT_KEY_KEYWORDS:
-                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_KEYWORDS)
+                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_KEYWORDS),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        },
+                                    }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "Key",
+                                                    "value": lambda _SDDRAFT_KEY_KEYWORDS: "{}".format(_SDDRAFT_KEY_KEYWORDS)
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "parent":{
+                                        "children": [
+                                            {
+                                                "tag": "PropertyArray",
+                                                "attributes": {
+                                                    "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:ArrayOfPropertySetProperty"
+                                                }
+                                            }
+                                        ],
+                                        "parent": {
+                                            "children": [
+                                                {
+                                                    "tag": "Props",
+                                                    "attributes": {
+                                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySet"
+                                                    }
+                                                }
+                                            ],
+                                            "parent": {
+                                                "children": [
+                                                    {
+                                                        "tag": "SVCExtension",
+                                                        "attributes": {
+                                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:SVCExtension"
+                                                        },
+                                                        "children": [
+                                                            {
+                                                                "tag": "TypeName",
+                                                                "value": lambda extension_name: "{}".format(extension_name)
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }# yapf: enable
                     ]
                 }
@@ -347,7 +1029,70 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {# yapf: disable
                             "path":
-                            lambda extension_name, _SDDRAFT_KEY_NAME: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_NAME)
+                                lambda extension_name, _SDDRAFT_KEY_NAME:
+                                    "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_NAME),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        },
+                                    }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "Key",
+                                                    "value": lambda _SDDRAFT_KEY_NAME: "{}".format(_SDDRAFT_KEY_NAME)
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "parent":{
+                                        "children": [
+                                            {
+                                                "tag": "PropertyArray",
+                                                "attributes": {
+                                                    "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:ArrayOfPropertySetProperty"
+                                                }
+                                            }
+                                        ],
+                                        "parent": {
+                                            "children": [
+                                                {
+                                                    "tag": "Props",
+                                                    "attributes": {
+                                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySet"
+                                                    }
+                                                }
+                                            ],
+                                            "parent": {
+                                                "children": [
+                                                    {
+                                                        "tag": "SVCExtension",
+                                                        "attributes": {
+                                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:SVCExtension"
+                                                        },
+                                                        "children": [
+                                                            {
+                                                                "tag": "TypeName",
+                                                                "value": lambda extension_name: "{}".format(extension_name)
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }# yapf: enable
                     ]
                 }
@@ -372,7 +1117,69 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {# yapf: disable
                             "path": lambda extension_name, _SDDRAFT_KEY_PHONE:
-                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_PHONE)
+                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_PHONE),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        },
+                                    }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "Key",
+                                                    "value": lambda _SDDRAFT_KEY_PHONE: "{}".format(_SDDRAFT_KEY_PHONE)
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "parent":{
+                                        "children": [
+                                            {
+                                                "tag": "PropertyArray",
+                                                "attributes": {
+                                                    "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:ArrayOfPropertySetProperty"
+                                                }
+                                            }
+                                        ],
+                                        "parent": {
+                                            "children": [
+                                                {
+                                                    "tag": "Props",
+                                                    "attributes": {
+                                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySet"
+                                                    }
+                                                }
+                                            ],
+                                            "parent": {
+                                                "children": [
+                                                    {
+                                                        "tag": "SVCExtension",
+                                                        "attributes": {
+                                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:SVCExtension"
+                                                        },
+                                                        "children": [
+                                                            {
+                                                                "tag": "TypeName",
+                                                                "value": lambda extension_name: "{}".format(extension_name)
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }# yapf: enable
                     ]
                 }
@@ -397,7 +1204,69 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {# yapf: disable
                             "path": lambda extension_name, _SDDRAFT_KEY_POSITION_NAME:
-                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_POSITION_NAME)
+                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_POSITION_NAME),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        },
+                                    }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "Key",
+                                                    "value": lambda _SDDRAFT_KEY_POSITION_NAME: "{}".format(_SDDRAFT_KEY_POSITION_NAME)
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "parent":{
+                                        "children": [
+                                            {
+                                                "tag": "PropertyArray",
+                                                "attributes": {
+                                                    "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:ArrayOfPropertySetProperty"
+                                                }
+                                            }
+                                        ],
+                                        "parent": {
+                                            "children": [
+                                                {
+                                                    "tag": "Props",
+                                                    "attributes": {
+                                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySet"
+                                                    }
+                                                }
+                                            ],
+                                            "parent": {
+                                                "children": [
+                                                    {
+                                                        "tag": "SVCExtension",
+                                                        "attributes": {
+                                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:SVCExtension"
+                                                        },
+                                                        "children": [
+                                                            {
+                                                                "tag": "TypeName",
+                                                                "value": lambda extension_name: "{}".format(extension_name)
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }# yapf: enable
                     ]
                 }
@@ -422,7 +1291,69 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {# yapf: disable
                             "path": lambda extension_name, _SDDRAFT_KEY_POSTAL_CODE:
-                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_POSTAL_CODE)
+                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_POSTAL_CODE),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        },
+                                    }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "Key",
+                                                    "value": lambda _SDDRAFT_KEY_POSTAL_CODE: "{}".format(_SDDRAFT_KEY_POSTAL_CODE)
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "parent":{
+                                        "children": [
+                                            {
+                                                "tag": "PropertyArray",
+                                                "attributes": {
+                                                    "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:ArrayOfPropertySetProperty"
+                                                }
+                                            }
+                                        ],
+                                        "parent": {
+                                            "children": [
+                                                {
+                                                    "tag": "Props",
+                                                    "attributes": {
+                                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySet"
+                                                    }
+                                                }
+                                            ],
+                                            "parent": {
+                                                "children": [
+                                                    {
+                                                        "tag": "SVCExtension",
+                                                        "attributes": {
+                                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:SVCExtension"
+                                                        },
+                                                        "children": [
+                                                            {
+                                                                "tag": "TypeName",
+                                                                "value": lambda extension_name: "{}".format(extension_name)
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }# yapf: enable
                     ]
                 }
@@ -447,7 +1378,69 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {# yapf: disable
                             "path": lambda extension_name, _SDDRAFT_KEY_PROVIDER_NAME:
-                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_PROVIDER_NAME)
+                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_PROVIDER_NAME),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        },
+                                    }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "Key",
+                                                    "value": lambda _SDDRAFT_KEY_PROVIDER_NAME: "{}".format(_SDDRAFT_KEY_PROVIDER_NAME)
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "parent":{
+                                        "children": [
+                                            {
+                                                "tag": "PropertyArray",
+                                                "attributes": {
+                                                    "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:ArrayOfPropertySetProperty"
+                                                }
+                                            }
+                                        ],
+                                        "parent": {
+                                            "children": [
+                                                {
+                                                    "tag": "Props",
+                                                    "attributes": {
+                                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySet"
+                                                    }
+                                                }
+                                            ],
+                                            "parent": {
+                                                "children": [
+                                                    {
+                                                        "tag": "SVCExtension",
+                                                        "attributes": {
+                                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:SVCExtension"
+                                                        },
+                                                        "children": [
+                                                            {
+                                                                "tag": "TypeName",
+                                                                "value": lambda extension_name: "{}".format(extension_name)
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }# yapf: enable
                     ]
                 }
@@ -472,7 +1465,70 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {# yapf: disable
                             "path":
-                            lambda extension_name, _SDDRAFT_KEY_TITLE: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_TITLE)
+                                lambda extension_name, _SDDRAFT_KEY_TITLE:
+                                    "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _SDDRAFT_KEY_TITLE),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        },
+                                    }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "Key",
+                                                    "value": lambda _SDDRAFT_KEY_TITLE: "{}".format(_SDDRAFT_KEY_TITLE)
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "parent":{
+                                        "children": [
+                                            {
+                                                "tag": "PropertyArray",
+                                                "attributes": {
+                                                    "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:ArrayOfPropertySetProperty"
+                                                }
+                                            }
+                                        ],
+                                        "parent": {
+                                            "children": [
+                                                {
+                                                    "tag": "Props",
+                                                    "attributes": {
+                                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySet"
+                                                    }
+                                                }
+                                            ],
+                                            "parent": {
+                                                "children": [
+                                                    {
+                                                        "tag": "SVCExtension",
+                                                        "attributes": {
+                                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:SVCExtension"
+                                                        },
+                                                        "children": [
+                                                            {
+                                                                "tag": "TypeName",
+                                                                "value": lambda extension_name: "{}".format(extension_name)
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }# yapf: enable
                     ]
                 }

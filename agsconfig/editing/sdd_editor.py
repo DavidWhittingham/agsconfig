@@ -47,7 +47,6 @@ def get_element_value(element, default=None):
 
 class SDDraftEditor(EditorBase):
     """Object for editing ArcGIS sddraft files."""
-
     def __init__(self, xml_file):
         self._xml_file = xml_file
         self._xml_tree = self._load_xml(xml_file)
@@ -71,29 +70,71 @@ class SDDraftEditor(EditorBase):
         self._xml_file.write(self._get_xml_tree_as_string())
 
     def save_a_copy(self, path):
-        with open(path, "wb+") as file:
-            file.write(self._get_xml_tree_as_string())
+        with open(path, "wb+") as f:
+            f.write(self._get_xml_tree_as_string())
 
-    def _create_element(self, path_info, obj):
-        # get parent element
-        if not "parentPath" in path_info:
-            raise KeyError("path_info does not contain parentPath for given path: {}".format(path_info["path"]))
+    def _create_element(self, path, path_info, obj):
+        if "parent" in path_info:
+            # get parent element path
+            parent_element_path = path.rsplit("/", 1)[0]
+            parent_path_info = path_info["parent"]
 
-        parent_element = self._xml_tree.find(self._resolve_lambda(path_info, obj, "parentPath")["parentPath"])
+            self._create_element_structure(parent_element_path, parent_path_info, obj)
+        elif "parentPath" in path_info:
+            # old method
+            resolved_parent_path = self._resolve_lambda(path_info, obj, "parentPath")["parentPath"]
+            parent_element = self._xml_tree.find(resolved_parent_path)
 
-        self._create_child_elements(parent_element, path_info)
+            self._create_child_elements(parent_element, path_info, obj)
+        else:
+            raise KeyError(
+                "path_info does not contain 'parent' or 'parentPath' for given path: {}".format(path_info["path"])
+            )
 
         return self._xml_tree.find(path_info["path"])
 
-    def _create_child_elements(self, parent_element, path_info):
-        new_element = ET.SubElement(parent_element, path_info["tag"], path_info.get("attributes", {}))
+    def _create_element_structure(self, path, path_info, obj):
+        """This is the new function for creating XML structures based on the 'parent' object description."""
+
+        # attempt to find the provided path
+        current_element = self._xml_tree.find(path)
+
+        if current_element is None:
+            # must recurse up a level
+            if not "parent" in path_info:
+                # can't go up a level
+                raise Exception("Can't create XML strucutre, no parent information at this level.")
+
+            # calculate the path for the parent of the current path by splitting on the last '/'
+            current_element_parent_path = path.rsplit("/", 1)[0]
+
+            self._create_element_structure(current_element_parent_path, path_info["parent"], obj)
+
+            # get current element again, should exist now
+            current_element = self._xml_tree.find(path)
+
+            if current_element is None:
+                raise Exception("Failed to create element at path: {}".format(path))
+
+        if "children" in path_info:
+            for child_path_info in path_info["children"]:
+                self._create_child_elements(current_element, child_path_info, obj)
+
+    def _create_child_elements(self, parent_element, path_info, obj):
+        """This is the old function for creating XML structures based on the 'parentPath' structure.
+        
+        It is also used by the new function to recursively create children."""
+
+        new_element = ET.SubElement(
+            parent_element, self.resolve_lambda_value(path_info["tag"], obj), path_info.get("attributes", {})
+        )
 
         if "value" in path_info:
-            self._set_element_value(new_element, path_info["value"])
+            self._set_element_value(new_element, self.resolve_lambda_value(path_info["value"], obj))
 
         if "children" in path_info:
             for child in path_info["children"]:
-                self._create_child_elements(new_element, child)
+                self._create_child_elements(new_element, child, obj)
 
     def _get_value(self, path_info):
         element = self._xml_tree.find(path_info["path"])
@@ -111,7 +152,7 @@ class SDDraftEditor(EditorBase):
         element = self._xml_tree.find(path_info["path"])
 
         if element is None:
-            element = self._create_element(path_info, obj)
+            element = self._create_element(path_info["path"], path_info, obj)
 
         self._set_element_value(element, value)
 

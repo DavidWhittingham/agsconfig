@@ -46,7 +46,69 @@ class WCSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     "paths": [
                         {#yapf: disable
                             "path": lambda extension_name:
-                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='providerWebsite']/Value".format(extension_name)
+                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='providerWebsite']/Value".format(extension_name),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        },
+                                    }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "Key",
+                                                    "value": "providerWebsite"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "parent":{
+                                        "children": [
+                                            {
+                                                "tag": "PropertyArray",
+                                                "attributes": {
+                                                    "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:ArrayOfPropertySetProperty"
+                                                }
+                                            }
+                                        ],
+                                        "parent": {
+                                            "children": [
+                                                {
+                                                    "tag": "Props",
+                                                    "attributes": {
+                                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySet"
+                                                    }
+                                                }
+                                            ],
+                                            "parent": {
+                                                "children": [
+                                                    {
+                                                        "tag": "SVCExtension",
+                                                        "attributes": {
+                                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:SVCExtension"
+                                                        },
+                                                        "children": [
+                                                            {
+                                                                "tag": "TypeName",
+                                                                "value": lambda extension_name: "{}".format(extension_name)
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }#yapf: enable
                     ]
                 }

@@ -12,6 +12,7 @@ install_aliases()
 from ..editing.edit_prop import EditorProperty
 from .extension_base import ExtensionBase
 
+
 class CustomGetCapabilitiesExtensionMixin(object):
     """ Attributes for custom Get Capabilities on ArcGIS services """
 
@@ -22,8 +23,8 @@ class CustomGetCapabilitiesExtensionMixin(object):
                     "paths": [
                         {
                             "document": "main",
-                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.customGetCapabilities".format(extension_name),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.customGetCapabilities".format(extension_name),
+                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties".format(extension_name),
                             "key": "customGetCapabilities"
                         }
                     ],
@@ -33,10 +34,71 @@ class CustomGetCapabilitiesExtensionMixin(object):
                 },
                 "sddraft": {
                     "paths": [
-                        {
-                            "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='customGetCapabilities']/Value".format(extension_name)
-                        }
+                        {#yapf: disable
+                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='customGetCapabilities']/Value".format(extension_name),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        },
+                                    }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "Key",
+                                                    "value": "customGetCapabilities"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "parent":{
+                                        "children": [
+                                            {
+                                                "tag": "PropertyArray",
+                                                "attributes": {
+                                                    "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:ArrayOfPropertySetProperty"
+                                                }
+                                            }
+                                        ],
+                                        "parent": {
+                                            "children": [
+                                                {
+                                                    "tag": "Props",
+                                                    "attributes": {
+                                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySet"
+                                                    }
+                                                }
+                                            ],
+                                            "parent": {
+                                                "children": [
+                                                    {
+                                                        "tag": "SVCExtension",
+                                                        "attributes": {
+                                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:SVCExtension"
+                                                        },
+                                                        "children": [
+                                                            {
+                                                                "tag": "TypeName",
+                                                                "value": lambda extension_name: "{}".format(extension_name)
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }#yapf: enable
                     ],
                     "conversions": [
                         {
@@ -52,11 +114,75 @@ class CustomGetCapabilitiesExtensionMixin(object):
             "formats": {
                 "sddraft": {
                     "paths": [
-                        {
+                        {#yapf: disable
                             "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='pathToCustomGetCapabilitiesFiles']/Value".format(extension_name)
-                        }
+                                lambda extension_name:
+                                    "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='pathToCustomGetCapabilitiesFiles']/Value".format(extension_name),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        },
+                                    }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "Key",
+                                                    "value": "pathToCustomGetCapabilitiesFiles"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "parent":{
+                                        "children": [
+                                            {
+                                                "tag": "PropertyArray",
+                                                "attributes": {
+                                                    "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:ArrayOfPropertySetProperty"
+                                                }
+                                            }
+                                        ],
+                                        "parent": {
+                                            "children": [
+                                                {
+                                                    "tag": "Props",
+                                                    "attributes": {
+                                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySet"
+                                                    }
+                                                }
+                                            ],
+                                            "parent": {
+                                                "children": [
+                                                    {
+                                                        "tag": "SVCExtension",
+                                                        "attributes": {
+                                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:SVCExtension"
+                                                        },
+                                                        "children": [
+                                                            {
+                                                                "tag": "TypeName",
+                                                                "value": lambda extension_name: "{}".format(extension_name)
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }#yapf: enable
                     ]
                 }
             }
-        })
+        }
+    )

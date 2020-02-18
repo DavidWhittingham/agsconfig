@@ -74,7 +74,69 @@ class ExtensionBase(ModelBase):
                 "sddraft": {
                     "paths": [
                         {# yapf: disable
-                            "path": lambda extension_name, _web_capabilities_key: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Info/PropertyArray/PropertySetProperty[Key='{1}']/Value".format(extension_name, _web_capabilities_key)
+                            "path": lambda extension_name, _web_capabilities_key: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Info/PropertyArray/PropertySetProperty[Key='{}']/Value".format(extension_name, _web_capabilities_key),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        },
+                                    }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "Key",
+                                                    "value": lambda _web_capabilities_key: "{}".format(_web_capabilities_key)
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "parent":{
+                                        "children": [
+                                            {
+                                                "tag": "PropertyArray",
+                                                "attributes": {
+                                                    "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:ArrayOfPropertySetProperty"
+                                                }
+                                            }
+                                        ],
+                                        "parent": {
+                                            "children": [
+                                                {
+                                                    "tag": "Info",
+                                                    "attributes": {
+                                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySet"
+                                                    }
+                                                }
+                                            ],
+                                            "parent": {
+                                                "children": [
+                                                    {
+                                                        "tag": "SVCExtension",
+                                                        "attributes": {
+                                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:SVCExtension"
+                                                        },
+                                                        "children": [
+                                                            {
+                                                                "tag": "TypeName",
+                                                                "value": lambda extension_name: "{}".format(extension_name)
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }# yapf: enable
                     ],
                     "conversions": [{
@@ -108,7 +170,30 @@ class ExtensionBase(ModelBase):
                     }],
                     "paths": [
                         {# yapf: disable
-                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Enabled".format(extension_name)
+                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Enabled".format(extension_name),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Enabled"
+                                    }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "SVCExtension",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:SVCExtension"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "TypeName",
+                                                    "value": lambda extension_name: "{}".format(extension_name)
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
                         }# yapf: enable
                     ]
                 }
