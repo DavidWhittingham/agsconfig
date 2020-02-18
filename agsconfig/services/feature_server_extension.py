@@ -62,6 +62,97 @@ class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExt
         }
     )
 
+    allow_geometry_updates_without_m_values = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": "$.extensions[?(@.typeName = 'FeatureServer')].properties.allowUpdateWithoutMValues"
+                        }
+                    ]
+                },
+                "sddraft": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                    "paths": [
+                        {#yapf: disable
+                            "path": lambda extension_name:
+                                "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='allowUpdateWithoutMValues']/Value".format(extension_name),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        },
+                                    }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "Key",
+                                                    "value": "allowUpdateWithoutMValues"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "parent":{
+                                        "children": [
+                                            {
+                                                "tag": "PropertyArray",
+                                                "attributes": {
+                                                    "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:ArrayOfPropertySetProperty"
+                                                }
+                                            }
+                                        ],
+                                        "parent": {
+                                            "children": [
+                                                {
+                                                    "tag": "Props",
+                                                    "attributes": {
+                                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySet"
+                                                    }
+                                                }
+                                            ],
+                                            "parent": {
+                                                "children": [
+                                                    {
+                                                        "tag": "SVCExtension",
+                                                        "attributes": {
+                                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:SVCExtension"
+                                                        },
+                                                        "children": [
+                                                            {
+                                                                "tag": "TypeName",
+                                                                "value": lambda extension_name: "{}".format(extension_name)
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }#yapf: enable
+                    ]
+                }
+            }
+        }
+    )
+
     allow_others_to_delete = EditorProperty(
         {
             "formats": {
