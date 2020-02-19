@@ -27,6 +27,12 @@ __all__ = ["ImageServer"]
 
 class ImageServer(OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDimensionsMixin, ServiceBase):
 
+    _SDDRAFT_IS_CACHED_PATHS = CacheableCoreMixin._SDDRAFT_IS_CACHED_PATHS + [
+        {#yapf: disable
+            "path": "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key = 'IsCached']/Value"
+        }#yapf: enable
+    ]
+
     _jpip_server_extension = None
     _wcs_server_extension = None
     _wms_server_extension = None
@@ -89,12 +95,10 @@ class ImageServer(OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDi
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main",
-                        "path": "$.properties.allowedMosaicMethods"
+                        "document": "main", "path": "$.properties.allowedMosaicMethods"
                     }],
                     "conversions": [{
-                        "id": "enumToString",
-                        "enum": "MosaicMethod"
+                        "id": "enumToString", "enum": "MosaicMethod"
                     }, {
                         "id": "stringToCsv"
                     }]
@@ -107,8 +111,7 @@ class ImageServer(OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDi
                         }
                     ],
                     "conversions": [{
-                        "id": "enumToString",
-                        "enum": "MosaicMethod"
+                        "id": "enumToString", "enum": "MosaicMethod"
                     }, {
                         "id": "stringToCsv"
                     }]
@@ -122,12 +125,10 @@ class ImageServer(OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDi
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main",
-                        "path": "$.properties.allowedCompressions"
+                        "document": "main", "path": "$.properties.allowedCompressions"
                     }],
                     "conversions": [{
-                        "id": "enumToString",
-                        "enum": "CompressionMethod"
+                        "id": "enumToString", "enum": "CompressionMethod"
                     }, {
                         "id": "stringToCsv"
                     }]
@@ -140,8 +141,7 @@ class ImageServer(OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDi
                         }
                     ],
                     "conversions": [{
-                        "id": "enumToString",
-                        "enum": "CompressionMethod"
+                        "id": "enumToString", "enum": "CompressionMethod"
                     }, {
                         "id": "stringToCsv"
                     }]
@@ -155,12 +155,10 @@ class ImageServer(OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDi
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main",
-                        "path": "$.capabilities"
+                        "document": "main", "path": "$.capabilities"
                     }],
                     "conversions": [{
-                        "id": "enumToString",
-                        "enum": "Capability"
+                        "id": "enumToString", "enum": "Capability"
                     }, {
                         "id": "stringToCsv"
                     }]
@@ -173,8 +171,7 @@ class ImageServer(OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDi
                         }
                     ],
                     "conversions": [{
-                        "id": "enumToString",
-                        "enum": "Capability"
+                        "id": "enumToString", "enum": "Capability"
                     }, {
                         "id": "stringToCsv"
                     }]
@@ -193,10 +190,8 @@ class ImageServer(OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDi
                             "path": "$.accessInformation",
                             "parentPath": "$",
                             "key": "accessInformation"
-                        },
-                        {
-                            "document": "main",
-                            "path": "$.properties.copyright"
+                        }, {
+                            "document": "main", "path": "$.properties.copyright"
                         }
                     ]
                 },
@@ -206,7 +201,8 @@ class ImageServer(OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDi
                             "path": "./ItemInfo/Credits"
                         },
                         {
-                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='copyright']/Value"
+                            "path":
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='copyright']/Value"
                         }
                     ]
                 }
@@ -217,30 +213,29 @@ class ImageServer(OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDi
     default_jpeg_compression_quality = EditorProperty(
         {
             "constraints": {
-                "int": True,
-                "min": 1,
-                "max": 100
+                "int": True, "min": 1, "max": 100
             },
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main",
-                        "path": "$.properties.defaultCompressionQuality"
+                        "document": "main", "path": "$.properties.defaultCompressionQuality"
                     }]
                 },
                 "sddraft": {
                     "paths": [
                         {
-                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='DefaultCompressionQuality']/Value",
-                            "parentPath": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray",
-                            "tag": "PropertySetProperty",
+                            "path":
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='DefaultCompressionQuality']/Value",
+                            "parentPath":
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray",
+                            "tag":
+                            "PropertySetProperty",
                             "attributes": {
                                 "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
                             },
                             "children": [
                                 {
-                                    "tag": "Key",
-                                    "value": "DefaultCompressionQuality"
+                                    "tag": "Key", "value": "DefaultCompressionQuality"
                                 },
                                 {
                                     "tag": "Value",
@@ -264,8 +259,7 @@ class ImageServer(OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDi
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main",
-                        "path": "$.properties.hasValidSR"
+                        "document": "main", "path": "$.properties.hasValidSR"
                     }]
                 },
                 "sddraft": {
@@ -309,8 +303,7 @@ class ImageServer(OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDi
                         }
                     ],
                     "conversions": [{
-                        "id": "enumToString",
-                        "enum": "ResamplingMethod"
+                        "id": "enumToString", "enum": "ResamplingMethod"
                     }]
                 }
             }
@@ -320,8 +313,7 @@ class ImageServer(OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDi
     max_download_image_count = EditorProperty(
         {
             "constraints": {
-                "int": True,
-                "min": 0
+                "int": True, "min": 0
             },
             "formats": {
                 "sddraft": {
@@ -342,8 +334,7 @@ class ImageServer(OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDi
     max_download_size_limit = EditorProperty(
         {
             "constraints": {
-                "int": True,
-                "min": 0
+                "int": True, "min": 0
             },
             "formats": {
                 "sddraft": {
@@ -364,8 +355,7 @@ class ImageServer(OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDi
     max_mosaic_image_count = EditorProperty(
         {
             "constraints": {
-                "int": True,
-                "min": 0
+                "int": True, "min": 0
             },
             "formats": {
                 "sddraft": {
@@ -388,8 +378,7 @@ class ImageServer(OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDi
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main",
-                        "path": "$.properties.rasterFunctions"
+                        "document": "main", "path": "$.properties.rasterFunctions"
                     }],
                     "conversions": [{
                         "id": "stringToCsv"
@@ -398,16 +387,18 @@ class ImageServer(OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDi
                 "sddraft": {
                     "paths": [
                         {
-                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='RasterFunctions']/Value",
-                            "parentPath": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray",
-                            "tag": "PropertySetProperty",
+                            "path":
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='RasterFunctions']/Value",
+                            "parentPath":
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray",
+                            "tag":
+                            "PropertySetProperty",
                             "attributes": {
                                 "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
                             },
                             "children": [
                                 {
-                                    "tag": "Key",
-                                    "value": "RasterFunctions"
+                                    "tag": "Key", "value": "RasterFunctions"
                                 },
                                 {
                                     "tag": "Value",
@@ -432,16 +423,18 @@ class ImageServer(OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDi
                 "sddraft": {
                     "paths": [
                         {
-                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='ReturnJPGPNGAsJPG']/Value",
-                            "parentPath": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray",
-                            "tag": "PropertySetProperty",
+                            "path":
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='ReturnJPGPNGAsJPG']/Value",
+                            "parentPath":
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray",
+                            "tag":
+                            "PropertySetProperty",
                             "attributes": {
                                 "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
                             },
                             "children": [
                                 {
-                                    "tag": "Key",
-                                    "value": "ReturnJPGPNGAsJPG"
+                                    "tag": "Key", "value": "ReturnJPGPNGAsJPG"
                                 },
                                 {
                                     "tag": "Value",

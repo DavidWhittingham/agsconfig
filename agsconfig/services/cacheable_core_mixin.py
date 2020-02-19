@@ -15,13 +15,18 @@ from ..editing.edit_prop import EditorProperty
 
 class CacheableCoreMixin(object):
 
+    _SDDRAFT_IS_CACHED_PATHS = [
+        {#yapf: disable
+            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'isCached']/Value"
+        }#yapf: enable
+    ]
+
     cache_dir = EditorProperty(
         {
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main",
-                        "path": "$.properties.cacheDir"
+                        "document": "main", "path": "$.properties.cacheDir"
                     }]
                 },
                 "sddraft": {
@@ -41,8 +46,7 @@ class CacheableCoreMixin(object):
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main",
-                        "path": "$.properties.clientCachingAllowed"
+                        "document": "main", "path": "$.properties.clientCachingAllowed"
                     }],
                     "conversions": [{
                         "id": "boolToString"
@@ -68,8 +72,7 @@ class CacheableCoreMixin(object):
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main",
-                        "path": "$.properties.ignoreCache"
+                        "document": "main", "path": "$.properties.ignoreCache"
                     }],
                     "conversions": [{
                         "id": "boolToString"
@@ -90,13 +93,33 @@ class CacheableCoreMixin(object):
         }
     )
 
+    is_cached = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "paths": [{
+                        "document": "main", "path": "$.properties.isCached"
+                    }],
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
+                },
+                "sddraft": {
+                    "paths": lambda _SDDRAFT_IS_CACHED_PATHS: _SDDRAFT_IS_CACHED_PATHS,
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
+                }
+            }
+        }
+    )
+
     cache_on_demand = EditorProperty(
         {
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main",
-                        "path": "$.properties.cacheOnDemand"
+                        "document": "main", "path": "$.properties.cacheOnDemand"
                     }],
                     "conversions": [{
                         "id": "boolToString"
@@ -123,8 +146,7 @@ class CacheableCoreMixin(object):
                 "sddraft": {
                     "paths": [{
                         "path": "./KeepExistingMapCache"
-                    }],
-                    "conversions": [{
+                    }], "conversions": [{
                         "id": "boolToString"
                     }]
                 }

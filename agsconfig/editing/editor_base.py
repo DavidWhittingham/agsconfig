@@ -60,7 +60,8 @@ class EditorBase(object):
         format_info = self._get_format_info_and_check_support(property_name, meta)
 
         # even if the result is in multiple locations, return only the first
-        path_info = self._resolve_lambda(format_info["paths"][0], obj, "path")
+        # resolve the "paths" variable itself in case that's a lambda
+        path_info = self._resolve_lambda(self.resolve_lambda_value(format_info["paths"], obj)[0], obj, "path")
 
         value = self._get_value(path_info)
 
@@ -79,7 +80,8 @@ class EditorBase(object):
         value = self._serialize(value, format_info, obj)
 
         # set the value in all locations listed
-        for path_info in format_info["paths"]:
+        # resolve the "paths" variable itself in case that's a lambda
+        for path_info in self.resolve_lambda_value(format_info["paths"], obj):
             self._set_value(value, self._resolve_lambda(path_info, obj, "path"), obj)
 
     @classmethod
