@@ -86,7 +86,9 @@ class ServiceBase(_ModelBase):
                 },
                 "sddraft": {
                     "paths": [{
-                        "path": "./ItemInfo/AccessInformation"
+                        "path": "./ItemInfo/AccessInformation",
+                        "parentPath": "./ItemInfo",
+                        "tag": "AccessInformation"
                     }]
                 }
             }
