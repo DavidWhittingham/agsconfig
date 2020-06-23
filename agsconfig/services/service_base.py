@@ -481,6 +481,12 @@ class ServiceBase(_ModelBase):
                         "path": "$.snippet",
                         "parentPath": "$",
                         "key": "snippet"
+                    },
+                    {
+                        "document": "itemInfo",
+                        "path": "$.summary",
+                        "parentPath": "$",
+                        "key": "summary"
                     }]
                 },
                 "sddraft": {
