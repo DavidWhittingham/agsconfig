@@ -12,6 +12,7 @@ install_aliases()
 
 import copy
 import json
+import re
 
 import jsonpath_ng as jp
 from jsonpath_ng.ext import parse
@@ -30,7 +31,6 @@ class AgsJsonEditor(EditorBase):
         main_json_file (file): A file or file-like object representing the main JSON document.
         item_info_json_file (file): A file or file-like object representing item-info JSON document.
     """
-
     def __init__(self, main_json_file, item_info_json_file):
         self._main_file = main_json_file
         self._item_info_file = item_info_json_file
@@ -52,26 +52,61 @@ class AgsJsonEditor(EditorBase):
         self._save_json_to_file(self._main, main_json_output_path)
         self._save_json_to_file(self._item_info, item_info_output_path)
 
-    def _create_node(self, document, path_info, obj):
+    def _create_node(self, document, path, path_info, obj):
         """Creates a new node on the JSON document."""
 
-        parent_element = parse(self._resolve_lambda(path_info, obj, "parentPath")["parentPath"]).find(document)[0].value
+        # get parent element path
+        parent_node_path = re.match(r"(.*)(?![^\[]*\])(?=[\[\.])", path).groups()[0]
+        parent_path_info = self._resolve_lambda(path_info, obj, "parent")["parent"]
+        self._create_node_structure(document, parent_node_path, parent_path_info, obj)
 
-        self._create_child_nodes(obj, parent_element, path_info)
+    def _create_node_structure(self, document, path, path_info, obj):
+        # attempt to find the provided path
+        current_node = parse(path).find(document)
 
-    def _create_child_nodes(self, obj, parent_node, path_info):
-        """Recursively creates child nodes of a new parent node in a JSON document."""
+        if not current_node:
+            # must recurse up a level
+            if not "parent" in path_info:
+                # can't go up a level
+                raise Exception("Can't create JSON strucutre, no parent information at this level: {}".format(path))
 
-        # resolve a possible lamda on the "key" name for a property
-        path_info = self._resolve_lambda(path_info, obj, "key")
+            # calculate the path for the parent of the current path by capturing up until the end of the previous level of the JSON structure
+            current_node_parent_path = re.match(r"(.*)(?![^\[]*\])(?=[\[\.])", path).groups()[0]
 
-        parent_node[path_info["key"]] = None
+            self._create_node_structure(document, current_node_parent_path, path_info["parent"], obj)
+
+            # get current element again, should exist now
+            current_node = parse(path).find(document)
+
+            if not current_node:
+                raise Exception("Failed to create JSON node at path: {}".format(path))
+
+        current_node = current_node[0].value
 
         if "children" in path_info:
-            new_node = {}
-            parent_node[path_info["key"]] = new_node
+            for child_path_info in path_info["children"]:
+                self._create_child_nodes(current_node, child_path_info, obj)
+
+    def _create_child_nodes(self, parent_node, path_info, obj):
+        """Recursively creates child nodes for a parent node in a JSON document."""
+
+        new_value = self._resolve_lambda(path_info, obj, "value")["value"] if "value" in path_info else None
+
+        if "key" in path_info:
+            # value is being inserted into a dictionary
+            # resolve a possible lamda on the "key" name for a property
+            path_info = self._resolve_lambda(path_info, obj, "key")
+            parent_node[path_info["key"]] = new_value
+        else:
+            # value is being appended to a list
+            parent_node.append(new_value)
+
+        if "children" in path_info:
+            if new_value is None:
+                new_value = {}
+
             for child in path_info["children"]:
-                self._create_child_nodes(obj, new_node, child)
+                self._create_child_nodes(obj, new_value, child)
 
     def _get_value(self, path_info):
         document = self._document_map.get(path_info["document"])
@@ -122,7 +157,7 @@ class AgsJsonEditor(EditorBase):
         # check if node exists
         if not parse(path_info["path"]).find(document):
             # node does not exist, create
-            self._create_node(document, path_info, obj)
+            self._create_node(document, path_info["path"], path_info, obj)
 
         parse(path_info["path"]).update(document, value)
 

@@ -58,8 +58,12 @@ class WMSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                         {
                             "document": "main",
                             "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.listSupportedCRS".format(extension_name),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
-                            "key": "listSupportedCRS"
+                            "parent": {
+                                "children": [{
+                                    "key": "listSupportedCRS"
+                                }],
+                                "parent": lambda _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE: _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE
+                            }
                         }
                     ],
                     "conversions": [{
@@ -150,8 +154,12 @@ class WMSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                         {
                             "document": "main",
                             "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.addressType".format(extension_name),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
-                            "key": "addressType"
+                            "parent": {
+                                "children": [{
+                                    "key": "addressType"
+                                }],
+                                "parent": lambda _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE: _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE
+                            }
                         }
                     ]
                 },
@@ -236,8 +244,12 @@ class WMSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                         {# yapf: disable
                             "document": "main",
                             "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.inheritLayerNames".format(extension_name),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
-                            "key": "inheritLayerNames"
+                            "parent": {
+                                "children": [{
+                                    "key": "inheritLayerNames"
+                                }],
+                                "parent": lambda _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE: _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE
+                            }
                         }# yapf: enable
                     ],
                     "conversions": [{
@@ -331,8 +343,12 @@ class WMSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                         {# yapf: disable
                             "document": "main",
                             "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.name".format(extension_name),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
-                            "key": "name"
+                            "parent": {
+                                "children": [{
+                                    "key": "name"
+                                }],
+                                "parent": lambda _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE: _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE
+                            }
                         }# yapf: enable
                     ],
                 },
@@ -493,8 +509,12 @@ class WMSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                         {# yapf: disable
                             "document": "main",
                             "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.reaspect".format(extension_name),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties".format(extension_name),
-                            "key": "name"
+                            "parent": {
+                                "children": [{
+                                    "key": "reaspect"
+                                }],
+                                "parent": lambda _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE: _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE
+                            }
                         }# yapf: enable
                     ],
                 },

@@ -20,26 +20,21 @@ class OutputDirMixin(object):
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main",
-                        "path": "$.properties.outputDir"
+                        "document": "main", "path": "$.properties.outputDir"
                     }]
                 },
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'outputDir']/Value",
-                            "parentPath":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray",
-                            "tag":
-                            "PropertySetProperty",
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'outputDir']/Value",
+                            "parentPath": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray",
+                            "tag": "PropertySetProperty",
                             "attributes": {
                                 "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
                             },
                             "children": [
                                 {
-                                    "tag": "Key",
-                                    "value": "outputDir"
+                                    "tag": "Key", "value": "outputDir"
                                 },
                                 {
                                     "tag": "Value",
@@ -60,26 +55,21 @@ class OutputDirMixin(object):
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main",
-                        "path": "$.properties.virtualOutputDir"
+                        "document": "main", "path": "$.properties.virtualOutputDir"
                     }]
                 },
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'virtualOutputDir']/Value",
-                            "parentPath":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray",
-                            "tag":
-                            "PropertySetProperty",
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'virtualOutputDir']/Value",
+                            "parentPath": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray",
+                            "tag": "PropertySetProperty",
                             "attributes": {
                                 "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
                             },
                             "children": [
                                 {
-                                    "tag": "Key",
-                                    "value": "virtualOutputDir"
+                                    "tag": "Key", "value": "virtualOutputDir"
                                 },
                                 {
                                     "tag": "Value",

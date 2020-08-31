@@ -109,8 +109,7 @@ class MapServer(
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Info/PropertyArray/PropertySetProperty[Key='WebCapabilities']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/Info/PropertyArray/PropertySetProperty[Key='WebCapabilities']/Value"
                         }
                     ],
                     "conversions": [{
@@ -131,8 +130,18 @@ class MapServer(
                         {
                             "document": "main",
                             "path": "$.properties.antialiasingMode",
-                            "parentPath": "$.properties",
-                            "key": "antialiasingMode"
+                            "parent": {
+                                "children": [{
+                                    "key": "antialiasingMode"
+                                }],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "key": "properties"
+                                        }
+                                    ]
+                                }
+                            }
                         }
                     ],
                     "conversions": [{
@@ -142,8 +151,7 @@ class MapServer(
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='antialiasingMode']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='antialiasingMode']/Value"
                         }
                     ],
                     "conversions": [{
@@ -162,8 +170,18 @@ class MapServer(
                         {
                             "document": "main",
                             "path": "$.properties.dateFieldsRespectsDayLightSavingTime",
-                            "parentPath": "$.properties",
-                            "key": "dateFieldsRespectsDayLightSavingTime"
+                            "parent": {
+                                "children": [{
+                                    "key": "dateFieldsRespectsDayLightSavingTime"
+                                }],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "key": "properties"
+                                        }
+                                    ]
+                                }
+                            }
                         }
                     ],
                     "conversions": [{
@@ -173,8 +191,7 @@ class MapServer(
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='dateFieldsRespectsDayLightSavingTime']/Value",
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='dateFieldsRespectsDayLightSavingTime']/Value",
                             "parentPath": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray",
                             "tag": "PropertySetProperty",
                             "attributes": {
@@ -182,8 +199,7 @@ class MapServer(
                             },
                             "children": [
                                 {
-                                    "tag": "Key",
-                                    "value": "dateFieldsRespectsDayLightSavingTime"
+                                    "tag": "Key", "value": "dateFieldsRespectsDayLightSavingTime"
                                 },
                                 {
                                     "tag": "Value",
@@ -210,8 +226,18 @@ class MapServer(
                         {
                             "document": "main",
                             "path": "$.properties.dateFieldsTimezoneID",
-                            "parentPath": "$.properties",
-                            "key": "dateFieldsTimezoneID"
+                            "parent": {
+                                "children": [{
+                                    "key": "dateFieldsTimezoneID"
+                                }],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "key": "properties"
+                                        }
+                                    ]
+                                }
+                            }
                         }
                     ],
                     "conversions": [{
@@ -221,8 +247,7 @@ class MapServer(
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='dateFieldsTimezoneID']/Value",
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='dateFieldsTimezoneID']/Value",
                             "parentPath": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray",
                             "tag": "PropertySetProperty",
                             "attributes": {
@@ -230,8 +255,7 @@ class MapServer(
                             },
                             "children": [
                                 {
-                                    "tag": "Key",
-                                    "value": "dateFieldsTimezoneID"
+                                    "tag": "Key", "value": "dateFieldsTimezoneID"
                                 },
                                 {
                                     "tag": "Value",
@@ -258,8 +282,18 @@ class MapServer(
                         {
                             "document": "main",
                             "path": "$.properties.textAntialiasingMode",
-                            "parentPath": "$.properties",
-                            "key": "textAntialiasingMode"
+                            "parent": {
+                                "children": [{
+                                    "key": "textAntialiasingMode"
+                                }],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "key": "properties"
+                                        }
+                                    ]
+                                }
+                            }
                         }
                     ],
                     "conversions": [{
@@ -269,8 +303,7 @@ class MapServer(
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='textAntialiasingMode']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='textAntialiasingMode']/Value"
                         }
                     ],
                     "conversions": [{
@@ -287,8 +320,7 @@ class MapServer(
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='disableIdentifyRelates']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='disableIdentifyRelates']/Value"
                         }
                     ],
                     "conversions": [{
@@ -307,8 +339,18 @@ class MapServer(
                         {
                             "document": "main",
                             "path": "$.properties.enableDynamicLayers",
-                            "parentPath": "$.properties",
-                            "key": "enableDynamicLayers"
+                            "parent": {
+                                "children": [{
+                                    "key": "enableDynamicLayers"
+                                }],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "key": "properties"
+                                        }
+                                    ]
+                                }
+                            }
                         }
                     ],
                     "conversions": [{
@@ -318,8 +360,7 @@ class MapServer(
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='enableDynamicLayers']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='enableDynamicLayers']/Value"
                         }
                     ],
                     "conversions": [{
@@ -336,8 +377,7 @@ class MapServer(
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='FilePath']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='FilePath']/Value"
                         }
                     ]
                 }
@@ -353,8 +393,18 @@ class MapServer(
                         {
                             "document": "main",
                             "path": "$.properties.schemaLockingEnabled",
-                            "parentPath": "$",
-                            "key": "schemaLockingEnabled"
+                            "parent": {
+                                "children": [{
+                                    "key": "schemaLockingEnabled"
+                                }],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "key": "properties"
+                                        }
+                                    ]
+                                }
+                            }
                         }
                     ],
                     "conversions": [{
@@ -364,8 +414,7 @@ class MapServer(
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='schemaLockingEnabled']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='schemaLockingEnabled']/Value"
                         }
                     ],
                     "conversions": [{

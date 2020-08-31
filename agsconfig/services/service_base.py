@@ -76,20 +76,26 @@ class ServiceBase(_ModelBase):
         {
             "formats": {
                 "agsJson": {
-                    "paths":
-                    [{
-                        "document": "itemInfo",
-                        "path": "$.licenseInfo",
-                        "parentPath": "$",
-                        "key": "licenseInfo"
-                    }]
+                    "paths": [
+                        {
+                            "document": "itemInfo",
+                            "path": "$.licenseInfo",
+                            "parent": {
+                                "children": [{
+                                    "key": "licenseInfo"
+                                }]
+                            }
+                        }
+                    ]
                 },
                 "sddraft": {
-                    "paths": [{
-                        "path": "./ItemInfo/AccessInformation",
-                        "parentPath": "./ItemInfo",
-                        "tag": "AccessInformation"
-                    }]
+                    "paths": [
+                        {
+                            "path": "./ItemInfo/AccessInformation",
+                            "parentPath": "./ItemInfo",
+                            "tag": "AccessInformation"
+                        }
+                    ]
                 }
             }
         }
@@ -99,12 +105,17 @@ class ServiceBase(_ModelBase):
         {
             "formats": {
                 "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.clusterName",
-                        "parentPath": "$",
-                        "key": "clusterName"
-                    }]
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": "$.clusterName",
+                            "parent": {
+                                "children": [{
+                                    "key": "clusterName"
+                                }]
+                            }
+                        }
+                    ]
                 },
                 "sddraft": {
                     "paths": [{
@@ -123,8 +134,11 @@ class ServiceBase(_ModelBase):
                         {
                             "document": "itemInfo",
                             "path": "$.accessInformation",
-                            "parentPath": "$",
-                            "key": "accessInformation"
+                            "parent": {
+                                "children": [{
+                                    "key": "accessInformation"
+                                }]
+                            }
                         }
                     ]
                 },
@@ -145,13 +159,20 @@ class ServiceBase(_ModelBase):
                         {
                             "document": "main",
                             "path": "$.description",
-                            "parentPath": "$",
-                            "key": "description"
-                        }, {
+                            "parent": {
+                                "children": [{
+                                    "key": "description"
+                                }]
+                            }
+                        },
+                        {
                             "document": "itemInfo",
                             "path": "$.description",
-                            "parentPath": "$",
-                            "key": "description"
+                            "parent": {
+                                "children": [{
+                                    "key": "description"
+                                }]
+                            }
                         }
                     ]
                 },
@@ -188,26 +209,20 @@ class ServiceBase(_ModelBase):
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main",
-                        "path": "$.isolationLevel"
+                        "document": "main", "path": "$.isolationLevel"
                     }],
                     "conversions": [{
-                        "id": "boolToString",
-                        "true": "HIGH",
-                        "false": "LOW"
+                        "id": "boolToString", "true": "HIGH", "false": "LOW"
                     }]
                 },
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key = 'Isolation']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key = 'Isolation']/Value"
                         }
                     ],
                     "conversions": [{
-                        "id": "boolToString",
-                        "true": "HIGH",
-                        "false": "LOW"
+                        "id": "boolToString", "true": "HIGH", "false": "LOW"
                     }]
                 }
             }
@@ -217,21 +232,18 @@ class ServiceBase(_ModelBase):
     idle_timeout = _EditorProperty(
         {
             "constraints": {
-                "min": 0,
-                "int": True
+                "min": 0, "int": True
             },
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main",
-                        "path": "$.maxIdleTime"
+                        "document": "main", "path": "$.maxIdleTime"
                     }]
                 },
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key = 'IdleTimeout']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key = 'IdleTimeout']/Value"
                         }
                     ]
                 }
@@ -242,21 +254,18 @@ class ServiceBase(_ModelBase):
     instances_per_container = _EditorProperty(
         {
             "constraints": {
-                "min": 1,
-                "int": True
+                "min": 1, "int": True
             },
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main",
-                        "path": "$.instancesPerContainer"
+                        "document": "main", "path": "$.instancesPerContainer"
                     }]
                 },
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key = 'InstancesPerContainer']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key = 'InstancesPerContainer']/Value"
                         }
                     ]
                 }
@@ -267,22 +276,18 @@ class ServiceBase(_ModelBase):
     max_instances = _EditorProperty(
         {
             "constraints": {
-                "int": True,
-                "min": 1,
-                "func": max_instances_constraint
+                "int": True, "min": 1, "func": max_instances_constraint
             },
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main",
-                        "path": "$.maxInstancesPerNode"
+                        "document": "main", "path": "$.maxInstancesPerNode"
                     }]
                 },
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key = 'MaxInstances']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key = 'MaxInstances']/Value"
                         }
                     ]
                 }
@@ -293,14 +298,12 @@ class ServiceBase(_ModelBase):
     max_scale = _EditorProperty(
         {
             "constraints": {
-                "min": 1,
-                "float": True
+                "min": 1, "float": True
             },
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main",
-                        "path": "$.properties.maxScale"
+                        "document": "main", "path": "$.properties.maxScale"
                     }],
                     "conversions": [{
                         "id": "numberToString"
@@ -309,8 +312,7 @@ class ServiceBase(_ModelBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'maxScale']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'maxScale']/Value"
                         }
                     ]
                 }
@@ -321,22 +323,18 @@ class ServiceBase(_ModelBase):
     min_instances = _EditorProperty(
         {
             "constraints": {
-                "int": True,
-                "min": 0,
-                "func": min_instances_constraint
+                "int": True, "min": 0, "func": min_instances_constraint
             },
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main",
-                        "path": "$.minInstancesPerNode"
+                        "document": "main", "path": "$.minInstancesPerNode"
                     }]
                 },
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key = 'MinInstances']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key = 'MinInstances']/Value"
                         }
                     ]
                 }
@@ -352,8 +350,7 @@ class ServiceBase(_ModelBase):
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main",
-                        "path": "$.properties.minScale"
+                        "document": "main", "path": "$.properties.minScale"
                     }],
                     "conversions": [{
                         "id": "numberToString"
@@ -362,8 +359,7 @@ class ServiceBase(_ModelBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'minScale']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'minScale']/Value"
                         }
                     ]
                 }
@@ -380,10 +376,8 @@ class ServiceBase(_ModelBase):
                 "agsJson": {
                     "constraints": {
                         "readOnly": True
-                    },
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.serviceName"
+                    }, "paths": [{
+                        "document": "main", "path": "$.serviceName"
                     }]
                 },
                 "sddraft": {
@@ -400,22 +394,18 @@ class ServiceBase(_ModelBase):
     recycle_interval = _EditorProperty(
         {
             "constraints": {
-                "default": 24,
-                "min": 1,
-                "int": True
+                "default": 24, "min": 1, "int": True
             },
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main",
-                        "path": "$.recycleInterval"
+                        "document": "main", "path": "$.recycleInterval"
                     }]
                 },
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key = 'recycleInterval']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key = 'recycleInterval']/Value"
                         }
                     ]
                 }
@@ -431,8 +421,7 @@ class ServiceBase(_ModelBase):
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main",
-                        "path": "$.recycleStartTime"
+                        "document": "main", "path": "$.recycleStartTime"
                     }],
                     "conversions": [{
                         "id": "timeToString"
@@ -441,8 +430,7 @@ class ServiceBase(_ModelBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key = 'recycleStartTime']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key = 'recycleStartTime']/Value"
                         }
                     ],
                     "conversions": [{
@@ -476,18 +464,21 @@ class ServiceBase(_ModelBase):
         {
             "formats": {
                 "agsJson": {
-                    "paths": [{
-                        "document": "itemInfo",
-                        "path": "$.snippet",
-                        "parentPath": "$",
-                        "key": "snippet"
-                    },
-                    {
-                        "document": "itemInfo",
-                        "path": "$.summary",
-                        "parentPath": "$",
-                        "key": "summary"
-                    }]
+                    "paths": [
+                        {
+                            "document": "itemInfo", "path": "$.snippet", "parent": {
+                                "children": [{
+                                    "key": "snippet"
+                                }]
+                            }
+                        }, {
+                            "document": "itemInfo", "path": "$.summary", "parent": {
+                                "children": [{
+                                    "key": "summary"
+                                }]
+                            }
+                        }
+                    ]
                 },
                 "sddraft": {
                     "paths": [{
@@ -503,16 +494,16 @@ class ServiceBase(_ModelBase):
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "itemInfo",
-                        "path": "$.tags",
-                        "parentPath": "$",
-                        "key": "tags"
+                        "document": "itemInfo", "path": "$.tags", "parent": {
+                            "children": [{
+                                "key": "tags"
+                            }]
+                        }
                     }]
                 },
                 "sddraft": {
                     "conversions": [{
-                        "id": "listToElements",
-                        "tag": "String"
+                        "id": "listToElements", "tag": "String"
                     }],
                     "paths": [
                         {
@@ -534,10 +525,11 @@ class ServiceBase(_ModelBase):
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "itemInfo",
-                        "path": "$.title",
-                        "parentPath": "$",
-                        "key": "title"
+                        "document": "itemInfo", "path": "$.title", "parent": {
+                            "children": [{
+                                "key": "title"
+                            }]
+                        }
                     }]
                 },
                 "sddraft": {
@@ -552,21 +544,18 @@ class ServiceBase(_ModelBase):
     usage_timeout = _EditorProperty(
         {
             "constraints": {
-                "min": 0,
-                "int": True
+                "min": 0, "int": True
             },
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main",
-                        "path": "$.maxUsageTime"
+                        "document": "main", "path": "$.maxUsageTime"
                     }]
                 },
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key = 'UsageTimeout']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key = 'UsageTimeout']/Value"
                         }
                     ]
                 }
@@ -577,21 +566,18 @@ class ServiceBase(_ModelBase):
     wait_timeout = _EditorProperty(
         {
             "constraints": {
-                "min": 0,
-                "int": True
+                "min": 0, "int": True
             },
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main",
-                        "path": "$.maxWaitTime"
+                        "document": "main", "path": "$.maxWaitTime"
                     }]
                 },
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key = 'WaitTimeout']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key = 'WaitTimeout']/Value"
                         }
                     ]
                 }

@@ -121,7 +121,7 @@ class EditorBase(object):
         Completely abstract function that is editor implementation specific.
         """
     @abstractmethod
-    def _set_value(self, value, path_info):
+    def _set_value(self, value, path_info, obj):
         """Set the value at the provided path.
 
         Completely abstract function that is editor implementation specific.

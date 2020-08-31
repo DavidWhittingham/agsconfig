@@ -33,6 +33,8 @@ class ExtensionBase(ModelBase):
     _logger = _logging.getLogger(__name__)
     _web_capabilities_key = "WebCapabilities"
 
+    _AGSJSON_EXTENSION_STRUCTURE = {"children": [{"value": lambda extension_name: {"typeName": extension_name}}]}
+
     class Capability(Enum):
         """Must be overridden by sub-classes if any capabilities are supported."""
         pass
@@ -60,8 +62,14 @@ class ExtensionBase(ModelBase):
                         {# yapf: disable
                             "document": "main",
                             "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].capabilities".format(extension_name),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{0}')]".format(extension_name),
-                            "key": "capabilities"
+                            "parent": {
+                                "children": [
+                                    {
+                                        "key": "capabilities"
+                                    }
+                                ],
+                                "parent": _AGSJSON_EXTENSION_STRUCTURE
+                            }
                         }# yapf: enable
                     ],
                     "conversions": [{
@@ -160,8 +168,16 @@ class ExtensionBase(ModelBase):
                     "paths": [
                         {# yapf: disable
                             "document": "main",
-                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].enabled".format(extension_name)
-                        }# yapf: enable
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].enabled".format(extension_name),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "key": "enabled"
+                                    }
+                                ],
+                                "parent": _AGSJSON_EXTENSION_STRUCTURE
+                            }
+                        }
                     ]
                 },
                 "sddraft": {

@@ -32,6 +32,12 @@ class OGCMetadataExtensionMixin(object):
     _AGSJSON_KEY_POSTAL_CODE = "postalCode"
     _AGSJSON_KEY_PROVIDER_NAME = "providerName"
     _AGSJSON_KEY_TITLE = "title"
+    _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE = {
+        "children": [{
+            "key": "properties", "value": {}
+        }],
+        "parent": lambda _AGSJSON_EXTENSION_STRUCTURE: _AGSJSON_EXTENSION_STRUCTURE
+    }
 
     # Service Definition Draft key names
     _SDDRAFT_KEY_ABSTRACT = "abstract"
@@ -61,8 +67,14 @@ class OGCMetadataExtensionMixin(object):
                         {# yapf: disable
                             "document": "main",
                             "path": lambda extension_name, _AGSJSON_KEY_ABSTRACT: "$.extensions[?(@.typeName = '{}')].properties.{}".format(extension_name, _AGSJSON_KEY_ABSTRACT),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties".format(extension_name),
-                            "key": lambda _AGSJSON_KEY_ABSTRACT: _AGSJSON_KEY_ABSTRACT
+                            "parent": {
+                                "children": [
+                                    {
+                                        "key": lambda _AGSJSON_KEY_ABSTRACT: _AGSJSON_KEY_ABSTRACT
+                                    }
+                                ],
+                                "parent": lambda _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE: _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE
+                            }
                         }# yapf: enable
                     ]
                 },
@@ -148,8 +160,14 @@ class OGCMetadataExtensionMixin(object):
                         {# yapf: disable
                             "document": "main",
                             "path": lambda extension_name, _AGSJSON_KEY_ACCESS_CONSTRAINTS: "$.extensions[?(@.typeName = '{}')].properties.{}".format(extension_name, _AGSJSON_KEY_ACCESS_CONSTRAINTS),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties".format(extension_name),
-                            "key": lambda _AGSJSON_KEY_ACCESS_CONSTRAINTS: _AGSJSON_KEY_ACCESS_CONSTRAINTS
+                            "parent": {
+                                "children": [
+                                    {
+                                        "key": lambda _AGSJSON_KEY_ACCESS_CONSTRAINTS: _AGSJSON_KEY_ACCESS_CONSTRAINTS
+                                    }
+                                ],
+                                "parent": lambda _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE: _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE
+                            }
                         }# yapf: enable
                     ]
                 },
@@ -235,8 +253,14 @@ class OGCMetadataExtensionMixin(object):
                         {# yapf: disable
                             "document": "main",
                             "path": lambda extension_name, _AGSJSON_KEY_ADDRESS: "$.extensions[?(@.typeName = '{}')].{}".format(extension_name, _AGSJSON_KEY_ADDRESS),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{}')]".format(extension_name),
-                            "key": "address"
+                            "parent": {
+                                "children": [
+                                    {
+                                        "key": "address"
+                                    }
+                                ],
+                                "parent": lambda _AGSJSON_EXTENSION_STRUCTURE: _AGSJSON_EXTENSION_STRUCTURE
+                            }
                         }# yapf: enable
                     ]
                 },
@@ -321,8 +345,14 @@ class OGCMetadataExtensionMixin(object):
                         {# yapf: disable
                             "document": "main",
                             "path": lambda extension_name, _AGSJSON_KEY_ADMINISTRATIVE_AREA: "$.extensions[?(@.typeName = '{}')].{}".format(extension_name, _AGSJSON_KEY_ADMINISTRATIVE_AREA),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{}')]".format(extension_name),
-                            "key": lambda _AGSJSON_KEY_ADMINISTRATIVE_AREA: _AGSJSON_KEY_ADMINISTRATIVE_AREA
+                            "parent": {
+                                "children": [
+                                    {
+                                        "key": lambda _AGSJSON_KEY_ADMINISTRATIVE_AREA: _AGSJSON_KEY_ADMINISTRATIVE_AREA
+                                    }
+                                ],
+                                "parent": lambda _AGSJSON_EXTENSION_STRUCTURE: _AGSJSON_EXTENSION_STRUCTURE
+                            }
                         }# yapf: enable
                     ]
                 },
@@ -408,8 +438,14 @@ class OGCMetadataExtensionMixin(object):
                         {# yapf: disable
                             "document": "main",
                             "path": lambda extension_name, _AGSJSON_KEY_CITY: "$.extensions[?(@.typeName = '{}')].properties.{}".format(extension_name, _AGSJSON_KEY_CITY),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties".format(extension_name),
-                            "key": lambda _AGSJSON_KEY_CITY: _AGSJSON_KEY_CITY
+                            "parent": {
+                                "children": [
+                                    {
+                                        "key": lambda _AGSJSON_KEY_CITY: _AGSJSON_KEY_CITY
+                                    }
+                                ],
+                                "parent": lambda _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE: _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE
+                            }
                         }# yapf: enable
                     ]
                 },
@@ -495,8 +531,14 @@ class OGCMetadataExtensionMixin(object):
                         {# yapf: disable
                             "document": "main",
                             "path": lambda extension_name, _AGSJSON_KEY_COUNTRY: "$.extensions[?(@.typeName = '{}')].properties.{}".format(extension_name, _AGSJSON_KEY_COUNTRY),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties".format(extension_name),
-                            "key": lambda _AGSJSON_KEY_COUNTRY: _AGSJSON_KEY_COUNTRY
+                            "parent": {
+                                "children": [
+                                    {
+                                        "key": lambda _AGSJSON_KEY_COUNTRY: _AGSJSON_KEY_COUNTRY
+                                    }
+                                ],
+                                "parent": lambda _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE: _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE
+                            }
                         }# yapf: enable
                     ]
                 },
@@ -582,8 +624,14 @@ class OGCMetadataExtensionMixin(object):
                         {# yapf: disable
                             "document": "main",
                             "path": lambda extension_name, _AGSJSON_KEY_EMAIL: "$.extensions[?(@.typeName = '{}')].properties.{}".format(extension_name, _AGSJSON_KEY_EMAIL),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties".format(extension_name),
-                            "key": lambda _AGSJSON_KEY_EMAIL: _AGSJSON_KEY_EMAIL
+                            "parent": {
+                                "children": [
+                                    {
+                                        "key": lambda _AGSJSON_KEY_EMAIL: _AGSJSON_KEY_EMAIL
+                                    }
+                                ],
+                                "parent": lambda _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE: _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE
+                            }
                         }# yapf: enable
                     ]
                 },
@@ -669,8 +717,14 @@ class OGCMetadataExtensionMixin(object):
                         {# yapf: disable
                             "document": "main",
                             "path": lambda extension_name, _AGSJSON_KEY_FACSIMILE: "$.extensions[?(@.typeName = '{}')].properties.{}".format(extension_name, _AGSJSON_KEY_FACSIMILE),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties".format(extension_name),
-                            "key": lambda _AGSJSON_KEY_FACSIMILE: _AGSJSON_KEY_FACSIMILE
+                            "parent": {
+                                "children": [
+                                    {
+                                        "key": lambda _AGSJSON_KEY_FACSIMILE: _AGSJSON_KEY_FACSIMILE
+                                    }
+                                ],
+                                "parent": lambda _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE: _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE
+                            }
                         }# yapf: enable
                     ]
                 },
@@ -756,8 +810,14 @@ class OGCMetadataExtensionMixin(object):
                         {# yapf: disable
                             "document": "main",
                             "path": lambda extension_name, _AGSJSON_KEY_FEES: "$.extensions[?(@.typeName = '{}')].properties.{}".format(extension_name, _AGSJSON_KEY_FEES),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties".format(extension_name),
-                            "key": lambda _AGSJSON_KEY_FEES: _AGSJSON_KEY_FEES
+                            "parent": {
+                                "children": [
+                                    {
+                                        "key": lambda _AGSJSON_KEY_FEES: _AGSJSON_KEY_FEES
+                                    }
+                                ],
+                                "parent": lambda _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE: _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE
+                            }
                         }# yapf: enable
                     ]
                 },
@@ -843,8 +903,14 @@ class OGCMetadataExtensionMixin(object):
                         {# yapf: disable
                             "document": "main",
                             "path": lambda extension_name, _AGSJSON_KEY_INDIVIDUAL_NAME: "$.extensions[?(@.typeName = '{}')].properties.{}".format(extension_name, _AGSJSON_KEY_INDIVIDUAL_NAME),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties".format(extension_name),
-                            "key": lambda _AGSJSON_KEY_INDIVIDUAL_NAME: _AGSJSON_KEY_INDIVIDUAL_NAME
+                            "parent": {
+                                "children": [
+                                    {
+                                        "key": lambda _AGSJSON_KEY_INDIVIDUAL_NAME: _AGSJSON_KEY_INDIVIDUAL_NAME
+                                    }
+                                ],
+                                "parent": lambda _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE: _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE
+                            }
                         }# yapf: enable
                     ]
                 },
@@ -930,8 +996,14 @@ class OGCMetadataExtensionMixin(object):
                         {# yapf: disable
                             "document": "main",
                             "path": lambda extension_name, _AGSJSON_KEY_KEYWORDS: "$.extensions[?(@.typeName = '{}')].properties.{}".format(extension_name, _AGSJSON_KEY_KEYWORDS),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties".format(extension_name),
-                            "key": lambda _AGSJSON_KEY_KEYWORDS: _AGSJSON_KEY_KEYWORDS
+                            "parent": {
+                                "children": [
+                                    {
+                                        "key": lambda _AGSJSON_KEY_KEYWORDS: _AGSJSON_KEY_KEYWORDS
+                                    }
+                                ],
+                                "parent": lambda _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE: _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE
+                            }
                         }# yapf: enable
                     ]
                 },
@@ -1020,8 +1092,14 @@ class OGCMetadataExtensionMixin(object):
                         {# yapf: disable
                             "document": "main",
                             "path": lambda extension_name, _AGSJSON_KEY_NAME: "$.extensions[?(@.typeName = '{}')].properties.{}".format(extension_name, _AGSJSON_KEY_NAME),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties".format(extension_name),
-                            "key": lambda _AGSJSON_KEY_NAME: _AGSJSON_KEY_NAME
+                            "parent": {
+                                "children": [
+                                    {
+                                        "key": lambda _AGSJSON_KEY_NAME: _AGSJSON_KEY_NAME
+                                    }
+                                ],
+                                "parent": lambda _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE: _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE
+                            }
                         }# yapf: enable
                     ]
                 },
@@ -1108,8 +1186,14 @@ class OGCMetadataExtensionMixin(object):
                         {# yapf: disable
                             "document": "main",
                             "path": lambda extension_name, _AGSJSON_KEY_PHONE: "$.extensions[?(@.typeName = '{}')].properties.{}".format(extension_name, _AGSJSON_KEY_PHONE),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties".format(extension_name),
-                            "key": lambda _AGSJSON_KEY_PHONE: _AGSJSON_KEY_PHONE
+                            "parent": {
+                                "children": [
+                                    {
+                                        "key": lambda _AGSJSON_KEY_PHONE: _AGSJSON_KEY_PHONE
+                                    }
+                                ],
+                                "parent": lambda _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE: _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE
+                            }
                         }# yapf: enable
                     ]
                 },
@@ -1195,8 +1279,14 @@ class OGCMetadataExtensionMixin(object):
                         {# yapf: disable
                             "document": "main",
                             "path": lambda extension_name, _AGSJSON_KEY_POSITION_NAME: "$.extensions[?(@.typeName = '{}')].properties.{}".format(extension_name, _AGSJSON_KEY_POSITION_NAME),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties".format(extension_name),
-                            "key": lambda _AGSJSON_KEY_POSITION_NAME: _AGSJSON_KEY_POSITION_NAME
+                            "parent": {
+                                "children": [
+                                    {
+                                        "key": lambda _AGSJSON_KEY_POSITION_NAME: _AGSJSON_KEY_POSITION_NAME
+                                    }
+                                ],
+                                "parent": lambda _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE: _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE
+                            }
                         }# yapf: enable
                     ]
                 },
@@ -1282,8 +1372,14 @@ class OGCMetadataExtensionMixin(object):
                         {# yapf: disable
                             "document": "main",
                             "path": lambda extension_name, _AGSJSON_KEY_POSTAL_CODE: "$.extensions[?(@.typeName = '{}')].properties.{}".format(extension_name, _AGSJSON_KEY_POSTAL_CODE),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties".format(extension_name),
-                            "key": lambda _AGSJSON_KEY_POSTAL_CODE: _AGSJSON_KEY_POSTAL_CODE
+                            "parent": {
+                                "children": [
+                                    {
+                                        "key": lambda _AGSJSON_KEY_POSTAL_CODE: _AGSJSON_KEY_POSTAL_CODE
+                                    }
+                                ],
+                                "parent": lambda _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE: _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE
+                            }
                         }# yapf: enable
                     ]
                 },
@@ -1369,8 +1465,14 @@ class OGCMetadataExtensionMixin(object):
                         {# yapf: disable
                             "document": "main",
                             "path": lambda extension_name, _AGSJSON_KEY_PROVIDER_NAME: "$.extensions[?(@.typeName = '{}')].properties.{}".format(extension_name, _AGSJSON_KEY_PROVIDER_NAME),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties".format(extension_name),
-                            "key": lambda _AGSJSON_KEY_PROVIDER_NAME: _AGSJSON_KEY_PROVIDER_NAME
+                            "parent": {
+                                "children": [
+                                    {
+                                        "key": lambda _AGSJSON_KEY_PROVIDER_NAME: _AGSJSON_KEY_PROVIDER_NAME
+                                    }
+                                ],
+                                "parent": lambda _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE: _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE
+                            }
                         }# yapf: enable
                     ]
                 },
@@ -1456,8 +1558,14 @@ class OGCMetadataExtensionMixin(object):
                         {# yapf: disable
                             "document": "main",
                             "path": lambda extension_name, _AGSJSON_KEY_TITLE: "$.extensions[?(@.typeName = '{}')].properties.{}".format(extension_name, _AGSJSON_KEY_TITLE),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties".format(extension_name),
-                            "key": lambda _AGSJSON_KEY_TITLE: _AGSJSON_KEY_TITLE
+                            "parent": {
+                                "children": [
+                                    {
+                                        "key": lambda _AGSJSON_KEY_TITLE: _AGSJSON_KEY_TITLE
+                                    }
+                                ],
+                                "parent": lambda _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE: _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE
+                            }
                         }# yapf: enable
                     ]
                 },

@@ -24,8 +24,14 @@ class CustomGetCapabilitiesExtensionMixin(object):
                         {
                             "document": "main",
                             "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.customGetCapabilities".format(extension_name),
-                            "parentPath": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties".format(extension_name),
-                            "key": "customGetCapabilities"
+                            "parent": {
+                                "children": [
+                                    {
+                                        "key": "customGetCapabilities"
+                                    }
+                                ],
+                                "parent": lambda _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE: _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE
+                            }
                         }
                     ],
                     "conversions": [{
