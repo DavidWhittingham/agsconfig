@@ -36,7 +36,8 @@ class EditorBase(object):
             "numberToString": serialization.deserialize_string_to_number,
             "stringToCsv": serialization.deserialize_csv_to_string_list,
             "timeToString": serialization.deserialize_string_to_time,
-            "olsonTimeZoneToWindowsTimeZone": serialization.deserialize_windows_tz_to_olson_tz
+            "olsonTimeZoneToWindowsTimeZone": serialization.deserialize_windows_tz_to_olson_tz,
+            "xmlToEscapedString": serialization.unescape_xml
         }
 
         if deserialization_func_map is not None:
@@ -50,7 +51,8 @@ class EditorBase(object):
             "numberToString": serialization.serialize_number_to_string,
             "stringToCsv": serialization.serialize_string_list_to_csv,
             "timeToString": serialization.serialize_time_to_string,
-            "olsonTimeZoneToWindowsTimeZone": serialization.serialize_olson_tz_to_windows_tz
+            "olsonTimeZoneToWindowsTimeZone": serialization.serialize_olson_tz_to_windows_tz,
+            "xmlToEscapedString": serialization.escape_xml
         }
 
         if serialization_func_map is not None:

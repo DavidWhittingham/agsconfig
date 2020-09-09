@@ -10,13 +10,16 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
+# Standard lib imports
 import datetime
 import logging as _logging
 import re
 
-import tzlocal.windows_tz
-
 from collections import Sequence
+from xml.sax.saxutils import escape as _escape_xml, unescape as _unescape_xml
+
+# Third-party imports
+import tzlocal.windows_tz
 
 #: A regular expression for matching time notation
 _TIME_STRING_REGEX = re.compile(r"^([0-9]{2}):([0-9]{2})$")
@@ -186,6 +189,32 @@ def deserialize_windows_tz_to_olson_tz(value, conversion, obj):
 
     # surrounded with str to ensure unicode
     return str(tzlocal.windows_tz.win_tz[value])
+
+
+def escape_xml(value, conversion, obj):
+    if isinstance(value, Sequence) and not isinstance(value, str):
+        if len(value) == 0:
+            return value
+
+        return [escape_xml(item, conversion, obj) for item in value]
+
+    if value is None or len(value) == 0:
+        return None
+
+    return str(_escape_xml(value))
+
+
+def unescape_xml(value, conversion, obj):
+    if isinstance(value, Sequence) and not isinstance(value, str):
+        if len(value) == 0:
+            return value
+
+        return [unescape_xml(item, conversion, obj) for item in value]
+
+    if value is None or len(value) == 0:
+        return None
+
+    return str(_unescape_xml(value))
 
 
 def serialize_bool_to_string(value, conversion, obj):
