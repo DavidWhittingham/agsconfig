@@ -76,6 +76,9 @@ class ServiceBase(_ModelBase):
         {
             "formats": {
                 "agsJson": {
+                    "conversions": [{
+                        "id": "htmlToText"
+                    }],
                     "paths": [
                         {
                             "document": "itemInfo",
@@ -89,6 +92,9 @@ class ServiceBase(_ModelBase):
                     ]
                 },
                 "sddraft": {
+                    "conversions": [{
+                        "id": "htmlToText"
+                    }],
                     "paths": [
                         {
                             "path": "./ItemInfo/AccessInformation",
@@ -164,15 +170,25 @@ class ServiceBase(_ModelBase):
                                     "key": "description"
                                 }]
                             }
-                        },
-                        {
+                        }, {
+                            "document": "main",
+                            "path": "$.serviceDescription",
+                            "parent": {
+                                "children": [{
+                                    "key": "serviceDescription"
+                                }]
+                            }
+                        }, {
                             "document": "itemInfo",
                             "path": "$.description",
                             "parent": {
                                 "children": [{
                                     "key": "description"
                                 }]
-                            }
+                            },
+                            "conversions": [{
+                                "id": "htmlToText"
+                            }]
                         }
                     ]
                 },
@@ -181,7 +197,36 @@ class ServiceBase(_ModelBase):
                         {
                             "path": "./Configurations/SVCConfiguration/Definition/Description"
                         }, {
-                            "path": "./ItemInfo/Description"
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'description']/Value",
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        },
+                                    }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [{
+                                                "tag": "Key",
+                                                "value": "description"
+                                            }]
+                                        }
+                                    ]
+                                }
+                            }
+                        }, {
+                            "path": "./ItemInfo/Description",
+                            "conversions": [{
+                                "id": "htmlToText"
+                            }]
                         }
                     ]
                 }
@@ -209,10 +254,13 @@ class ServiceBase(_ModelBase):
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main", "path": "$.isolationLevel"
+                        "document": "main",
+                        "path": "$.isolationLevel"
                     }],
                     "conversions": [{
-                        "id": "boolToString", "true": "HIGH", "false": "LOW"
+                        "id": "boolToString",
+                        "true": "HIGH",
+                        "false": "LOW"
                     }]
                 },
                 "sddraft": {
@@ -222,7 +270,9 @@ class ServiceBase(_ModelBase):
                         }
                     ],
                     "conversions": [{
-                        "id": "boolToString", "true": "HIGH", "false": "LOW"
+                        "id": "boolToString",
+                        "true": "HIGH",
+                        "false": "LOW"
                     }]
                 }
             }
@@ -232,12 +282,14 @@ class ServiceBase(_ModelBase):
     idle_timeout = _EditorProperty(
         {
             "constraints": {
-                "min": 0, "int": True
+                "min": 0,
+                "int": True
             },
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main", "path": "$.maxIdleTime"
+                        "document": "main",
+                        "path": "$.maxIdleTime"
                     }]
                 },
                 "sddraft": {
@@ -254,12 +306,14 @@ class ServiceBase(_ModelBase):
     instances_per_container = _EditorProperty(
         {
             "constraints": {
-                "min": 1, "int": True
+                "min": 1,
+                "int": True
             },
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main", "path": "$.instancesPerContainer"
+                        "document": "main",
+                        "path": "$.instancesPerContainer"
                     }]
                 },
                 "sddraft": {
@@ -276,12 +330,15 @@ class ServiceBase(_ModelBase):
     max_instances = _EditorProperty(
         {
             "constraints": {
-                "int": True, "min": 1, "func": max_instances_constraint
+                "int": True,
+                "min": 1,
+                "func": max_instances_constraint
             },
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main", "path": "$.maxInstancesPerNode"
+                        "document": "main",
+                        "path": "$.maxInstancesPerNode"
                     }]
                 },
                 "sddraft": {
@@ -298,12 +355,14 @@ class ServiceBase(_ModelBase):
     max_scale = _EditorProperty(
         {
             "constraints": {
-                "min": 1, "float": True
+                "min": 1,
+                "float": True
             },
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main", "path": "$.properties.maxScale"
+                        "document": "main",
+                        "path": "$.properties.maxScale"
                     }],
                     "conversions": [{
                         "id": "numberToString"
@@ -320,17 +379,31 @@ class ServiceBase(_ModelBase):
         }
     )
 
-    metadata_xml = _EditorProperty({"formats": {"sddraft": {"paths": [{"path": "./Metadata/XmlDoc"}]}}})
+    metadata_xml = _EditorProperty(
+        {"formats": {
+            "sddraft": {
+                "constraints": {
+                    "readOnly": True
+                },
+                "paths": [{
+                    "path": "./Metadata/XmlDoc"
+                }]
+            }
+        }}
+    )
 
     min_instances = _EditorProperty(
         {
             "constraints": {
-                "int": True, "min": 0, "func": min_instances_constraint
+                "int": True,
+                "min": 0,
+                "func": min_instances_constraint
             },
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main", "path": "$.minInstancesPerNode"
+                        "document": "main",
+                        "path": "$.minInstancesPerNode"
                     }]
                 },
                 "sddraft": {
@@ -352,7 +425,8 @@ class ServiceBase(_ModelBase):
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main", "path": "$.properties.minScale"
+                        "document": "main",
+                        "path": "$.properties.minScale"
                     }],
                     "conversions": [{
                         "id": "numberToString"
@@ -378,8 +452,10 @@ class ServiceBase(_ModelBase):
                 "agsJson": {
                     "constraints": {
                         "readOnly": True
-                    }, "paths": [{
-                        "document": "main", "path": "$.serviceName"
+                    },
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.serviceName"
                     }]
                 },
                 "sddraft": {
@@ -396,12 +472,15 @@ class ServiceBase(_ModelBase):
     recycle_interval = _EditorProperty(
         {
             "constraints": {
-                "default": 24, "min": 1, "int": True
+                "default": 24,
+                "min": 1,
+                "int": True
             },
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main", "path": "$.recycleInterval"
+                        "document": "main",
+                        "path": "$.recycleInterval"
                     }]
                 },
                 "sddraft": {
@@ -423,7 +502,8 @@ class ServiceBase(_ModelBase):
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main", "path": "$.recycleStartTime"
+                        "document": "main",
+                        "path": "$.recycleStartTime"
                     }],
                     "conversions": [{
                         "id": "timeToString"
@@ -468,13 +548,17 @@ class ServiceBase(_ModelBase):
                 "agsJson": {
                     "paths": [
                         {
-                            "document": "itemInfo", "path": "$.snippet", "parent": {
+                            "document": "itemInfo",
+                            "path": "$.snippet",
+                            "parent": {
                                 "children": [{
                                     "key": "snippet"
                                 }]
                             }
                         }, {
-                            "document": "itemInfo", "path": "$.summary", "parent": {
+                            "document": "itemInfo",
+                            "path": "$.summary",
+                            "parent": {
                                 "children": [{
                                     "key": "summary"
                                 }]
@@ -496,7 +580,9 @@ class ServiceBase(_ModelBase):
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "itemInfo", "path": "$.tags", "parent": {
+                        "document": "itemInfo",
+                        "path": "$.tags",
+                        "parent": {
                             "children": [{
                                 "key": "tags"
                             }]
@@ -505,7 +591,8 @@ class ServiceBase(_ModelBase):
                 },
                 "sddraft": {
                     "conversions": [{
-                        "id": "listToElements", "tag": "String"
+                        "id": "listToElements",
+                        "tag": "String"
                     }],
                     "paths": [
                         {
@@ -527,7 +614,9 @@ class ServiceBase(_ModelBase):
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "itemInfo", "path": "$.title", "parent": {
+                        "document": "itemInfo",
+                        "path": "$.title",
+                        "parent": {
                             "children": [{
                                 "key": "title"
                             }]
@@ -546,12 +635,14 @@ class ServiceBase(_ModelBase):
     usage_timeout = _EditorProperty(
         {
             "constraints": {
-                "min": 0, "int": True
+                "min": 0,
+                "int": True
             },
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main", "path": "$.maxUsageTime"
+                        "document": "main",
+                        "path": "$.maxUsageTime"
                     }]
                 },
                 "sddraft": {
@@ -568,12 +659,14 @@ class ServiceBase(_ModelBase):
     wait_timeout = _EditorProperty(
         {
             "constraints": {
-                "min": 0, "int": True
+                "min": 0,
+                "int": True
             },
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main", "path": "$.maxWaitTime"
+                        "document": "main",
+                        "path": "$.maxWaitTime"
                     }]
                 },
                 "sddraft": {

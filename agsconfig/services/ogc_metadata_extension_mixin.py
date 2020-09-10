@@ -34,7 +34,8 @@ class OGCMetadataExtensionMixin(object):
     _AGSJSON_KEY_TITLE = "title"
     _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE = {
         "children": [{
-            "key": "properties", "value": {}
+            "key": "properties",
+            "value": {}
         }],
         "parent": lambda _AGSJSON_EXTENSION_STRUCTURE: _AGSJSON_EXTENSION_STRUCTURE
     }
@@ -156,6 +157,9 @@ class OGCMetadataExtensionMixin(object):
         {
             "formats": {
                 "agsJson": {
+                    "conversions": [{
+                        "id": "htmlToText"
+                    }],
                     "paths": [
                         {# yapf: disable
                             "document": "main",
@@ -172,6 +176,9 @@ class OGCMetadataExtensionMixin(object):
                     ]
                 },
                 "sddraft": {
+                    "conversions": [{
+                        "id": "htmlToText"
+                    }],
                     "paths": [
                         {# yapf: disable
                             "path": lambda extension_name, _SDDRAFT_KEY_ACCESS_CONSTRAINTS:

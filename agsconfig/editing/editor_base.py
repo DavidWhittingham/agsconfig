@@ -32,11 +32,12 @@ class EditorBase(object):
             "boolToString": serialization.deserialize_string_to_bool,
             "enumToString": serialization.deserialize_string_to_enum,
             "formatString": serialization.deserialize_formatted_to_string,
+            "htmlToText": lambda value, conversion, obj: value,
             "noneToEmptyString": serialization.deserialize_empty_string_to_none,
             "numberToString": serialization.deserialize_string_to_number,
+            "olsonTimeZoneToWindowsTimeZone": serialization.deserialize_windows_tz_to_olson_tz,
             "stringToCsv": serialization.deserialize_csv_to_string_list,
             "timeToString": serialization.deserialize_string_to_time,
-            "olsonTimeZoneToWindowsTimeZone": serialization.deserialize_windows_tz_to_olson_tz,
             "xmlToEscapedString": serialization.unescape_xml
         }
 
@@ -47,11 +48,12 @@ class EditorBase(object):
             "boolToString": serialization.serialize_bool_to_string,
             "enumToString": serialization.serialize_enum_to_string,
             "formatString": serialization.serialize_formatted_string,
+            "htmlToText": serialization.html_to_text,
             "noneToEmptyString": serialization.serialize_none_to_empty_string,
             "numberToString": serialization.serialize_number_to_string,
+            "olsonTimeZoneToWindowsTimeZone": serialization.serialize_olson_tz_to_windows_tz,
             "stringToCsv": serialization.serialize_string_list_to_csv,
             "timeToString": serialization.serialize_time_to_string,
-            "olsonTimeZoneToWindowsTimeZone": serialization.serialize_olson_tz_to_windows_tz,
             "xmlToEscapedString": serialization.escape_xml
         }
 
@@ -67,7 +69,17 @@ class EditorBase(object):
 
         value = self._get_value(path_info)
 
-        return self._deserialize(value, format_info, obj)
+        conversions = None
+        if "conversions" in format_info:
+            # global conversions exist, use these
+            conversions = format_info["conversions"]
+        if "conversions" in path_info:
+            # pre-path conversions exist, use these instead
+            conversions = path_info["conversions"]
+
+        if conversions:
+            return self._deserialize(value, conversions, obj)
+        return value
 
     @abstractmethod
     def save(self):
@@ -78,12 +90,22 @@ class EditorBase(object):
     def set_value(self, property_name, value, meta, obj):
         format_info = self._get_format_info_and_check_support(property_name, meta, True)
 
-        # serialize value
-        value = self._serialize(value, format_info, obj)
-
         # set the value in all locations listed
         # resolve the "paths" variable itself in case that's a lambda
         for path_info in self.resolve_lambda_value(format_info["paths"], obj):
+
+            conversions = None
+            if "conversions" in format_info:
+                # global conversions exist, use these
+                conversions = format_info["conversions"]
+            if "conversions" in path_info:
+                # pre-path conversions exist, use these instead
+                conversions = path_info["conversions"]
+
+            if conversions:
+                # serialize value
+                value = self._serialize(value, conversions, obj)
+
             self._set_value(value, self._resolve_lambda(path_info, obj, "path"), obj)
 
     @classmethod
@@ -128,12 +150,10 @@ class EditorBase(object):
 
         Completely abstract function that is editor implementation specific.
         """
-    def _deserialize(self, value, format_info, obj):
-        if "conversions" in format_info:
-            # a sequence of conversions has been specified for serializing, reverse the order to process
-            for conversion in reversed(format_info["conversions"]):
-                value = self._deserialization_func_map.get(conversion["id"])(value, conversion, obj)
-
+    def _deserialize(self, value, conversions, obj):
+        # a sequence of conversions has been specified for serializing, reverse the order to process
+        for conversion in reversed(conversions):
+            value = self._deserialization_func_map.get(conversion["id"])(value, conversion, obj)
         return value
 
     def _get_format_info_and_check_support(self, property_name, meta, check_constraints=False):
@@ -157,10 +177,8 @@ class EditorBase(object):
 
         return format_info
 
-    def _serialize(self, value, format_info, obj):
-        if "conversions" in format_info:
-            # a sequence of conversions has been specified for serializing, reverse the order to process
-            for conversion in format_info["conversions"]:
-                value = self._serialization_func_map.get(conversion["id"])(value, conversion, obj)
-
+    def _serialize(self, value, conversions, obj):
+        # a sequence of conversions has been specified for serializing, reverse the order to process
+        for conversion in conversions:
+            value = self._serialization_func_map.get(conversion["id"])(value, conversion, obj)
         return value

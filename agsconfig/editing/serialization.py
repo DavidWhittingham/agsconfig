@@ -19,10 +19,12 @@ from collections import Sequence
 from xml.sax.saxutils import escape as _escape_xml, unescape as _unescape_xml
 
 # Third-party imports
+import html2text
 import tzlocal.windows_tz
 
 #: A regular expression for matching time notation
 _TIME_STRING_REGEX = re.compile(r"^([0-9]{2}):([0-9]{2})$")
+_HTML_TO_TEXT = html2text.HTML2Text(baseurl="", bodywidth=0)
 
 
 def deserialize_csv_to_string_list(value, conversion, obj):
@@ -202,6 +204,23 @@ def escape_xml(value, conversion, obj):
         return None
 
     return str(_escape_xml(value))
+
+
+def html_to_text(value, conversion, obj):
+    if isinstance(value, Sequence) and not isinstance(value, str):
+        if len(value) == 0:
+            return value
+
+        return [html_to_text(item, conversion, obj) for item in value]
+
+    if value is None or len(value) == 0:
+        return None
+
+    # if it looks like HTML, convert it to text
+    if value[0] == "<":
+        value = _HTML_TO_TEXT.handle(value)
+
+    return value
 
 
 def unescape_xml(value, conversion, obj):
