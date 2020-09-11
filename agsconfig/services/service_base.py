@@ -379,18 +379,7 @@ class ServiceBase(_ModelBase):
         }
     )
 
-    metadata_xml = _EditorProperty(
-        {"formats": {
-            "sddraft": {
-                "constraints": {
-                    "readOnly": True
-                },
-                "paths": [{
-                    "path": "./Metadata/XmlDoc"
-                }]
-            }
-        }}
-    )
+    metadata_xml = _EditorProperty({"formats": {"sddraft": {"paths": [{"path": "./Metadata/XmlDoc"}]}}})
 
     min_instances = _EditorProperty(
         {
