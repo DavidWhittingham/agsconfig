@@ -137,7 +137,11 @@ class SDDraftEditor(EditorBase):
                 self._create_child_elements(new_element, child, obj)
 
     def _get_value(self, path_info):
-        element = self._xml_tree.find(path_info["path"])
+        elements_found = self._xml_tree.xpath(path_info["path"])
+
+        element = None
+        if elements_found is not None and len(elements_found) > 0:
+            element = elements_found[0]
 
         if element is not None and len(element) > 0:
             # element has children, return as iterable
@@ -149,7 +153,11 @@ class SDDraftEditor(EditorBase):
         return ET.tostring(self._xml_tree.getroot(), encoding="utf-8", pretty_print=True)
 
     def _set_value(self, value, path_info, obj):
-        element = self._xml_tree.find(path_info["path"])
+        elements_found = self._xml_tree.xpath(path_info["path"])
+        
+        element = None
+        if elements_found is not None and len(elements_found) > 0:
+            element = elements_found[0]
 
         if element is None:
             element = self._create_element(path_info["path"], path_info, obj)
