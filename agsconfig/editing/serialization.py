@@ -214,7 +214,7 @@ def html_to_text(value, conversion, obj):
         return [html_to_text(item, conversion, obj) for item in value]
 
     if value is None or len(value) == 0:
-        return None
+        return value
 
     # if it looks like HTML, convert it to text
     if value[0] == "<":
