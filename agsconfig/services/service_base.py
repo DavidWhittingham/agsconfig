@@ -556,9 +556,18 @@ class ServiceBase(_ModelBase):
                     ]
                 },
                 "sddraft": {
-                    "paths": [{
-                        "path": "./ItemInfo/Snippet"
-                    }]
+                    "paths": [
+                        {
+                            "path": "./ItemInfo/Snippet",
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Snippet"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
                 }
             }
         }
