@@ -28,3 +28,12 @@ def test_cache_dir(service_config, cache_dir, expected):
 def test_keep_cache(service_config, keep_cache, expected):
     service_config.keep_cache = keep_cache
     assert service_config.keep_cache == expected
+
+
+@pytest.mark.parametrize(
+    ("virtual_cache_dir", "expected"),
+    [("D:\\Test\\File\\Path", "D:\\Test\\File\\Path"), ("\\\\Test\\Unc\\Path", "\\\\Test\\Unc\\Path"), (None, None)]
+)
+def test_virtual_cache_dir(service_config, virtual_cache_dir, expected):
+    service_config.virtual_cache_dir = virtual_cache_dir
+    assert service_config.virtual_cache_dir == expected
