@@ -5,6 +5,7 @@ from pie import *
 VENV_BUILD = os.path.join(".venvs", "build")
 VENV_TEST = os.path.join(".venvs", "test")
 
+
 @task
 def build():
     with venv(VENV_BUILD):
@@ -23,10 +24,17 @@ def setup():
     updatePackages()
 
 
-@task
-def test():
+@task([OptionsParameter('filter', use_default=True)])
+def test(filter=None):
     with venv(VENV_TEST):
-        cmd(r"python -m pytest -s --cov-report term --cov-report html --cov=agsconfig .\\tests")
+        if not filter:
+            cmd("python -c \"import pytest; pytest.main(['-s', '--cov', 'agsconfig', 'tests']);\"")
+        else:
+            cmd(
+                "python -c \"import pytest; pytest.main(['-s', '--cov', 'agsconfig', 'tests', '-k', '{}']);\"".format(
+                    filter.replace("'", "\\'")
+                )
+            )
 
 
 @task
