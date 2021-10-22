@@ -31,10 +31,34 @@ def max_instances_constraint(self, value):
     return value
 
 
+def max_scale_constraint(self, value):
+    if value == 0 or self.min_scale == 0:
+        # min or max scale constraint disabled, don't check min scale
+        return value
+
+    if value > self.min_scale:
+        # max scale cannot be smaller than the min scale
+        self.min_scale = value
+
+    return value
+
+
 def min_instances_constraint(self, value):
+    if value == 0 or self.max_scale == 0:
+        # min or max scale constraint disabled, don't check min scale
+        return value
+
     if value > self.max_instances:
         # Min instances can't be bigger than max instances, so make the same size
         self.max_instances = value
+
+    return value
+
+
+def min_scale_constraint(self, value):
+    if value < self.max_scale:
+        # min scale cannot be larger than the max scale
+        self.max_scale = value
 
     return value
 
@@ -355,8 +379,9 @@ class ServiceBase(_ModelBase):
     max_scale = _EditorProperty(
         {
             "constraints": {
-                "min": 1,
-                "float": True
+                "default": 0,
+                "float": True,
+                "func": max_scale_constraint
             },
             "formats": {
                 "agsJson": {
@@ -409,7 +434,9 @@ class ServiceBase(_ModelBase):
     min_scale = _EditorProperty(
         {
             "constraints": {
-                "float": True
+                "default": 0,
+                "float": True,
+                "func": min_scale_constraint
             },
             "formats": {
                 "agsJson": {
@@ -556,18 +583,14 @@ class ServiceBase(_ModelBase):
                     ]
                 },
                 "sddraft": {
-                    "paths": [
-                        {
-                            "path": "./ItemInfo/Snippet",
-                            "parent": {
-                                "children": [
-                                    {
-                                        "tag": "Snippet"
-                                    }
-                                ]
-                            }
+                    "paths": [{
+                        "path": "./ItemInfo/Snippet",
+                        "parent": {
+                            "children": [{
+                                "tag": "Snippet"
+                            }]
                         }
-                    ]
+                    }]
                 }
             }
         }
