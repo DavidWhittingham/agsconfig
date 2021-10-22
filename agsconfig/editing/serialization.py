@@ -151,7 +151,7 @@ def deserialize_string_to_number(value, conversion, obj):
     # Or convert strings
     try:
         return int(value)
-    except ValueError:
+    except (ValueError, TypeError):
         pass
 
     # Or None
