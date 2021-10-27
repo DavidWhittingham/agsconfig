@@ -7,6 +7,7 @@ from __future__ import (absolute_import, division, print_function, unicode_liter
 from future.builtins.disabled import *
 from future.builtins import *
 from future.standard_library import install_aliases
+
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
@@ -16,6 +17,7 @@ from .cacheable_core_mixin import CacheableCoreMixin
 from .cacheable_ext_mixin import CacheableExtMixin
 from .image_dimensions_mixin import ImageDimensionsMixin
 from .jpip_server_extension import JPIPServerExtension
+from .max_record_count_mixin import MaxRecordCountMixin
 from .output_dir_mixin import OutputDirMixin
 from .service_base import ServiceBase
 from .wcs_server_extension import WCSServerExtension
@@ -25,13 +27,16 @@ from ..editing.edit_prop import EditorProperty
 __all__ = ["ImageServer"]
 
 
-class ImageServer(OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDimensionsMixin, ServiceBase):
+class ImageServer(
+    OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDimensionsMixin, MaxRecordCountMixin, ServiceBase
+):
 
     _SDDRAFT_IS_CACHED_PATHS = CacheableCoreMixin._SDDRAFT_IS_CACHED_PATHS + [
         {#yapf: disable
             "path": "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key = 'IsCached']/Value"
         }#yapf: enable
     ]
+    _SDDRAFT_KEY_MAX_RECORD_COUNT = "MaxRecordCount"
 
     _jpip_server_extension = None
     _wcs_server_extension = None

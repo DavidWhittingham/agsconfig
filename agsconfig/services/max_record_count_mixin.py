@@ -15,6 +15,8 @@ from ..editing.edit_prop import EditorProperty
 
 class MaxRecordCountMixin(object):
 
+    _SDDRAFT_KEY_MAX_RECORD_COUNT = "maxRecordCount"
+
     max_record_count = EditorProperty(
         {
             "constraints": {
@@ -31,7 +33,9 @@ class MaxRecordCountMixin(object):
                 "sddraft": {
                     "paths": [
                         {
-                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'maxRecordCount']/Value"
+                            "path": lambda _SDDRAFT_KEY_MAX_RECORD_COUNT:
+                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = '{}']/Value"
+                            .format(_SDDRAFT_KEY_MAX_RECORD_COUNT)
                         }
                     ]
                 }
