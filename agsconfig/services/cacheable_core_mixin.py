@@ -26,14 +26,14 @@ class CacheableCoreMixin(object):
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main", "path": "$.properties.cacheDir"
+                        "document": "main",
+                        "path": "$.properties.cacheDir"
                     }]
                 },
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'cacheDir']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'cacheDir']/Value"
                         }
                     ]
                 }
@@ -46,7 +46,8 @@ class CacheableCoreMixin(object):
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main", "path": "$.properties.clientCachingAllowed"
+                        "document": "main",
+                        "path": "$.properties.clientCachingAllowed"
                     }],
                     "conversions": [{
                         "id": "boolToString"
@@ -55,8 +56,7 @@ class CacheableCoreMixin(object):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'clientCachingAllowed']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'clientCachingAllowed']/Value"
                         }
                     ],
                     "conversions": [{
@@ -69,24 +69,38 @@ class CacheableCoreMixin(object):
 
     ignore_cache = EditorProperty(
         {
+            "constraints": {
+                "default": False
+            },
             "formats": {
                 "agsJson": {
-                    "paths": [{
-                        "document": "main", "path": "$.properties.ignoreCache"
-                    }],
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": "$.properties.ignoreCache",
+                            "parent": {
+                                "children": [{
+                                    "key": "ignoreCache"
+                                }]
+                            }
+                        }
+                    ],
                     "conversions": [{
-                        "id": "boolToString"
+                        "id": "boolToString",
+                        "allowNone": False,
+                        "noneAsFalse": True
                     }]
                 },
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'ignoreCache']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'ignoreCache']/Value"
                         }
                     ],
                     "conversions": [{
-                        "id": "boolToString"
+                        "id": "boolToString",
+                        "allowNone": False,
+                        "noneAsFalse": True
                     }]
                 }
             }
@@ -98,7 +112,8 @@ class CacheableCoreMixin(object):
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main", "path": "$.properties.isCached"
+                        "document": "main",
+                        "path": "$.properties.isCached"
                     }],
                     "conversions": [{
                         "id": "boolToString"
@@ -119,7 +134,8 @@ class CacheableCoreMixin(object):
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main", "path": "$.properties.cacheOnDemand"
+                        "document": "main",
+                        "path": "$.properties.cacheOnDemand"
                     }],
                     "conversions": [{
                         "id": "boolToString"
@@ -128,8 +144,7 @@ class CacheableCoreMixin(object):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'cacheOnDemand']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'cacheOnDemand']/Value"
                         }
                     ],
                     "conversions": [{
@@ -146,7 +161,8 @@ class CacheableCoreMixin(object):
                 "sddraft": {
                     "paths": [{
                         "path": "./KeepExistingMapCache"
-                    }], "conversions": [{
+                    }],
+                    "conversions": [{
                         "id": "boolToString"
                     }]
                 }
@@ -159,7 +175,8 @@ class CacheableCoreMixin(object):
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main", "path": "$.properties.virtualCacheDir"
+                        "document": "main",
+                        "path": "$.properties.virtualCacheDir"
                     }]
                 },
                 "sddraft": {
@@ -182,12 +199,10 @@ class CacheableCoreMixin(object):
                                             "attributes": {
                                                 "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
                                             },
-                                            "children": [
-                                                {
-                                                    "tag": "Key",
-                                                    "value": "virtualCacheDir"
-                                                }
-                                            ]
+                                            "children": [{
+                                                "tag": "Key",
+                                                "value": "virtualCacheDir"
+                                            }]
                                         }
                                     ]
                                 }

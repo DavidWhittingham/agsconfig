@@ -43,11 +43,15 @@ def test_deserialize_empty_string_to_none(value, expected, exception):
     [
         ("true", {"id" : "boolToString"}, True, None),
         ("false", {"id" : "boolToString"}, False, None),
+        ("TRUE", {"id" : "boolToString"}, True, None),
+        ("FALSE", {"id" : "boolToString"}, False, None),
         (("false", "true"), {"id" : "boolToString"}, [False, True], None),
-        ("123", {"id" : "boolToString", "defaultTrue" : False}, None, ValueError),
+        ("123", {"id" : "boolToString"}, None, ValueError),
         ([], {"id" : "boolToString"}, [], None),
-        ("TRUE", {"id" : "boolToString", "defaultTrue" : False}, True, None),
-        ("FALSE", {"id" : "boolToString", "defaultTrue" : False}, False, None)
+        (None, {"id": "boolToString", "allowNone": True}, None, None),
+        (None, {"id": "boolToString", "allowNone": False}, None, ValueError),
+        (None, {"id": "boolToString", "allowNone": False, "noneAsFalse": True}, False, None),
+        (None, {"id": "boolToString", "allowNone": True, "noneAsFalse": True}, None, None)
     ]
 )#yapf:enable
 def test_deserialize_string_to_bool(value, conversion, expected, exception):

@@ -15,7 +15,6 @@ from enum import Enum
 
 from .cacheable_core_mixin import CacheableCoreMixin
 from .cacheable_ext_mixin import CacheableExtMixin
-from .image_dimensions_mixin import ImageDimensionsMixin
 from .max_record_count_mixin import MaxRecordCountMixin
 from .service_base import ServiceBase
 from ..editing.edit_prop import EditorProperty
@@ -57,8 +56,7 @@ class HostedFeatureServer(MaxRecordCountMixin, CacheableExtMixin, CacheableCoreM
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Info/PropertyArray/PropertySetProperty[Key='webCapabilities']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/Info/PropertyArray/PropertySetProperty[Key='webCapabilities']/Value"
                         }
                     ],
                     "conversions": [{
@@ -85,8 +83,7 @@ class HostedFeatureServer(MaxRecordCountMixin, CacheableExtMixin, CacheableCoreM
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='allowGeometryUpdates']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='allowGeometryUpdates']/Value"
                         }
                     ],
                     "conversions": [{
@@ -110,8 +107,7 @@ class HostedFeatureServer(MaxRecordCountMixin, CacheableExtMixin, CacheableCoreM
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='allowTrueCurvesUpdates']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='allowTrueCurvesUpdates']/Value"
                         }
                     ],
                     "conversions": [{
@@ -134,8 +130,7 @@ class HostedFeatureServer(MaxRecordCountMixin, CacheableExtMixin, CacheableCoreM
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='onlyAllowTrueCurveUpdatesByTrueCurveClients']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='onlyAllowTrueCurveUpdatesByTrueCurveClients']/Value"
                         }
                     ],
                     "conversions": [{
@@ -158,8 +153,7 @@ class HostedFeatureServer(MaxRecordCountMixin, CacheableExtMixin, CacheableCoreM
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='EnableZDefaults']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='EnableZDefaults']/Value"
                         }
                     ],
                     "conversions": [{
@@ -182,8 +176,7 @@ class HostedFeatureServer(MaxRecordCountMixin, CacheableExtMixin, CacheableCoreM
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='zDefaultValue']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='zDefaultValue']/Value"
                         }
                     ]
                 }
@@ -203,8 +196,7 @@ class HostedFeatureServer(MaxRecordCountMixin, CacheableExtMixin, CacheableCoreM
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='allowUpdateWithoutMValues']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='allowUpdateWithoutMValues']/Value"
                         }
                     ],
                     "conversions": [{
@@ -220,10 +212,11 @@ class HostedFeatureServer(MaxRecordCountMixin, CacheableExtMixin, CacheableCoreM
             "formats": {
                 # Apparently no json implementation
                 "sddraft": {
-                    "paths":
-                    [{
-                        "path": "./StagingSettings/PropertyArray/PropertySetProperty[Key='datasetInspected']/Value"
-                    }],
+                    "paths": [
+                        {
+                            "path": "./StagingSettings/PropertyArray/PropertySetProperty[Key='datasetInspected']/Value"
+                        }
+                    ],
                     "conversions": [{
                         "id": "boolToString"
                     }]
@@ -237,10 +230,11 @@ class HostedFeatureServer(MaxRecordCountMixin, CacheableExtMixin, CacheableCoreM
             "formats": {
                 # Not found in json file
                 "sddraft": {
-                    "paths":
-                    [{
-                        "path": "./StagingSettings/PropertyArray/PropertySetProperty[Key='creatorPresent']/Value"
-                    }],
+                    "paths": [
+                        {
+                            "path": "./StagingSettings/PropertyArray/PropertySetProperty[Key='creatorPresent']/Value"
+                        }
+                    ],
                     "conversions": [{
                         "id": "boolToString"
                     }]
@@ -277,8 +271,7 @@ class HostedFeatureServer(MaxRecordCountMixin, CacheableExtMixin, CacheableCoreM
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='syncEnabled']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='syncEnabled']/Value"
                         }
                     ],
                     "conversions": [{

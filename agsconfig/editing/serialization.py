@@ -99,27 +99,33 @@ def deserialize_string_to_bool(value, conversion, obj):
         # value has already been desrialized to native type
         return value
 
-    if value is None:
-        return None
-
+    allow_none = conversion.get("allowNone", True)
+    none_as_false = conversion.get("noneAsFalse", False)
     true = conversion.get("true", "true")
     false = conversion.get("false", "false")
     ignore_case = conversion.get("ignoreCase", True)
-    default_true = conversion.get("defaultTrue", True)
+
+    if value is None:
+        if allow_none:
+            return None
+
+        if none_as_false:
+            return False
+
+        raise ValueError("Value cannot be None.")
 
     if ignore_case:
         value = value.upper()
         true = true.upper()
         false = false.upper()
 
-    if default_true:
-        return True if value == true else False
-    else:
-        if value == true:
-            return True
-        if value == false:
-            return False
-        raise ValueError("Cannot parse value '{0}' to boolean value.".format(value))
+    if value == true:
+        return True
+
+    if value == false:
+        return False
+
+    raise ValueError("Cannot parse value '{0}' to boolean value.".format(value))
 
 
 def deserialize_string_to_enum(value, conversion, obj):

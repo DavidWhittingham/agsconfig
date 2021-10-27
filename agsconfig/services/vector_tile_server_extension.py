@@ -17,6 +17,7 @@ from enum import Enum
 from .extension_base import ExtensionBase
 from ..editing.edit_prop import EditorProperty
 
+
 class VectorTileServerExtension(ExtensionBase):
 
     _web_capabilities_key = "webCapabilities"
@@ -38,13 +39,15 @@ class VectorTileServerExtension(ExtensionBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension/Info/PropertyArray/PropertySetProperty[Key='webEnabled']/Value"
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Info/PropertyArray/PropertySetProperty[Key='webEnabled']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
             }
-        })
+        }
+    )
 
     enable_z_defaults = EditorProperty(
         {
@@ -52,27 +55,31 @@ class VectorTileServerExtension(ExtensionBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension/Props/PropertyArray/PropertySetProperty[Key='enableZDefaults']/Value"
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='enableZDefaults']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
             }
-        })
-    
+        }
+    )
+
     z_default_value = EditorProperty(
         {
             "formats": {
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension/Props/PropertyArray/PropertySetProperty[Key='zDefaultValue']/Value"
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='zDefaultValue']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
             }
-        })
+        }
+    )
 
     enable_ownership_based_access_control = EditorProperty(
         {
@@ -80,13 +87,15 @@ class VectorTileServerExtension(ExtensionBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension/Props/PropertyArray/PropertySetProperty[Key='enableOwnershipBasedAccessControl']/Value"
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='enableOwnershipBasedAccessControl']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
             }
-        })
+        }
+    )
 
     allow_others_to_query = EditorProperty(
         {
@@ -94,13 +103,15 @@ class VectorTileServerExtension(ExtensionBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension/Props/PropertyArray/PropertySetProperty[Key='allowOthersToQuery']/Value"
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='allowOthersToQuery']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
             }
-        })
+        }
+    )
 
     allow_others_to_update = EditorProperty(
         {
@@ -108,13 +119,15 @@ class VectorTileServerExtension(ExtensionBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension/Props/PropertyArray/PropertySetProperty[Key='allowOthersToUpdate']/Value"
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='allowOthersToUpdate']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
             }
-        })
+        }
+    )
 
     allow_others_to_delete = EditorProperty(
         {
@@ -122,13 +135,15 @@ class VectorTileServerExtension(ExtensionBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension/Props/PropertyArray/PropertySetProperty[Key='allowOthersToDelete']/Value"
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='allowOthersToDelete']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
             }
-        })
+        }
+    )
 
     realm = EditorProperty(
         {
@@ -136,13 +151,15 @@ class VectorTileServerExtension(ExtensionBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension/Props/PropertyArray/PropertySetProperty[Key='realm']/Value"
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='realm']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
             }
-        })
+        }
+    )
 
     allow_true_curves_updates = EditorProperty(
         {
@@ -150,13 +167,15 @@ class VectorTileServerExtension(ExtensionBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension/Props/PropertyArray/PropertySetProperty[Key='allowTrueCurvesUpdates']/Value"
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='allowTrueCurvesUpdates']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
             }
-        })
+        }
+    )
 
     only_allow_true_curve_updates_by_true_curve_clients = EditorProperty(
         {
@@ -164,13 +183,15 @@ class VectorTileServerExtension(ExtensionBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension/Props/PropertyArray/PropertySetProperty[Key='onlyAllowTrueCurveUpdatesByTrueCurveClients']/Value"
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='onlyAllowTrueCurveUpdatesByTrueCurveClients']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
             }
-        })
+        }
+    )
 
     xss_prevention_enabled = EditorProperty(
         {
@@ -178,13 +199,15 @@ class VectorTileServerExtension(ExtensionBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension/Props/PropertyArray/PropertySetProperty[Key='xssPreventionEnabled']/Value"
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='xssPreventionEnabled']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
             }
-        })
+        }
+    )
 
     sync_version_creation_rule = EditorProperty(
         {
@@ -192,13 +215,15 @@ class VectorTileServerExtension(ExtensionBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension/Props/PropertyArray/PropertySetProperty[Key='syncVersionCreationRule']/Value"
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='syncVersionCreationRule']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
             }
-        })
+        }
+    )
 
     editor_tracking_respects_daylight_saving_time = EditorProperty(
         {
@@ -206,13 +231,15 @@ class VectorTileServerExtension(ExtensionBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension/Props/PropertyArray/PropertySetProperty[Key='editorTrackingRespectsDayLightSavingTime']/Value"
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='editorTrackingRespectsDayLightSavingTime']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
             }
-        })
+        }
+    )
 
     allow_geometry_updates = EditorProperty(
         {
@@ -220,13 +247,15 @@ class VectorTileServerExtension(ExtensionBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension/Props/PropertyArray/PropertySetProperty[Key='allowGeometryUpdates']/Value"
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='allowGeometryUpdates']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
             }
-        })
+        }
+    )
 
     editor_tracking_time_zone_id = EditorProperty(
         {
@@ -234,13 +263,15 @@ class VectorTileServerExtension(ExtensionBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension/Props/PropertyArray/PropertySetProperty[Key='editorTrackingTimeZoneID']/Value"
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='editorTrackingTimeZoneID']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
             }
-        })
+        }
+    )
 
     max_record_count = EditorProperty(
         {
@@ -248,13 +279,15 @@ class VectorTileServerExtension(ExtensionBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension/Props/PropertyArray/PropertySetProperty[Key='maxRecordCount']/Value"
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='maxRecordCount']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
             }
-        })
+        }
+    )
 
     online_resource = EditorProperty(
         {
@@ -262,13 +295,15 @@ class VectorTileServerExtension(ExtensionBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension/Props/PropertyArray/PropertySetProperty[Key='onlineResource']/Value"
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='onlineResource']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
             }
-        })
+        }
+    )
 
     editor_tracking_time_in_utc = EditorProperty(
         {
@@ -276,10 +311,12 @@ class VectorTileServerExtension(ExtensionBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension/Props/PropertyArray/PropertySetProperty[Key='editorTrackingTimeInUTC']/Value"
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='editorTrackingTimeInUTC']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
             }
-        })
+        }
+    )

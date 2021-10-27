@@ -144,12 +144,16 @@ class EditorBase(object):
 
         Completely abstract function that is editor implementation specific.
         """
+        pass
+
     @abstractmethod
     def _set_value(self, value, path_info, obj):
         """Set the value at the provided path.
 
         Completely abstract function that is editor implementation specific.
         """
+        pass
+
     def _deserialize(self, value, conversions, obj):
         # a sequence of conversions has been specified for serializing, reverse the order to process
         for conversion in reversed(conversions):
