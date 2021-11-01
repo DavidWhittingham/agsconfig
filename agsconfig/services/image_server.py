@@ -241,22 +241,30 @@ class ImageServer(
                     "paths": [
                         {
                             "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='DefaultCompressionQuality']/Value",
-                            "parentPath": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray",
-                            "tag": "PropertySetProperty",
-                            "attributes": {
-                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
-                            },
-                            "children": [
-                                {
-                                    "tag": "Key",
-                                    "value": "DefaultCompressionQuality"
-                                }, {
-                                    "tag": "Value",
-                                    "attributes": {
-                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        }
                                     }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [{
+                                                "tag": "Key",
+                                                "value": "DefaultCompressionQuality"
+                                            }]
+                                        }
+                                    ]
                                 }
-                            ]
+                            }
                         }
                     ],
                     "conversions": [{
@@ -401,22 +409,30 @@ class ImageServer(
                     "paths": [
                         {
                             "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='RasterFunctions']/Value",
-                            "parentPath": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray",
-                            "tag": "PropertySetProperty",
-                            "attributes": {
-                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
-                            },
-                            "children": [
-                                {
-                                    "tag": "Key",
-                                    "value": "RasterFunctions"
-                                }, {
-                                    "tag": "Value",
-                                    "attributes": {
-                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        }
                                     }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [{
+                                                "tag": "Key",
+                                                "value": "RasterFunctions"
+                                            }]
+                                        }
+                                    ]
                                 }
-                            ]
+                            }
                         }
                     ],
                     "conversions": [{
@@ -434,22 +450,30 @@ class ImageServer(
                     "paths": [
                         {
                             "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='ReturnJPGPNGAsJPG']/Value",
-                            "parentPath": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray",
-                            "tag": "PropertySetProperty",
-                            "attributes": {
-                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
-                            },
-                            "children": [
-                                {
-                                    "tag": "Key",
-                                    "value": "ReturnJPGPNGAsJPG"
-                                }, {
-                                    "tag": "Value",
-                                    "attributes": {
-                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        }
                                     }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [{
+                                                "tag": "Key",
+                                                "value": "ReturnJPGPNGAsJPG"
+                                            }]
+                                        }
+                                    ]
                                 }
-                            ]
+                            }
                         }
                     ],
                     "conversions": [{

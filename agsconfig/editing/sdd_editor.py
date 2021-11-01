@@ -80,15 +80,9 @@ class SDDraftEditor(EditorBase):
             parent_path_info = path_info["parent"]
 
             self._create_element_structure(parent_element_path, parent_path_info, obj)
-        elif "parentPath" in path_info:
-            # old method
-            resolved_parent_path = self._resolve_lambda(path_info, obj, "parentPath")["parentPath"]
-            parent_element = self._xml_tree.find(resolved_parent_path)
-
-            self._create_child_elements(parent_element, path_info, obj)
         else:
             raise KeyError(
-                "path_info does not contain 'parent' or 'parentPath' for given path: {}".format(path_info["path"])
+                "path_info does not contain 'parent' for given path: {}".format(path_info["path"])
             )
 
         return self._xml_tree.find(path_info["path"])
@@ -121,9 +115,7 @@ class SDDraftEditor(EditorBase):
                 self._create_child_elements(current_element, child_path_info, obj)
 
     def _create_child_elements(self, parent_element, path_info, obj):
-        """This is the old function for creating XML structures based on the 'parentPath' structure.
-        
-        It is also used by the new function to recursively create children."""
+        """Used to recursively create children."""
 
         new_element = ET.SubElement(
             parent_element, self.resolve_lambda_value(path_info["tag"], obj), path_info.get("attributes", {})

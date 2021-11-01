@@ -192,22 +192,30 @@ class MapServer(
                     "paths": [
                         {
                             "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='dateFieldsRespectsDayLightSavingTime']/Value",
-                            "parentPath": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray",
-                            "tag": "PropertySetProperty",
-                            "attributes": {
-                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
-                            },
-                            "children": [
-                                {
-                                    "tag": "Key", "value": "dateFieldsRespectsDayLightSavingTime"
-                                },
-                                {
-                                    "tag": "Value",
-                                    "attributes": {
-                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        }
                                     }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [{
+                                                "tag": "Key",
+                                                "value": "dateFieldsRespectsDayLightSavingTime"
+                                            }]
+                                        }
+                                    ]
                                 }
-                            ]
+                            }
                         }
                     ],
                     "conversions": [{
@@ -248,22 +256,30 @@ class MapServer(
                     "paths": [
                         {
                             "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='dateFieldsTimezoneID']/Value",
-                            "parentPath": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray",
-                            "tag": "PropertySetProperty",
-                            "attributes": {
-                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
-                            },
-                            "children": [
-                                {
-                                    "tag": "Key", "value": "dateFieldsTimezoneID"
-                                },
-                                {
-                                    "tag": "Value",
-                                    "attributes": {
-                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        }
                                     }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [{
+                                                "tag": "Key",
+                                                "value": "dateFieldsTimezoneID"
+                                            }]
+                                        }
+                                    ]
                                 }
-                            ]
+                            }
                         }
                     ],
                     "conversions": [{

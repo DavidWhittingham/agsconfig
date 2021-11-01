@@ -27,22 +27,30 @@ class OutputDirMixin(object):
                     "paths": [
                         {
                             "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'outputDir']/Value",
-                            "parentPath": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray",
-                            "tag": "PropertySetProperty",
-                            "attributes": {
-                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
-                            },
-                            "children": [
-                                {
-                                    "tag": "Key", "value": "outputDir"
-                                },
-                                {
-                                    "tag": "Value",
-                                    "attributes": {
-                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                            "parent": {
+                                 "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        }
                                     }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [{
+                                                "tag": "Key",
+                                                "value": "outputDir"
+                                            }]
+                                        }
+                                    ]
                                 }
-                            ]
+                            }
                         }
                     ]
                 }
@@ -62,22 +70,30 @@ class OutputDirMixin(object):
                     "paths": [
                         {
                             "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'virtualOutputDir']/Value",
-                            "parentPath": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray",
-                            "tag": "PropertySetProperty",
-                            "attributes": {
-                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
-                            },
-                            "children": [
-                                {
-                                    "tag": "Key", "value": "virtualOutputDir"
-                                },
-                                {
-                                    "tag": "Value",
-                                    "attributes": {
-                                        "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                            "parent": {
+                                 "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        }
                                     }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [{
+                                                "tag": "Key",
+                                                "value": "virtualOutputDir"
+                                            }]
+                                        }
+                                    ]
                                 }
-                            ]
+                            }
                         }
                     ]
                 }

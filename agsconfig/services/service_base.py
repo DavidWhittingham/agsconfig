@@ -122,8 +122,11 @@ class ServiceBase(_ModelBase):
                     "paths": [
                         {
                             "path": "./ItemInfo/AccessInformation",
-                            "parentPath": "./ItemInfo",
-                            "tag": "AccessInformation"
+                            "parent": {
+                                "children": [{
+                                    "key": "AccessInformation"
+                                }]
+                            }
                         }
                     ]
                 }
@@ -618,10 +621,15 @@ class ServiceBase(_ModelBase):
                     "paths": [
                         {
                             "path": "./ItemInfo/Tags",
-                            "parentPath": "./ItemInfo",
-                            "tag": "Tags",
-                            "attributes": {
-                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:ArrayOfString"
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Tags",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:ArrayOfString"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
