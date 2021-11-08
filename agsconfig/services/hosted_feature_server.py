@@ -18,59 +18,23 @@ from .cacheable_ext_mixin import CacheableExtMixin
 from .max_record_count_mixin import MaxRecordCountMixin
 from .service_base import ServiceBase
 from ..editing.edit_prop import EditorProperty
-from ..services.feature_server_extension import FeatureServerExtension
 
 
 class HostedFeatureServer(MaxRecordCountMixin, CacheableExtMixin, CacheableCoreMixin, ServiceBase):
     """ Class for editing hosted feature services."""
-    _feature_server_extension = None
-
     class Capability(Enum):
         create = "Create"
-        query = "Query"
-        update = "Update"
         delete = "Delete"
-        sync = "Sync"
-        extract = "Extract"
         editing = "Editing"
+        extract = "Extract"
+        query = "Query"
+        sync = "Sync"
+        update = "Update"
+        uploads = "Uploads"
 
     def __init__(self, editor):
         super().__init__(editor)
-        self._feature_server_extension = FeatureServerExtension(editor)
 
-    capabilities = EditorProperty(
-        {
-            "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.capabilities"
-                    }],
-                    "conversions": [{
-                        "id": "enumToString",
-                        "enum": "Capability"
-                    }, {
-                        "id": "stringToCsv"
-                    }]
-                },
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path": "./Configurations/SVCConfiguration/Definition/Info/PropertyArray/PropertySetProperty[Key='webCapabilities']/Value"
-                        }
-                    ],
-                    "conversions": [{
-                        "id": "enumToString",
-                        "enum": "Capability"
-                    }, {
-                        "id": "stringToCsv"
-                    }]
-                }
-            }
-        }
-    )
-
-    # Not to be confused with allowGeometryUpdates from the feature server extension
     allow_geometry_updates = EditorProperty(
         {
             "formats": {
@@ -94,7 +58,6 @@ class HostedFeatureServer(MaxRecordCountMixin, CacheableExtMixin, CacheableCoreM
         }
     )
 
-    # Not to be confused with allowTrueCurvesUpdates from the feature server extension
     allow_true_curves_updates = EditorProperty(
         {
             "formats": {
@@ -118,80 +81,22 @@ class HostedFeatureServer(MaxRecordCountMixin, CacheableExtMixin, CacheableCoreM
         }
     )
 
-    only_allow_true_curve_updates_by_true_curve_clients = EditorProperty(
-        {
-            "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.properties.onlyAllowTrueCurveUpdatesByTrueCurveClients"
-                    }]
-                },
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='onlyAllowTrueCurveUpdatesByTrueCurveClients']/Value"
-                        }
-                    ],
-                    "conversions": [{
-                        "id": "boolToString"
-                    }]
-                }
-            }
-        }
-    )
-
-    enable_z_defaults = EditorProperty(
-        {
-            "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.properties.enableZDefaults"
-                    }]
-                },
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='EnableZDefaults']/Value"
-                        }
-                    ],
-                    "conversions": [{
-                        "id": "boolToString"
-                    }]
-                }
-            }
-        }
-    )
-
-    z_default_value = EditorProperty(
-        {
-            "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.properties.zDefaultValue"
-                    }]
-                },
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='zDefaultValue']/Value"
-                        }
-                    ]
-                }
-            }
-        }
-    )
-
     allow_update_without_m_values = EditorProperty(
         {
             "formats": {
                 "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.properties.allowUpdateWithoutMValues"
-                    }]
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": "$.properties.allowUpdateWithoutMValues",
+                            "conversions": [{
+                                "id": "boolToString"
+                            }]
+                        }, {
+                            "document": "main",
+                            "path": "$.jsonProperties.allowUpdateWithoutMValues"
+                        }
+                    ]
                 },
                 "sddraft": {
                     "paths": [
@@ -207,18 +112,37 @@ class HostedFeatureServer(MaxRecordCountMixin, CacheableExtMixin, CacheableCoreM
         }
     )
 
-    dataset_inspected = EditorProperty(
+    capabilities = EditorProperty(
         {
             "formats": {
-                # Apparently no json implementation
-                "sddraft": {
+                "agsJson": {
                     "paths": [
                         {
-                            "path": "./StagingSettings/PropertyArray/PropertySetProperty[Key='datasetInspected']/Value"
+                            "document": "main",
+                            "path": "$.capabilities"
+                        }, {
+                            "document": "main",
+                            "path": "$.jsonProperties.capabilities"
                         }
                     ],
                     "conversions": [{
-                        "id": "boolToString"
+                        "id": "enumToString",
+                        "enum": "Capability"
+                    }, {
+                        "id": "stringToCsv"
+                    }]
+                },
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path": "./Configurations/SVCConfiguration/Definition/Info/PropertyArray/PropertySetProperty[Key='webCapabilities']/Value"
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "enumToString",
+                        "enum": "Capability"
+                    }, {
+                        "id": "stringToCsv"
                     }]
                 }
             }
@@ -259,13 +183,85 @@ class HostedFeatureServer(MaxRecordCountMixin, CacheableExtMixin, CacheableCoreM
         }
     )
 
+    dataset_inspected = EditorProperty(
+        {
+            "formats": {
+                # Apparently no json implementation
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path": "./StagingSettings/PropertyArray/PropertySetProperty[Key='datasetInspected']/Value"
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
+                }
+            }
+        }
+    )
+
+    enable_z_defaults = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": "$.properties.enableZDefaults",
+                            "conversions": [{
+                                "id": "boolToString"
+                            }]
+                        }, {
+                            "document": "main",
+                            "path": "$.jsonProperties.enableZDefaults"
+                        }
+                    ]
+                },
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='EnableZDefaults']/Value"
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
+                }
+            }
+        }
+    )
+
+    only_allow_true_curve_updates_by_true_curve_clients = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.properties.onlyAllowTrueCurveUpdatesByTrueCurveClients"
+                    }]
+                },
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='onlyAllowTrueCurveUpdatesByTrueCurveClients']/Value"
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
+                }
+            }
+        }
+    )
+
     sync_enabled = EditorProperty(
         {
             "formats": {
                 "agsJson": {
                     "paths": [{
                         "document": "main",
-                        "path": "$.properties.syncEnabled"
+                        "path": "$.jsonProperties.syncEnabled"
                     }]
                 },
                 "sddraft": {
@@ -277,6 +273,26 @@ class HostedFeatureServer(MaxRecordCountMixin, CacheableExtMixin, CacheableCoreM
                     "conversions": [{
                         "id": "boolToString"
                     }]
+                }
+            }
+        }
+    )
+
+    z_default_value = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.properties.zDefaultValue"
+                    }]
+                },
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='zDefaultValue']/Value"
+                        }
+                    ]
                 }
             }
         }

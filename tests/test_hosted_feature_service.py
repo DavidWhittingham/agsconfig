@@ -12,7 +12,6 @@ install_aliases()
 
 import pytest
 
-import agsconfig
 from agsconfig.services.hosted_feature_server import HostedFeatureServer
 
 from .helpers import hosted_feature_config as service_config
@@ -30,14 +29,14 @@ def test_save(service_config):
 
 @pytest.mark.parametrize(
     ("capabilities", "expected", "ex"),
-    [
+    [#yapf: disable
         ([HostedFeatureServer.Capability.query], [HostedFeatureServer.Capability.query], None),
         ([], [], None),
         (["Editing"], [HostedFeatureServer.Capability.editing], None),
         (["Fail"], None, ValueError),
         ([123], None, ValueError)
-    ]
-)  # yapf: disable
+    ]#yapf: enable
+)
 def test_capabilities(service_config, capabilities, expected, ex):
     if ex is not None:
         with pytest.raises(ex):
@@ -46,9 +45,9 @@ def test_capabilities(service_config, capabilities, expected, ex):
         service_config.capabilities = capabilities
         assert set(service_config.capabilities) == set(expected)
 
-
 @pytest.mark.parametrize(
-    ('attribute', 'value', 'exception'), [
+    ('attribute', 'value', 'exception'),
+    [#yapf: disable
         ('allow_geometry_updates', True, None),
         ('allow_true_curves_updates', False, None),
         ('only_allow_true_curve_updates_by_true_curve_clients', False, None),
@@ -58,7 +57,7 @@ def test_capabilities(service_config, capabilities, expected, ex):
         ('dataset_inspected', True, None),
         ('creator_present', False, None),
         ('data_in_gdb', True, None)
-    ]
+    ]#yapf: enable
 )
 def test_getters(service_config, attribute, value, exception):
     if exception is not None:
@@ -69,7 +68,8 @@ def test_getters(service_config, attribute, value, exception):
 
 
 @pytest.mark.parametrize(
-    ('attribute', 'new_value', 'expected_value', 'exception'), [
+    ('attribute', 'new_value', 'expected_value', 'exception'),
+    [#yapf: disable
         ('allow_geometry_updates', False, False, None),
         ('allow_true_curves_updates', True, True, None),
         ('only_allow_true_curve_updates_by_true_curve_clients', True, True, None),
@@ -79,7 +79,7 @@ def test_getters(service_config, attribute, value, exception):
         ('dataset_inspected', False, False, None),
         ('creator_present', True, True, None),
         ('data_in_gdb', False, False, None)
-    ]
+    ]#yapf: enable
 )
 def test_setters(service_config, attribute, new_value, expected_value, exception):
     if exception is not None:
