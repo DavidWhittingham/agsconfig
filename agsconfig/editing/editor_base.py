@@ -94,19 +94,16 @@ class EditorBase(object):
         # resolve the "paths" variable itself in case that's a lambda
         for path_info in self.resolve_lambda_value(format_info["paths"], obj):
 
-            conversions = None
-            if "conversions" in format_info:
-                # global conversions exist, use these
-                conversions = format_info["conversions"]
-            if "conversions" in path_info:
-                # pre-path conversions exist, use these instead
-                conversions = path_info["conversions"]
+            # try and get path-specific conversions, fall back to global conversions
+            conversions = path_info.get("conversions", format_info.get("conversions"))
 
             if conversions:
-                # serialize value
-                value = self._serialize(value, conversions, obj)
-
-            self._set_value(value, self._resolve_lambda(path_info, obj, "path"), obj)
+                # serialize value, don't record the result against value, in case there is more than one path_info
+                self._set_value(
+                    self._serialize(value, conversions, obj), self._resolve_lambda(path_info, obj, "path"), obj
+                )
+            else:
+                self._set_value(value, self._resolve_lambda(path_info, obj, "path"), obj)
 
     @classmethod
     def _resolve_lambda(cls, path_info, obj, key):
