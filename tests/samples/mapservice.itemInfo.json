@@ -7,27 +7,29 @@
     "description": "This service shows all the FooBars",
     "summary": "FooBar: what a service",
     "title": "FooBar Map",
-    "tags": [""],
+    "tags": [
+        ""
+    ],
     "type": "Map Service",
     "typeKeywords": [
-      "Data",
-      "Service",
-      "Map Service",
-      "ArcGIS Server"
+        "Data",
+        "Service",
+        "Map Service",
+        "ArcGIS Server"
     ],
     "thumbnail": "thumbnail/thumbnail.png",
     "url": "",
     "extent": [
-      [
-        137.9946462,
-        -29.178663411
-      ],
-      [
-        153.551849589,
-        -9.08799055600002
-      ]
+        [
+            137.9946462,
+            -29.178663411
+        ],
+        [
+            153.551849589,
+            -9.08799055600002
+        ]
     ],
     "spatialReference": "GCS_GDA_1994",
     "accessInformation": "© FooBar Corp.",
     "licenseInfo": ""
-  }
+}

@@ -9,7 +9,12 @@
     "title": "ExampleGeoDataService",
     "tags": [],
     "type": "Geodata Service",
-    "typeKeywords": ["Data", "Service", "Geodata Service", "ArcGIS Server"],
+    "typeKeywords": [
+        "Data",
+        "Service",
+        "Geodata Service",
+        "ArcGIS Server"
+    ],
     "thumbnail": "",
     "url": "",
     "spatialReference": "",

@@ -169,8 +169,7 @@ def get_hosted_feature_service(main_json_fp, info_json_fp):
         {
             "func": get_map_sddraft,
             "paths": [(MAP_SDDRAFT_FILE_PATH, MAP_SDDRAFT_FILE_PATH_COPY)]
-        },
-        {
+        }, {
             "func": get_map_service,
             "paths": [
                 (MAP_MAIN_JSON_FILE_PATH, MAP_MAIN_JSON_FILE_PATH_COPY),
@@ -190,10 +189,8 @@ def map_service_config(request):
         {
             "func": get_hosted_feature_sddraft,
             "paths": [(HOSTED_FEATURE_SDDRAFT, HOSTED_FEATURE_SDDRAFT_COPY)]
-        },
-        {
-            "func":
-            get_hosted_feature_service,
+        }, {
+            "func": get_hosted_feature_service,
             "paths": [
                 (HOSTED_FEATURE_MAIN_JSON, HOSTED_FEATURE_MAIN_JSON_COPY),
                 (HOSTED_FEATURE_INFO_JSON, HOSTED_FEATURE_INFO_JSON_COPY)
@@ -224,10 +221,8 @@ def geoprocessing_service_config(request):
         {
             "func": get_geodata_sddraft,
             "paths": [(GEODATA_SDDRAFT_FILE_PATH, GEODATA_SDDRAFT_FILE_PATH_COPY)]
-        },
-        {
-            "func":
-            get_geodata_service,
+        }, {
+            "func": get_geodata_service,
             "paths": [
                 (GEODATA_MAIN_JSON_FILE_PATH, GEODATA_MAIN_JSON_FILE_PATH_COPY),
                 (GEODATA_INFO_JSON_FILE_PATH, GEODATA_INFO_JSON_FILE_PATH_COPY)
@@ -246,10 +241,8 @@ def geodata_service_config(request):
         {
             "func": get_map_sddraft,
             "paths": [(MAP_SDDRAFT_FILE_PATH, MAP_SDDRAFT_FILE_PATH_COPY)]
-        },
-        {
-            "func":
-            get_map_service,
+        }, {
+            "func": get_map_service,
             "paths": [
                 (MAP_MAIN_JSON_FILE_PATH, MAP_MAIN_JSON_FILE_PATH_COPY),
                 (MAP_INFO_JSON_FILE_PATH, MAP_INFO_JSON_FILE_PATH_COPY)
@@ -257,10 +250,8 @@ def geodata_service_config(request):
         }, {
             "func": get_image_sddraft,
             "paths": [(IMAGE_SDDRAFT_FILE_PATH, IMAGE_SDDRAFT_FILE_PATH_COPY)]
-        },
-        {
-            "func":
-            get_image_service,
+        }, {
+            "func": get_image_service,
             "paths": [
                 (IMAGE_MAIN_JSON_FILE_PATH, IMAGE_MAIN_JSON_FILE_PATH_COPY),
                 (IMAGE_INFO_JSON_FILE_PATH, IMAGE_INFO_JSON_FILE_PATH_COPY)
@@ -279,10 +270,8 @@ def map_and_image_service_config(request):
         {
             "func": get_image_sddraft,
             "paths": [(IMAGE_SDDRAFT_FILE_PATH, IMAGE_SDDRAFT_FILE_PATH_COPY)]
-        },
-        {
-            "func":
-            get_image_service,
+        }, {
+            "func": get_image_service,
             "paths": [
                 (IMAGE_MAIN_JSON_FILE_PATH, IMAGE_MAIN_JSON_FILE_PATH_COPY),
                 (IMAGE_INFO_JSON_FILE_PATH, IMAGE_INFO_JSON_FILE_PATH_COPY)
@@ -301,10 +290,8 @@ def image_service_config(request):
         {
             "func": get_vector_tile_sddraft,
             "paths": [(VECTOR_TILE_SDDRAFT_FILE_PATH, VECTOR_TILE_SDDRAFT_FILE_PATH_COPY)]
-        },
-        {
-            "func":
-            get_vector_tile_service,
+        }, {
+            "func": get_vector_tile_service,
             "paths": [
                 (VECTOR_TILE_MAIN_JSON_FILE_PATH, VECTOR_TILE_MAIN_JSON_FILE_PATH_COPY),
                 (VECTOR_TILE_INFO_JSON_FILE_PATH, VECTOR_TILE_INFO_JSON_FILE_PATH_COPY)

@@ -1,7 +1,9 @@
 {
     "description": "",
     "summary": "",
-    "tags": ["tag"],
+    "tags": [
+        "tag"
+    ],
     "accessinformation": "",
     "title": "TestVectorTile"
-  }
+}

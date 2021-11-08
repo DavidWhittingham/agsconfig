@@ -23,31 +23,34 @@
     "maxUploadFileSize": 0,
     "allowedUploadFileTypes": "",
     "properties": {
-     "outputDir": "\\\\server\\fileshare\\arcgis\\directories\\arcgisoutput",
-     "cacheDir": "\\\\server\\fileshare\\arcgis\\directories\\arcgiscache",
-     "maxScale": "0",
-     "maxRecordCount": "2000",
-     "clientCachingAllowed": "true",
-     "antialiasingMode": "Fast",
-     "textAntialiasingMode": "Force",
-     "isCached": "true",
-     "virtualOutputDir": "/rest/directories/arcgisoutput",
-     "maxBufferCount": "100",
-     "virtualCacheDir": "/rest/directories/arcgiscache",
-     "minScale": "0"
+        "outputDir": "\\\\server\\fileshare\\arcgis\\directories\\arcgisoutput",
+        "cacheDir": "\\\\server\\fileshare\\arcgis\\directories\\arcgiscache",
+        "maxScale": "0",
+        "maxRecordCount": "2000",
+        "clientCachingAllowed": "true",
+        "antialiasingMode": "Fast",
+        "textAntialiasingMode": "Force",
+        "isCached": "true",
+        "virtualOutputDir": "/rest/directories/arcgisoutput",
+        "maxBufferCount": "100",
+        "virtualCacheDir": "/rest/directories/arcgiscache",
+        "minScale": "0"
     },
     "portalProperties": {
-     "isHosted": true,
-     "portalItems": [{
-      "itemID": "e55d741598fc41ffb841a8308e59b450",
-      "type": "VectorTileServer"
-     }]
+        "isHosted": true,
+        "portalItems": [
+            {
+                "itemID": "e55d741598fc41ffb841a8308e59b450",
+                "type": "VectorTileServer"
+            }
+        ]
     },
     "extensions": [
         {
-        "typeName": "VectorTileServer",
-        "capabilities": "Query,Create,Update,Delete,Uploads,Editing"
-        }],
+            "typeName": "VectorTileServer",
+            "capabilities": "Query,Create,Update,Delete,Uploads,Editing"
+        }
+    ],
     "frameworkProperties": {},
     "datasets": []
-   }
+}
