@@ -259,11 +259,11 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {# yapf: disable
                             "document": "main",
-                            "path": lambda extension_name, _AGSJSON_KEY_ADDRESS: "$.extensions[?(@.typeName = '{}')].{}".format(extension_name, _AGSJSON_KEY_ADDRESS),
+                            "path": lambda extension_name, _AGSJSON_KEY_ADDRESS: "$.extensions[?(@.typeName = '{}')].properties.{}".format(extension_name, _AGSJSON_KEY_ADDRESS),
                             "parent": {
                                 "children": [
                                     {
-                                        "key": "address"
+                                        "key": lambda _AGSJSON_KEY_ADDRESS: _AGSJSON_KEY_ADDRESS
                                     }
                                 ],
                                 "parent": lambda _AGSJSON_EXTENSION_STRUCTURE: _AGSJSON_EXTENSION_STRUCTURE
@@ -351,7 +351,7 @@ class OGCMetadataExtensionMixin(object):
                     "paths": [
                         {# yapf: disable
                             "document": "main",
-                            "path": lambda extension_name, _AGSJSON_KEY_ADMINISTRATIVE_AREA: "$.extensions[?(@.typeName = '{}')].{}".format(extension_name, _AGSJSON_KEY_ADMINISTRATIVE_AREA),
+                            "path": lambda extension_name, _AGSJSON_KEY_ADMINISTRATIVE_AREA: "$.extensions[?(@.typeName = '{}')].properties.{}".format(extension_name, _AGSJSON_KEY_ADMINISTRATIVE_AREA),
                             "parent": {
                                 "children": [
                                     {
