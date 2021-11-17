@@ -22,8 +22,6 @@ from xml.sax.saxutils import escape as _escape_xml, unescape as _unescape_xml
 import html2text
 import tzlocal.windows_tz
 
-#: A regular expression for matching time notation
-_TIME_STRING_REGEX = re.compile(r"^([0-9]{2}):([0-9]{2})$")
 _HTML_TO_TEXT = html2text.HTML2Text(baseurl="", bodywidth=0)
 
 
@@ -105,7 +103,8 @@ def deserialize_string_to_bool(value, conversion, obj):
     false = conversion.get("false", "false")
     ignore_case = conversion.get("ignoreCase", True)
 
-    if value is None:
+    # if value is None or empty
+    if not value:
         if allow_none:
             return None
 

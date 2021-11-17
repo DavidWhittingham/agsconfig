@@ -14,9 +14,13 @@ import pytest
 # import fixtures
 from .helpers import image_service_config as service_config
 
-@pytest.fixture(scope = "function")
+
+@pytest.fixture(scope="function")
 def service_extension(service_config):
     return service_config.wcs_server
+
+
+from .custom_get_capabilities_mixin import *
 
 
 @pytest.mark.parametrize(

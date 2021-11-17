@@ -1,4 +1,7 @@
-<SVCManifest xsi:type='typens:SVCManifest' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xs='http://www.w3.org/2001/XMLSchema' xmlns:typens='http://www.esri.com/schemas/ArcGIS/10.1'>
+<SVCManifest xsi:type='typens:SVCManifest'
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    xmlns:typens='http://www.esri.com/schemas/ArcGIS/10.1'>
     <Databases xsi:type='typens:ArrayOfSVCDatabase'/>
     <Resources xsi:type='typens:ArrayOfSVCResource'>
         <SVCResource xsi:type='typens:SVCResource'>
@@ -377,14 +380,6 @@
                                     <Value xsi:type='xs:string'>onlineResource</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
-                                    <Key>customGetCapabilities</Key>
-                                    <Value xsi:type='xs:string'>customgetCapabilities</Value>
-                                </PropertySetProperty>
-                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
-                                    <Key>pathToCustomGetCapabilitiesFiles</Key>
-                                    <Value xsi:type='xs:string'>pathToCustomGetCapabilitiesFiles</Value>
-                                </PropertySetProperty>
-                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>name</Key>
                                     <Value xsi:type="xs:string">Test_Service</Value>
                                 </PropertySetProperty>
@@ -506,7 +501,7 @@
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>pathToCustomGetCapabilitiesFiles</Key>
-                                    <Value xsi:type='xs:string'>Thisisatest</Value>
+                                    <Value xsi:type='xs:string'/>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>pathToCustomSLDFile</Key>
@@ -639,7 +634,8 @@
                 <LatestWKID>3857</LatestWKID>
             </SpatialReference>
             <TileOrigin xsi:type='typens:PointN'>
-                <X>-20037508.342787001</X><Y>20037508.342787001</Y>
+                <X>-20037508.342787001</X>
+                <Y>20037508.342787001</Y>
             </TileOrigin>
             <TileCols>256</TileCols>
             <TileRows>256</TileRows>

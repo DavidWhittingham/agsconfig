@@ -17,8 +17,11 @@ class CustomGetCapabilitiesExtensionMixin(object):
 
     custom_get_capabilities = EditorProperty(
         {
+            "constraints": {
+                "default": False
+            },
             "formats": {
-                 "agsJson": {
+                "agsJson": {
                     "paths": [
                         {
                             "document": "main",
@@ -34,8 +37,10 @@ class CustomGetCapabilitiesExtensionMixin(object):
                         }
                     ],
                     "conversions": [{
-                        "id": "boolToString"
-                    }],
+                        "id": "boolToString",
+                        "allowNone": False,
+                        "noneAsFalse": True
+                    }]
                 },
                 "sddraft": {
                     "paths": [
@@ -107,7 +112,9 @@ class CustomGetCapabilitiesExtensionMixin(object):
                     ],
                     "conversions": [
                         {
-                            "id": "boolToString"
+                            "id": "boolToString",
+                            "allowNone": False,
+                            "noneAsFalse": True
                         }
                     ]
                 }
@@ -117,6 +124,25 @@ class CustomGetCapabilitiesExtensionMixin(object):
     path_to_custom_get_capabilities_files = EditorProperty(
         {
             "formats": {
+                "agsJson": {
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.pathToCustomGetCapabilitiesFiles".format(extension_name),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "key": "pathToCustomGetCapabilitiesFiles"
+                                    }
+                                ],
+                                "parent": lambda _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE: _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE
+                            }
+                        }
+                    ],
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ]
+                },
                 "sddraft": {
                     "paths": [
                         {#yapf: disable

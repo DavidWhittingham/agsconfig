@@ -15,9 +15,14 @@ from .helpers import map_service_config as service_config
 
 from agsconfig.services.wfs_server_extension import WFSServerExtension as wfs
 
-@pytest.fixture(scope = "function")
+
+@pytest.fixture(scope="function")
 def service_extension(service_config):
     return service_config.wcs_server
+
+
+from .custom_get_capabilities_mixin import *
+
 
 @pytest.mark.parametrize(
     ('attribute', 'expected_value', 'exception'),
