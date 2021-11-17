@@ -17,7 +17,7 @@ from .custom_get_capabilities_extension_mixin import CustomGetCapabilitiesExtens
 
 
 class WPSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensionMixin, ExtensionBase):
-    """ WMS server extension properties for arcGIS services """
+    """ WPS server extension properties for ArcGIS services """
 
     # ArcGIS Server JSON key names
     _AGSJSON_KEY_ADDRESS = "deliveryPoint"

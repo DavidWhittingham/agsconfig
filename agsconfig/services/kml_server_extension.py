@@ -12,12 +12,10 @@ install_aliases()
 from enum import Enum
 from ..editing.edit_prop import EditorProperty
 from .extension_base import ExtensionBase
-from .ogc_metadata_extension_mixin import OGCMetadataExtensionMixin
-from .custom_get_capabilities_extension_mixin import CustomGetCapabilitiesExtensionMixin
 
-class KmlServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensionMixin, ExtensionBase):
+
+class KmlServerExtension(ExtensionBase):
     """ Kml server extension properties for arcGIS services """
-
     class Capability(Enum):
         single_image = "SingleImage"
         separate_images = "SeparateImages"
@@ -37,8 +35,9 @@ class KmlServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='compatibilityMode']/Value".format(extension_name)
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='compatibilityMode']/Value"
+                            .format(extension_name)
                         }
                     ],
                     "conversions": [{
@@ -60,8 +59,9 @@ class KmlServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='dpi']/Value".format(extension_name)
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='dpi']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
@@ -79,8 +79,9 @@ class KmlServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='featureLimit']/Value".format(extension_name)
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='featureLimit']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
@@ -98,8 +99,9 @@ class KmlServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='imageSize']/Value".format(extension_name)
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='imageSize']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
@@ -113,8 +115,9 @@ class KmlServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='linkDescription']/Value".format(extension_name)
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='linkDescription']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
@@ -128,8 +131,9 @@ class KmlServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='linkName']/Value".format(extension_name)
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='linkName']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
@@ -143,8 +147,9 @@ class KmlServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='message']/Value".format(extension_name)
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='message']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
@@ -162,8 +167,9 @@ class KmlServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='minRefreshPeriod']/Value".format(extension_name)
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='minRefreshPeriod']/Value"
+                            .format(extension_name)
                         }
                     ]
                 }
@@ -177,15 +183,14 @@ class KmlServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='useDefaultSnippets']/Value".format(extension_name)
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='useDefaultSnippets']/Value"
+                            .format(extension_name)
                         }
                     ],
-                    "conversions": [
-                        {
-                            "id": "boolToString"
-                        }
-                    ]
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
                 }
             }
         }
@@ -197,15 +202,14 @@ class KmlServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='useNetworkLinkControlTag']/Value".format(extension_name)
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='useNetworkLinkControlTag']/Value"
+                            .format(extension_name)
                         }
                     ],
-                    "conversions": [
-                        {
-                            "id": "boolToString"
-                        }
-                    ]
+                    "conversions": [{
+                        "id": "boolToString"
+                    }]
                 }
             }
         }
