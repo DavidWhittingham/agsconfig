@@ -15,7 +15,6 @@ import pytest
 
 # Fixture imports
 from .helpers import TRUEISH_TEST_PARAMS
-from .helpers import map_service_config as service_config
 
 
 @pytest.mark.parametrize(("enabled", "expected"), TRUEISH_TEST_PARAMS)

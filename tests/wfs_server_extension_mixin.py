@@ -11,17 +11,17 @@ install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
 import pytest
-from .helpers import map_service_config as service_config
 
 from agsconfig.services.wfs_server_extension import WFSServerExtension as wfs
 
+from .custom_get_capabilities_mixin import *
+from .ogc_metadata_extension_mixin import *
 
+
+# facilitates OGC extension testing
 @pytest.fixture(scope="function")
 def service_extension(service_config):
-    return service_config.wcs_server
-
-
-from .custom_get_capabilities_mixin import *
+    return service_config.wfs_server
 
 
 @pytest.mark.parametrize(

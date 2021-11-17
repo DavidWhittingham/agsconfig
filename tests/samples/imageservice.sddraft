@@ -529,23 +529,23 @@
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>contactPerson</Key>
-                                    <Value xsi:type='xs:string'>contactPerson</Value>
+                                    <Value xsi:type='xs:string'>John Doe</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>contactPosition</Key>
-                                    <Value xsi:type='xs:string'>contactPosition</Value>
+                                    <Value xsi:type='xs:string'>Officer</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>contactOrganization</Key>
-                                    <Value xsi:type='xs:string'>contactOrganization</Value>
+                                    <Value xsi:type='xs:string'>GIS Pty. Ltd.</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>address</Key>
-                                    <Value xsi:type='xs:string'>address</Value>
+                                    <Value xsi:type='xs:string'>123 Fake St.</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>addressType</Key>
-                                    <Value xsi:type='xs:string'>addressType</Value>
+                                    <Value xsi:type='xs:string'/>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>city</Key>
@@ -553,11 +553,11 @@
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>stateOrProvince</Key>
-                                    <Value xsi:type='xs:string'>stateOrProvince</Value>
+                                    <Value xsi:type='xs:string'>Queensland</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>postCode</Key>
-                                    <Value xsi:type='xs:string'>postCode</Value>
+                                    <Value xsi:type='xs:string'>ABC123</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>country</Key>
@@ -565,15 +565,15 @@
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>contactVoiceTelephone</Key>
-                                    <Value xsi:type='xs:string'>contactVoiceTelephone</Value>
+                                    <Value xsi:type='xs:string'>+123456789</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>contactFacsimileTelephone</Key>
-                                    <Value xsi:type='xs:string'>contactFacsimileTele</Value>
+                                    <Value xsi:type='xs:string'>+987654321</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>contactElectronicMailAddress</Key>
-                                    <Value xsi:type='xs:string'>contactEmail</Value>
+                                    <Value xsi:type='xs:string'>mail@mail.com</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>ListSupportedCRS</Key>

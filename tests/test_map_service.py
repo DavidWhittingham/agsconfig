@@ -10,15 +10,18 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
-import os.path
-
 import pytest
-from contextlib2 import ExitStack
 
-import agsconfig
 from agsconfig.services.map_server import MapServer
 
 from .helpers import map_service_config as service_config
+from .feature_server_extension_mixin import *
+from .kml_server_extension_mixin import *
+from .max_record_count_mixin import *
+from .na_server_extension_mixin import *
+from .wcs_server_extension_mixin import *
+from .wfs_server_extension_mixin import *
+from .wms_server_extension_mixin import *
 
 
 def test_load_service_config(service_config):
@@ -34,9 +37,9 @@ def test_save(service_config):
 @pytest.mark.parametrize(
     ("capabilities", "expected", "ex"),
     [
-        ([agsconfig.MapServer.Capability.map], [agsconfig.MapServer.Capability.map], None),
+        ([MapServer.Capability.map], [MapServer.Capability.map], None),
         ([], [], None),
-        (["Query"], [agsconfig.MapServer.Capability.query], None),
+        (["Query"], [MapServer.Capability.query], None),
         (["Fail"], None, ValueError),
         ([123], None, ValueError)
     ]
@@ -51,8 +54,7 @@ def test_capabilities(service_config, capabilities, expected, ex):
 
 
 @pytest.mark.parametrize(
-    ("attribute", "value", "exception"),
-    [
+    ("attribute", "value", "exception"), [
         ("comic_book_guy", None, AttributeError), ("anti_aliasing_mode", MapServer.AntiAliasingMode.fastest, None),
         ("text_anti_aliasing_mode", MapServer.TextAntiAliasingMode.force, None),
         ("disable_identify_relates", False, None), ("enable_dynamic_layers", False, None), ("file_path", None, None),

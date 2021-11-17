@@ -21,6 +21,9 @@ from agsconfig.services.image_server import ImageServer
 
 # import fixtures
 from .helpers import image_service_config as service_config
+from .jpip_server_extension_mixin import *
+from .wcs_server_extension_mixin import *
+from .wms_server_extension_mixin import *
 
 
 def test_load_service_config(service_config):

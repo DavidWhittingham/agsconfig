@@ -11,9 +11,12 @@ install_aliases()
 import pytest
 import datetime
 
+# import agsconfig bits for comparisons
+from agsconfig.services.geoprocessing_server import GeoprocessingServer
+
 # import fixtures
 from .helpers import geoprocessing_service_config as service_config
-from agsconfig.services.geoprocessing_server import GeoprocessingServer
+from .wps_server_extension_mixin import *
 
 
 def test_load_service_config(service_config):
@@ -62,7 +65,10 @@ def test_getters(service_config, attribute, expected_value, exception):
         ("capabilities", [GeoprocessingServer.Capability.uploads], [GeoprocessingServer.Capability.uploads], None),
         ("capabilities", ["Uploads"], [GeoprocessingServer.Capability.uploads], None),
         ("capabilities", "Guff", None, ValueError),
-        ("execution_type", GeoprocessingServer.ExecutionType.asynchronous, GeoprocessingServer.ExecutionType.asynchronous, None),
+        (
+            "execution_type", GeoprocessingServer.ExecutionType.asynchronous,
+            GeoprocessingServer.ExecutionType.asynchronous, None
+        ),
         ("execution_type", "Synchronous", GeoprocessingServer.ExecutionType.synchronous, None),
         ("execution_type", "balls", None, ValueError),
         ("cluster", "any", "any", None),

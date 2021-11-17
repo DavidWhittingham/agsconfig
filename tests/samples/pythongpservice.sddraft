@@ -321,7 +321,7 @@
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>facsimile</Key>
-                                    <Value xsi:type='xs:string'>+123456789</Value>
+                                    <Value xsi:type='xs:string'>+987654321</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>deliveryPoint</Key>

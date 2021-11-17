@@ -12,7 +12,7 @@ install_aliases()
 
 # Third-party imports
 import pytest
-from .helpers import image_service_config as service_config
+
 
 @pytest.mark.parametrize(
     ('attribute', 'expected_value', 'exception'),

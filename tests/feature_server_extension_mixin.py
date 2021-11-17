@@ -15,17 +15,24 @@ import pytest
 
 # Local imports
 from .helpers import TRUEISH_TEST_PARAMS
-from .helpers import map_service_config as service_config
+
 
 @pytest.mark.parametrize(("allow_geometry_updates", "expected"), TRUEISH_TEST_PARAMS)
 def test_allow_geometry_updates(service_config, allow_geometry_updates, expected):
     service_config.feature_server.allow_geometry_updates = allow_geometry_updates
     assert service_config.feature_server.allow_geometry_updates == expected
 
+
 @pytest.mark.parametrize(("enabled", "expected"), TRUEISH_TEST_PARAMS)
 def test_enabled(service_config, enabled, expected):
     service_config.feature_server.enabled = enabled
     assert service_config.feature_server.enabled == expected
+
+
+@pytest.mark.parametrize(("allow_true_curves_updates", "expected"), TRUEISH_TEST_PARAMS)
+def test_allow_true_curves_updates(service_config, allow_true_curves_updates, expected):
+    service_config.feature_server.allow_true_curves_updates = allow_true_curves_updates
+    assert service_config.feature_server.allow_true_curves_updates == expected
 
 
 @pytest.mark.parametrize(
@@ -35,7 +42,6 @@ def test_enabled(service_config, enabled, expected):
         ('allow_others_to_delete', False, None),
         ('allow_others_to_query', True, None),
         ('allow_others_to_update', False, None),
-        ('allow_true_curves_updates', False, None),
         ('enable_ownership_based_access_control', False, None),
         ('enable_z_defaults', False, None),
         ('max_record_count', 1000, None),
@@ -78,7 +84,3 @@ def test_setters(service_config, attribute, new_value, expected_value, exception
     else:
         setattr(service_config.feature_server, attribute, new_value)
         assert getattr(service_config.feature_server, attribute) == expected_value
-
-def test_setter(service_config):
-    service_config.feature_server.max_record_count = "10000"
-    assert service_config.feature_server.max_record_count == 10000

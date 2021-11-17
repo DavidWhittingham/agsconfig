@@ -13,16 +13,16 @@ install_aliases()
 # Third-party imports
 import pytest
 # import fixtures
-from .helpers import image_service_config as service_config
 from agsconfig.services.wms_server_extension import WMSServerExtension as wms
 
+from .custom_get_capabilities_mixin import *
+from .ogc_metadata_extension_mixin import *
 
+
+# facilitates OGC extension testing
 @pytest.fixture(scope="function")
 def service_extension(service_config):
     return service_config.wms_server
-
-
-from .custom_get_capabilities_mixin import *
 
 
 @pytest.mark.parametrize(

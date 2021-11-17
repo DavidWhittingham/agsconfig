@@ -11,16 +11,15 @@ install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
 import pytest
-# import fixtures
-from .helpers import image_service_config as service_config
+
+from .custom_get_capabilities_mixin import *
+from .ogc_metadata_extension_mixin import *
 
 
+# facilitates OGC extension testing
 @pytest.fixture(scope="function")
 def service_extension(service_config):
     return service_config.wcs_server
-
-
-from .custom_get_capabilities_mixin import *
 
 
 @pytest.mark.parametrize(

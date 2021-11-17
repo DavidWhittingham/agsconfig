@@ -8,19 +8,17 @@ from future.standard_library import install_aliases
 install_aliases()
 
 import pytest
-from .helpers import geoprocessing_service_config as service_config
 
 from agsconfig.services.wps_server_extension import WPSServerExtension as wps
 
+from .custom_get_capabilities_mixin import *
+from .ogc_metadata_extension_mixin import *
 
+
+# facilitates OGC extension testing
 @pytest.fixture(scope="function")
 def service_extension(service_config):
     return service_config.wps_server
-
-
-from .extension_base import *
-from .custom_get_capabilities_mixin import *
-from .ogc_metadata_extension_mixin import *
 
 
 @pytest.mark.parametrize(

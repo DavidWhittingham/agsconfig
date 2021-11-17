@@ -12,7 +12,7 @@ install_aliases()
 
 import pytest
 
-@pytest.mark.parametrize(
+@pytest.mark.parametrize(#yapf:disable
     ('attribute', 'expected_value', 'exception'),
     [
         ('abstract', "This is the abstract.", None),
@@ -22,7 +22,7 @@ import pytest
         ('city', "Brisbane", None),
         ('country', "Australia", None),
         ('email', "mail@mail.com", None),
-        ('facsimile', "+123456789", None),
+        ('facsimile', "+987654321", None),
         ('fees', "There are no fees.", None),
         ('individual_name', "John Doe", None),
         ('keywords', "These Are Keywords", None),
@@ -32,7 +32,7 @@ import pytest
         ('provider_name', "GIS Pty. Ltd.", None),
         ('title', "Test Service", None)
     ]
-)
+)#yapf:enable
 def test_ogc_getters(service_extension, attribute, expected_value, exception):
     if exception is not None:
         with pytest.raises(exception):
@@ -41,7 +41,7 @@ def test_ogc_getters(service_extension, attribute, expected_value, exception):
         assert getattr(service_extension, attribute) == expected_value
 
 
-@pytest.mark.parametrize(
+@pytest.mark.parametrize(#yapf:disable
     ('attribute', 'new_value', 'expected_value', 'exception'),
     [
         ('abstract', 'abstract', 'abstract', None),
@@ -61,7 +61,7 @@ def test_ogc_getters(service_extension, attribute, expected_value, exception):
         ('provider_name', "GIS Inc.", "GIS Inc.", None),
         ('title', 'Prod Service', 'Prod Service', None)
     ]
-)
+)#yapf:enable
 def test_ogc_setters(service_extension, attribute, new_value, expected_value, exception):
     if exception is not None:
         with pytest.raises(exception):

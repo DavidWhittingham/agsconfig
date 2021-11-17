@@ -1,5 +1,7 @@
 <?xml version="1.0" ?>
-<SVCManifest xmlns:typens="http://www.esri.com/schemas/ArcGIS/10.1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="typens:SVCManifest">
+<SVCManifest xmlns:typens="http://www.esri.com/schemas/ArcGIS/10.1"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="typens:SVCManifest">
 	<Databases xsi:type="typens:ArrayOfSVCDatabase"/>
 	<Resources xsi:type="typens:ArrayOfSVCResource">
 		<SVCResource xsi:type="typens:SVCResource">
@@ -80,14 +82,14 @@
 							<Key>maxRecordCount</Key>
 							<Value xsi:type="xs:string">1000</Value>
 						</PropertySetProperty>
-            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
-                <Key>exportTilesAllowed</Key>
-                <Value xsi:type='xs:string'>false</Value>
-            </PropertySetProperty>
-            <PropertySetProperty xsi:type='typens:PropertySetProperty'>
-                <Key>maxExportTilesCount</Key>
-                <Value xsi:type='xs:string'>100000</Value>
-            </PropertySetProperty>
+						<PropertySetProperty xsi:type='typens:PropertySetProperty'>
+							<Key>exportTilesAllowed</Key>
+							<Value xsi:type='xs:string'>false</Value>
+						</PropertySetProperty>
+						<PropertySetProperty xsi:type='typens:PropertySetProperty'>
+							<Key>maxExportTilesCount</Key>
+							<Value xsi:type='xs:string'>100000</Value>
+						</PropertySetProperty>
 						<PropertySetProperty xsi:type="typens:PropertySetProperty">
 							<Key>cacheDir</Key>
 							<Value xsi:type="xs:string"/>
@@ -350,7 +352,7 @@
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>WebCapabilities</Key>
-									<Value xsi:nil="true"/>
+									<Value xsi:type='xs:string'>GetCapabilities,GetMap,GetFeatureInfo,GetStyles,GetLegendGraphic,GetSchemaExtension</Value>
 								</PropertySetProperty>
 							</PropertyArray>
 						</Info>
@@ -394,19 +396,19 @@
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>contactPerson</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">John Doe</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>contactPosition</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">Officer</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>contactOrganization</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">GIS Pty. Ltd.</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>address</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">123 Fake St.</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>addressType</Key>
@@ -418,11 +420,11 @@
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>stateOrProvince</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">Queensland</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>postCode</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">ABC123</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>country</Key>
@@ -430,15 +432,15 @@
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>contactVoiceTelephone</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">+123456789</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>contactFacsimileTelephone</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">+987654321</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>contactElectronicMailAddress</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">mail@mail.com</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>fees</Key>
@@ -448,18 +450,18 @@
 									<Key>accessConstraints</Key>
 									<Value xsi:type="xs:string">There are no access constraints.</Value>
 								</PropertySetProperty>
-                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
-                                    <Key>Reaspect</Key>
-                                    <Value xsi:type='xs:string'>false</Value>
-                                </PropertySetProperty>
-                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
-                                    <Key>ListSupportedCRS</Key>
-                                    <Value xsi:type='xs:string'>102100,102113,3857,20354,20355,20356,28354,28355,28356</Value>
-                                </PropertySetProperty>
-                                <PropertySetProperty xsi:type='typens:PropertySetProperty'>
-                                    <Key>syncEnabled</Key>
-                                    <Value xsi:type='xs:string'>false</Value>
-                                </PropertySetProperty>
+								<PropertySetProperty xsi:type='typens:PropertySetProperty'>
+									<Key>Reaspect</Key>
+									<Value xsi:type='xs:string'>false</Value>
+								</PropertySetProperty>
+								<PropertySetProperty xsi:type='typens:PropertySetProperty'>
+									<Key>ListSupportedCRS</Key>
+									<Value xsi:type='xs:string'>102100,102113,3857,20354,20355,20356,28354,28355,28356</Value>
+								</PropertySetProperty>
+								<PropertySetProperty xsi:type='typens:PropertySetProperty'>
+									<Key>syncEnabled</Key>
+									<Value xsi:type='xs:string'>false</Value>
+								</PropertySetProperty>
 							</PropertyArray>
 						</Props>
 						<TypeName>WMSServer</TypeName>
@@ -1035,7 +1037,8 @@
 				<LatestWKID>3857</LatestWKID>
 			</SpatialReference>
 			<TileOrigin xsi:type="typens:PointN">
-				<X>-20037508.342787001</X><Y>20037508.342787001</Y>
+				<X>-20037508.342787001</X>
+				<Y>20037508.342787001</Y>
 			</TileOrigin>
 			<TileCols>256</TileCols>
 			<TileRows>256</TileRows>
