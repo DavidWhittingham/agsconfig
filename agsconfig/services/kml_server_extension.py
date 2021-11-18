@@ -30,187 +30,211 @@ class KmlServerExtension(ExtensionBase):
         super().__init__(editor, "KmlServer")
 
     compatibility_mode = EditorProperty(
-        {
+        {#yapf:disable
             "formats": {
+                "agsJson": {
+                    "conversions": [
+                        {
+                            "id": "enumToString",
+                            "enum": "CompatibilityMode"
+                        }
+                    ],
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.compatibilityMode".format(extension_name)
+                        }
+                    ]
+                },
                 "sddraft": {
                     "paths": [
                         {
-                            "path": lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='compatibilityMode']/Value"
-                            .format(extension_name)
+                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='compatibilityMode']/Value".format(extension_name)
                         }
                     ],
-                    "conversions": [{
-                        "id": "enumToString",
-                        "enum": "CompatibilityMode"
-                    }]
+                    "conversions": [
+                        {
+                            "id": "enumToString",
+                            "enum": "CompatibilityMode"
+                        }
+                    ]
                 }
             }
-        }
+        }#yapf:enable
     )
 
     dpi = EditorProperty(
-        {
+        {#yapf:disable
             "constraints": {
                 "min": 1,
                 "int": True
             },
             "formats": {
-                "sddraft": {
+                "agsJson": {
+                    "conversions": [
+                        {
+                            "id": "numberToString"
+                        }
+                    ],
                     "paths": [
                         {
-                            "path": lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='dpi']/Value"
-                            .format(extension_name)
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.dpi".format(extension_name)
+                        }
+                    ]
+                },
+                "sddraft": {
+                    "conversions": [
+                        {
+                            "id": "numberToString"
+                        }
+                    ],
+                    "paths": [
+                        {
+                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='dpi']/Value".format(extension_name)
                         }
                     ]
                 }
             }
-        }
+        }#yapf:enable
     )
 
     feature_limit = EditorProperty(
-        {
+        {#yapf:disable
             "constraints": {
                 "min": 1,
                 "int": True
             },
             "formats": {
-                "sddraft": {
+                "agsJson": {
+                    "conversions": [
+                        {
+                            "id": "numberToString"
+                        }
+                    ],
                     "paths": [
                         {
-                            "path": lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='featureLimit']/Value"
-                            .format(extension_name)
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.featureLimit".format(extension_name)
+                        }
+                    ]
+                },
+                "sddraft": {
+                    "conversions": [
+                        {
+                            "id": "numberToString"
+                        }
+                    ],
+                    "paths": [
+                        {
+                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='featureLimit']/Value".format(extension_name)
                         }
                     ]
                 }
             }
-        }
+        }#yapf:enable
     )
 
     image_size = EditorProperty(
-        {
+        {#yapf:disable
             "constraints": {
                 "min": 0,
                 "int": True
             },
             "formats": {
-                "sddraft": {
+                "agsJson": {
+                    "conversions": [
+                        {
+                            "id": "numberToString"
+                        }
+                    ],
                     "paths": [
                         {
-                            "path": lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='imageSize']/Value"
-                            .format(extension_name)
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.imageSize".format(extension_name)
+                        }
+                    ]
+                },
+                "sddraft": {
+                    "conversions": [
+                        {
+                            "id": "numberToString"
+                        }
+                    ],
+                    "paths": [
+                        {
+                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='imageSize']/Value".format(extension_name)
                         }
                     ]
                 }
             }
-        }
-    )
-
-    link_description = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path": lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='linkDescription']/Value"
-                            .format(extension_name)
-                        }
-                    ]
-                }
-            }
-        }
-    )
-
-    link_name = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path": lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='linkName']/Value"
-                            .format(extension_name)
-                        }
-                    ]
-                }
-            }
-        }
-    )
-
-    message = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path": lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='message']/Value"
-                            .format(extension_name)
-                        }
-                    ]
-                }
-            }
-        }
+        }#yapf:enable
     )
 
     min_refresh_period = EditorProperty(
-        {
+        {#yapf:disable
             "constraints": {
                 "min": 0,
                 "int": True
             },
             "formats": {
-                "sddraft": {
+                "agsJson": {
+                    "conversions": [
+                        {
+                            "id": "numberToString"
+                        }
+                    ],
                     "paths": [
                         {
-                            "path": lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='minRefreshPeriod']/Value"
-                            .format(extension_name)
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.minRefreshPeriod".format(extension_name)
+                        }
+                    ]
+                },
+                "sddraft": {
+                    "conversions": [
+                        {
+                            "id": "numberToString"
+                        }
+                    ],
+                    "paths": [
+                        {
+                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='minRefreshPeriod']/Value".format(extension_name)
                         }
                     ]
                 }
             }
-        }
+        }#yapf:enable
     )
 
     use_default_snippets = EditorProperty(
-        {
+        {#yapf:disable
             "formats": {
-                "sddraft": {
-                    "paths": [
+                "agsJson": {
+                    "conversions": [
                         {
-                            "path": lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='useDefaultSnippets']/Value"
-                            .format(extension_name)
+                            "id": "boolToString"
                         }
                     ],
-                    "conversions": [{
-                        "id": "boolToString"
-                    }]
-                }
-            }
-        }
-    )
-
-    use_network_link_control_tag = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
                     "paths": [
                         {
-                            "path": lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='useNetworkLinkControlTag']/Value"
-                            .format(extension_name)
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.useDefaultSnippets".format(extension_name)
+                        }
+                    ]
+                },
+                "sddraft": {
+                    "conversions": [
+                        {
+                            "id": "boolToString"
                         }
                     ],
-                    "conversions": [{
-                        "id": "boolToString"
-                    }]
+                    "paths": [
+                        {
+                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='useDefaultSnippets']/Value".format(extension_name)
+                        }
+                    ]
                 }
             }
-        }
+        }#yapf:enable
     )

@@ -27,12 +27,8 @@ from agsconfig.services.kml_server_extension import KmlServerExtension as kml
         ('dpi', 96, None),
         ('feature_limit', 1000000, None),
         ('image_size', 1024, None),
-        ('link_description', None, None),
-        ('link_name', None, None),
-        ('message', None, None),
         ('min_refresh_period', 30, None),
-        ('use_default_snippets', 0, None),
-        ('use_network_link_control_tag', 0, None)
+        ('use_default_snippets', 0, None)
     ]
 )
 def test_kml_getters(service_config, attribute, expectedValue, exception):
@@ -63,15 +59,11 @@ def test_kml_getters(service_config, attribute, expectedValue, exception):
         ('image_size', -1000, None, ValueError),
         ('image_size', 'FooBar', None, ValueError),
         ('image_size', '1000', 1000, None),
-        ('link_description', 'description', 'description', None),
-        ('link_name', 'link_name', 'link_name', None),
-        ('message', 'message', 'message', None),
         ('min_refresh_period', 20, 20, None),
         ('min_refresh_period', -1000, None, ValueError),
         ('min_refresh_period', 'FooBar', None, ValueError),
         ('min_refresh_period', '10', 10, None),
-        ('use_default_snippets', False, False, None),
-        ('use_network_link_control_tag', False, False, None)
+        ('use_default_snippets', False, False, None)
     ]
 )
 def test_kml_setters(service_config, attribute, new_value, expected_value, exception):
