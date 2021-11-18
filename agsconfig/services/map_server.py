@@ -92,38 +92,6 @@ class MapServer(
         """Gets the properties for the WMS Server extension."""
         return self._wms_server_extension
 
-    capabilities = EditorProperty(
-        {
-            "formats": {
-                "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.capabilities"
-                    }],
-                    "conversions": [{
-                        "id": "enumToString",
-                        "enum": "Capability"
-                    }, {
-                        "id": "stringToCsv"
-                    }]
-                },
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path": "./Configurations/SVCConfiguration/Definition/Info/PropertyArray/PropertySetProperty[Key='WebCapabilities']/Value"
-                        }
-                    ],
-                    "conversions": [{
-                        "id": "enumToString",
-                        "enum": "Capability"
-                    }, {
-                        "id": "stringToCsv"
-                    }]
-                }
-            }
-        }
-    )
-
     anti_aliasing_mode = EditorProperty(
         {
             "formats": {
@@ -158,6 +126,38 @@ class MapServer(
                     "conversions": [{
                         "id": "enumToString",
                         "enum": "AntiAliasingMode"
+                    }]
+                }
+            }
+        }
+    )
+
+    capabilities = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.capabilities"
+                    }],
+                    "conversions": [{
+                        "id": "enumToString",
+                        "enum": "Capability"
+                    }, {
+                        "id": "stringToCsv"
+                    }]
+                },
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path": "./Configurations/SVCConfiguration/Definition/Info/PropertyArray/PropertySetProperty[Key='WebCapabilities']/Value"
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "enumToString",
+                        "enum": "Capability"
+                    }, {
+                        "id": "stringToCsv"
                     }]
                 }
             }
@@ -290,46 +290,6 @@ class MapServer(
         }
     )
 
-    text_anti_aliasing_mode = EditorProperty(
-        {
-            "formats": {
-                "agsJson": {
-                    "paths": [
-                        {
-                            "document": "main",
-                            "path": "$.properties.textAntialiasingMode",
-                            "parent": {
-                                "children": [{
-                                    "key": "textAntialiasingMode"
-                                }],
-                                "parent": {
-                                    "children": [{
-                                        "key": "properties"
-                                    }]
-                                }
-                            }
-                        }
-                    ],
-                    "conversions": [{
-                        "id": "enumToString",
-                        "enum": "TextAntiAliasingMode"
-                    }]
-                },
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='textAntialiasingMode']/Value"
-                        }
-                    ],
-                    "conversions": [{
-                        "id": "enumToString",
-                        "enum": "TextAntiAliasingMode"
-                    }]
-                }
-            }
-        }
-    )
-
     disable_identify_relates = EditorProperty(
         {
             "formats": {
@@ -431,6 +391,46 @@ class MapServer(
                     ],
                     "conversions": [{
                         "id": "boolToString"
+                    }]
+                }
+            }
+        }
+    )
+
+    text_anti_aliasing_mode = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": "$.properties.textAntialiasingMode",
+                            "parent": {
+                                "children": [{
+                                    "key": "textAntialiasingMode"
+                                }],
+                                "parent": {
+                                    "children": [{
+                                        "key": "properties"
+                                    }]
+                                }
+                            }
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "enumToString",
+                        "enum": "TextAntiAliasingMode"
+                    }]
+                },
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='textAntialiasingMode']/Value"
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "enumToString",
+                        "enum": "TextAntiAliasingMode"
                     }]
                 }
             }
