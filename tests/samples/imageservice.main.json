@@ -127,7 +127,7 @@
                 "contactOrganization": "GIS Pty. Ltd.",
                 "country": "Australia",
                 "fees": "There are no fees.",
-                "pathToCustomSLDFile": "",
+                "pathToCustomSLDFile": "https://test.local/test.sld",
                 "address": "123 Fake St.",
                 "customGetCapabilities": "false",
                 "city": "Brisbane",
