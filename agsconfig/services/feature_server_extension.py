@@ -37,10 +37,12 @@ class FeatureServerExtension(ExtensionBase):
                         "id": "boolToString"
                     }],
                     "paths": [
-                        {
+                        { #yapf:disable
                             "document": "main",
-                            "path": "$.extensions[?(@.typeName = 'FeatureServer')].properties.allowGeometryUpdates"
-                        }
+                            "path":
+                                lambda extension_name:
+                                    "$.extensions[?(@.typeName = '{}')].properties.allowGeometryUpdates".format(extension_name)
+                        } #yapf:enable
                     ]
                 },
                 "sddraft": {
@@ -48,11 +50,11 @@ class FeatureServerExtension(ExtensionBase):
                         "id": "boolToString"
                     }],
                     "paths": [
-                        {
-                            "path": lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='allowGeometryUpdates']/Value"
-                            .format(extension_name)
-                        }
+                        { #yapf:disable
+                            "path":
+                                lambda extension_name:
+                                    "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='allowGeometryUpdates']/Value".format(extension_name)
+                        } #yapf:enable
                     ]
                 }
             }

@@ -40,12 +40,27 @@ class WPSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
 
     app_schema_prefix = EditorProperty(
         {
+            "conversions": [
+                {"id": "noneToEmptyString"}
+            ],
             "formats": {
+                "agsJson": {
+                    "paths": [
+                        { #yapf:disable
+                            "document": "main",
+                            "path":
+                                lambda extension_name:
+                                    "$.extensions[?(@.typeName = '{}')].properties.appSchemaPrefix".format(extension_name)
+                        } #yapf:enable
+                    ]
+                },
                 "sddraft": {
                     "paths": [
-                        {# yapf: disable
-                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='appSchemaPrefix']/Value".format(extension_name)
-                        }# yapf: enable
+                        { # yapf: disable
+                            "path":
+                                lambda extension_name:
+                                    "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='appSchemaPrefix']/Value".format(extension_name)
+                        } # yapf: enable
                     ]
                 }
             }
@@ -55,7 +70,23 @@ class WPSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
     contact_instructions = EditorProperty(
         {
             "formats": {
+                "agsJson": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
+                    "paths": [
+                        { #yapf:disable
+                            "document": "main",
+                            "path":
+                                lambda extension_name:
+                                    "$.extensions[?(@.typeName = '{}')].properties.contactInstructions".format(extension_name)
+                        } #yapf:enable
+                    ]
+                },
                 "sddraft": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
                     "paths": [
                         {# yapf: disable
                             "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='contactInstructions']/Value".format(extension_name)
@@ -69,7 +100,23 @@ class WPSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
     hours_of_service = EditorProperty(
         {
             "formats": {
+                "agsJson": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
+                    "paths": [
+                        { #yapf:disable
+                            "document": "main",
+                            "path":
+                                lambda extension_name:
+                                    "$.extensions[?(@.typeName = '{}')].properties.hoursOfService".format(extension_name)
+                        } #yapf:enable
+                    ]
+                },
                 "sddraft": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
                     "paths": [
                         {# yapf: disable
                             "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='hoursOfService']/Value".format(extension_name)
@@ -80,38 +127,24 @@ class WPSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
         }
     )
 
-    keywords_type = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {# yapf: disable
-                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='keywordsType']/Value".format(extension_name)
-                        }# yapf: enable
-                    ]
-                }
-            }
-        }
-    )
-
-    profile = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {# yapf: disable
-                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='profile']/Value".format(extension_name)
-                        }# yapf: enable
-                    ]
-                }
-            }
-        }
-    )
-
     provider_site = EditorProperty(
         {
             "formats": {
+                "agsJson": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
+                    "paths": [
+                        { #yapf:disable
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.providerSite".format(extension_name)
+                        } #yapf:enable
+                    ]
+                },
                 "sddraft": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
                     "paths": [
                         {# yapf: disable
                             "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='providerSite']/Value".format(extension_name)
@@ -125,7 +158,21 @@ class WPSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
     role = EditorProperty(
         {
             "formats": {
+                "agsJson": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
+                    "paths": [
+                        { #yapf:disable
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.role".format(extension_name)
+                        } #yapf:enable
+                    ]
+                },
                 "sddraft": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
                     "paths": [
                         {# yapf: disable
                             "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='role']/Value".format(extension_name)
@@ -136,28 +183,56 @@ class WPSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
         }
     )
 
-    service_type_version = EditorProperty(
+    service_type = EditorProperty(
         {
             "formats": {
-                "sddraft": {
+                "agsJson": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
                     "paths": [
-                        {# yapf: disable
-                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='serviceTypeVersion']/Value".format(extension_name)
-                        }# yapf: enable
+                        { #yapf:disable
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.serviceType".format(extension_name)
+                        } #yapf:enable
+                    ]
+                },
+                "sddraft": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
+                    "paths": [
+                        { #yapf:disable
+                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='serviceType']/Value".format(extension_name)
+                        } #yapf:enable
                     ]
                 }
             }
         }
     )
 
-    service_type = EditorProperty(
+    service_type_version = EditorProperty(
         {
             "formats": {
-                "sddraft": {
+                "agsJson": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
                     "paths": [
-                        {# yapf: disable
-                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='serviceType']/Value".format(extension_name)
-                        }# yapf: enable
+                        { #yapf:disable
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.serviceTypeVersion".format(extension_name)
+                        } #yapf:enable
+                    ]
+                },
+                "sddraft": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
+                    "paths": [
+                        { #yapf:disable
+                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='serviceTypeVersion']/Value".format(extension_name)
+                        } #yapf:enable
                     ]
                 }
             }

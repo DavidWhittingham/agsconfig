@@ -1,6 +1,6 @@
-<SVCManifest xsi:type='typens:SVCManifest' 
-    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' 
-    xmlns:xs='http://www.w3.org/2001/XMLSchema' 
+<SVCManifest xsi:type='typens:SVCManifest'
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
     xmlns:typens='http://www.esri.com/schemas/ArcGIS/10.1'>
     <Databases xsi:type='typens:ArrayOfSVCDatabase'/>
     <Resources xsi:type='typens:ArrayOfSVCResource'>
@@ -257,7 +257,7 @@
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>appSchemaPrefix</Key>
-                                    <Value xsi:type='xs:string'>Test_TTool2</Value>
+                                    <Value xsi:type='xs:string'>TestProject_TestService</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>name</Key>

@@ -25,11 +25,10 @@ def service_extension(service_config):
     ('attribute', 'expected_value', 'exception'),
     [
         ('britney_spears', 'should cause an', AttributeError),  # because she isn't a member
-        ('app_schema_prefix', 'Test_TTool2', None),
+        ('app_schema_prefix', 'TestProject_TestService', None),
         ('contact_instructions', None, None),
         ('enabled', False, None),
         ('hours_of_service', None, None),
-        ('keywords_type', None, None),
         ('name', 'WPS', None),
         ('profile', None, None),
         ('provider_site', None, None),
@@ -55,7 +54,6 @@ def test_wps_getters(service_extension, attribute, expected_value, exception):
         ('enabled', True, True, None),
         ('enabled', 'x', None, ValueError),
         ('hours_of_service', 'hours', 'hours', None),
-        ('keywords_type', 'kt', 'kt', None),
         ('name', 'name', 'name', None),
         ('profile', 'pro', 'pro', None),
         ('provider_site', 'site', 'site', None),
