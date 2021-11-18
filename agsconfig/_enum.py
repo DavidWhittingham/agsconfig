@@ -10,12 +10,12 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
-from aenum import IntEnum, StrEnum as _StrEnum
+from aenum import IntEnum, Enum as _Enum
 
 from ._strutils import caseless_equal as _caseless_equal
 
 
-class StrEnum(_StrEnum):
+class StrEnum(_Enum):
     """String-based enum that can be found from a string whilst ignoring case."""
     @classmethod
     def _missing_value_(cls, value):
