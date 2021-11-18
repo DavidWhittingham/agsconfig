@@ -51,8 +51,7 @@ class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExt
                     }],
                     "paths": [
                         {
-                            "path":
-                            lambda extension_name:
+                            "path": lambda extension_name:
                             "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='allowGeometryUpdates']/Value"
                             .format(extension_name)
                         }
@@ -153,68 +152,8 @@ class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExt
         }
     )
 
-    allow_others_to_delete = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='allowOthersToDelete']/Value"
-                            .format(extension_name)
-                        }
-                    ],
-                    "conversions": [{
-                        "id": "boolToString"
-                    }]
-                }
-            }
-        }
-    )
-
-    allow_others_to_query = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='allowOthersToQuery']/Value"
-                            .format(extension_name)
-                        }
-                    ],
-                    "conversions": [{
-                        "id": "boolToString"
-                    }]
-                }
-            }
-        }
-    )
-
-    allow_others_to_update = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='allowOthersToUpdate']/Value"
-                            .format(extension_name)
-                        }
-                    ],
-                    "conversions": [{
-                        "id": "boolToString"
-                    }]
-                }
-            }
-        }
-    )
-
     allow_true_curves_updates = EditorProperty(
-        {
+        {#yapf:disable
             "formats": {
                 "agsJson": {
                     "conversions": [{
@@ -223,92 +162,30 @@ class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExt
                     "paths": [
                         {
                             "document": "main",
-                            "path": "$.extensions[?(@.typeName = 'FeatureServer')].properties.allowTrueCurvesUpdates"
+                            "path":
+                                lambda extension_name:
+                                    "$.extensions[?(@.typeName = '{}')].properties.allowTrueCurvesUpdates".format(extension_name)
                         }
                     ]
                 },
                 "sddraft": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
                     "paths": [
                         {
                             "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='allowTrueCurvesUpdates']/Value"
-                            .format(extension_name)
+                                lambda extension_name:
+                                    "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='allowTrueCurvesUpdates']/Value".format(extension_name)
                         }
-                    ],
-                    "conversions": [{
-                        "id": "boolToString"
-                    }]
+                    ]
                 }
             }
-        }
+        }#yapf:enable
     )
 
     enable_ownership_based_access_control = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='enableOwnershipBasedAccessControl']/Value"
-                            .format(extension_name)
-                        }
-                    ],
-                    "conversions": [{
-                        "id": "boolToString"
-                    }]
-                }
-            }
-        }
-    )
-
-    enable_z_defaults = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='enableZDefaults']/Value"
-                            .format(extension_name)
-                        }
-                    ],
-                    "conversions": [{
-                        "id": "boolToString"
-                    }]
-                }
-            }
-        }
-    )
-
-    max_record_count = EditorProperty(
-        {
-            "constraints": {
-                "int": True, "min": 0
-            },
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='maxRecordCount']/Value"
-                            .format(extension_name)
-                        }
-                    ],
-                    "conversions": [{
-                        "id": "numberToString"
-                    }]
-                }
-            }
-        }
-    )
-
-    only_allow_true_curve_updates_by_true_curve_clients = EditorProperty(
-        {
+        {#yapf:disable
             "formats": {
                 "agsJson": {
                     "conversions": [{
@@ -316,63 +193,132 @@ class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExt
                     }],
                     "paths": [
                         {
-                            "document":
-                            "main",
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.enableOwnershipBasedAccessControl".format(extension_name)
+                        }
+                    ]
+                },
+                "sddraft": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                    "paths": [
+                        {
                             "path":
-                            "$.extensions[?(@.typeName = 'FeatureServer')].properties.onlyAllowTrueCurveUpdatesByTrueCurveClients"
+                                lambda extension_name:
+                                    "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='enableOwnershipBasedAccessControl']/Value".format(extension_name)
+                        }
+                    ]
+                }
+            }
+        }#yapf:enable
+    )
+
+    enable_z_defaults = EditorProperty(
+        {#yapf:disable
+            "formats": {
+                "agsJson": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.enableZDefaults".format(extension_name)
+                        }
+                    ]
+                },
+                "sddraft": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                    "paths": [
+                        {
+                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='enableZDefaults']/Value".format(extension_name)
+                        }
+                    ]
+                }
+            }
+        }#yapf:enable
+    )
+
+    only_allow_true_curve_updates_by_true_curve_clients = EditorProperty(
+        {#yapf:disable
+            "formats": {
+                "agsJson": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.onlyAllowTrueCurveUpdatesByTrueCurveClients".format(extension_name)
+                        }
+                    ]
+                },
+                "sddraft": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                    "paths": [
+                        {
+                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='onlyAllowTrueCurveUpdatesByTrueCurveClients']/Value".format(extension_name)
+                        }
+                    ]
+                }
+            }
+        }#yapf:enable
+    )
+
+    realm = EditorProperty(
+        {#yapf:disable
+            "formats": {
+                "agsJson": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.realm".format(extension_name)
                         }
                     ]
                 },
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='onlyAllowTrueCurveUpdatesByTrueCurveClients']/Value"
-                            .format(extension_name)
-                        }
-                    ],
-                    "conversions": [{
-                        "id": "boolToString"
-                    }]
-                }
-            }
-        }
-    )
-
-    realm = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='realm']/Value"
-                            .format(extension_name)
+                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='realm']/Value".format(extension_name)
                         }
                     ]
                 }
             }
-        }
+        }#yapf:enable
     )
 
     z_default_value = EditorProperty(
-        {
+        {#yapf:disable
             "formats": {
-                "sddraft": {
+                "agsJson": {
+                    "conversions": [
+                        {"id": "numberToString"}
+                    ],
                     "paths": [
                         {
-                            "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='zDefaultValue']/Value"
-                            .format(extension_name)
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.zDefaultValue".format(extension_name)
                         }
-                    ],
+                    ]
+                },
+                "sddraft": {
                     "conversions": [{
                         "id": "numberToString"
-                    }]
+                    }],
+                    "paths": [
+                        {
+                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='zDefaultValue']/Value".format(extension_name)
+                        }
+                    ]
                 }
             }
-        }
+        }#yapf:enable
     )

@@ -17,39 +17,20 @@ import pytest
 from .helpers import TRUEISH_TEST_PARAMS
 
 
-@pytest.mark.parametrize(("allow_geometry_updates", "expected"), TRUEISH_TEST_PARAMS)
-def test_allow_geometry_updates(service_config, allow_geometry_updates, expected):
-    service_config.feature_server.allow_geometry_updates = allow_geometry_updates
-    assert service_config.feature_server.allow_geometry_updates == expected
-
-
-@pytest.mark.parametrize(("enabled", "expected"), TRUEISH_TEST_PARAMS)
-def test_enabled(service_config, enabled, expected):
-    service_config.feature_server.enabled = enabled
-    assert service_config.feature_server.enabled == expected
-
-
-@pytest.mark.parametrize(("allow_true_curves_updates", "expected"), TRUEISH_TEST_PARAMS)
-def test_allow_true_curves_updates(service_config, allow_true_curves_updates, expected):
-    service_config.feature_server.allow_true_curves_updates = allow_true_curves_updates
-    assert service_config.feature_server.allow_true_curves_updates == expected
-
-
 @pytest.mark.parametrize(
     ('attribute', 'expected_value', 'exception'),
     [
         ('britney_spears', 'should cause an', AttributeError),  # because she isn't a member
-        ('allow_others_to_delete', False, None),
-        ('allow_others_to_query', True, None),
-        ('allow_others_to_update', False, None),
+        ('allow_geometry_updates', True, None),
+        ('allow_true_curves_updates', False, None),
+        ('enabled', False, None),
         ('enable_ownership_based_access_control', False, None),
         ('enable_z_defaults', False, None),
-        ('max_record_count', 1000, None),
         ('realm', None, None),
         ('z_default_value', 0, None)
     ]
 )
-def test_getters(service_config, attribute, expected_value, exception):
+def test_feature_server_getters(service_config, attribute, expected_value, exception):
     if exception is not None:
         with pytest.raises(exception):
             assert getattr(service_config.feature_server, attribute) == expected_value
@@ -57,27 +38,33 @@ def test_getters(service_config, attribute, expected_value, exception):
         assert getattr(service_config.feature_server, attribute) == expected_value
 
 
-@pytest.mark.parametrize(
+@pytest.mark.parametrize(#yapf:disable
     ('attribute', 'new_value', 'expected_value', 'exception'),
     [
         ('britney_spears', 'should cause a', None, TypeError),  # because she isn't a member
-        ('allow_others_to_delete', True, True, None),
-        ('allow_others_to_query', False, False, None),
-        ('allow_others_to_update', True, True, None),
-        ('allow_true_curves_updates', True, True, None),
-        ('enable_ownership_based_access_control', True, True, None),
-        ('enable_z_defaults', True, True, None),
-        ('max_record_count', 100, 100, None),
-        ('max_record_count', "1000", 1000, None),
-        ('max_record_count', -1000, None, ValueError),
-        ('realm', 'realm', 'realm', None),
+        ('realm', 'testRealm', 'testRealm', None),
         ('z_default_value', 100, 100, None),
         ('z_default_value', '200', 200, None),
         ('z_default_value', 'xyz', None, ValueError),
         ('z_default_value', 128.234569871, 128.234569871, None)
-    ]
-)
-def test_setters(service_config, attribute, new_value, expected_value, exception):
+    ] + [
+        ("allow_geometry_updates", trueish_value, trueish_expected, None)
+        for (trueish_value, trueish_expected) in TRUEISH_TEST_PARAMS
+    ] + [
+        ("allow_true_curves_updates", trueish_value, trueish_expected, None)
+        for (trueish_value, trueish_expected) in TRUEISH_TEST_PARAMS
+    ] + [
+        ("enabled", trueish_value, trueish_expected, None)
+        for (trueish_value, trueish_expected) in TRUEISH_TEST_PARAMS
+    ] + [
+         ("enable_ownership_based_access_control", trueish_value, trueish_expected, None)
+         for (trueish_value, trueish_expected) in TRUEISH_TEST_PARAMS
+     ] + [
+         ("enable_z_defaults", trueish_value, trueish_expected, None)
+         for (trueish_value, trueish_expected) in TRUEISH_TEST_PARAMS
+     ]
+)#yapf:enable
+def test_feature_server_setters(service_config, attribute, new_value, expected_value, exception):
     if exception is not None:
         with pytest.raises(exception):
             setattr(service_config.feature_server, attribute, new_value)
