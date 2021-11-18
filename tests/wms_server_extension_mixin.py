@@ -31,7 +31,7 @@ def service_extension(service_config):
         ("britney_spears", "should cause an", AttributeError),  # because she isn't a member
         ("enabled", False, None),
         ("inherit_layer_names", False, None),
-        ("path_to_custom_sld_file", "C:\\MyCustomSldeFile.sld", None),
+        ("path_to_custom_sld_file", "https://test.local/test.sld", None),
         (
             "additional_spatial_ref_sys",
             ["102100", "102113", "3857", "20354", "20355", "20356", "28354", "28355", "28356"], None

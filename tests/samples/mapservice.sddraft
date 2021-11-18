@@ -372,7 +372,7 @@
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>pathToCustomSLDFile</Key>
-									<Value xsi:type="xs:string">C:\MyCustomSldeFile.sld</Value>
+									<Value xsi:type="xs:string">https://test.local/test.sld</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>inheritLayerNames</Key>

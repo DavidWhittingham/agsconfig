@@ -10,20 +10,20 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
+from .._enum import StrEnum as Enum
+from ..editing.edit_prop import EditorProperty
+from ..services.feature_server_extension import FeatureServerExtension
+from ..services.kml_server_extension import KmlServerExtension
+from ..services.na_server_extension import NAServerExtension
+from ..services.wcs_server_extension import WCSServerExtension
+from ..services.wfs_server_extension import WFSServerExtension
+from ..services.wms_server_extension import WMSServerExtension
 from .cacheable_core_mixin import CacheableCoreMixin
 from .cacheable_ext_mixin import CacheableExtMixin
 from .image_dimensions_mixin import ImageDimensionsMixin
 from .max_record_count_mixin import MaxRecordCountMixin
 from .output_dir_mixin import OutputDirMixin
 from .service_base import ServiceBase
-from ..editing.edit_prop import EditorProperty
-from .._enum import StrEnum as Enum
-from ..services.feature_server_extension import FeatureServerExtension
-from ..services.kml_server_extension import KmlServerExtension
-from ..services.na_server_extension import NAServerExtension
-from ..services.wfs_server_extension import WFSServerExtension
-from ..services.wcs_server_extension import WCSServerExtension
-from ..services.wms_server_extension import WMSServerExtension
 
 
 class MapServer(
@@ -58,8 +58,8 @@ class MapServer(
         self._feature_server_extension = FeatureServerExtension(editor)
         self._kml_server_extension = KmlServerExtension(editor)
         self._na_server_extension = NAServerExtension(editor)
-        self._wfs_server_extension = WFSServerExtension(editor)
         self._wcs_server_extension = WCSServerExtension(editor)
+        self._wfs_server_extension = WFSServerExtension(editor)
         self._wms_server_extension = WMSServerExtension(editor)
 
     @property

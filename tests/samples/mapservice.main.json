@@ -219,7 +219,7 @@
             "properties": {
                 "country": "Australia",
                 "fees": "There are no fees.",
-                "pathToCustomSLDFile": "",
+                "pathToCustomSLDFile": "https://test.local/test.sld",
                 "city": "Brisbane",
                 "listSupportedCRS": "102100,102113,3857,20354,20355,20356,28354,28355,28356",
                 "inheritLayerNames": "false",

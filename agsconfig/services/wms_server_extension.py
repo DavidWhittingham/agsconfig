@@ -428,6 +428,20 @@ class WMSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
     path_to_custom_sld_file = EditorProperty(
         {
             "formats": {
+                "agsJson": {
+                    "paths": [
+                        {# yapf: disable
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{0}')].properties.pathToCustomSLDFile".format(extension_name),
+                            "parent": {
+                                "children": [{
+                                    "key": "pathToCustomSLDFile"
+                                }],
+                                "parent": lambda _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE: _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE
+                            }
+                        }# yapf: enable
+                    ],
+                },
                 "sddraft": {
                     "paths": [
                         {# yapf: disable

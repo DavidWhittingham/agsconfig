@@ -42,7 +42,21 @@ class WCSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
     provider_site = EditorProperty(
         {
             "formats": {
+                "agsJson": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
+                    "paths": [
+                        { #yapf:disable
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.providerWebsite".format(extension_name)
+                        } #yapf:enable
+                    ]
+                },
                 "sddraft": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
                     "paths": [
                         {#yapf: disable
                             "path": lambda extension_name:
