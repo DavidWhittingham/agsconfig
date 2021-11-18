@@ -11,13 +11,14 @@ install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
 # Local imports
-from ..editing.edit_prop import EditorProperty
 from .._enum import StrEnum as Enum
+from ..editing.edit_prop import EditorProperty
 from .output_dir_mixin import OutputDirMixin
+from .scale_range_mixin import ScaleRangeMixin
 from .service_base import ServiceBase
 
 
-class GeodataServer(OutputDirMixin, ServiceBase):
+class GeodataServer(ScaleRangeMixin, OutputDirMixin, ServiceBase):
     class Capability(Enum):
         extraction = "Extraction"
         query = "Query"
@@ -54,36 +55,6 @@ class GeodataServer(OutputDirMixin, ServiceBase):
                     }, {
                         "id": "stringToCsv"
                     }]
-                }
-            }
-        }
-    )
-
-    name = EditorProperty(
-        {
-            "constraints": {
-                "notEmpty": True
-            },
-            "formats": {
-                "agsJson": {
-                    "constraints": {
-                        "readOnly": True
-                    },
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.serviceName"
-                    }]
-                },
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path": "./Name"
-                        }, {
-                            "path": "./Configurations/SVCConfiguration/Name"
-                        }, {
-                            "path": "./ItemInfo/Name"
-                        }
-                    ]
                 }
             }
         }

@@ -95,9 +95,23 @@ VECTOR_TILE_INFO_JSON_FILE_PATH_COPY = os.path.abspath(
     "{0}/samples/vectortileservice.itemInfo.copy.json".format(os.path.dirname(__file__))
 )
 
-GEOPROCESSING_FILE_PATH = os.path.abspath("{0}/samples/pythongpservice.sddraft".format(os.path.dirname(__file__)))
-GEOPROCESSING_FILE_PATH_COPY = os.path.abspath(
-    "{0}/samples/pythongpservice.copy.sddraft".format(os.path.dirname(__file__))
+GEOPROCESSING_SDDRAFT_FILE_PATH = os.path.abspath(
+    "{0}/samples/geoprocessingservice.sddraft".format(os.path.dirname(__file__))
+)
+GEOPROCESSING_SDDRAFT_FILE_PATH_COPY = os.path.abspath(
+    "{0}/samples/geoprocessingservice.copy.sddraft".format(os.path.dirname(__file__))
+)
+GEOPROCESSING_MAIN_JSON_FILE_PATH = os.path.abspath(
+    "{0}/samples/geoprocessingservice.main.json".format(os.path.dirname(__file__))
+)
+GEOPROCESSING_MAIN_JSON_FILE_PATH_COPY = os.path.abspath(
+    "{0}/samples/geoprocessingservice.main.copy.json".format(os.path.dirname(__file__))
+)
+GEOPROCESSING_INFO_JSON_FILE_PATH = os.path.abspath(
+    "{0}/samples/geoprocessingservice.itemInfo.json".format(os.path.dirname(__file__))
+)
+GEOPROCESSING_INFO_JSON_FILE_PATH_COPY = os.path.abspath(
+    "{0}/samples/geoprocessingservice.itemInfo.copy.json".format(os.path.dirname(__file__))
 )
 
 HOSTED_FEATURE_SDDRAFT = os.path.abspath("{0}/samples/hosted_feature.sddraft".format(os.path.dirname(__file__)))
@@ -164,6 +178,10 @@ def get_geoprocessing_sddraft(file_path):
     return agsconfig.load_geoprocessing_sddraft(file_path)
 
 
+def get_geoprocessing_service(main_json_fp, info_json_fp):
+    return agsconfig.load_geoprocessing_service(main_json_fp, info_json_fp)
+
+
 def get_hosted_feature_sddraft(file_path):
     return agsconfig.load_hosted_feature_sddraft(file_path)
 
@@ -214,10 +232,18 @@ def hosted_feature_config(request):
 
 @pytest.fixture(
     scope="function",
-    params=[{
-        "func": get_geoprocessing_sddraft,
-        "paths": [(GEOPROCESSING_FILE_PATH, GEOPROCESSING_FILE_PATH_COPY)]
-    }]
+    params=[
+        {
+            "func": get_geoprocessing_sddraft,
+            "paths": [(GEOPROCESSING_SDDRAFT_FILE_PATH, GEOPROCESSING_SDDRAFT_FILE_PATH_COPY)]
+        }, {
+            "func": get_geoprocessing_service,
+            "paths": [
+                (GEOPROCESSING_MAIN_JSON_FILE_PATH, GEOPROCESSING_MAIN_JSON_FILE_PATH_COPY),
+                (GEOPROCESSING_INFO_JSON_FILE_PATH, GEOPROCESSING_INFO_JSON_FILE_PATH_COPY)
+            ]
+        }
+    ]
 )
 def geoprocessing_service_config(request):
     for s in _load_service_yield_on_func(request):

@@ -18,10 +18,12 @@ from .helpers import map_service_config as service_config
 from .cacheable_core_mixin import *
 from .cacheable_ext_mixin import *
 from .feature_server_extension_mixin import *
-from .kml_server_extension_mixin import *
 from .image_dimensions_mixin import *
+from .kml_server_extension_mixin import *
 from .max_record_count_mixin import *
 from .na_server_extension_mixin import *
+from .output_dir_mixin import *
+from .scale_range_mixin import *
 from .service_base_mixin import *
 from .wcs_server_extension_mixin import *
 from .wfs_server_extension_mixin import *

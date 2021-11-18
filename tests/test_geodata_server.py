@@ -13,6 +13,9 @@ from agsconfig.services.geodata_server import GeodataServer
 import pytest
 
 from .helpers import geodata_service_config as service_config
+from .output_dir_mixin import *
+from .scale_range_mixin import *
+from .service_base_mixin import *
 
 
 def test_load_service_config(service_config):

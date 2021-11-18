@@ -102,6 +102,23 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
         }
     )
 
+    maximum_records = EditorProperty(
+        {
+            "constraints": {
+                "int": True
+            },
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='maximumRecords']/Value"
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
     result_map_server = EditorProperty(
         {
             "formats": {
@@ -132,23 +149,6 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
                         "id": "enumToString",
                         "enum": "MessageLevel"
                     }]
-                }
-            }
-        }
-    )
-
-    maximum_records = EditorProperty(
-        {
-            "constraints": {
-                "int": True
-            },
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='maximumRecords']/Value"
-                        }
-                    ]
                 }
             }
         }

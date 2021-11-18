@@ -1,5 +1,5 @@
 # coding=utf-8
-"""This module contains the MapServer class for editing MapServer configuration pre or post publish"""
+"""This module contains a mixin class for image dimension properties."""
 
 # Python 2/3 compatibility
 # pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position

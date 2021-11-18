@@ -1,0 +1,26 @@
+{
+    "culture": "en-AU",
+    "name": "",
+    "guid": "",
+    "catalogPath": "",
+    "snippet": "TestProject",
+    "description": "",
+    "summary": "TestProject",
+    "title": "",
+    "tags": [
+        ""
+    ],
+    "type": "Geoprocessing Service",
+    "typeKeywords": [
+        "Tool",
+        "Service",
+        "Geoprocessing Service",
+        "Web Tool",
+        "ArcGIS Server"
+    ],
+    "thumbnail": "",
+    "url": "",
+    "spatialReference": "",
+    "accessInformation": "",
+    "licenseInfo": ""
+}

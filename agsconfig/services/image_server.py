@@ -11,23 +11,25 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
+from .._enum import IntEnum, StrEnum
+from ..editing.edit_prop import EditorProperty
 from .cacheable_core_mixin import CacheableCoreMixin
 from .cacheable_ext_mixin import CacheableExtMixin
 from .image_dimensions_mixin import ImageDimensionsMixin
 from .jpip_server_extension import JPIPServerExtension
 from .max_record_count_mixin import MaxRecordCountMixin
 from .output_dir_mixin import OutputDirMixin
+from .scale_range_mixin import ScaleRangeMixin
 from .service_base import ServiceBase
 from .wcs_server_extension import WCSServerExtension
 from .wms_server_extension import WMSServerExtension
-from ..editing.edit_prop import EditorProperty
-from .._enum import IntEnum, StrEnum
 
 __all__ = ["ImageServer"]
 
 
 class ImageServer(
-    OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDimensionsMixin, MaxRecordCountMixin, ServiceBase
+    ScaleRangeMixin, OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDimensionsMixin, MaxRecordCountMixin,
+    ServiceBase
 ):
 
     _SDDRAFT_IS_CACHED_PATHS = CacheableCoreMixin._SDDRAFT_IS_CACHED_PATHS + [
@@ -158,6 +160,23 @@ class ImageServer(
         }
     )
 
+    available_fields = EditorProperty(
+        {
+            "formats": {
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='AvailableFields']/Value"
+                        }
+                    ],
+                    "conversions": [{
+                        "id": "stringToCsv"
+                    }]
+                }
+            }
+        }
+    )
+
     capabilities = EditorProperty(
         {
             "formats": {
@@ -274,8 +293,39 @@ class ImageServer(
         }
     )
 
+    default_resampling_method = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "conversions": [{
+                        "id": "enumToString",
+                        "enum": "ResamplingMethod"
+                    }],
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.properties.defaultResamplingMethod"
+                    }]
+                },
+                "sddraft": {
+                    "conversions": [{
+                        "id": "enumToString",
+                        "enum": "ResamplingMethod"
+                    }],
+                    "paths": [
+                        {
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='DefaultResamplingMethod']/Value"
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
     has_valid_sr = EditorProperty(
         {
+            "constraints": {
+                "readOnly": True
+            },
             "formats": {
                 "agsJson": {
                     "paths": [{
@@ -294,41 +344,6 @@ class ImageServer(
         }
     )
 
-    available_fields = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='AvailableFields']/Value"
-                        }
-                    ],
-                    "conversions": [{
-                        "id": "stringToCsv"
-                    }]
-                }
-            }
-        }
-    )
-
-    default_resampling_method = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='DefaultResamplingMethod']/Value"
-                        }
-                    ],
-                    "conversions": [{
-                        "id": "enumToString",
-                        "enum": "ResamplingMethod"
-                    }]
-                }
-            }
-        }
-    )
-
     max_download_image_count = EditorProperty(
         {
             "constraints": {
@@ -336,15 +351,24 @@ class ImageServer(
                 "min": 0
             },
             "formats": {
+                "agsJson": {
+                    "conversions": [{
+                        "id": "numberToString"
+                    }],
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.properties.maxDownloadImageCount"
+                    }]
+                },
                 "sddraft": {
+                    "conversions": [{
+                        "id": "numberToString"
+                    }],
                     "paths": [
                         {
                             "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='MaxDownloadImageCount']/Value"
                         }
-                    ],
-                    "conversions": [{
-                        "id": "numberToString"
-                    }]
+                    ]
                 }
             }
         }
@@ -357,6 +381,15 @@ class ImageServer(
                 "min": 0
             },
             "formats": {
+                "agsJson": {
+                    "conversions": [{
+                        "id": "numberToString"
+                    }],
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.properties.maxDownloadSizeLimit"
+                    }]
+                },
                 "sddraft": {
                     "paths": [
                         {
@@ -378,6 +411,15 @@ class ImageServer(
                 "min": 0
             },
             "formats": {
+                "agsJson": {
+                    "conversions": [{
+                        "id": "numberToString"
+                    }],
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.properties.maxMosaicImageCount"
+                    }]
+                },
                 "sddraft": {
                     "paths": [
                         {
@@ -445,7 +487,19 @@ class ImageServer(
     return_jpgpng_as_jpg = EditorProperty(
         {
             "formats": {
+                "agsJson": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.properties.returnJPGPNGAsJPG"
+                    }]
+                },
                 "sddraft": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
                     "paths": [
                         {
                             "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='ReturnJPGPNGAsJPG']/Value",
@@ -474,10 +528,7 @@ class ImageServer(
                                 }
                             }
                         }
-                    ],
-                    "conversions": [{
-                        "id": "boolToString"
-                    }]
+                    ]
                 }
             }
         }
