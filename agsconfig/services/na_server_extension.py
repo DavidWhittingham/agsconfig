@@ -9,19 +9,14 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
-from enum import Enum
-from ..editing.edit_prop import EditorProperty
 from .extension_base import ExtensionBase
+from ..editing.edit_prop import EditorProperty
+
 
 class NAServerExtension(ExtensionBase):
     """Network Analysis server extension properties for ArcGIS Server services."""
-
     def __init__(self, editor):
         super().__init__(editor, "NAServer")
 
     # Capabilities is not implemented for NAServer
-    capabilities = EditorProperty(
-        {
-            "formats": {}
-        }
-    )
+    capabilities = EditorProperty({"formats": {}})

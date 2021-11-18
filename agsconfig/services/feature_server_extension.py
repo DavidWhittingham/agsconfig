@@ -9,14 +9,12 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
-from enum import Enum
+from .._enum import StrEnum as Enum
 from ..editing.edit_prop import EditorProperty
 from .extension_base import ExtensionBase
-from .ogc_metadata_extension_mixin import OGCMetadataExtensionMixin
-from .custom_get_capabilities_extension_mixin import CustomGetCapabilitiesExtensionMixin
 
 
-class FeatureServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensionMixin, ExtensionBase):
+class FeatureServerExtension(ExtensionBase):
     """Feature Server extension properties for ArcGIS services."""
     class Capability(Enum):
         create = "Create"

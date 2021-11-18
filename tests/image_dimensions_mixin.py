@@ -11,14 +11,9 @@ install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
 import pytest
-from .helpers import map_and_image_service_config as service_config
 
-@pytest.mark.parametrize(("height", "ex"), [
-    (1000, None),
-    (None, ValueError),
-    (0, ValueError),
-    (-1, ValueError)
-])
+
+@pytest.mark.parametrize(("height", "ex"), [(1000, None), (None, ValueError), (0, ValueError), (-1, ValueError)])
 def test_max_image_height(service_config, height, ex):
     if ex is not None:
         with pytest.raises(ex):
@@ -27,12 +22,8 @@ def test_max_image_height(service_config, height, ex):
         service_config.max_image_height = height
         assert service_config.max_image_height == height
 
-@pytest.mark.parametrize(("width", "ex"), [
-    (1000, None),
-    (None, ValueError),
-    (0, ValueError),
-    (-1, ValueError)
-])
+
+@pytest.mark.parametrize(("width", "ex"), [(1000, None), (None, ValueError), (0, ValueError), (-1, ValueError)])
 def test_max_image_width(service_config, width, ex):
     if ex is not None:
         with pytest.raises(ex):

@@ -28,6 +28,11 @@ TRUEISH_TEST_PARAMS = [
     ("F", False), ("faLSe", False), ("f", False), (1, True), (0, False), (2, False), (-1, False)
 ]
 
+GEOCODE_SDDRAFT_FILE_PATH = os.path.abspath("{0}/samples/geocodeservice.sddraft".format(os.path.dirname(__file__)))
+GEOCODE_SDDRAFT_FILE_PATH_COPY = os.path.abspath(
+    "{0}/samples/geocodeservice.copy.sddraft".format(os.path.dirname(__file__))
+)
+
 GEODATA_SDDRAFT_FILE_PATH = os.path.abspath("{0}/samples/geodataservice.sddraft".format(os.path.dirname(__file__)))
 GEODATA_SDDRAFT_FILE_PATH_COPY = os.path.abspath(
     "{0}/samples/geodataservice.copy.sddraft".format(os.path.dirname(__file__))
@@ -109,17 +114,8 @@ HOSTED_FEATURE_INFO_JSON_COPY = os.path.abspath(
 )
 
 
-def get_map_sddraft(file_path):
-    return agsconfig.load_map_sddraft(file_path)
-
-
-def get_map_service(main_json_fp, info_json_fp):
-    # Reading files in and turning into binary file objects
-    # This is the most likely use case for editing this data (following on from requesting the REST objects from ArcGIS
-    # Server and having them in memory), so we need a test case that makes sure this works.
-    main_json_bin = main_json_fp.read()
-    info_json_bin = info_json_fp.read()
-    return agsconfig.load_map_service(io.BytesIO(main_json_bin), io.BytesIO(info_json_bin))
+def get_geocode_sddraft(file_path):
+    return agsconfig.load_geocode_sddraft(file_path)
 
 
 def get_geodata_sddraft(file_path):
@@ -133,6 +129,19 @@ def get_geodata_service(main_json_fp, info_json_fp):
     main_json_bin = main_json_fp.read()
     info_json_bin = info_json_fp.read()
     return agsconfig.load_geodata_service(io.BytesIO(main_json_bin), io.BytesIO(info_json_bin))
+
+
+def get_map_sddraft(file_path):
+    return agsconfig.load_map_sddraft(file_path)
+
+
+def get_map_service(main_json_fp, info_json_fp):
+    # Reading files in and turning into binary file objects
+    # This is the most likely use case for editing this data (following on from requesting the REST objects from ArcGIS
+    # Server and having them in memory), so we need a test case that makes sure this works.
+    main_json_bin = main_json_fp.read()
+    info_json_bin = info_json_fp.read()
+    return agsconfig.load_map_service(io.BytesIO(main_json_bin), io.BytesIO(info_json_bin))
 
 
 def get_image_sddraft(file_path):
@@ -217,6 +226,18 @@ def geoprocessing_service_config(request):
 
 @pytest.fixture(
     scope="function",
+    params=[{
+        "func": get_geocode_sddraft,
+        "paths": [(GEOCODE_SDDRAFT_FILE_PATH, GEOCODE_SDDRAFT_FILE_PATH_COPY)]
+    }]
+)
+def geocode_service_config(request):
+    for s in _load_service_yield_on_func(request):
+        yield s
+
+
+@pytest.fixture(
+    scope="function",
     params=[
         {
             "func": get_geodata_sddraft,
@@ -231,35 +252,6 @@ def geoprocessing_service_config(request):
     ]
 )
 def geodata_service_config(request):
-    for s in _load_service_yield_on_func(request):
-        yield s
-
-
-@pytest.fixture(
-    scope="function",
-    params=[
-        {
-            "func": get_map_sddraft,
-            "paths": [(MAP_SDDRAFT_FILE_PATH, MAP_SDDRAFT_FILE_PATH_COPY)]
-        }, {
-            "func": get_map_service,
-            "paths": [
-                (MAP_MAIN_JSON_FILE_PATH, MAP_MAIN_JSON_FILE_PATH_COPY),
-                (MAP_INFO_JSON_FILE_PATH, MAP_INFO_JSON_FILE_PATH_COPY)
-            ]
-        }, {
-            "func": get_image_sddraft,
-            "paths": [(IMAGE_SDDRAFT_FILE_PATH, IMAGE_SDDRAFT_FILE_PATH_COPY)]
-        }, {
-            "func": get_image_service,
-            "paths": [
-                (IMAGE_MAIN_JSON_FILE_PATH, IMAGE_MAIN_JSON_FILE_PATH_COPY),
-                (IMAGE_INFO_JSON_FILE_PATH, IMAGE_INFO_JSON_FILE_PATH_COPY)
-            ]
-        }
-    ]
-)
-def map_and_image_service_config(request):
     for s in _load_service_yield_on_func(request):
         yield s
 

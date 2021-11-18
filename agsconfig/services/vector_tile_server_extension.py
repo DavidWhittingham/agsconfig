@@ -10,12 +10,10 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
-# Third party imports
-from enum import Enum
-
 # Local imports
 from .extension_base import ExtensionBase
 from ..editing.edit_prop import EditorProperty
+from .._enum import StrEnum as Enum
 
 
 class VectorTileServerExtension(ExtensionBase):

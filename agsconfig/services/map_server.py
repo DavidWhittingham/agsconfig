@@ -10,8 +10,6 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
-from enum import Enum
-
 from .cacheable_core_mixin import CacheableCoreMixin
 from .cacheable_ext_mixin import CacheableExtMixin
 from .image_dimensions_mixin import ImageDimensionsMixin
@@ -19,6 +17,7 @@ from .max_record_count_mixin import MaxRecordCountMixin
 from .output_dir_mixin import OutputDirMixin
 from .service_base import ServiceBase
 from ..editing.edit_prop import EditorProperty
+from .._enum import StrEnum as Enum
 from ..services.feature_server_extension import FeatureServerExtension
 from ..services.kml_server_extension import KmlServerExtension
 from ..services.na_server_extension import NAServerExtension
@@ -98,10 +97,12 @@ class MapServer(
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main", "path": "$.capabilities"
+                        "document": "main",
+                        "path": "$.capabilities"
                     }],
                     "conversions": [{
-                        "id": "enumToString", "enum": "Capability"
+                        "id": "enumToString",
+                        "enum": "Capability"
                     }, {
                         "id": "stringToCsv"
                     }]
@@ -113,7 +114,8 @@ class MapServer(
                         }
                     ],
                     "conversions": [{
-                        "id": "enumToString", "enum": "Capability"
+                        "id": "enumToString",
+                        "enum": "Capability"
                     }, {
                         "id": "stringToCsv"
                     }]
@@ -135,17 +137,16 @@ class MapServer(
                                     "key": "antialiasingMode"
                                 }],
                                 "parent": {
-                                    "children": [
-                                        {
-                                            "key": "properties"
-                                        }
-                                    ]
+                                    "children": [{
+                                        "key": "properties"
+                                    }]
                                 }
                             }
                         }
                     ],
                     "conversions": [{
-                        "id": "enumToString", "enum": "AntiAliasingMode"
+                        "id": "enumToString",
+                        "enum": "AntiAliasingMode"
                     }]
                 },
                 "sddraft": {
@@ -155,7 +156,8 @@ class MapServer(
                         }
                     ],
                     "conversions": [{
-                        "id": "enumToString", "enum": "AntiAliasingMode"
+                        "id": "enumToString",
+                        "enum": "AntiAliasingMode"
                     }]
                 }
             }
@@ -175,11 +177,9 @@ class MapServer(
                                     "key": "dateFieldsRespectsDayLightSavingTime"
                                 }],
                                 "parent": {
-                                    "children": [
-                                        {
-                                            "key": "properties"
-                                        }
-                                    ]
+                                    "children": [{
+                                        "key": "properties"
+                                    }]
                                 }
                             }
                         }
@@ -208,10 +208,12 @@ class MapServer(
                                             "attributes": {
                                                 "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
                                             },
-                                            "children": [{
-                                                "tag": "Key",
-                                                "value": "dateFieldsRespectsDayLightSavingTime"
-                                            }]
+                                            "children": [
+                                                {
+                                                    "tag": "Key",
+                                                    "value": "dateFieldsRespectsDayLightSavingTime"
+                                                }
+                                            ]
                                         }
                                     ]
                                 }
@@ -239,11 +241,9 @@ class MapServer(
                                     "key": "dateFieldsTimezoneID"
                                 }],
                                 "parent": {
-                                    "children": [
-                                        {
-                                            "key": "properties"
-                                        }
-                                    ]
+                                    "children": [{
+                                        "key": "properties"
+                                    }]
                                 }
                             }
                         }
@@ -303,17 +303,16 @@ class MapServer(
                                     "key": "textAntialiasingMode"
                                 }],
                                 "parent": {
-                                    "children": [
-                                        {
-                                            "key": "properties"
-                                        }
-                                    ]
+                                    "children": [{
+                                        "key": "properties"
+                                    }]
                                 }
                             }
                         }
                     ],
                     "conversions": [{
-                        "id": "enumToString", "enum": "TextAntiAliasingMode"
+                        "id": "enumToString",
+                        "enum": "TextAntiAliasingMode"
                     }]
                 },
                 "sddraft": {
@@ -323,7 +322,8 @@ class MapServer(
                         }
                     ],
                     "conversions": [{
-                        "id": "enumToString", "enum": "TextAntiAliasingMode"
+                        "id": "enumToString",
+                        "enum": "TextAntiAliasingMode"
                     }]
                 }
             }
@@ -360,11 +360,9 @@ class MapServer(
                                     "key": "enableDynamicLayers"
                                 }],
                                 "parent": {
-                                    "children": [
-                                        {
-                                            "key": "properties"
-                                        }
-                                    ]
+                                    "children": [{
+                                        "key": "properties"
+                                    }]
                                 }
                             }
                         }
@@ -414,11 +412,9 @@ class MapServer(
                                     "key": "schemaLockingEnabled"
                                 }],
                                 "parent": {
-                                    "children": [
-                                        {
-                                            "key": "properties"
-                                        }
-                                    ]
+                                    "children": [{
+                                        "key": "properties"
+                                    }]
                                 }
                             }
                         }

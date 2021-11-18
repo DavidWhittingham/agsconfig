@@ -198,7 +198,7 @@
                 "deliveryPoint": "",
                 "facsimile": "",
                 "customGetCapabilities": "false",
-                "appSchemaPrefix": "FooBarMapService_temp",
+                "appSchemaPrefix": "FooBarSchemaPrefix",
                 "individualName": "",
                 "abstract": "",
                 "enableTransactions": "false",

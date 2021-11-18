@@ -15,10 +15,8 @@ import logging as _logging
 
 from abc import ABCMeta
 
-# Third-party package imports
-from enum import Enum
-
 # Local package imports
+from .._enum import StrEnum as Enum
 from ..editing.edit_prop import EditorProperty
 from ..model_base import ModelBase
 

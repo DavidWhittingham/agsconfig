@@ -13,7 +13,7 @@ install_aliases()
 import pytest
 
 from .helpers import TRUEISH_TEST_PARAMS
-from .helpers import map_service_config as service_config
+
 
 @pytest.mark.parametrize(("cache_on_demand", "expected"), TRUEISH_TEST_PARAMS)
 def test_cache_on_demand(service_config, cache_on_demand, expected):

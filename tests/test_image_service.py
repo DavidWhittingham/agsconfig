@@ -21,7 +21,12 @@ from agsconfig.services.image_server import ImageServer
 
 # import fixtures
 from .helpers import image_service_config as service_config
+from .cacheable_core_mixin import *
+from .cacheable_ext_mixin import *
 from .jpip_server_extension_mixin import *
+from .image_dimensions_mixin import *
+from .max_record_count_mixin import *
+from .service_base_mixin import *
 from .wcs_server_extension_mixin import *
 from .wms_server_extension_mixin import *
 

@@ -9,11 +9,11 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
-from enum import Enum
-from ..editing.edit_prop import EditorProperty
 from .extension_base import ExtensionBase
 from .ogc_metadata_extension_mixin import OGCMetadataExtensionMixin
 from .custom_get_capabilities_extension_mixin import CustomGetCapabilitiesExtensionMixin
+from ..editing.edit_prop import EditorProperty
+from .._enum import StrEnum as Enum
 
 
 class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensionMixin, ExtensionBase):
@@ -35,11 +35,25 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
     app_schema_uri = EditorProperty(
         {
             "formats": {
-                "sddraft": {
+                "agsJson": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
                     "paths": [
-                        {# yapf: disable
+                        {
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.appSchemaURI".format(extension_name)
+                        }
+                    ]
+                },
+                "sddraft": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
+                    "paths": [
+                        { # yapf: disable
                             "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='appSchemaURI']/Value".format(extension_name)
-                        }# yapf: enable
+                        } # yapf: enable
                     ]
                 }
             }
@@ -49,11 +63,25 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
     app_schema_prefix = EditorProperty(
         {
             "formats": {
-                "sddraft": {
+                "agsJson": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
                     "paths": [
-                        {# yapf: disable
+                        {
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.appSchemaPrefix".format(extension_name)
+                        }
+                    ]
+                },
+                "sddraft": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
+                    "paths": [
+                        { # yapf: disable
                             "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='appSchemaPrefix']/Value".format(extension_name)
-                        }# yapf: enable
+                        } # yapf: enable
                     ]
                 }
             }
@@ -63,19 +91,32 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
     axis_order_wfs_10 = EditorProperty(
         {
             "formats": {
-                "sddraft": {
+                "agsJson": {
+                    "conversions": [{
+                        "id": "enumToString",
+                        "enum": "AxisOrder",
+                        "case": "lower"
+                    }],
                     "paths": [
                         {
-                            "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='axisOrderWFS10']/Value"
-                            .format(extension_name)
+                            "document": "main",
+                            "path": lambda extension_name:
+                            "$.extensions[?(@.typeName = '{}')].properties.axisOrderWFS10".format(extension_name)
                         }
-                    ],
+                    ]
+                },
+                "sddraft": {
                     "conversions": [{
                         "id": "enumToString",
                         "enum": "AxisOrder"
-                    }]
+                    }],
+                    "paths": [
+                        {
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='axisOrderWFS10']/Value"
+                            .format(extension_name)
+                        }
+                    ]
                 }
             }
         }
@@ -84,14 +125,24 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
     axis_order_wfs_11 = EditorProperty(
         {
             "formats": {
+                "agsJson": {
+                    "conversions": [{
+                        "id": "enumToString",
+                        "enum": "AxisOrder",
+                        "case": "lower"
+                    }],
+                    "paths": [
+                        { #yapf:disable
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.axisOrderWFS11".format(extension_name)
+                        } #yapf:enable
+                    ]
+                },
                 "sddraft": {
                     "paths": [
-                        {
-                            "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='axisOrderWFS11']/Value"
-                            .format(extension_name)
-                        }
+                        { #yapf:disable
+                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='axisOrderWFS11']/Value".format(extension_name)
+                        } #yapf:enable
                     ],
                     "conversions": [{
                         "id": "enumToString",
@@ -105,14 +156,25 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
     contact_instructions = EditorProperty(
         {
             "formats": {
-                "sddraft": {
+                "agsJson": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
                     "paths": [
-                        {
-                            "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='contactInstructions']/Value"
-                            .format(extension_name)
-                        }
+                        { #yapf:disable
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.contactInstructions".format(extension_name)
+                        } #yapf:enable
+                    ]
+                },
+                "sddraft": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
+                    "paths": [
+                        { #yapf:disable
+                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='contactInstructions']/Value".format(extension_name)
+                        } #yapf:enable
                     ]
                 }
             }
@@ -122,18 +184,34 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
     enable_transactions = EditorProperty(
         {
             "formats": {
-                "sddraft": {
-                    "paths": [
+                "agsJson": {
+                    "conversions": [
                         {
-                            "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='enableTransactions']/Value"
-                            .format(extension_name)
+                            "id": "boolToString",
+                            "allowNone": False,
+                            "noneAsFalse": True
                         }
                     ],
-                    "conversions": [{
-                        "id": "boolToString"
-                    }]
+                    "paths": [
+                        { #yapf:disable
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.enableTransactions".format(extension_name)
+                        } #yapf:enable
+                    ]
+                },
+                "sddraft": {
+                    "conversions": [
+                        {
+                            "id": "boolToString",
+                            "allowNone": False,
+                            "noneAsFalse": True
+                        }
+                    ],
+                    "paths": [
+                        { #yapf:disable
+                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='enableTransactions']/Value".format(extension_name)
+                        } #yapf:enable
+                    ]
                 }
             }
         }
@@ -142,48 +220,25 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
     hours_of_service = EditorProperty(
         {
             "formats": {
-                "sddraft": {
+                "agsJson": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
                     "paths": [
-                        {
-                            "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='hoursOfService']/Value"
-                            .format(extension_name)
-                        }
+                        { #yapf:disable
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.hourOfService".format(extension_name)
+                        } #yapf:enable
                     ]
-                }
-            }
-        }
-    )
-
-    individual_name = EditorProperty(
-        {
-            "formats": {
+                },
                 "sddraft": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
                     "paths": [
-                        {
-                            "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='individualName']/Value"
-                            .format(extension_name)
-                        }
-                    ]
-                }
-            }
-        }
-    )
-
-    position_name = EditorProperty(
-        {
-            "formats": {
-                "sddraft": {
-                    "paths": [
-                        {
-                            "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='positionName']/Value"
-                            .format(extension_name)
-                        }
+                        { #yapf:disable
+                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='hoursOfService']/Value".format(extension_name)
+                        } #yapf:enable
                     ]
                 }
             }
@@ -193,14 +248,25 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
     provider_site = EditorProperty(
         {
             "formats": {
-                "sddraft": {
+                "agsJson": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
                     "paths": [
-                        {
-                            "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='providerSite']/Value"
-                            .format(extension_name)
-                        }
+                        { #yapf:disable
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.providerSite".format(extension_name)
+                        } #yapf:enable
+                    ]
+                },
+                "sddraft": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
+                    "paths": [
+                        { #yapf:disable
+                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='providerSite']/Value".format(extension_name)
+                        } #yapf:enable
                     ]
                 }
             }
@@ -210,14 +276,25 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
     service_type = EditorProperty(
         {
             "formats": {
-                "sddraft": {
+                "agsJson": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
                     "paths": [
-                        {
-                            "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='serviceType']/Value"
-                            .format(extension_name)
-                        }
+                        { #yapf:disable
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.serviceType".format(extension_name)
+                        } #yapf:enable
+                    ]
+                },
+                "sddraft": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
+                    "paths": [
+                        { #yapf:disable
+                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='serviceType']/Value".format(extension_name)
+                        } #yapf:enable
                     ]
                 }
             }
@@ -227,14 +304,25 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
     service_type_version = EditorProperty(
         {
             "formats": {
-                "sddraft": {
+                "agsJson": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
                     "paths": [
-                        {
-                            "path":
-                            lambda extension_name:
-                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='serviceTypeVersion']/Value"
-                            .format(extension_name)
-                        }
+                        { #yapf:disable
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.serviceTypeVersion".format(extension_name)
+                        } #yapf:enable
+                    ]
+                },
+                "sddraft": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
+                    "paths": [
+                        { #yapf:disable
+                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='serviceTypeVersion']/Value".format(extension_name)
+                        } #yapf:enable
                     ]
                 }
             }

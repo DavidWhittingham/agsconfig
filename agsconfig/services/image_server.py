@@ -11,8 +11,6 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
-from enum import Enum
-
 from .cacheable_core_mixin import CacheableCoreMixin
 from .cacheable_ext_mixin import CacheableExtMixin
 from .image_dimensions_mixin import ImageDimensionsMixin
@@ -23,6 +21,7 @@ from .service_base import ServiceBase
 from .wcs_server_extension import WCSServerExtension
 from .wms_server_extension import WMSServerExtension
 from ..editing.edit_prop import EditorProperty
+from .._enum import IntEnum, StrEnum
 
 __all__ = ["ImageServer"]
 
@@ -42,7 +41,7 @@ class ImageServer(
     _wcs_server_extension = None
     _wms_server_extension = None
 
-    class Capability(Enum):
+    class Capability(StrEnum):
         catalog = "Catalog"
         edit = "Edit"
         mensuration = "Mensuration"
@@ -52,13 +51,13 @@ class ImageServer(
         metadata = "Metadata"
         uploads = "Uploads"
 
-    class CompressionMethod(Enum):
+    class CompressionMethod(StrEnum):
         none = "None"
         jpeg = "JPEG"
         lz77 = "LZ77"
         lerc = "LERC"
 
-    class MosaicMethod(Enum):
+    class MosaicMethod(StrEnum):
         north_west = "NorthWest"
         center = "Center"
         lock_raster = "LockRaster"
@@ -68,7 +67,7 @@ class ImageServer(
         seamline = "Seamline"
         none = "None"
 
-    class ResamplingMethod(Enum):
+    class ResamplingMethod(IntEnum):
         nearest_neighbor = 0
         bilinear = 1
         cubic = 2

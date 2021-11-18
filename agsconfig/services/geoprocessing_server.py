@@ -1,17 +1,20 @@
-""" Class for modifying ArcGIS geoprocessing service settings."""
+"""This module contains the Geoprocessing Server extension class"""
+
 # Python 2/3 compatibility
+# pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 from __future__ import (absolute_import, division, print_function, unicode_literals)
 from future.builtins.disabled import *
 from future.builtins import *
 from future.standard_library import install_aliases
 install_aliases()
+# pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
-from enum import Enum
-
+from ..editing.edit_prop import EditorProperty
+from .._enum import StrEnum as Enum
 from .output_dir_mixin import OutputDirMixin
 from .service_base import ServiceBase
 from .wps_server_extension import WPSServerExtension
-from ..editing.edit_prop import EditorProperty
+
 
 class GeoprocessingServer(OutputDirMixin, ServiceBase):
 
@@ -57,8 +60,7 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Info/PropertyArray/PropertySetProperty[Key='WebCapabilities']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/Info/PropertyArray/PropertySetProperty[Key='WebCapabilities']/Value"
                         }
                     ],
                     "conversions": [{
@@ -88,8 +90,7 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='executionType']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='executionType']/Value"
                         }
                     ],
                     "conversions": [{
@@ -107,8 +108,7 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='resultMapServer']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='resultMapServer']/Value"
                         }
                     ],
                     "conversions": [{
@@ -125,8 +125,7 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='showMessages']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='showMessages']/Value"
                         }
                     ],
                     "conversions": [{
@@ -147,8 +146,7 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='maximumRecords']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='maximumRecords']/Value"
                         }
                     ]
                 }

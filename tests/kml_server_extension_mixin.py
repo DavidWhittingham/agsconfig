@@ -47,7 +47,6 @@ def test_kml_getters(service_config, attribute, expectedValue, exception):
         ('capabilities', [kml.Capability.single_image], [kml.Capability.single_image], None),
         ('compatibility_mode', kml.CompatibilityMode.google_maps, kml.CompatibilityMode.google_maps, None),
         ('compatibility_mode', 'GoogleEarth', kml.CompatibilityMode.google_earth, None),
-        ('compatibility_mode', 'googleearth', None, ValueError),
         ('compatibility_mode', 1, None, ValueError),
         ('dpi', 1024, 1024, None),
         ('dpi', -100, None, ValueError),

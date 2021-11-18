@@ -10,13 +10,11 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
-# Third-party imports
-from enum import Enum
-
 # Local imports
+from ..editing.edit_prop import EditorProperty
+from .._enum import StrEnum as Enum
 from .output_dir_mixin import OutputDirMixin
 from .service_base import ServiceBase
-from ..editing.edit_prop import EditorProperty
 
 
 class GeodataServer(OutputDirMixin, ServiceBase):
@@ -34,10 +32,12 @@ class GeodataServer(OutputDirMixin, ServiceBase):
             "formats": {
                 "agsJson": {
                     "paths": [{
-                        "document": "main", "path": "$.capabilities"
+                        "document": "main",
+                        "path": "$.capabilities"
                     }],
                     "conversions": [{
-                        "id": "enumToString", "enum": "Capability"
+                        "id": "enumToString",
+                        "enum": "Capability"
                     }, {
                         "id": "stringToCsv"
                     }]
@@ -45,12 +45,12 @@ class GeodataServer(OutputDirMixin, ServiceBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path":
-                            "./Configurations/SVCConfiguration/Definition/Info/PropertyArray/PropertySetProperty[Key='WebCapabilities']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/Info/PropertyArray/PropertySetProperty[Key='WebCapabilities']/Value"
                         }
                     ],
                     "conversions": [{
-                        "id": "enumToString", "enum": "Capability"
+                        "id": "enumToString",
+                        "enum": "Capability"
                     }, {
                         "id": "stringToCsv"
                     }]
@@ -68,8 +68,10 @@ class GeodataServer(OutputDirMixin, ServiceBase):
                 "agsJson": {
                     "constraints": {
                         "readOnly": True
-                    }, "paths": [{
-                        "document": "main", "path": "$.serviceName"
+                    },
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.serviceName"
                     }]
                 },
                 "sddraft": {

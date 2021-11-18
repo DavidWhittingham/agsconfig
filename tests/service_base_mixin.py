@@ -15,7 +15,6 @@ import datetime
 import pytest
 
 from .helpers import TRUEISH_TEST_PARAMS
-from .helpers import map_and_image_service_config as service_config
 
 SCALES = [(1.1, 1.1), ("1.1", 1.1), (None, 0)]
 

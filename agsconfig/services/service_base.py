@@ -15,10 +15,9 @@ import logging as _logging
 
 from abc import ABCMeta as _ABCMeta
 
-from enum import Enum as _Enum
-
 from ..model_base import ModelBase as _ModelBase
 from ..editing.edit_prop import EditorProperty as _EditorProperty
+from .._enum import StrEnum as _Enum
 
 MIDNIGHT = _datetime.time(0, 0)
 
@@ -478,11 +477,15 @@ class ServiceBase(_ModelBase):
                     }]
                 },
                 "sddraft": {
-                    "paths": [{
-                        "path": "./Name"
-                    }, {
-                        "path": "./Configurations/SVCConfiguration/Name"
-                    }]
+                    "paths": [
+                        {
+                            "path": "./Name"
+                        }, {
+                            "path": "./Configurations/SVCConfiguration/Name"
+                        }, {
+                            "path": "./ItemInfo/Name"
+                        }
+                    ]
                 }
             }
         }

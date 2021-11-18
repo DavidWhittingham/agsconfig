@@ -11,13 +11,12 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position,no-name-in-module,import-error
 
-from enum import Enum
-
 from .cacheable_core_mixin import CacheableCoreMixin
 from .cacheable_ext_mixin import CacheableExtMixin
 from .max_record_count_mixin import MaxRecordCountMixin
 from .service_base import ServiceBase
 from ..editing.edit_prop import EditorProperty
+from .._enum import StrEnum as Enum
 
 
 class HostedFeatureServer(MaxRecordCountMixin, CacheableExtMixin, CacheableCoreMixin, ServiceBase):

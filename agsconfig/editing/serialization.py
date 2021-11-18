@@ -22,6 +22,9 @@ from xml.sax.saxutils import escape as _escape_xml, unescape as _unescape_xml
 import html2text
 import tzlocal.windows_tz
 
+# local imports
+from .._strutils import caseless_equal
+
 _HTML_TO_TEXT = html2text.HTML2Text(baseurl="", bodywidth=0)
 
 
@@ -264,7 +267,9 @@ def serialize_enum_to_string(value, conversion, obj):
 
     enum = obj[conversion["enum"]]
 
-    return _enum_to_str(value, enum, "Could not convert to a known value.")
+    case = conversion.get("case", None)
+
+    return _enum_to_str(value, enum, "Could not convert to a known value.", case)
 
 
 def serialize_formatted_string(value, conversion, obj):
@@ -364,7 +369,7 @@ def serialize_time_to_string(value, conversion, obj):
     return "{0:02d}:{1:02d}".format(value.hour, value.minute)
 
 
-def _enum_to_str(value, enum, exception_message):
+def _enum_to_str(value, enum, exception_message, case=None):
     if isinstance(value, (str, int)):
         # Convert string or int to enum to check compatibility
         # Raises ValueError if unknown value.
@@ -372,7 +377,17 @@ def _enum_to_str(value, enum, exception_message):
     elif not isinstance(value, enum):
         # not a known capability, raise exception
         raise TypeError(exception_message)
-    return value.value
+
+    string_value = str(value.value)
+
+    if not case:
+        return string_value
+
+    if caseless_equal(case, "lower"):
+        return string_value.lower()
+
+    if caseless_equal(case, "upper"):
+        return string_value.upper()
 
 
 def _get_logger():

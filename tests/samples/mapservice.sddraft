@@ -752,7 +752,7 @@
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>appSchemaPrefix</Key>
-									<Value xsi:type="xs:string">psl_test</Value>
+									<Value xsi:type="xs:string">FooBarSchemaPrefix</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>customGetCapabilities</Key>
