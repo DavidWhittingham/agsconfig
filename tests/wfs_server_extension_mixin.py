@@ -21,6 +21,7 @@ from agsconfig.services.wfs_server_extension import WFSServerExtension as wfs
 
 # Addition test fixtures to mix in
 from .custom_get_capabilities_mixin import *
+from .extension_base import *
 from .ogc_metadata_extension_mixin import *
 
 

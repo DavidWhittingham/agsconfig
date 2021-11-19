@@ -16,6 +16,9 @@ import pytest
 # Local imports
 from agsconfig.services.kml_server_extension import KmlServerExtension as kml
 
+# import additional fixtures
+from .extension_base import *
+
 
 @pytest.mark.parametrize(
     ('attribute', 'expectedValue', 'exception'),

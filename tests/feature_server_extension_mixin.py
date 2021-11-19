@@ -16,6 +16,9 @@ import pytest
 # Local imports
 from .helpers import TRUEISH_TEST_PARAMS
 
+# import additional fixtures
+from .extension_base import *
+
 
 @pytest.mark.parametrize(
     ('attribute', 'expected_value', 'exception'),

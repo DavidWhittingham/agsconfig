@@ -13,6 +13,7 @@ install_aliases()
 import pytest
 
 from .custom_get_capabilities_mixin import *
+from .extension_base import *
 from .ogc_metadata_extension_mixin import *
 
 

@@ -16,6 +16,7 @@ import pytest
 from agsconfig.services.wms_server_extension import WMSServerExtension as wms
 
 from .custom_get_capabilities_mixin import *
+from .extension_base import *
 from .ogc_metadata_extension_mixin import *
 
 
