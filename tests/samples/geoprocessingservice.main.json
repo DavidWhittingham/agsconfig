@@ -26,7 +26,7 @@
         "maxDomainCodeCount": "1000",
         "outputDir": "c:\\arcgisserver\\arcgisoutput",
         "minInstances": "1",
-        "showMessages": "Info",
+        "showMessages": "None",
         "executionType": "Asynchronous",
         "usageTimeout": "600",
         "waitTimeout": "60",

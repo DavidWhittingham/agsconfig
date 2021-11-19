@@ -108,6 +108,12 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
                 "int": True
             },
             "formats": {
+                "agsJson": {
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.properties.maximumRecords"
+                    }]
+                },
                 "sddraft": {
                     "paths": [
                         {
@@ -122,15 +128,24 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
     result_map_server = EditorProperty(
         {
             "formats": {
+                "agsJson": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.properties.resultMapServer"
+                    }]
+                },
                 "sddraft": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
                     "paths": [
                         {
                             "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='resultMapServer']/Value"
                         }
-                    ],
-                    "conversions": [{
-                        "id": "boolToString"
-                    }]
+                    ]
                 }
             }
         }
@@ -139,16 +154,26 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
     show_messages = EditorProperty(
         {
             "formats": {
+                "agsJson": {
+                    "conversions": [{
+                        "id": "enumToString",
+                        "enum": "MessageLevel"
+                    }],
+                    "paths": [{
+                        "document": "main",
+                        "path": "$.properties.showMessages"
+                    }]
+                },
                 "sddraft": {
+                    "conversions": [{
+                        "id": "enumToString",
+                        "enum": "MessageLevel"
+                    }],
                     "paths": [
                         {
                             "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='showMessages']/Value"
                         }
-                    ],
-                    "conversions": [{
-                        "id": "enumToString",
-                        "enum": "MessageLevel"
-                    }]
+                    ]
                 }
             }
         }
