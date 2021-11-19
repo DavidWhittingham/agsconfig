@@ -247,11 +247,12 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
 
     provider_site = EditorProperty(
         {
+            "conversions": [
+                {"id": "noneToEmptyString"}
+            ],
             "formats": {
                 "agsJson": {
-                    "conversions": [
-                        {"id": "noneToEmptyString"}
-                    ],
+
                     "paths": [
                         { #yapf:disable
                             "document": "main",
@@ -260,9 +261,6 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     ]
                 },
                 "sddraft": {
-                    "conversions": [
-                        {"id": "noneToEmptyString"}
-                    ],
                     "paths": [
                         { #yapf:disable
                             "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='providerSite']/Value".format(extension_name)
