@@ -15,7 +15,11 @@ import datetime
 import logging as _logging
 import re
 
-from collections import Sequence
+try:
+    from collections.abc import Sequence
+except ImportError:
+    # try older import location
+    from collections import Sequence
 from xml.sax.saxutils import escape as _escape_xml, unescape as _unescape_xml
 
 # Third-party imports
