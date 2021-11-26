@@ -103,7 +103,7 @@ class ServiceBase(_ModelBase):
                             "path": "./ItemInfo/AccessInformation",
                             "parent": {
                                 "children": [{
-                                    "key": "AccessInformation"
+                                    "tag": "AccessInformation"
                                 }]
                             }
                         }
