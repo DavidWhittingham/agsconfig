@@ -413,7 +413,7 @@
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>providerName</Key>
-                                    <Value xsi:type='xs:string'>providerName</Value>
+                                    <Value xsi:type='xs:string'>GIS Pty. Ltd.</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>providerWebsite</Key>
@@ -421,27 +421,27 @@
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>responsiblePerson</Key>
-                                    <Value xsi:type='xs:string'>responsiblePerson</Value>
+                                    <Value xsi:type='xs:string'>John Doe</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>responsiblePosition</Key>
-                                    <Value xsi:type='xs:string'>responsiblePosition</Value>
+                                    <Value xsi:type='xs:string'>Officer</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>phone</Key>
-                                    <Value xsi:type='xs:string'>phone</Value>
+                                    <Value xsi:type='xs:string'>+123456789</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>fax</Key>
-                                    <Value xsi:type='xs:string'>fax</Value>
+                                    <Value xsi:type='xs:string'>+987654321</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>email</Key>
-                                    <Value xsi:type='xs:string'>email</Value>
+                                    <Value xsi:type='xs:string'>mail@mail.com</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>address</Key>
-                                    <Value xsi:type='xs:string'>address</Value>
+                                    <Value xsi:type='xs:string'>123 Fake St.</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>city</Key>
@@ -449,11 +449,11 @@
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>province</Key>
-                                    <Value xsi:type='xs:string'>province</Value>
+                                    <Value xsi:type='xs:string'>Queensland</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>zipcode</Key>
-                                    <Value xsi:type='xs:string'>zipcode</Value>
+                                    <Value xsi:type='xs:string'>ABC123</Value>
                                 </PropertySetProperty>
                                 <PropertySetProperty xsi:type='typens:PropertySetProperty'>
                                     <Key>country</Key>

@@ -23,19 +23,22 @@ from .kml_server_extension_mixin import *
 from .max_record_count_mixin import *
 from .na_server_extension_mixin import *
 from .output_dir_mixin import *
+from .parcel_fabric_server_extension_mixin import *
 from .scale_range_mixin import *
 from .service_base_mixin import *
+from .validation_server_extension_mixin import *
+from .version_management_server_extension_mixin import *
 from .wcs_server_extension_mixin import *
 from .wfs_server_extension_mixin import *
 from .wms_server_extension_mixin import *
 
 
-def test_load_service_config(service_config):
+def test_load_map_service_config(service_config):
     # this just tests the fixture setup
     assert True
 
 
-def test_save(service_config):
+def test_map_save(service_config):
     service_config.save()
     assert True
 
@@ -50,7 +53,7 @@ def test_save(service_config):
         ([123], None, ValueError)
     ]
 )  # yapf: disable
-def test_capabilities(service_config, capabilities, expected, ex):
+def test_map_capabilities(service_config, capabilities, expected, ex):
     if ex is not None:
         with pytest.raises(ex):
             service_config.capabilities = capabilities
@@ -67,7 +70,7 @@ def test_capabilities(service_config, capabilities, expected, ex):
         ("schema_locking_enabled", True, None)
     ]
 )
-def test_getters(service_config, attribute, value, exception):
+def test_map_getters(service_config, attribute, value, exception):
     if exception is not None:
         with pytest.raises(exception):
             getattr(service_config, attribute)
@@ -97,7 +100,7 @@ def test_getters(service_config, attribute, value, exception):
         ("date_fields_timezone_id", "E. Australia Standard Time", "Australia/Brisbane", None)
     ]
 )
-def test_setters(service_config, attribute, new_value, expected_value, exception):
+def test_map_setters(service_config, attribute, new_value, expected_value, exception):
     if exception is not None:
         with pytest.raises(exception):
             setattr(service_config, attribute, new_value)

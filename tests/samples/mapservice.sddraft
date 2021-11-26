@@ -467,7 +467,7 @@
 						<TypeName>WMSServer</TypeName>
 					</SVCExtension>
 					<SVCExtension xsi:type="typens:SVCExtension">
-						<Enabled>true</Enabled>
+						<Enabled>false</Enabled>
 						<Info xsi:type="typens:PropertySet">
 							<PropertyArray xsi:type="typens:ArrayOfPropertySetProperty">
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
@@ -808,7 +808,7 @@
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>providerName</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">GIS Pty. Ltd.</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>providerSite</Key>
@@ -816,23 +816,23 @@
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>individualName</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">John Doe</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>positionName</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">Officer</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>phone</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">+123456789</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>facsimile</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">+987654321</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>deliveryPoint</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">123 Fake St.</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>city</Key>
@@ -840,11 +840,11 @@
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>administrativeArea</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">Queensland</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>postalCode</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">ABC123</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>country</Key>
@@ -852,7 +852,7 @@
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>electronicMailAddress</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">mail@mail.com</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>hoursOfService</Key>
@@ -932,7 +932,7 @@
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>providerName</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">GIS Pty. Ltd.</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>providerWebsite</Key>
@@ -940,27 +940,27 @@
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>responsiblePerson</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">John Doe</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>responsiblePosition</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">Officer</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>phone</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">+123456789</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>fax</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">+987654321</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>email</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">mail@mail.com</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>address</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">123 Fake St.</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>city</Key>
@@ -968,11 +968,11 @@
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>province</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">Queensland</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>zipcode</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">ABC123</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>country</Key>

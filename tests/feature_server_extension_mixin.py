@@ -20,19 +20,18 @@ from .helpers import TRUEISH_TEST_PARAMS
 from .extension_base import *
 
 
-@pytest.mark.parametrize(
+@pytest.mark.parametrize(#yapf:disable
     ('attribute', 'expected_value', 'exception'),
+    BASE_GETTER_TEST_CASES +
     [
-        ('britney_spears', 'should cause an', AttributeError),  # because she isn't a member
         ('allow_geometry_updates', True, None),
         ('allow_true_curves_updates', False, None),
-        ('enabled', False, None),
         ('enable_ownership_based_access_control', False, None),
         ('enable_z_defaults', False, None),
         ('realm', None, None),
         ('z_default_value', 0, None)
     ]
-)
+)#yapf:enable
 def test_feature_server_getters(service_config, attribute, expected_value, exception):
     if exception is not None:
         with pytest.raises(exception):
@@ -43,8 +42,8 @@ def test_feature_server_getters(service_config, attribute, expected_value, excep
 
 @pytest.mark.parametrize(#yapf:disable
     ('attribute', 'new_value', 'expected_value', 'exception'),
+    BASE_SETTER_TEST_CASES +
     [
-        ('britney_spears', 'should cause a', None, TypeError),  # because she isn't a member
         ('realm', 'testRealm', 'testRealm', None),
         ('z_default_value', 100, 100, None),
         ('z_default_value', '200', 200, None),
@@ -55,9 +54,6 @@ def test_feature_server_getters(service_config, attribute, expected_value, excep
         for (trueish_value, trueish_expected) in TRUEISH_TEST_PARAMS
     ] + [
         ("allow_true_curves_updates", trueish_value, trueish_expected, None)
-        for (trueish_value, trueish_expected) in TRUEISH_TEST_PARAMS
-    ] + [
-        ("enabled", trueish_value, trueish_expected, None)
         for (trueish_value, trueish_expected) in TRUEISH_TEST_PARAMS
     ] + [
          ("enable_ownership_based_access_control", trueish_value, trueish_expected, None)

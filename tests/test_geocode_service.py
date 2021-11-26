@@ -22,12 +22,9 @@ def test_load_geocode_service(service_config):
 
 
 @pytest.mark.parametrize(
-    ('attribute', 'expected_value', 'exception'),
-    [
-        ('britney_spears', 'should cause an', AttributeError),  # because she isn't a member
+    ('attribute', 'expected_value', 'exception'), [
         ('capabilities', [GeocodeServer.Capability.geocode, GeocodeServer.Capability.reverse_geocode], None),
-        ('name', 'NameOfGeocodeService', None),
-        ('title', 'NameOfGeocodeService', None)
+        ('name', 'NameOfGeocodeService', None), ('title', 'NameOfGeocodeService', None)
     ]
 )
 def test_geocode_getters(service_config, attribute, expected_value, exception):
@@ -39,11 +36,8 @@ def test_geocode_getters(service_config, attribute, expected_value, exception):
 
 
 @pytest.mark.parametrize(
-    ('attribute', 'new_value', 'exception'),
-    [
-        ('britney_spears', 'should cause a', TypeError),  # because she isn't a member
-        ('capabilities', [GeocodeServer.Capability.geocode], None),
-        ('name', 'AnotherName', None),
+    ('attribute', 'new_value', 'exception'), [
+        ('capabilities', [GeocodeServer.Capability.geocode], None), ('name', 'AnotherName', None),
         ('title', 'AnotherTitle', None)
     ]
 )

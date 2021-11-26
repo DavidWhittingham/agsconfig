@@ -16,16 +16,12 @@ from .extension_base import *
 from .ogc_metadata_extension_mixin import *
 
 
-# facilitates OGC extension testing
-@pytest.fixture(scope="function")
-def service_extension(service_config):
-    return service_config.wps_server
-
-
-@pytest.mark.parametrize(
+@pytest.mark.parametrize( #yapf:disable
     ('attribute', 'expected_value', 'exception'),
+    BASE_GETTER_TEST_CASES +
+    OGC_GETTER_TEST_CASES +
+    CUSTOM_GET_CAPABILITIES_GETTER_TEST_CASES +
     [
-        ('britney_spears', 'should cause an', AttributeError),  # because she isn't a member
         ('app_schema_prefix', 'TestProject_TestService', None),
         ('contact_instructions', None, None),
         ('hours_of_service', None, None),
@@ -35,19 +31,21 @@ def service_extension(service_config):
         ('service_type_version', None, None),
         ('service_type', None, None)
     ]
-)
-def test_wps_getters(service_extension, attribute, expected_value, exception):
+) #yapf:enable
+def test_wps_getters(service_config, attribute, expected_value, exception):
     if exception is not None:
         with pytest.raises(exception):
-            assert getattr(service_extension, attribute) == expected_value
+            assert getattr(service_config.wps_server, attribute) == expected_value
     else:
-        assert getattr(service_extension, attribute) == expected_value
+        assert getattr(service_config.wps_server, attribute) == expected_value
 
 
-@pytest.mark.parametrize(
+@pytest.mark.parametrize( #yapf:disable
     ('attribute', 'new_value', 'expected_value', 'exception'),
+    BASE_SETTER_TEST_CASES +
+    OGC_SETTER_TEST_CASES +
+    CUSTOM_GET_CAPABILITIES_SETTER_TEST_CASES +
     [
-        ('britney_spears', 'should cause a', None, TypeError),  # because she isn't a member
         ('app_schema_prefix', 'prefix', 'prefix', None),
         ('contact_instructions', 'instructions', 'instructions', None),
         ('hours_of_service', 'hours', 'hours', None),
@@ -57,11 +55,11 @@ def test_wps_getters(service_extension, attribute, expected_value, exception):
         ('service_type_version', 'version', 'version', None),
         ('service_type', 'type', 'type', None)
     ]
-)
-def test_wps_setters(service_extension, attribute, new_value, expected_value, exception):
+) #yapf:enable
+def test_wps_setters(service_config, attribute, new_value, expected_value, exception):
     if exception is not None:
         with pytest.raises(exception):
-            setattr(service_extension, attribute, new_value)
+            setattr(service_config.wps_server, attribute, new_value)
     else:
-        setattr(service_extension, attribute, new_value)
-        assert getattr(service_extension, attribute) == expected_value
+        setattr(service_config.wps_server, attribute, new_value)
+        assert getattr(service_config.wps_server, attribute) == expected_value

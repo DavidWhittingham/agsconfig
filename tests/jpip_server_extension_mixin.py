@@ -17,14 +17,11 @@ import pytest
 from .extension_base import *
 
 
-@pytest.mark.parametrize(
+@pytest.mark.parametrize(#yapf:disable
     ('attribute', 'expected_value', 'exception'),
-    [
-        ('britney_spears', 'should cause an', AttributeError),  # because she isn't a member
-        ('enabled', False, None)
-    ]
-)
-def test_jpip_getters(service_config, attribute, expected_value, exception):
+    BASE_GETTER_TEST_CASES
+)#yapf:enable
+def test_jpip_server_getters(service_config, attribute, expected_value, exception):
     if exception is not None:
         with pytest.raises(exception):
             assert getattr(service_config.jpip_server, attribute) == expected_value
@@ -32,18 +29,14 @@ def test_jpip_getters(service_config, attribute, expected_value, exception):
         assert getattr(service_config.jpip_server, attribute) == expected_value
 
 
-@pytest.mark.parametrize(
-    ('attribute', 'new_value', 'exception'),
-    [
-        ('britney_spears', 'should cause a', TypeError),  # because she isn't a member
-        ('enabled', False, None)
-    ]
-)
-def test_jpip_setters(service_config, attribute, new_value, exception):
+@pytest.mark.parametrize(#yapf:disable
+    ('attribute', 'new_value', 'expected_value', 'exception'),
+    BASE_SETTER_TEST_CASES
+)#yapf:enable
+def test_jpip_server_setters(service_config, attribute, new_value, expected_value, exception):
     if exception is not None:
         with pytest.raises(exception):
             setattr(service_config.jpip_server, attribute, new_value)
-            assert getattr(service_config.jpip_server, attribute) == new_value
     else:
         setattr(service_config.jpip_server, attribute, new_value)
-        assert getattr(service_config.jpip_server, attribute) == new_value
+        assert getattr(service_config.jpip_server, attribute) == expected_value

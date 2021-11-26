@@ -10,11 +10,13 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
 
-import pytest
-
 from .helpers import TRUEISH_TEST_PARAMS
 
-@pytest.mark.parametrize(("enabled", "expected"), TRUEISH_TEST_PARAMS)
-def test_enabled(service_extension, enabled, expected):
-    service_extension.enabled = enabled
-    assert service_extension.enabled == expected
+BASE_GETTER_TEST_CASES = [
+    ('non_existent_attribute', 'should cause an', AttributeError),  # because she isn't a member
+    ('enabled', False, None)
+]
+
+BASE_SETTER_TEST_CASES = [
+    ('non_existent_attribute', 'should cause an', None, AttributeError),  # because she isn't a member
+] + [("enabled", trueish_value, trueish_expected, None) for (trueish_value, trueish_expected) in TRUEISH_TEST_PARAMS]

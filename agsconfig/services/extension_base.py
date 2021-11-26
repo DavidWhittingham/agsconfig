@@ -161,7 +161,9 @@ class ExtensionBase(ModelBase):
             "formats": {
                 "agsJson": {
                     "conversions": [{
-                        "id": "boolToString"
+                        "id": "boolToString",
+                        "allowNone": False,
+                        "noneAsFalse": True
                     }],
                     "paths": [
                         {# yapf: disable
@@ -180,10 +182,12 @@ class ExtensionBase(ModelBase):
                 },
                 "sddraft": {
                     "conversions": [{
-                        "id": "boolToString"
+                        "id": "boolToString",
+                        "allowNone": False,
+                        "noneAsFalse": True
                     }],
                     "paths": [
-                        {# yapf: disable
+                        { # yapf: disable
                             "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Enabled".format(extension_name),
                             "parent": {
                                 "children": [
@@ -208,7 +212,7 @@ class ExtensionBase(ModelBase):
                                     ]
                                 }
                             }
-                        }# yapf: enable
+                        } # yapf: enable
                     ]
                 }
             }

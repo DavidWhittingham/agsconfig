@@ -27,15 +27,10 @@ def test_load_service_config(service_config):
 
 
 @pytest.mark.parametrize(
-    ("attribute", "expected_value", "exception"),
-    [
-        ("britney_spears", "should cause an", AttributeError),  # because she isn't a member
-        ("capabilities", [], None),
-        ("cluster", "default", None),
-        ("execution_type", GeoprocessingServer.ExecutionType.asynchronous, None),
-        ("maximum_records", 1000, None),
-        ("result_map_server", False, None),
-        ("show_messages", GeoprocessingServer.MessageLevel.none, None)
+    ("attribute", "expected_value", "exception"), [
+        ("capabilities", [], None), ("cluster", "default", None),
+        ("execution_type", GeoprocessingServer.ExecutionType.asynchronous, None), ("maximum_records", 1000, None),
+        ("result_map_server", False, None), ("show_messages", GeoprocessingServer.MessageLevel.none, None)
     ]
 )
 def test_getters(service_config, attribute, expected_value, exception):
@@ -47,21 +42,16 @@ def test_getters(service_config, attribute, expected_value, exception):
 
 
 @pytest.mark.parametrize(
-    ("attribute", "new_value", "expected_value", "exception"),
-    [
-        ("britney_spears", "should cause a", None, TypeError),  # because she isn't a member
+    ("attribute", "new_value", "expected_value", "exception"), [
         ("capabilities", [GeoprocessingServer.Capability.uploads], [GeoprocessingServer.Capability.uploads], None),
         ("capabilities", ["Uploads"], [GeoprocessingServer.Capability.uploads], None),
         ("capabilities", "Guff", None, ValueError),
         (
             "execution_type", GeoprocessingServer.ExecutionType.asynchronous,
             GeoprocessingServer.ExecutionType.asynchronous, None
-        ),
-        ("execution_type", "Synchronous", GeoprocessingServer.ExecutionType.synchronous, None),
-        ("execution_type", "balls", None, ValueError),
-        ("maximum_records", None, None, None),
-        ("result_map_server", True, True, None),
-        ("show_messages", "Info", GeoprocessingServer.MessageLevel.info, None)
+        ), ("execution_type", "Synchronous", GeoprocessingServer.ExecutionType.synchronous, None),
+        ("execution_type", "balls", None, ValueError), ("maximum_records", None, None, None),
+        ("result_map_server", True, True, None), ("show_messages", "Info", GeoprocessingServer.MessageLevel.info, None)
     ]
 )
 def test_setters(service_config, attribute, new_value, expected_value, exception):

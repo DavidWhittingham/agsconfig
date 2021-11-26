@@ -21,10 +21,9 @@ from .extension_base import *
 
 
 @pytest.mark.parametrize(
-    ('attribute', 'expectedValue', 'exception'),
-    [
-        ('britney_spears', 'should cause an', AttributeError),  # because she isn't a member
-        ('enabled', True, None),
+    ('attribute', 'expected_value', 'exception'),
+    BASE_GETTER_TEST_CASES +
+    [ #yapf:disable
         ('capabilities', [kml.Capability.single_image, kml.Capability.separate_images, kml.Capability.vectors], None),
         ('compatibility_mode', kml.CompatibilityMode.google_earth, None),
         ('dpi', 96, None),
@@ -32,21 +31,20 @@ from .extension_base import *
         ('image_size', 1024, None),
         ('min_refresh_period', 30, None),
         ('use_default_snippets', 0, None)
-    ]
+    ] #yapf:enable
 )
-def test_kml_getters(service_config, attribute, expectedValue, exception):
+def test_kml_getters(service_config, attribute, expected_value, exception):
     if exception is not None:
         with pytest.raises(exception):
-            assert getattr(service_config.kml_server, attribute) == expectedValue
+            assert getattr(service_config.kml_server, attribute) == expected_value
     else:
-        assert getattr(service_config.kml_server, attribute) == expectedValue
+        assert getattr(service_config.kml_server, attribute) == expected_value
 
 
 @pytest.mark.parametrize(
     ('attribute', 'new_value', 'expected_value', 'exception'),
-    [
-        ('britney_spears', 'should cause a', None, TypeError),  # because she isn't a member
-        ('enabled', False, False, None),
+    BASE_SETTER_TEST_CASES +
+    [ #yapf:disable
         ('capabilities', [kml.Capability.single_image], [kml.Capability.single_image], None),
         ('compatibility_mode', kml.CompatibilityMode.google_maps, kml.CompatibilityMode.google_maps, None),
         ('compatibility_mode', 'GoogleEarth', kml.CompatibilityMode.google_earth, None),
@@ -66,7 +64,7 @@ def test_kml_getters(service_config, attribute, expectedValue, exception):
         ('min_refresh_period', 'FooBar', None, ValueError),
         ('min_refresh_period', '10', 10, None),
         ('use_default_snippets', False, False, None)
-    ]
+    ] #yapf:enable
 )
 def test_kml_setters(service_config, attribute, new_value, expected_value, exception):
     if exception is not None:

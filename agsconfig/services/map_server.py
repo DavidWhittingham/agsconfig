@@ -15,6 +15,9 @@ from ..editing.edit_prop import EditorProperty
 from ..services.feature_server_extension import FeatureServerExtension
 from ..services.kml_server_extension import KmlServerExtension
 from ..services.na_server_extension import NAServerExtension
+from ..services.parcel_fabric_server_extension import ParcelFabricServerExtension
+from ..services.validation_server_extension import ValidationServerExtension
+from ..services.version_management_server_extension import VersionManagementServerExtension
 from ..services.wcs_server_extension import WCSServerExtension
 from ..services.wfs_server_extension import WFSServerExtension
 from ..services.wms_server_extension import WMSServerExtension
@@ -34,8 +37,11 @@ class MapServer(
     _feature_server_extension = None
     _kml_server_extension = None
     _na_server_extension = None
-    _wfs_server_extension = None
+    _parcel_fabric_server_extension = None
+    _validation_server_extension = None
+    _version_management_server_extension = None
     _wcs_server_extension = None
+    _wfs_server_extension = None
     _wms_server_extension = None
 
     class AntiAliasingMode(Enum):
@@ -60,6 +66,9 @@ class MapServer(
         self._feature_server_extension = FeatureServerExtension(editor)
         self._kml_server_extension = KmlServerExtension(editor)
         self._na_server_extension = NAServerExtension(editor)
+        self._parcel_fabric_server_extension = ParcelFabricServerExtension(editor)
+        self._validation_server_extension = ValidationServerExtension(editor)
+        self._version_management_server_extension = VersionManagementServerExtension(editor)
         self._wcs_server_extension = WCSServerExtension(editor)
         self._wfs_server_extension = WFSServerExtension(editor)
         self._wms_server_extension = WMSServerExtension(editor)
@@ -76,8 +85,23 @@ class MapServer(
 
     @property
     def na_server(self):
-        """Gets the properties for the Network Analysis server extension"""
+        """Gets the properties for the Network Analysis Server extension."""
         return self._na_server_extension
+
+    @property
+    def parcel_fabric_server(self):
+        """Gets the properties for the Parcel Fabric Server extension."""
+        return self._parcel_fabric_server_extension
+
+    @property
+    def validation_server(self):
+        """Gets the properties for the Validation Server extension."""
+        return self._validation_server_extension
+
+    @property
+    def version_management_server(self):
+        """Gets the properties for the Version Management Server extension."""
+        return self._version_management_server_extension
 
     @property
     def wcs_server(self):

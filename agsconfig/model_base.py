@@ -31,11 +31,10 @@ class ModelBase(object):
         This helps eliminate a whole class of errors in testing.
         """
 
-        a = getattr(self, name, ATTR_MISSING)
-        if a is not ATTR_MISSING:
-            object.__setattr__(self, name, value)
-        else:
-            raise TypeError('Cannot set name {0} on object of type {1}'.format(name, self.__class__.__name__))
+        if getattr(self, name, ATTR_MISSING) is ATTR_MISSING:
+            raise AttributeError('Cannot set name {0} on object of type {1}'.format(name, self.__class__.__name__))
+
+        object.__setattr__(self, name, value)
 
     def _set_props_from_dict(self, prop_dict, ignore_not_implemented=False):
         """Method for setting properties from a dictionary where keys match property names.
@@ -63,8 +62,7 @@ class ModelBase(object):
                 if ignore_not_implemented:
                     self._logger.warning(
                         "Tried to set the '%s' property to '%s', but this is not supported on the supplied configuration format.",
-                        key,
-                        value
+                        key, value
                     )
                     continue
                 else:
@@ -80,8 +78,7 @@ class ModelBase(object):
                 if ignore_not_implemented:
                     self._logger.warning(
                         "Tried to set the '%s' property to '%s', but this is not supported on the supplied configuration format.",
-                        key,
-                        value
+                        key, value
                     )
                     continue
                 else:

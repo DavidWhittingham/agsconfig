@@ -25,10 +25,9 @@ def test_load_service_config(service_config):
     assert True
 
 
-@pytest.mark.parametrize(
+@pytest.mark.parametrize( #yapf:disable
     ("attribute", "expected_value", "exception"),
     [
-        ("britney_spears", "should cause an", AttributeError),  # because she isn"t a member of vectortile
         ("portal_url", "https://uat-spatial.information.qld.gov.au/arcgis/", None),
         ("title", "TestVectorTile", None),
         ("keep_existing_data", False, None),
@@ -48,7 +47,7 @@ def test_load_service_config(service_config):
         ("web_enabled", True, None),
         ("tags", ["tag"], None)
     ]
-)
+) #yapf:enable
 def test_getters(service_config, attribute, expected_value, exception):
     if exception is not None:
         with pytest.raises(exception):
@@ -57,10 +56,9 @@ def test_getters(service_config, attribute, expected_value, exception):
         assert getattr(service_config, attribute) == expected_value
 
 
-@pytest.mark.parametrize(
+@pytest.mark.parametrize( #yapf:disable
     ("attribute", "new_value", "expected", "exception"),
     [
-        ("britney_spears", "should cause a", None, TypeError),  # model_base prevents assignment of unknown members
         (
             "portal_url", "https://uat-spatial.information.qld.gov.au/arcgis/s",
             "https://uat-spatial.information.qld.gov.au/arcgis/s", None
@@ -93,7 +91,7 @@ def test_getters(service_config, attribute, expected_value, exception):
         ("web_enabled", False, False, None),
         ("tags", "tags,more tags", ['tags', 'more tags'], None)
     ]
-)
+) #yapf:enable
 def test_setters(service_config, attribute, new_value, expected, exception):
     if exception is not None:
         with pytest.raises(exception):

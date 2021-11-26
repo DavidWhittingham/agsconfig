@@ -17,6 +17,16 @@ import pytest
 from .helpers import TRUEISH_TEST_PARAMS
 
 
+def test_invalid_getter(service_config):
+    with pytest.raises(AttributeError):
+        assert getattr(service_config, "non_existent_attribute") == "non-existent value"
+
+
+def test_invalid_setter(service_config):
+    with pytest.raises(AttributeError):
+        setattr(service_config, "non_existent_attribute", "can't assign a value here")
+
+
 @pytest.mark.parametrize(
     ("access_information"), [
         ("This is a test description"),
