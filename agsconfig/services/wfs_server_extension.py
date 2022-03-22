@@ -227,7 +227,7 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     "paths": [
                         { #yapf:disable
                             "document": "main",
-                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.hourOfService".format(extension_name)
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.hoursOfService".format(extension_name)
                         } #yapf:enable
                     ]
                 },

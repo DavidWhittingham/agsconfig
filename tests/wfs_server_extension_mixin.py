@@ -33,6 +33,7 @@ from .ogc_metadata_extension_mixin import *
         ('enable_transactions', False, None),
         ('axis_order_wfs_10', wfs.AxisOrder.long_lat, None),
         ('axis_order_wfs_11', wfs.AxisOrder.lat_long, None),
+        ('hours_of_service', 'Test hours', None),
         ('service_type', None, None),
         ('service_type_version', None, None)
     ]
@@ -57,6 +58,7 @@ def test_wfs_getters(service_config, attribute, expected_value, exception):
         ('axis_order_wfs_10', 'LatLong', wfs.AxisOrder.lat_long, None), ('axis_order_wfs_10', 'err', None, ValueError),
         ('axis_order_wfs_11', wfs.AxisOrder.long_lat, wfs.AxisOrder.long_lat, None),
         ('axis_order_wfs_11', 'err', None, ValueError), ('axis_order_wfs_11', 'LongLat', wfs.AxisOrder.long_lat, None),
+        ('hours_of_service', '24/7', None),
         ('service_type', 'Blah', 'Blah', None), ('service_type_version', 1.0, 1.0, None)
     ]
 )#yapf:enable

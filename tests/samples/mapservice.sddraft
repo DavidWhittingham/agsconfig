@@ -856,7 +856,7 @@
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>hoursOfService</Key>
-									<Value xsi:type="xs:string"/>
+									<Value xsi:type="xs:string">Test hours</Value>
 								</PropertySetProperty>
 								<PropertySetProperty xsi:type="typens:PropertySetProperty">
 									<Key>contactInstructions</Key>
