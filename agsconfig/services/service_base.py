@@ -528,6 +528,9 @@ class ServiceBase(_ModelBase):
 
     tags = _EditorProperty(
         {
+            "constraints": {
+                "list": True
+            },
             "formats": {
                 "agsJson": {
                     "paths": [{

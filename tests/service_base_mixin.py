@@ -175,8 +175,10 @@ def test_summary(service_config, summary):
 
 
 @pytest.mark.parametrize(
-    ("tags", "expected", "ex"),
-    [(["a tag"], ["a tag"], None), ([], [], None), (["Multiple", "Tags"], ["Multiple", "Tags"], None)]
+    ("tags", "expected", "ex"), [
+        (["a tag"], ["a tag"], None), ("a tag", None, ValueError), ([], [], None),
+        (["Multiple", "Tags"], ["Multiple", "Tags"], None)
+    ]
 )
 def test_tags(service_config, tags, expected, ex):
     if ex is not None:
@@ -184,7 +186,7 @@ def test_tags(service_config, tags, expected, ex):
             service_config.tags = tags
     else:
         service_config.tags = tags
-        assert set(service_config.tags) == set(tags)
+        assert set(service_config.tags) == set(expected)
 
 
 @pytest.mark.parametrize(

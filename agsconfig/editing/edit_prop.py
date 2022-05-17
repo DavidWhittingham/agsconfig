@@ -8,7 +8,14 @@ from future.builtins.disabled import *
 from future.builtins import *
 from future.standard_library import install_aliases
 install_aliases()
+from past.builtins import basestring
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position
+
+try:
+    # abstract base classes for collections moved and importing them from collections is deprecated
+    import collections.abc as collections_abc
+except ImportError:
+    import collections as collections_abc
 
 
 class EditorProperty(object):
@@ -50,6 +57,14 @@ class EditorProperty(object):
 
             if constraints.get("int", False) is True and not value is None:
                 value = int(value)
+
+            if constraints.get("list", False) is True:
+                if not (isinstance(value, collections_abc.Sequence) and not isinstance(value, basestring)):
+                    raise ValueError(
+                        "Value of property '{}' must be a list or list-like sequence, not a string.".format(
+                            self.name_of(obj)
+                        )
+                    )
 
             if "min" in constraints:
                 min_value = constraints["min"]

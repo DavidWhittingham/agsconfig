@@ -8,7 +8,11 @@ from future.standard_library import install_aliases
 install_aliases()
 # pylint: enable=wildcard-import,unused-wildcard-import,wrong-import-order,wrong-import-position,no-name-in-module,import-error
 
-import collections
+try:
+    # abstract base classes for collections moved and importing them from collections is deprecated
+    import collections.abc as collections_abc
+except ImportError:
+    import collections as collections_abc
 
 from lxml import etree as ET
 
@@ -16,7 +20,7 @@ from .editor_base import EditorBase
 
 
 def get_element_value(element, default=None):
-    if isinstance(element, collections.Sequence):
+    if isinstance(element, collections_abc.Sequence):
         if len(element) == 0:
             return element
         return [get_element_value(v, default) for v in element]
@@ -81,9 +85,7 @@ class SDDraftEditor(EditorBase):
 
             self._create_element_structure(parent_element_path, parent_path_info, obj)
         else:
-            raise KeyError(
-                "path_info does not contain 'parent' for given path: {}".format(path_info["path"])
-            )
+            raise KeyError("path_info does not contain 'parent' for given path: {}".format(path_info["path"]))
 
         return self._xml_tree.find(path_info["path"])
 
@@ -146,7 +148,7 @@ class SDDraftEditor(EditorBase):
 
     def _set_value(self, value, path_info, obj):
         elements_found = self._xml_tree.xpath(path_info["path"])
-        
+
         element = None
         if elements_found is not None and len(elements_found) > 0:
             element = elements_found[0]
@@ -172,12 +174,6 @@ class SDDraftEditor(EditorBase):
         tag_name = conversion["tag"]
         attributes = conversion.get("attributes", {})
 
-        # A comma separated string
-        try:
-            if isinstance(value, str) and len(value.split(',')) > 1:
-                value = value.split(',')
-        except Exception:
-            pass
         # Or a list
         elems = []
         for i in value:
