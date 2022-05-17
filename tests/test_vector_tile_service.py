@@ -89,7 +89,8 @@ def test_getters(service_config, attribute, expected_value, exception):
         ("tiling_scheme", 1, 1, None),
         ("ignore_cache", True, True, None),
         ("web_enabled", False, False, None),
-        ("tags", "tags,more tags", ['tags', 'more tags'], None)
+        ("tags", ["tags","more tags"], ['tags', 'more tags'], None),
+        ("tags", "tags,more tags", None, ValueError)
     ]
 ) #yapf:enable
 def test_setters(service_config, attribute, new_value, expected, exception):
