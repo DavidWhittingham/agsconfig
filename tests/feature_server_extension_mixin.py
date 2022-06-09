@@ -25,6 +25,10 @@ from .extension_base import *
     BASE_GETTER_TEST_CASES +
     [
         ('allow_geometry_updates', True, None),
+        ('allow_others_to_delete', False, None),
+        ('allow_others_to_query', True, None),
+        ('allow_others_to_update', False, None),
+        ('set_defaults_to_null_for_not_null_fields_in_templates', False, None),
         ('allow_true_curves_updates', False, None),
         ('enable_ownership_based_access_control', False, None),
         ('enable_z_defaults', False, None),
@@ -51,6 +55,18 @@ def test_feature_server_getters(service_config, attribute, expected_value, excep
         ('z_default_value', 128.234569871, 128.234569871, None)
     ] + [
         ("allow_geometry_updates", trueish_value, trueish_expected, None)
+        for (trueish_value, trueish_expected) in TRUEISH_TEST_PARAMS
+    ] + [
+        ("allow_others_to_delete", trueish_value, trueish_expected, None)
+        for (trueish_value, trueish_expected) in TRUEISH_TEST_PARAMS
+    ] + [
+        ("allow_others_to_query", trueish_value, trueish_expected, None)
+        for (trueish_value, trueish_expected) in TRUEISH_TEST_PARAMS
+    ] + [
+        ("allow_others_to_update", trueish_value, trueish_expected, None)
+        for (trueish_value, trueish_expected) in TRUEISH_TEST_PARAMS
+    ] + [
+        ("set_defaults_to_null_for_not_null_fields_in_templates", trueish_value, trueish_expected, None)
         for (trueish_value, trueish_expected) in TRUEISH_TEST_PARAMS
     ] + [
         ("allow_true_curves_updates", trueish_value, trueish_expected, None)

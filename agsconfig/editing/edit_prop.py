@@ -38,6 +38,11 @@ class EditorProperty(object):
 
         value = obj._editor.get_value(self.name_of(obj), self.meta, obj)
 
+        if not value and "constraints" in self.meta:
+            constraints = self.meta["constraints"]
+
+            if "default" in constraints and value is None:
+                value = constraints["default"]
         return value
 
     def __set__(self, obj, value):

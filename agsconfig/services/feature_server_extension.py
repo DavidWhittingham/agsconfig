@@ -61,6 +61,126 @@ class FeatureServerExtension(ExtensionBase):
         }
     )
 
+    allow_others_to_delete = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": "$.extensions[?(@.typeName = 'FeatureServer')].properties.allowOthersToDelete"
+                        }
+                    ]
+                },
+                "sddraft": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                    "paths": [
+                        {
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='allowOthersToDelete']/Value"
+                            .format(extension_name)
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
+    allow_others_to_query = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": "$.extensions[?(@.typeName = 'FeatureServer')].properties.allowOthersToQuery"
+                        }
+                    ]
+                },
+                "sddraft": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                    "paths": [
+                        {
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='allowOthersToQuery']/Value"
+                            .format(extension_name)
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
+    allow_others_to_update = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": "$.extensions[?(@.typeName = 'FeatureServer')].properties.allowOthersToUpdate"
+                        }
+                    ]
+                },
+                "sddraft": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                    "paths": [
+                        {
+                            "path": lambda extension_name:
+                            "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='allowOthersToUpdate']/Value"
+                            .format(extension_name)
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
+    set_defaults_to_null_for_not_null_fields_in_templates = EditorProperty(
+        {
+            "constraints": {
+                "default": False
+            },
+            "formats": {
+                "agsJson": {
+                    "conversions": [{
+                        "id": "boolToString",
+                        "allowNone": False,
+                        "noneAsFalse": True
+                    }],
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": lambda extension_name:
+                            "$.extensions[?(@.typeName = '{}')].properties.setDefaultsToNullForNotNullFieldsInTemplates"
+                            .format(extension_name),
+                            "parent": {
+                                "children": [{
+                                    "key": "setDefaultsToNullForNotNullFieldsInTemplates"
+                                }]
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
     allow_geometry_updates_without_m_values = EditorProperty(
         {
             "formats": {
