@@ -53,7 +53,7 @@ class FeatureServerExtension(ExtensionBase):
                         { #yapf:disable
                             "path":
                                 lambda extension_name:
-                                    "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='allowGeometryUpdates']/Value".format(extension_name)
+                                    "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='allowGeometryUpdates']/Value".format(extension_name)
                         } #yapf:enable
                     ]
                 }
@@ -146,6 +146,102 @@ class FeatureServerExtension(ExtensionBase):
                                 }
                             }
                         }#yapf: enable
+                    ]
+                }
+            }
+        }
+    )
+
+    allow_others_to_delete = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                    "paths": [
+                        { #yapf:disable
+                            "document": "main",
+                            "path":
+                                lambda extension_name:
+                                    "$.extensions[?(@.typeName = '{}')].properties.allowOthersToDelete".format(extension_name)
+                        } #yapf:enable
+                    ]
+                },
+                "sddraft": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                    "paths": [
+                        { #yapf:disable
+                            "path":
+                                lambda extension_name:
+                                    "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='allowOthersToDelete']/Value".format(extension_name)
+                        } #yapf:enable
+                    ]
+                }
+            }
+        }
+    )
+
+    allow_others_to_query = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                    "paths": [
+                        { #yapf:disable
+                            "document": "main",
+                            "path":
+                                lambda extension_name:
+                                    "$.extensions[?(@.typeName = '{}')].properties.allowOthersToQuery".format(extension_name)
+                        } #yapf:enable
+                    ]
+                },
+                "sddraft": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                    "paths": [
+                        { #yapf:disable
+                            "path":
+                                lambda extension_name:
+                                    "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='allowOthersToQuery']/Value".format(extension_name)
+                        } #yapf:enable
+                    ]
+                }
+            }
+        }
+    )
+
+    allow_others_to_update = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                    "paths": [
+                        { #yapf:disable
+                            "document": "main",
+                            "path":
+                                lambda extension_name:
+                                    "$.extensions[?(@.typeName = '{}')].properties.allowOthersToUpdate".format(extension_name)
+                        } #yapf:enable
+                    ]
+                },
+                "sddraft": {
+                    "conversions": [{
+                        "id": "boolToString"
+                    }],
+                    "paths": [
+                        { #yapf:disable
+                            "path":
+                                lambda extension_name:
+                                    "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{}']/Props/PropertyArray/PropertySetProperty[Key='allowOthersToUpdate']/Value".format(extension_name)
+                        } #yapf:enable
                     ]
                 }
             }
@@ -293,6 +389,36 @@ class FeatureServerExtension(ExtensionBase):
                 }
             }
         }#yapf:enable
+    )
+
+    set_defaults_to_null_for_not_null_fields_in_templates = EditorProperty(
+        {
+            "constraints": {
+                "default": False
+            },
+            "formats": {
+                "agsJson": {
+                    "conversions": [{
+                        "id": "boolToString",
+                        "allowNone": False,
+                        "noneAsFalse": True
+                    }],
+                    "paths": [
+                        { #yapf:disable
+                            "document": "main",
+                            "path": lambda extension_name:
+                            "$.extensions[?(@.typeName = '{}')].properties.setDefaultsToNullForNotNullFieldsInTemplates"
+                            .format(extension_name),
+                            "parent": {
+                                "children": [{
+                                    "key": "setDefaultsToNullForNotNullFieldsInTemplates"
+                                }]
+                            }
+                        } #yapf:enable
+                    ]
+                }
+            }
+        }
     )
 
     z_default_value = EditorProperty(

@@ -25,10 +25,14 @@ from .extension_base import *
     BASE_GETTER_TEST_CASES +
     [
         ('allow_geometry_updates', True, None),
+        ('allow_others_to_delete', False, None),
+        ('allow_others_to_query', True, None),
+        ('allow_others_to_update', False, None),
         ('allow_true_curves_updates', False, None),
         ('enable_ownership_based_access_control', False, None),
         ('enable_z_defaults', False, None),
         ('realm', None, None),
+        ('set_defaults_to_null_for_not_null_fields_in_templates', False, None),
         ('z_default_value', 0, None)
     ]
 )#yapf:enable
@@ -53,6 +57,18 @@ def test_feature_server_getters(service_config, attribute, expected_value, excep
         ("allow_geometry_updates", trueish_value, trueish_expected, None)
         for (trueish_value, trueish_expected) in TRUEISH_TEST_PARAMS
     ] + [
+        ("allow_geometry_updates_without_m_values", trueish_value, trueish_expected, None)
+        for (trueish_value, trueish_expected) in TRUEISH_TEST_PARAMS
+    ] + [
+        ("allow_others_to_delete", trueish_value, trueish_expected, None)
+        for (trueish_value, trueish_expected) in TRUEISH_TEST_PARAMS
+    ] + [
+        ("allow_others_to_query", trueish_value, trueish_expected, None)
+        for (trueish_value, trueish_expected) in TRUEISH_TEST_PARAMS
+    ] + [
+        ("allow_others_to_update", trueish_value, trueish_expected, None)
+        for (trueish_value, trueish_expected) in TRUEISH_TEST_PARAMS
+    ] + [
         ("allow_true_curves_updates", trueish_value, trueish_expected, None)
         for (trueish_value, trueish_expected) in TRUEISH_TEST_PARAMS
     ] + [
@@ -61,7 +77,10 @@ def test_feature_server_getters(service_config, attribute, expected_value, excep
      ] + [
          ("enable_z_defaults", trueish_value, trueish_expected, None)
          for (trueish_value, trueish_expected) in TRUEISH_TEST_PARAMS
-     ]
+     ] + [
+        ("set_defaults_to_null_for_not_null_fields_in_templates", trueish_value, trueish_expected, None)
+        for (trueish_value, trueish_expected) in TRUEISH_TEST_PARAMS
+    ]
 )#yapf:enable
 def test_feature_server_setters(service_config, attribute, new_value, expected_value, exception):
     if exception is not None:

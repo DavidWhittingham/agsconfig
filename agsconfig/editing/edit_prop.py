@@ -36,9 +36,7 @@ class EditorProperty(object):
             # this is used to get the property metadata via the type, if needed
             return self
 
-        value = obj._editor.get_value(self.name_of(obj), self.meta, obj)
-
-        return value
+        return obj._editor.get_value(self.name_of(obj), self.meta, obj)
 
     def __set__(self, obj, value):
         # perform any constraint checks that are specified before setting the value
