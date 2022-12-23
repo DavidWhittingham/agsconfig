@@ -212,7 +212,6 @@
                 "pathToCustomGetCapabilitiesFiles": "",
                 "transactionsWithoutLocks": "false",
                 "contactInstructions": "",
-                "hoursOfService": "Test hours",
                 "axisOrderWFS11": "latlong",
                 "axisOrderWFS10": "longlat",
                 "keyword": "These Are Keywords",

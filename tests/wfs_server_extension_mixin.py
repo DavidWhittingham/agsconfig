@@ -33,7 +33,7 @@ from .ogc_metadata_extension_mixin import *
         ('enable_transactions', False, None),
         ('axis_order_wfs_10', wfs.AxisOrder.long_lat, None),
         ('axis_order_wfs_11', wfs.AxisOrder.lat_long, None),
-        ('hours_of_service', 'Test hours', None),
+        ('hours_of_service', None, None),
         ('service_type', None, None),
         ('service_type_version', None, None)
     ]

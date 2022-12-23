@@ -226,8 +226,16 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     ],
                     "paths": [
                         { #yapf:disable
+                             # note: As of ArcGIS Server 10.7.1, the Manager interface writes this into config as 
+                             # "hourOrService", but that is incorrect (in that the WFS Capabilities XML produced by 
+                             # AGS won't use the value from that key).  The correct key is "hoursOfService".
                             "document": "main",
-                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.hoursOfService".format(extension_name)
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.hoursOfService".format(extension_name),
+                            "parent": {
+                                "children": [{
+                                    "key": "hoursOfService"
+                                }]
+                            }
                         } #yapf:enable
                     ]
                 },
