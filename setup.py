@@ -29,7 +29,6 @@ setup(
     license="BSD 3-Clause",
     keywords="arcgis esri",
     url="https://github.com/DavidWhittingham/agsconfig",
-    project_urls={"Travis CI": "https://app.travis-ci.com/github/DavidWhittingham/agsconfig"},
     classifiers=(
         "Development Status :: 3 - Alpha", "Intended Audience :: Developers", "Natural Language :: English",
         "License :: OSI Approved :: BSD License", "Programming Language :: Python",
