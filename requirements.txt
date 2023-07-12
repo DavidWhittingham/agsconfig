@@ -5,4 +5,4 @@ html2text>=2019.8.11 ; python_version>='3.0'
 jsonpath-ng>=1.4.3,<2
 lxml>=4.3.2,<5
 tzlocal>=2.0.0,<3 ; python_version<'3.0' # later versions drop support for Python 2
-tzlocal>=3.0.0,<5 ; python_version>='3.0'
+tzlocal>=3.0.0,<6 ; python_version>='3.0'

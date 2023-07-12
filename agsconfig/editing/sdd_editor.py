@@ -154,7 +154,12 @@ class SDDraftEditor(EditorBase):
             element = elements_found[0]
 
         # if the element can't be found, and it's not marked as optional, create it
-        if element is None and not path_info.get("optional", False):
+        if element is None:
+            if path_info.get("optional", False):
+                # element is optional, ignore the fact that we can't find it
+                return
+
+            # otherwise, create the element
             element = self._create_element(path_info["path"], path_info, obj)
 
         self._set_element_value(element, value)
