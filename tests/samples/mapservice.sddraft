@@ -52,6 +52,10 @@
 				<Key>IncludeDataInSDFile</Key>
 				<Value xsi:type="xs:string">FALSE</Value>
 			</PropertySetProperty>
+			<PropertySetProperty xsi:type="typens:PropertySetProperty">
+				<Key>ServiceTitle</Key>
+				<Value xsi:type="xs:string">Test Service</Value>
+			</PropertySetProperty>
 		</PropertyArray>
 	</StagingSettings>
 	<KeepExistingData>false</KeepExistingData>

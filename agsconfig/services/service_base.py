@@ -583,9 +583,14 @@ class ServiceBase(_ModelBase):
                     }]
                 },
                 "sddraft": {
-                    "paths": [{
-                        "path": "./ItemInfo/Title"
-                    }]
+                    "paths": [
+                        {
+                            "path": "./ItemInfo/Title"
+                        }, {
+                            "path": "./StagingSettings/PropertyArray/PropertySetProperty[Key='ServiceTitle']/Value",
+                            "optional": True
+                        }
+                    ]
                 }
             }
         }
