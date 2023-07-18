@@ -906,6 +906,9 @@ class OGCMetadataExtensionMixin(object):
         {
             "formats": {
                 "agsJson": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
                     "paths": [
                         {# yapf: disable
                             "document": "main",
@@ -922,6 +925,9 @@ class OGCMetadataExtensionMixin(object):
                     ]
                 },
                 "sddraft": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
                     "paths": [
                         {# yapf: disable
                             "path": lambda extension_name, _SDDRAFT_KEY_INDIVIDUAL_NAME:
@@ -1282,6 +1288,9 @@ class OGCMetadataExtensionMixin(object):
         {
             "formats": {
                 "agsJson": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
                     "paths": [
                         {# yapf: disable
                             "document": "main",
@@ -1298,6 +1307,9 @@ class OGCMetadataExtensionMixin(object):
                     ]
                 },
                 "sddraft": {
+                    "conversions": [
+                        {"id": "noneToEmptyString"}
+                    ],
                     "paths": [
                         {# yapf: disable
                             "path": lambda extension_name, _SDDRAFT_KEY_POSITION_NAME:
