@@ -153,6 +153,66 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
         }
     )
 
+    axis_order_wfs_20 = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "conversions": [{
+                        "id": "enumToString",
+                        "enum": "AxisOrder",
+                        "case": "lower"
+                    }],
+                    "paths": [
+                        { #yapf:disable
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.axisOrderWFS20".format(extension_name),
+                            "parent": {
+                                "children": [{
+                                    "key": "axisOrderWFS20"
+                                }]
+                            }
+                        } #yapf:enable
+                    ]
+                },
+                "sddraft": {
+                    "paths": [
+                        { #yapf:disable
+                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='axisOrderWFS20']/Value".format(extension_name),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        }
+                                    }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [{
+                                                "tag": "Key",
+                                                "value": "axisOrderWFS20"
+                                            }]
+                                        }
+                                    ]
+                                }
+                            }
+                        } #yapf:enable
+                    ],
+                    "conversions": [{
+                        "id": "enumToString",
+                        "enum": "AxisOrder"
+                    }]
+                }
+            }
+        }
+    )
+
     contact_instructions = EditorProperty(
         {
             "formats": {
@@ -226,8 +286,8 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
                     ],
                     "paths": [
                         { #yapf:disable
-                             # note: As of ArcGIS Server 10.7.1, the Manager interface writes this into config as 
-                             # "hourOrService", but that is incorrect (in that the WFS Capabilities XML produced by 
+                             # note: As of ArcGIS Server 10.7.1, the Manager interface writes this into config as
+                             # "hourOrService", but that is incorrect (in that the WFS Capabilities XML produced by
                              # AGS won't use the value from that key).  The correct key is "hoursOfService".
                             "document": "main",
                             "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.hoursOfService".format(extension_name),
