@@ -241,6 +241,71 @@ class WFSServerExtension(OGCMetadataExtensionMixin, CustomGetCapabilitiesExtensi
         }
     )
 
+    disable_streaming = EditorProperty(
+        {
+            "formats": {
+                "agsJson": {
+                    "conversions": [
+                        {
+                            "id": "boolToString",
+                            "allowNone": False,
+                            "noneAsFalse": True
+                        }
+                    ],
+                    "paths": [
+                        { #yapf:disable
+                            "document": "main",
+                            "path": lambda extension_name: "$.extensions[?(@.typeName = '{}')].properties.disableStreaming".format(extension_name),
+                            "parent": {
+                                "children": [{
+                                    "key": "disableStreaming"
+                                }]
+                            }
+                        } #yapf:enable
+                    ]
+                },
+                "sddraft": {
+                    "conversions": [
+                        {
+                            "id": "boolToString",
+                            "allowNone": False,
+                            "noneAsFalse": True
+                        }
+                    ],
+                    "paths": [
+                        { #yapf:disable
+                            "path": lambda extension_name: "./Configurations/SVCConfiguration/Definition/Extensions/SVCExtension[TypeName='{0}']/Props/PropertyArray/PropertySetProperty[Key='disableStreaming']/Value".format(extension_name),
+                            "parent": {
+                                "children": [
+                                    {
+                                        "tag": "Value",
+                                        "attributes": {
+                                            "{http://www.w3.org/2001/XMLSchema-instance}type": "xs:string"
+                                        }
+                                    }
+                                ],
+                                "parent": {
+                                    "children": [
+                                        {
+                                            "tag": "PropertySetProperty",
+                                            "attributes": {
+                                                "{http://www.w3.org/2001/XMLSchema-instance}type": "typens:PropertySetProperty"
+                                            },
+                                            "children": [{
+                                                "tag": "Key",
+                                                "value": "disableStreaming"
+                                            }]
+                                        }
+                                    ]
+                                }
+                            }
+                        } #yapf:enable
+                    ]
+                }
+            }
+        }
+    )
+
     enable_transactions = EditorProperty(
         {
             "formats": {
