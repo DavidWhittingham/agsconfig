@@ -32,13 +32,6 @@ class OGCMetadataExtensionMixin(object):
     _AGSJSON_KEY_POSTAL_CODE = "postalCode"
     _AGSJSON_KEY_PROVIDER_NAME = "providerName"
     _AGSJSON_KEY_TITLE = "title"
-    _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE = {
-        "children": [{
-            "key": "properties",
-            "value": {}
-        }],
-        "parent": lambda _AGSJSON_EXTENSION_STRUCTURE: _AGSJSON_EXTENSION_STRUCTURE
-    }
 
     # Service Definition Draft key names
     _SDDRAFT_KEY_ABSTRACT = "abstract"

@@ -47,12 +47,23 @@ class ServiceBase(_ModelBase):
 
     __metaclass__ = _ABCMeta
 
+    _custom_extensions = []
     _editor = None
     _logger = _logging.getLogger(__name__)
 
     class Capability(_Enum):
         """Must be overridden by sub-classes if any capabilities are supported."""
         pass
+
+    @classmethod
+    def add_custom_extension(cls, name, extension_class):
+        """Add a custom extension class to this service type.
+
+        Args:
+            name (str): _description_
+            extension_class (_type_): _description_
+        """
+        cls._custom_extensions.append((name, extension_class))
 
     def __init__(self, editor):
         """Initilises the class.
@@ -62,6 +73,13 @@ class ServiceBase(_ModelBase):
         """
 
         self._editor = editor
+
+        for (name, extension_class) in self._custom_extensions:
+            # close over extension class
+            def make_prop():
+                return property(lambda self: extension_class(editor))
+
+            setattr(type(self), name, make_prop())
 
     def export(self):
         """Exports the configuration into an in-memory object."""

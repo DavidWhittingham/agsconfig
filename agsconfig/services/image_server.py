@@ -16,6 +16,7 @@ from ..editing.edit_prop import EditorProperty
 from .cacheable_core_mixin import CacheableCoreMixin
 from .cacheable_ext_mixin import CacheableExtMixin
 from .image_dimensions_mixin import ImageDimensionsMixin
+from .interceptor_mixin import InterceptorMixin
 from .jpip_server_extension import JPIPServerExtension
 from .max_record_count_mixin import MaxRecordCountMixin
 from .output_dir_mixin import OutputDirMixin
@@ -28,8 +29,8 @@ __all__ = ["ImageServer"]
 
 
 class ImageServer(
-    ScaleRangeMixin, OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDimensionsMixin, MaxRecordCountMixin,
-    ServiceBase
+    InterceptorMixin, ScaleRangeMixin, OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDimensionsMixin,
+    MaxRecordCountMixin, ServiceBase
 ):
 
     _SDDRAFT_IS_CACHED_PATHS = CacheableCoreMixin._SDDRAFT_IS_CACHED_PATHS + [

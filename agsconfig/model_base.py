@@ -41,21 +41,17 @@ class ModelBase(object):
         Can be overridden by sub-classes.
         """
 
-        type_self = type(self)
-
         for key, value in prop_dict.items():
+            # attribute may not be implemented for this format, try getting it to eliminate that possibility
 
-            # check if property exists on this class at all
-            if not hasattr(type_self, key):
+            try:
+                getattr(self, key)
+            except AttributeError:
                 # property doesn't exist
                 if ignore_not_implemented:
                     continue
                 else:
-                    raise AttributeError("The '{}' attribute doesn't exist on '{}'.".format(key, type_self.__name__))
-
-            # attribute may not be implemented for this format, try getting it to eliminate that possibility
-            try:
-                getattr(self, key)
+                    raise AttributeError("The '{}' attribute doesn't exist on '{}'.".format(key, type(self).__name__))
             except NotImplementedError:
                 # Getting or setting this attribute isn't implemented on this format
                 t, v, tb = _sys.exc_info()

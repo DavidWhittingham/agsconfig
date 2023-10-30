@@ -73,7 +73,8 @@ class AgsJsonEditor(EditorBase):
             # calculate the path for the parent of the current path by capturing up until the end of the previous level of the JSON structure
             current_node_parent_path = re.match(r"(.*)(?![^\[]*\])(?=[\[\.])", path).groups()[0]
 
-            self._create_node_structure(document, current_node_parent_path, path_info["parent"], obj)
+            parent_path_info = self._resolve_lambda(path_info, obj, "parent")["parent"]
+            self._create_node_structure(document, current_node_parent_path, parent_path_info, obj)
 
             # get current element again, should exist now
             current_node = parse(path).find(document)

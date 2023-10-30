@@ -31,7 +31,27 @@ class ExtensionBase(ModelBase):
     _logger = _logging.getLogger(__name__)
     _web_capabilities_key = "WebCapabilities"
 
-    _AGSJSON_EXTENSION_STRUCTURE = {"children": [{"value": lambda extension_name: {"typeName": extension_name}}]}
+    _AGSJSON_EXTENSION_STRUCTURE = {
+        "children": [
+            {
+                "value": lambda extension_name: {
+                    "typeName": extension_name,
+                    "capabilities": "",
+                    "enabled": "false",
+                    "maxUploadFileSize": 0,
+                    "allowedUploadFileTypes": "",
+                    "properties": {}
+                }
+            }
+        ]
+    }
+    _AGSJSON_EXTENSION_PROPERTIES_STRUCTURE = {
+        "children": [{
+            "key": "properties",
+            "value": {}
+        }],
+        "parent": lambda _AGSJSON_EXTENSION_STRUCTURE: _AGSJSON_EXTENSION_STRUCTURE
+    }
 
     class Capability(Enum):
         """Must be overridden by sub-classes if any capabilities are supported."""

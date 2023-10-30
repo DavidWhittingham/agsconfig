@@ -24,6 +24,7 @@ from ..services.wms_server_extension import WMSServerExtension
 from .cacheable_core_mixin import CacheableCoreMixin
 from .cacheable_ext_mixin import CacheableExtMixin
 from .image_dimensions_mixin import ImageDimensionsMixin
+from .interceptor_mixin import InterceptorMixin
 from .max_record_count_mixin import MaxRecordCountMixin
 from .output_dir_mixin import OutputDirMixin
 from .scale_range_mixin import ScaleRangeMixin
@@ -31,8 +32,8 @@ from .service_base import ServiceBase
 
 
 class MapServer(
-    ScaleRangeMixin, MaxRecordCountMixin, OutputDirMixin, CacheableExtMixin, CacheableCoreMixin, ImageDimensionsMixin,
-    ServiceBase
+    InterceptorMixin, ScaleRangeMixin, MaxRecordCountMixin, OutputDirMixin, CacheableExtMixin, CacheableCoreMixin,
+    ImageDimensionsMixin, ServiceBase
 ):
     _feature_server_extension = None
     _kml_server_extension = None
