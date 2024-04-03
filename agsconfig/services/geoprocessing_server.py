@@ -60,7 +60,10 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
                 "sddraft": {
                     "paths": [
                         {
-                            "path": "./Configurations/SVCConfiguration/Definition/Info/PropertyArray/PropertySetProperty[Key='WebCapabilities']/Value"
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='webCapabilities']/Value"
+                        },
+                        {
+                            "path": "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key='webCapabilities']/Value"
                         }
                     ],
                     "conversions": [{
@@ -91,6 +94,9 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
                     "paths": [
                         {
                             "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='executionType']/Value"
+                        },
+                        {
+                            "path": "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key='executionType']/Value"
                         }
                     ],
                     "conversions": [{
@@ -118,6 +124,9 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
                     "paths": [
                         {
                             "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='maximumRecords']/Value"
+                        },
+                        {
+                            "path": "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key='maximumRecords']/Value"
                         }
                     ]
                 }
@@ -144,6 +153,9 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
                     "paths": [
                         {
                             "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='resultMapServer']/Value"
+                        },
+                        {
+                            "path": "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key='resultMapServer']/Value"
                         }
                     ]
                 }
@@ -172,6 +184,9 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
                     "paths": [
                         {
                             "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='showMessages']/Value"
+                        },
+                        {
+                            "path": "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key='showMessages']/Value"
                         }
                     ]
                 }
