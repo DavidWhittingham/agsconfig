@@ -46,10 +46,15 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
         {
             "formats": {
                 "agsJson": {
-                    "paths": [{
-                        "document": "main",
-                        "path": "$.capabilities"
-                    }],
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": "$.capabilities"
+                        }, {
+                            "document": "main",
+                            "path": "$.properties.webCapabilities"
+                        }
+                    ],
                     "conversions": [{
                         "id": "enumToString",
                         "enum": "Capability"
@@ -61,8 +66,9 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
                     "paths": [
                         {
                             "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='webCapabilities']/Value"
-                        },
-                        {
+                        }, {
+                            "path": "./Configurations/SVCConfiguration/Definition/Info/PropertyArray/PropertySetProperty[Key='WebCapabilities']/Value"
+                        }, {
                             "path": "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key='webCapabilities']/Value"
                         }
                     ],
@@ -94,8 +100,7 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
                     "paths": [
                         {
                             "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='executionType']/Value"
-                        },
-                        {
+                        }, {
                             "path": "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key='executionType']/Value"
                         }
                     ],
@@ -103,6 +108,40 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
                         "id": "enumToString",
                         "enum": "ExecutionType"
                     }]
+                }
+            }
+        }
+    )
+
+    idle_timeout = EditorProperty(
+        {
+            "constraints": {
+                "min": 0,
+                "int": True
+            },
+            "formats": {
+                "agsJson": {
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": "$.maxIdleTime"
+                        }, {
+                            "document": "main",
+                            "path": "$.properties.idleTimeout",
+                            "conversions": [{
+                                "id": "numberToString"
+                            }]
+                        }
+                    ]
+                },
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'IdleTimeout']/Value"
+                        }, {
+                            "path": "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key = 'IdleTimeout']/Value"
+                        }
+                    ]
                 }
             }
         }
@@ -124,8 +163,7 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
                     "paths": [
                         {
                             "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='maximumRecords']/Value"
-                        },
-                        {
+                        }, {
                             "path": "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key='maximumRecords']/Value"
                         }
                     ]
@@ -153,8 +191,7 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
                     "paths": [
                         {
                             "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='resultMapServer']/Value"
-                        },
-                        {
+                        }, {
                             "path": "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key='resultMapServer']/Value"
                         }
                     ]
@@ -184,9 +221,76 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
                     "paths": [
                         {
                             "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='showMessages']/Value"
-                        },
-                        {
+                        }, {
                             "path": "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key='showMessages']/Value"
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
+    usage_timeout = EditorProperty(
+        {
+            "constraints": {
+                "min": 0,
+                "int": True
+            },
+            "formats": {
+                "agsJson": {
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": "$.maxUsageTime"
+                        }, {
+                            "document": "main",
+                            "path": "$.properties.usageTimeout",
+                            "conversions": [{
+                                "id": "numberToString"
+                            }]
+                        }
+                    ]
+                },
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'UsageTimeout']/Value"
+                        }, {
+                            "path": "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key = 'UsageTimeout']/Value"
+                        }
+                    ]
+                }
+            }
+        }
+    )
+
+    wait_timeout = EditorProperty(
+        {
+            "constraints": {
+                "min": 0,
+                "int": True
+            },
+            "formats": {
+                "agsJson": {
+                    "paths": [
+                        {
+                            "document": "main",
+                            "path": "$.maxWaitTime"
+                        }, {
+                            "document": "main",
+                            "path": "$.properties.waitTimeout",
+                            "conversions": [{
+                                "id": "numberToString"
+                            }]
+                        }
+                    ]
+                },
+                "sddraft": {
+                    "paths": [
+                        {
+                            "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key = 'WaitTimeout']/Value"
+                        }, {
+                            "path": "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key = 'WaitTimeout']/Value"
                         }
                     ]
                 }
