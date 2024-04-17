@@ -66,9 +66,8 @@ class GeoprocessingServer(OutputDirMixin, ServiceBase):
                     "paths": [
                         {
                             "path": "./Configurations/SVCConfiguration/Definition/ConfigurationProperties/PropertyArray/PropertySetProperty[Key='webCapabilities']/Value"
-                        }, {
-                            "path": "./Configurations/SVCConfiguration/Definition/Info/PropertyArray/PropertySetProperty[Key='WebCapabilities']/Value"
-                        }, {
+                        },
+                        {
                             "path": "./Configurations/SVCConfiguration/Definition/Props/PropertyArray/PropertySetProperty[Key='webCapabilities']/Value"
                         }
                     ],
