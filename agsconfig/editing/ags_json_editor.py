@@ -24,7 +24,7 @@ class AgsJsonEditor(EditorBase):
     """
     The AgsJsonEditor class is a JSON editor for editing ArcGIS Server REST Admin JSON documents.
 
-    This class is not intended to be instanstiated indepdently, and should be created via factory functions at the root
+    This class is not intended to be instantiated independently, and should be created via factory functions at the root
     of the module.
 
     Args:
@@ -68,7 +68,7 @@ class AgsJsonEditor(EditorBase):
             # must recurse up a level
             if not "parent" in path_info:
                 # can't go up a level
-                raise Exception("Can't create JSON strucutre, no parent information at this level: {}".format(path))
+                raise Exception("Can't create JSON structure, no parent information at this level: {}".format(path))
 
             # calculate the path for the parent of the current path by capturing up until the end of the previous level of the JSON structure
             current_node_parent_path = re.match(r"(.*)(?![^\[]*\])(?=[\[\.])", path).groups()[0]
@@ -95,7 +95,7 @@ class AgsJsonEditor(EditorBase):
 
         if "key" in path_info:
             # value is being inserted into a dictionary
-            # resolve a possible lamda on the "key" name for a property
+            # resolve a possible lambda on the "key" name for a property
             path_info = self._resolve_lambda(path_info, obj, "key")
             parent_node[path_info["key"]] = new_value
         else:
@@ -170,5 +170,5 @@ class AgsJsonEditor(EditorBase):
 
     @staticmethod
     def _save_json_to_file(input_json, file_path):
-        with open(file_path, "wb+") as fp:
-            json.dump(input_json, fp, indent=4, separators=(',', ': '), sort_keys=True)
+        with open(file_path, "w", encoding="utf-8") as fp:
+            fp.write(json.dumps(input_json, indent=4, separators=(',', ': '), sort_keys=True, ensure_ascii=False))
