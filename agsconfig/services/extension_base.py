@@ -58,7 +58,7 @@ class ExtensionBase(ModelBase):
         pass
 
     def __init__(self, editor, extension_name):
-        """Initilises the class.
+        """Initialises the class.
 
         Args:
             editor: An editor object that will receive metadata about each property

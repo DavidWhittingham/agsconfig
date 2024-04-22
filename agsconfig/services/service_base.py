@@ -66,7 +66,7 @@ class ServiceBase(_ModelBase):
         cls._custom_extensions.append((name, extension_class))
 
     def __init__(self, editor):
-        """Initilises the class.
+        """Initialises the class.
 
         Args:
             editor: An editor object that will receive metadata about each property
@@ -76,7 +76,7 @@ class ServiceBase(_ModelBase):
 
         for (name, extension_class) in self._custom_extensions:
             # close over extension class
-            def make_prop():
+            def make_prop(extension_class=extension_class):
                 return property(lambda self: extension_class(editor))
 
             setattr(type(self), name, make_prop())
