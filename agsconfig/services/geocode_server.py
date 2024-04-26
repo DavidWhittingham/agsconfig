@@ -20,6 +20,7 @@ class GeocodeServer(ServiceBase):
     class Capability(Enum):
         geocode = "Geocode"
         reverse_geocode = "ReverseGeocode"
+        suggest = "Suggest"
 
     def __init__(self, editor):
         super().__init__(editor)
